@@ -125,7 +125,7 @@ module AsposePdfCloud
 
     def initialize
       @scheme = 'https'
-      @host = 'localhost'
+      @host = 'api.aspose.cloud'
       @base_path = '/v1.1'
       @timeout = 0
       @client_side_validation = true
