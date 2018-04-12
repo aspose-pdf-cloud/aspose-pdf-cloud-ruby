@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'typhoeus', '~> 0.8'
   s.add_runtime_dependency 'json', '~> 1.7'
   s.add_runtime_dependency 'aspose_storage_cloud', '~> 1.0', '>= 1.0.0'
+  s.add_runtime_dependency 'faraday', '~> 0.14.0'
   
   s.add_development_dependency 'minitest', '~> 5.8'
 
