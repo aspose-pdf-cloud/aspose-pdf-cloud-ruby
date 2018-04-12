@@ -19,6 +19,27 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.3.0"
+  class ColorDepth
+    
+    DEFAULT = "Default".freeze
+    FORMAT8BPP = "Format8bpp".freeze
+    FORMAT4BPP = "Format4bpp".freeze
+    FORMAT1BPP = "Format1bpp".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = ColorDepth.constants.select{|c| c.to_s == value}
+      constantValues = ColorDepth.constants.select{ |const_name| ColorDepth.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #ColorDepth" if constantValues.empty?
+      value
+    end
+  end
+
 end

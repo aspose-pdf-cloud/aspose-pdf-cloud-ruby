@@ -419,25 +419,27 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read document bookmarks.
+    # Read document bookmark/bookmarks (including children).
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :bookmark_path The bookmark path. Leave it empty if you want to get all the bookmarks in the document.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [BookmarksResponse]
+    # @return [File]
     def get_document_bookmarks(name, opts = {})
       data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
       return data
     end
 
-    # Read document bookmarks.
+    # Read document bookmark/bookmarks (including children).
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :bookmark_path The bookmark path. Leave it empty if you want to get all the bookmarks in the document.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(BookmarksResponse, Fixnum, Hash)>] BookmarksResponse data, response status code and response headers
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_document_bookmarks_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_document_bookmarks ..."
@@ -451,6 +453,7 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
+      query_params[:'bookmarkPath'] = opts[:'bookmark_path'] if !opts[:'bookmark_path'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -473,7 +476,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'BookmarksResponse')
+        :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_bookmarks\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -1022,12 +1025,15 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read document image by number.
+    # Extract document image in format specified.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param image_number The image format.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :format Image format to convert, if not specified the common image data is read.
+    # @option opts [Integer] :width The converted image width. (default to 0)
+    # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [File]
@@ -1036,12 +1042,15 @@ module AsposePdfCloud
       return data
     end
 
-    # Read document image by number.
+    # Extract document image in format specified.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param image_number The image format.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :format Image format to convert, if not specified the common image data is read.
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -1066,6 +1075,9 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
+      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -1162,11 +1174,14 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read document page info.
+    # Convert document page to format specified.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :format The format to convert if specified.
+    # @option opts [Integer] :width The converted image width. (default to 0)
+    # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [File]
@@ -1175,11 +1190,14 @@ module AsposePdfCloud
       return data
     end
 
-    # Read document page info.
+    # Convert document page to format specified.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :format The format to convert if specified.
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -1200,6 +1218,9 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
+      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -1511,17 +1532,17 @@ module AsposePdfCloud
 
     # Read page text items.
     # 
-    # @param name 
-    # @param page_number 
+    # @param name The document name.
+    # @param page_number Number of page (starting from 1).
     # @param x 
     # @param y 
     # @param width 
     # @param height 
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :format 
-    # @option opts [String] :regex 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [Array<String>] :format List of formats for search.
+    # @option opts [String] :regex Formats are specified as a regular expression.
+    # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
+    # @option opts [String] :folder The document folder.
     # @return [TextRectsResponse]
     def get_page_text(name, page_number, x, y, width, height, opts = {})
       data, _status_code, _headers = get_page_text_with_http_info(name, page_number, x, y, width, height, opts)
@@ -1530,17 +1551,17 @@ module AsposePdfCloud
 
     # Read page text items.
     # 
-    # @param name 
-    # @param page_number 
+    # @param name The document name.
+    # @param page_number Number of page (starting from 1).
     # @param x 
     # @param y 
     # @param width 
     # @param height 
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :format 
-    # @option opts [String] :regex 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [Array<String>] :format List of formats for search.
+    # @option opts [String] :regex Formats are specified as a regular expression.
+    # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
+    # @option opts [String] :folder The document folder.
     # @return [Array<(TextRectsResponse, Fixnum, Hash)>] TextRectsResponse data, response status code and response headers
     def get_page_text_with_http_info(name, page_number, x, y, width, height, opts = {})
       if @api_client.config.debugging
@@ -1581,7 +1602,7 @@ module AsposePdfCloud
       query_params[:'Height'] = height
       query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
       # header parameters
@@ -1737,6 +1758,445 @@ module AsposePdfCloud
         :return_type => 'DocumentPagesResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_pages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :add_return_to_line_end Add return to line end.
+    # @option opts [String] :format Allows to specify .doc or .docx file format.
+    # @option opts [Integer] :image_resolution_x Image resolution X.
+    # @option opts [Integer] :image_resolution_y Image resolution Y.
+    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
+    # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
+    # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_doc(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :add_return_to_line_end Add return to line end.
+    # @option opts [String] :format Allows to specify .doc or .docx file format.
+    # @option opts [Integer] :image_resolution_x Image resolution X.
+    # @option opts [Integer] :image_resolution_y Image resolution Y.
+    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
+    # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
+    # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_doc_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_doc ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_doc"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/doc".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'addReturnToLineEnd'] = opts[:'add_return_to_line_end'] if !opts[:'add_return_to_line_end'].nil?
+      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
+      query_params[:'imageResolutionX'] = opts[:'image_resolution_x'] if !opts[:'image_resolution_x'].nil?
+      query_params[:'imageResolutionY'] = opts[:'image_resolution_y'] if !opts[:'image_resolution_y'].nil?
+      query_params[:'maxDistanceBetweenTextLines'] = opts[:'max_distance_between_text_lines'] if !opts[:'max_distance_between_text_lines'].nil?
+      query_params[:'mode'] = opts[:'mode'] if !opts[:'mode'].nil?
+      query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
+      query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_doc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param type Type of PdfA format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_pdf_a(name, type, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param type Type of PdfA format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_pdf_a ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_pdf_a"
+      end
+      # verify the required parameter 'type' is set
+      if @api_client.config.client_side_validation && type.nil?
+        fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.get_pdf_in_storage_to_pdf_a"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/pdfa".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'type'] = type
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to SVG format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_svg(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to SVG format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_svg_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_svg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_svg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/svg".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :brightness Image brightness.
+    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
+    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
+    # @option opts [Integer] :left_margin Left image margin.
+    # @option opts [Integer] :right_margin Right image margin.
+    # @option opts [Integer] :top_margin Top image margin.
+    # @option opts [Integer] :bottom_margin Bottom image margin.
+    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
+    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
+    # @option opts [Integer] :width Image width.
+    # @option opts [Integer] :height Image height.
+    # @option opts [Integer] :x_resolution Horizontal resolution.
+    # @option opts [Integer] :y_resolution Vertical resolution.
+    # @option opts [Integer] :page_index Start page to export.
+    # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_tiff(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :brightness Image brightness.
+    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
+    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
+    # @option opts [Integer] :left_margin Left image margin.
+    # @option opts [Integer] :right_margin Right image margin.
+    # @option opts [Integer] :top_margin Top image margin.
+    # @option opts [Integer] :bottom_margin Bottom image margin.
+    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
+    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
+    # @option opts [Integer] :width Image width.
+    # @option opts [Integer] :height Image height.
+    # @option opts [Integer] :x_resolution Horizontal resolution.
+    # @option opts [Integer] :y_resolution Vertical resolution.
+    # @option opts [Integer] :page_index Start page to export.
+    # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_tiff_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/tiff".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'brightness'] = opts[:'brightness'] if !opts[:'brightness'].nil?
+      query_params[:'compression'] = opts[:'compression'] if !opts[:'compression'].nil?
+      query_params[:'colorDepth'] = opts[:'color_depth'] if !opts[:'color_depth'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'orientation'] = opts[:'orientation'] if !opts[:'orientation'].nil?
+      query_params[:'skipBlankPages'] = opts[:'skip_blank_pages'] if !opts[:'skip_blank_pages'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'xResolution'] = opts[:'x_resolution'] if !opts[:'x_resolution'].nil?
+      query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
+      query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
+      query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to XLS format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_xls(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XLS format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_xls_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_xls ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_xls"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xls".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to XPS format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_xps(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XPS format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_xps_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_xps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_xps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xps".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1977,16 +2437,16 @@ module AsposePdfCloud
 
     # Read document text.
     # 
-    # @param name 
+    # @param name The document name.
     # @param x 
     # @param y 
     # @param width 
     # @param height 
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :format 
-    # @option opts [String] :regex 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [Array<String>] :format List of formats for search.
+    # @option opts [String] :regex Formats are specified as a regular expression.
+    # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
+    # @option opts [String] :folder The document folder.
     # @return [TextRectsResponse]
     def get_text(name, x, y, width, height, opts = {})
       data, _status_code, _headers = get_text_with_http_info(name, x, y, width, height, opts)
@@ -1995,16 +2455,16 @@ module AsposePdfCloud
 
     # Read document text.
     # 
-    # @param name 
+    # @param name The document name.
     # @param x 
     # @param y 
     # @param width 
     # @param height 
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :format 
-    # @option opts [String] :regex 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [Array<String>] :format List of formats for search.
+    # @option opts [String] :regex Formats are specified as a regular expression.
+    # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
+    # @option opts [String] :folder The document folder.
     # @return [Array<(TextRectsResponse, Fixnum, Hash)>] TextRectsResponse data, response status code and response headers
     def get_text_with_http_info(name, x, y, width, height, opts = {})
       if @api_client.config.debugging
@@ -2041,7 +2501,7 @@ module AsposePdfCloud
       query_params[:'Height'] = height
       query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
       # header parameters
@@ -2903,6 +3363,7 @@ module AsposePdfCloud
     # @option opts [String] :image_file Path to image file if specified. Request content is used otherwise.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
     # @return [ImageResponse]
     def post_replace_image(name, page_number, image_number, opts = {})
       data, _status_code, _headers = post_replace_image_with_http_info(name, page_number, image_number, opts)
@@ -2918,6 +3379,7 @@ module AsposePdfCloud
     # @option opts [String] :image_file Path to image file if specified. Request content is used otherwise.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
     # @return [Array<(ImageResponse, Fixnum, Hash)>] ImageResponse data, response status code and response headers
     def post_replace_image_with_http_info(name, page_number, image_number, opts = {})
       if @api_client.config.debugging
@@ -2953,6 +3415,7 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      form_params["image"] = opts[:'image'] if !opts[:'image'].nil?
 
       # http body (model)
       post_body = nil
@@ -3233,7 +3696,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Add text to PDF document page. Deprecate
+    # Add text to PDF document page. Deprecated
     # 
     # @param name Name of the document to which text should be added.
     # @param page_number Number of page (starting with 1) to which text should be added.
@@ -3247,7 +3710,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Add text to PDF document page. Deprecate
+    # Add text to PDF document page. Deprecated
     # 
     # @param name Name of the document to which text should be added.
     # @param page_number Number of page (starting with 1) to which text should be added.
@@ -3304,11 +3767,10 @@ module AsposePdfCloud
 
     # Add text to PDF document page.
     # 
-    # @param name Name of the document to which text should be added.
-    # @param page_number Number of page (starting with 1) to which text should be added.
+    # @param name The document name.
+    # @param page_number Number of page (starting from 1).
     # @param [Hash] opts the optional parameters
     # @option opts [Paragraph] :paragraph Paragraph data.
-    # @option opts [String] :storage File storage to be used.
     # @option opts [String] :folder Document folder.
     # @return [SaaSposeResponse]
     def put_add_text(name, page_number, opts = {})
@@ -3318,11 +3780,10 @@ module AsposePdfCloud
 
     # Add text to PDF document page.
     # 
-    # @param name Name of the document to which text should be added.
-    # @param page_number Number of page (starting with 1) to which text should be added.
+    # @param name The document name.
+    # @param page_number Number of page (starting from 1).
     # @param [Hash] opts the optional parameters
     # @option opts [Paragraph] :paragraph Paragraph data.
-    # @option opts [String] :storage File storage to be used.
     # @option opts [String] :folder Document folder.
     # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
     def put_add_text_with_http_info(name, page_number, opts = {})
@@ -3342,7 +3803,6 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
       # header parameters
@@ -3377,6 +3837,7 @@ module AsposePdfCloud
     # @option opts [String] :format The format to convert.
     # @option opts [String] :url 
     # @option opts [String] :out_path Path to save result
+    # @option opts [File] :file A file to be converted.
     # @return [File]
     def put_convert_document(opts = {})
       data, _status_code, _headers = put_convert_document_with_http_info(opts)
@@ -3389,6 +3850,7 @@ module AsposePdfCloud
     # @option opts [String] :format The format to convert.
     # @option opts [String] :url 
     # @option opts [String] :out_path Path to save result
+    # @option opts [File] :file A file to be converted.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def put_convert_document_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -3412,6 +3874,7 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
 
       # http body (model)
       post_body = nil
@@ -3821,6 +4284,932 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :add_return_to_line_end Add return to line end.
+    # @option opts [String] :format Allows to specify .doc or .docx file format.
+    # @option opts [Integer] :image_resolution_x Image resolution X.
+    # @option opts [Integer] :image_resolution_y Image resolution Y.
+    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
+    # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
+    # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_doc(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :add_return_to_line_end Add return to line end.
+    # @option opts [String] :format Allows to specify .doc or .docx file format.
+    # @option opts [Integer] :image_resolution_x Image resolution X.
+    # @option opts [Integer] :image_resolution_y Image resolution Y.
+    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
+    # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
+    # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_doc_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_doc ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_doc"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/doc"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'addReturnToLineEnd'] = opts[:'add_return_to_line_end'] if !opts[:'add_return_to_line_end'].nil?
+      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
+      query_params[:'imageResolutionX'] = opts[:'image_resolution_x'] if !opts[:'image_resolution_x'].nil?
+      query_params[:'imageResolutionY'] = opts[:'image_resolution_y'] if !opts[:'image_resolution_y'].nil?
+      query_params[:'maxDistanceBetweenTextLines'] = opts[:'max_distance_between_text_lines'] if !opts[:'max_distance_between_text_lines'].nil?
+      query_params[:'mode'] = opts[:'mode'] if !opts[:'mode'].nil?
+      query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
+      query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_doc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param type Type of PdfA format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_pdf_a(out_path, type, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param type Type of PdfA format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_pdf_a ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_pdf_a"
+      end
+      # verify the required parameter 'type' is set
+      if @api_client.config.client_side_validation && type.nil?
+        fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.put_pdf_in_request_to_pdf_a"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/pdfa"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'type'] = type
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_svg(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_svg_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_svg ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_svg"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/svg"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tiff)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :brightness Image brightness.
+    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
+    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
+    # @option opts [Integer] :left_margin Left image margin.
+    # @option opts [Integer] :right_margin Right image margin.
+    # @option opts [Integer] :top_margin Top image margin.
+    # @option opts [Integer] :bottom_margin Bottom image margin.
+    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
+    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
+    # @option opts [Integer] :width Image width.
+    # @option opts [Integer] :height Image height.
+    # @option opts [Integer] :x_resolution Horizontal resolution.
+    # @option opts [Integer] :y_resolution Vertical resolution.
+    # @option opts [Integer] :page_index Start page to export.
+    # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_tiff(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tiff)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :brightness Image brightness.
+    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
+    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
+    # @option opts [Integer] :left_margin Left image margin.
+    # @option opts [Integer] :right_margin Right image margin.
+    # @option opts [Integer] :top_margin Top image margin.
+    # @option opts [Integer] :bottom_margin Bottom image margin.
+    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
+    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
+    # @option opts [Integer] :width Image width.
+    # @option opts [Integer] :height Image height.
+    # @option opts [Integer] :x_resolution Horizontal resolution.
+    # @option opts [Integer] :y_resolution Vertical resolution.
+    # @option opts [Integer] :page_index Start page to export.
+    # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_tiff_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_tiff ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/tiff"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'brightness'] = opts[:'brightness'] if !opts[:'brightness'].nil?
+      query_params[:'compression'] = opts[:'compression'] if !opts[:'compression'].nil?
+      query_params[:'colorDepth'] = opts[:'color_depth'] if !opts[:'color_depth'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'orientation'] = opts[:'orientation'] if !opts[:'orientation'].nil?
+      query_params[:'skipBlankPages'] = opts[:'skip_blank_pages'] if !opts[:'skip_blank_pages'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'xResolution'] = opts[:'x_resolution'] if !opts[:'x_resolution'].nil?
+      query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
+      query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
+      query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xls)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_xls(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xls)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_xls_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xls ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_xls"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/xls"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_xps(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_xps_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xps ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_xps"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/xps"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :add_return_to_line_end Add return to line end.
+    # @option opts [String] :format Allows to specify .doc or .docx file format.
+    # @option opts [Integer] :image_resolution_x Image resolution X.
+    # @option opts [Integer] :image_resolution_y Image resolution Y.
+    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
+    # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
+    # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_doc(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :add_return_to_line_end Add return to line end.
+    # @option opts [String] :format Allows to specify .doc or .docx file format.
+    # @option opts [Integer] :image_resolution_x Image resolution X.
+    # @option opts [Integer] :image_resolution_y Image resolution Y.
+    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
+    # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
+    # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_doc ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_doc"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_doc"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/doc".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'addReturnToLineEnd'] = opts[:'add_return_to_line_end'] if !opts[:'add_return_to_line_end'].nil?
+      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
+      query_params[:'imageResolutionX'] = opts[:'image_resolution_x'] if !opts[:'image_resolution_x'].nil?
+      query_params[:'imageResolutionY'] = opts[:'image_resolution_y'] if !opts[:'image_resolution_y'].nil?
+      query_params[:'maxDistanceBetweenTextLines'] = opts[:'max_distance_between_text_lines'] if !opts[:'max_distance_between_text_lines'].nil?
+      query_params[:'mode'] = opts[:'mode'] if !opts[:'mode'].nil?
+      query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
+      query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_doc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param type Type of PdfA format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_pdf_a(name, out_path, type, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param type Type of PdfA format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_pdf_a ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_pdf_a"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_pdf_a"
+      end
+      # verify the required parameter 'type' is set
+      if @api_client.config.client_side_validation && type.nil?
+        fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.put_pdf_in_storage_to_pdf_a"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/pdfa".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'type'] = type
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_svg(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_svg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_svg"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_svg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/svg".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tiff)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :brightness Image brightness.
+    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
+    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
+    # @option opts [Integer] :left_margin Left image margin.
+    # @option opts [Integer] :right_margin Right image margin.
+    # @option opts [Integer] :top_margin Top image margin.
+    # @option opts [Integer] :bottom_margin Bottom image margin.
+    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
+    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
+    # @option opts [Integer] :width Image width.
+    # @option opts [Integer] :height Image height.
+    # @option opts [Integer] :x_resolution Horizontal resolution.
+    # @option opts [Integer] :y_resolution Vertical resolution.
+    # @option opts [Integer] :page_index Start page to export.
+    # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_tiff(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tiff)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :brightness Image brightness.
+    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
+    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
+    # @option opts [Integer] :left_margin Left image margin.
+    # @option opts [Integer] :right_margin Right image margin.
+    # @option opts [Integer] :top_margin Top image margin.
+    # @option opts [Integer] :bottom_margin Bottom image margin.
+    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
+    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
+    # @option opts [Integer] :width Image width.
+    # @option opts [Integer] :height Image height.
+    # @option opts [Integer] :x_resolution Horizontal resolution.
+    # @option opts [Integer] :y_resolution Vertical resolution.
+    # @option opts [Integer] :page_index Start page to export.
+    # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_tiff"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/tiff".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'brightness'] = opts[:'brightness'] if !opts[:'brightness'].nil?
+      query_params[:'compression'] = opts[:'compression'] if !opts[:'compression'].nil?
+      query_params[:'colorDepth'] = opts[:'color_depth'] if !opts[:'color_depth'].nil?
+      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
+      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
+      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
+      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
+      query_params[:'orientation'] = opts[:'orientation'] if !opts[:'orientation'].nil?
+      query_params[:'skipBlankPages'] = opts[:'skip_blank_pages'] if !opts[:'skip_blank_pages'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'xResolution'] = opts[:'x_resolution'] if !opts[:'x_resolution'].nil?
+      query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
+      query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
+      query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xls)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_xls(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xls)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xls ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_xls"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_xls"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xls".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_xps(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_xps"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_xps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xps".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create searchable PDF document. Generate OCR layer for images in input PDF document.
     # 
     # @param name The document name.
@@ -3957,7 +5346,7 @@ module AsposePdfCloud
     # Update field.
     # 
     # @param name The document name.
-    # @param field_name The field name/
+    # @param field_name The name of a field to be updated.
     # @param [Hash] opts the optional parameters
     # @option opts [Field] :field with the field data.
     # @option opts [String] :storage The document storage.
@@ -3971,7 +5360,7 @@ module AsposePdfCloud
     # Update field.
     # 
     # @param name The document name.
-    # @param field_name The field name/
+    # @param field_name The name of a field to be updated.
     # @param [Hash] opts the optional parameters
     # @option opts [Field] :field with the field data.
     # @option opts [String] :storage The document storage.
@@ -4019,6 +5408,69 @@ module AsposePdfCloud
         :return_type => 'FieldResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_update_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Fields] :fields with the fields data.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [FieldsResponse]
+    def put_update_fields(name, opts = {})
+      data, _status_code, _headers = put_update_fields_with_http_info(name, opts)
+      return data
+    end
+
+    # Update fields.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Fields] :fields with the fields data.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(FieldsResponse, Fixnum, Hash)>] FieldsResponse data, response status code and response headers
+    def put_update_fields_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_update_fields ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_update_fields"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'fields'])
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FieldsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_update_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

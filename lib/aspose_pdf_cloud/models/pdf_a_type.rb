@@ -19,6 +19,25 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.3.0"
+  class PdfAType
+    
+    PDFA1_A = "PDFA1A".freeze
+    PDFA1_B = "PDFA1B".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = PdfAType.constants.select{|c| c.to_s == value}
+      constantValues = PdfAType.constants.select{ |const_name| PdfAType.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #PdfAType" if constantValues.empty?
+      value
+    end
+  end
+
 end

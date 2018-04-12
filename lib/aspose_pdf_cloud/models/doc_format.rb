@@ -19,6 +19,25 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.3.0"
+  class DocFormat
+    
+    DOC = "Doc".freeze
+    DOC_X = "DocX".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = DocFormat.constants.select{|c| c.to_s == value}
+      constantValues = DocFormat.constants.select{ |const_name| DocFormat.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #DocFormat" if constantValues.empty?
+      value
+    end
+  end
+
 end
