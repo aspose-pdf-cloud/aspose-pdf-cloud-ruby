@@ -99,13 +99,13 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'brightness' => :'Float',
-        :'compression' => :'String',
-        :'color_depth' => :'String',
+        :'compression' => :'CompressionType',
+        :'color_depth' => :'ColorDepth',
         :'left_margin' => :'Integer',
         :'right_margin' => :'Integer',
         :'top_margin' => :'Integer',
         :'bottom_margin' => :'Integer',
-        :'orientation' => :'String',
+        :'orientation' => :'ShapeType',
         :'skip_blank_pages' => :'BOOLEAN',
         :'width' => :'Integer',
         :'height' => :'Integer',

@@ -23,17 +23,19 @@ require 'date'
 require 'json'
 require 'logger'
 require 'tempfile'
-require 'typhoeus'
 require 'uri'
-require 'openssl'
-require 'base64'
-require 'rexml/document'
+require 'typhoeus'
+require 'faraday'
+require_relative 'version'
+require_relative 'api_error'
 
 module AsposePdfCloud
+  #
+  # api client is mainly responsible for making the HTTP call to the API backend.
+  # 
   class ApiClient
 
     include AsposeStorageCloud
-
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
 
@@ -46,10 +48,10 @@ module AsposePdfCloud
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "Swagger-Codegen/#{VERSION}/ruby"
       @default_headers = {
         'Content-Type' => "application/json",
-        'User-Agent' => @user_agent
+        'x-aspose-client' => "ruby sdk",
+        'x-aspose-version' => "#{ AsposePdfCloud::VERSION }"
       }
     end
 
@@ -62,25 +64,22 @@ module AsposePdfCloud
     # @return [Array<(Object, Fixnum, Hash)>] an array of 3 elements:
     #   the data deserialized from response body (could be nil), response status code and response headers.
     def call_api(http_method, path, opts = {})
-      request = build_request(http_method, path, opts)
-      response = request.run
-
+      response = build_request(http_method, path, opts)
+      download_file response if opts[:return_type] == 'File'
       if @config.debugging
         @config.logger.debug "HTTP response body ~BEGIN~\n#{response.body}\n~END~\n"
       end
 
       unless response.success?
-        if response.timed_out?
-          fail ApiError.new('Connection timed out')
-        elsif response.code == 0
+        if response.status == 0
           # Errors from libcurl will be made visible here
           fail ApiError.new(:code => 0,
-                            :message => response.return_message)
+                            :message => response.reason_phrase)
         else
-          fail ApiError.new(:code => response.code,
+          fail ApiError.new(:code => response.status,
                             :response_headers => response.headers,
                             :response_body => response.body),
-               response.status_message
+               response.reason_phrase
         end
       end
 
@@ -89,7 +88,7 @@ module AsposePdfCloud
       else
         data = nil
       end
-      return data, response.code, response.headers
+      [data, response.status, response.headers]
     end
 
     # Builds the HTTP request
@@ -100,35 +99,24 @@ module AsposePdfCloud
     # @option opts [Hash] :query_params Query parameters
     # @option opts [Hash] :form_params Query parameters
     # @option opts [Object] :body HTTP body (JSON/XML)
-    # @return [Typhoeus::Request] A Typhoeus Request
+    # @return [Faraday::Response] A Faraday Response
     def build_request(http_method, path, opts = {})
       url = build_request_url(path)
       http_method = http_method.to_sym.downcase
 
       header_params = @default_headers.merge(opts[:header_params] || {})
-      query_params = {}
+      query_params = opts[:query_params] || {}
       form_params = opts[:form_params] || {}
+      body = opts[:body] || {}
 
       update_params_for_auth! header_params, query_params, opts[:auth_names]
-
-      # set ssl_verifyhosts option based on @config.verify_ssl_host (true/false)
-      _verify_ssl_host = @config.verify_ssl_host ? 2 : 0
 
       req_opts = {
         :method => http_method,
         :headers => header_params,
         :params => query_params,
-        :params_encoding => @config.params_encoding,
-        :timeout => @config.timeout,
-        :ssl_verifypeer => @config.verify_ssl,
-        :ssl_verifyhost => _verify_ssl_host,
-        :sslcert => @config.cert_file,
-        :sslkey => @config.key_file,
-        :verbose => @config.debugging
+        :body => body
       }
-
-      # set custom cert, if provided
-      req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
 
       if [:post, :patch, :put, :delete].include?(http_method)
         req_body = build_request_body(header_params, form_params, opts[:body])
@@ -138,71 +126,38 @@ module AsposePdfCloud
         end
       end
 
-      if @config.auth_type == Configuration::AUTH_TYPE_REQUEST_SIGNATURE
-        url = sign(url, opts[:query_params])
-      elsif @config.auth_type == Configuration::AUTH_TYPE_O_AUTH_2
-        # OAuth 2.0 
-        req_opts[:params] = opts[:query_params]
-        if @config.access_token.nil?
-          request_token
-        end
-        add_o_auth_token(req_opts)
+      # OAuth 2.0
+      req_opts[:params] = opts[:query_params]
+      if @config.access_token.nil?
+        request_token
+      end
+      add_o_auth_token(req_opts)
+
+
+      conn = Faraday.new url, {:params => query_params, :headers => header_params} do |f|
+      f.request :multipart
+      f.request :url_encoded
+      f.adapter Faraday.default_adapter
       end
 
-      request = Typhoeus::Request.new(url, req_opts)
-      download_file(request) if opts[:return_type] == 'File'
-      request
+      if req_opts[:body] == {}
+        req_opts[:body] = nil
+      end
+
+      case http_method
+        when :post
+          return conn.post url, req_opts[:body]
+        when :put
+          return conn.put url, req_opts[:body]
+        when :get
+          return conn.get url, req_opts[:body]
+        else
+          return conn.delete url do |c|
+            c.body = req_opts[:body]
+          end
+      end
     end
 
-    # Signs a URI with your appSID and Key.
-    # * :url describes the URL to sign
-    
-    def sign(url, query_params)
-      
-      fail "Please set Aspose App key and SID first. You can get App key and App SID from https://cloud.aspose.com" if AsposeApp.app_key.nil? || AsposeApp.app_sid.nil?
-      
-      url = url[0..-2] if url[-1].eql? '/'
-
-      unless query_params.empty?
-        url = "#{url}?"
-        query_params.each { |key, value|
-          url = "#{url}#{key}=#{value}&"
-        }
-        url = url[0..-2]
-      end
-      
-      parsed_url = URI.parse(url)
-      
-      url_to_sign = "#{parsed_url.scheme}://#{parsed_url.host}#{parsed_url.path}"
-      url_to_sign += "?#{parsed_url.query}" if parsed_url.query
-      if parsed_url.query
-        url_to_sign += "&appSID=#{AsposeApp.app_sid}"
-      else
-        url_to_sign += "?appSID=#{AsposeApp.app_sid}"
-      end  
-        
-      # create a signature using the private key and the URL
-      raw_signature = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), AsposeApp.app_key, url_to_sign)
-        
-      #Convert raw to encoded string
-      signature = Base64.strict_encode64(raw_signature).tr('+/', '-_')
-        
-      #remove invalid character
-      signature = signature.gsub(/[=_-]/, '=' => '', '_' => '%2f', '-' => '%2b')
-        
-      #Define expression
-      pat = Regexp.new('%[0-9a-f]{2}')
-        
-      #Replace the portion matched to the above pattern to upper case
-      6.times do
-        signature = signature.sub(pat, pat.match(signature).to_s.upcase)
-      end
-      
-      # prepend the server and append the signature.
-      url_to_sign + "&signature=#{signature}"
-
-    end
-    
     # Check if the given MIME is a JSON MIME.
     # JSON MIME examples:
     #   application/json
@@ -234,7 +189,7 @@ module AsposePdfCloud
       # ensuring a default content type
       content_type = response.headers['Content-Type'] || 'application/json'
 
-      fail "Content-Type is not supported: #{content_type}" unless json_mime?(content_type)
+      raise "Content-Type is not supported: #{content_type}" unless json_mime?(content_type)
 
       begin
         data = JSON.parse("[#{body}]", :symbolize_names => true)[0]
@@ -298,27 +253,22 @@ module AsposePdfCloud
     # process can use.
     #
     # @see Configuration#temp_folder_path
-    def download_file(request)
+    def download_file(response)
       tempfile = nil
       encoding = nil
-      request.on_headers do |response|
-        content_disposition = response.headers['Content-Disposition']
-        if content_disposition and content_disposition =~ /filename=/i
-          filename = content_disposition[/filename=['"]?([^'"\s]+)['"]?/, 1]
-          prefix = sanitize_filename(filename)
-        else
-          prefix = 'download-'
-        end
-        prefix = prefix + '-' unless prefix.end_with?('-')
-        encoding = response.body.encoding
-        tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
-        @tempfile = tempfile
+      content_disposition = response.headers['Content-Disposition']
+      if content_disposition and content_disposition =~ /filename=/i
+        filename = content_disposition[/filename=['"]?([^'"\s]+)['"]?/, 1]
+        prefix = sanitize_filename(filename)
+      else
+        prefix = 'download-'
       end
-      request.on_body do |chunk|
-        chunk.force_encoding(encoding)
-        tempfile.write(chunk)
-      end
-      request.on_complete do |response|
+      prefix = prefix + '-' unless prefix.end_with?('-')
+      encoding = response.body.encoding
+      tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
+      @tempfile = tempfile
+      tempfile.write(response.body)
+      response.on_complete do |resp|
         tempfile.close
         @config.logger.info "Temp file written to #{tempfile.path}, please copy the file to a proper folder "\
                             "with e.g. `FileUtils.cp(tempfile.path, '/new/file/path')` otherwise the temp file "\
@@ -355,8 +305,9 @@ module AsposePdfCloud
         data = {}
         form_params.each do |key, value|
           case value
-          when File, Array, nil
-            # let typhoeus handle File, Array and nil parameters
+          when ::File
+            data[key] = Faraday::UploadIO.new(value.path, MimeMagic.by_magic(value).to_s, key)
+          when ::Array, nil
             data[key] = value
           else
             data[key] = value.to_s
@@ -382,7 +333,7 @@ module AsposePdfCloud
         case auth_setting[:in]
         when 'header' then header_params[auth_setting[:key]] = auth_setting[:value]
         when 'query'  then query_params[auth_setting[:key]] = auth_setting[:value]
-        else fail ArgumentError, 'Authentication token must be in `query` of `header`'
+        else raise ArgumentError, 'Authentication token must be in `query` of `header`'
         end
       end
     end
@@ -420,7 +371,8 @@ module AsposePdfCloud
     # @param [Object] model object to be converted into JSON string
     # @return [String] JSON string representation of the object
     def object_to_http_body(model)
-      return model if model.nil? || model.is_a?(String)
+      return '"' + model + '"' if model.is_a?(String)
+      return model if model.nil? 
       local_body = nil
       if model.is_a?(Array)
         local_body = model.map{|m| object_to_hash(m) }
@@ -454,13 +406,12 @@ module AsposePdfCloud
       when :pipes
         param.join('|')
       when :multi
-        # return the array directly as typhoeus will handle it as expected
+        # return the array directly as faraday will handle it as expected
         param
       else
         fail "unknown collection format: #{collection_format.inspect}"
       end
     end
-
     # Request access and refresh tokens
     def request_token
       # resource path
@@ -518,6 +469,7 @@ module AsposePdfCloud
     def add_o_auth_token(req_opts)
       req_opts[:headers][:Authorization] = "Bearer " + @config.access_token
     end
+
 
   end
 end

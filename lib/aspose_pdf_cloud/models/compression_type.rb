@@ -19,6 +19,28 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.3.0"
+  class CompressionType
+    
+    LZW = "LZW".freeze
+    CCITT4 = "CCITT4".freeze
+    CCITT3 = "CCITT3".freeze
+    RLE = "RLE".freeze
+    NONE = "None".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = CompressionType.constants.select{|c| c.to_s == value}
+      constantValues = CompressionType.constants.select{ |const_name| CompressionType.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #CompressionType" if constantValues.empty?
+      value
+    end
+  end
+
 end

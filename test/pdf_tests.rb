@@ -33,13 +33,13 @@ class PdfTests < Minitest::Test
 
   def setup
     # Get App key and App SID from https://cloud.aspose.com
-    AsposeApp.app_key_and_sid('', '')
+    AsposeApp.app_key_and_sid('app_key', 'app_sid')
 
     @pdf_api = PdfApi.new
     @storage_api = StorageApi.new
     @storage_api.api_client.host = 'http://api-dev.aspose.cloud/v1.1'
 
-    @temp_folder = 'TempPdf'
+    @temp_folder = 'TempPdfCloud'
     @test_data_folder = '../test_data/'
 
     config = @pdf_api.api_client.config
@@ -184,13 +184,13 @@ class PdfTests < Minitest::Test
     opts = {
         :result_file => '4pages.tiff',
         :brightness => 0.6,
-        :compression => 'Ccitt4',
-        :color_depth => 'format1bpp',
+        :compression => CompressionType::CCITT4,
+        :color_depth => ColorDepth::FORMAT1BPP,
         :left_margin => 0,
         :right_margin => 0,
         :top_margin => 0,
         :bottom_margin => 0,
-        :orientation => 'portait', # Yes, we know 'portrait'. It will be fixed in the next version.
+        :orientation => ShapeType::PORTRAIT,
         :skip_blank_pages => true,
         :width => 1200,
         :height => 1600,
@@ -213,13 +213,13 @@ class PdfTests < Minitest::Test
     export_options = TiffExportOptions.new
     export_options.result_file = '4pages.tiff'
     export_options.brightness = 0.6
-    export_options.compression = 'Ccitt4'
-    export_options.color_depth = 'format1bpp'
+    export_options.compression = CompressionType::CCITT4
+    export_options.color_depth = ColorDepth::FORMAT1BPP
     export_options.left_margin = 0
     export_options.right_margin = 0
     export_options.top_margin = 0
     export_options.bottom_margin = 0
-    export_options.orientation = 'portait' # Yes, we know 'portrait'. It will be fixed in the next version.
+    export_options.orientation = ShapeType::PORTRAIT
     export_options.skip_blank_pages = true
     export_options.width = 1200
     export_options.height = 1600
@@ -544,6 +544,22 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read document image by number.')
   end
 
+  def test_get_image_with_format
+    file_name = 'PdfWithImages2.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    image_number = 1
+    opts = {
+        :format => 'jpeg',
+        :height => 100,
+        :width => 100,
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_image(file_name, page_number, image_number, opts)
+    assert(response, 'Failed to read document image by number.')
+  end
 
   def test_get_images
     file_name = 'PdfWithImages2.pdf'
@@ -577,6 +593,20 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to replace document image.')
   end
 
+  def test_post_replace_image_from_request
+    file_name = 'PdfWithImages2.pdf'
+    upload_file(file_name)
+
+    image_file_name = 'Koala.jpg'
+    page_number = 1
+    image_number = 1
+    opts = {
+        :image =>  File.open(@test_data_folder + image_file_name, 'r') { |io| io.read(io.size) },
+        :folder => @temp_folder
+    }
+    response = @pdf_api.post_replace_image(file_name, page_number, image_number, opts)
+    assert(response, 'Failed to replace document image.')
+  end
 
   # Links Tests
 
@@ -615,6 +645,8 @@ class PdfTests < Minitest::Test
     file_name_list.each { |file_name| upload_file(file_name)}
 
     result_name = 'MergingResult.pdf'
+
+    file_name_list.collect! {|file_name| @temp_folder + '/' + file_name}
 
     merge_documents = MergeDocuments.new
     merge_documents.list = file_name_list
@@ -658,6 +690,21 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to get document page by its number.')
   end
 
+  def test_get_page_with_format
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    page_number = 3
+    opts = {
+        :format => 'jpeg',
+        :width => 100,
+        :height => 100,
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page(file_name, page_number, opts)
+    assert(response, 'Failed to get document page by its number.')
+  end
 
   def test_get_pages
     file_name = '4pages.pdf'
@@ -1264,5 +1311,223 @@ class PdfTests < Minitest::Test
     assert(response, 'Filed to replace page text by rect.')
   end
 
+  # Convert Tests
+
+  def test_get_pdf_in_storage_to_doc
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_doc(file_name, opts)
+    assert(response, 'Filed to convert PDF to DOC.')
+  end
+
+  def test_put_pdf_in_storage_to_doc
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.doc'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_doc(file_name, res_file, opts)
+    assert(response, 'Filed to convert PDF to DOC.')
+  end
+
+  def test_put_pdf_in_request_to_doc
+    file_name = '4pages.pdf'
+
+    res_file = 'result.doc'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        # :file => @test_data_folder + file_name
+    }
+    response = @pdf_api.put_pdf_in_request_to_tiff(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to DOC.')
+  end
+
+  def test_get_pdf_in_storage_to_pdf_a
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_pdf_a(file_name, PdfAType::PDFA1_A, opts)
+    assert(response, 'Filed to convert PDF to PDFA.')
+  end
+
+  def test_put_pdf_in_storage_to_pdf_a
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.pdf'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_pdf_a(file_name, res_file, PdfAType::PDFA1_A, opts)
+    assert(response, 'Filed to convert PDF to PDFA.')
+  end
+
+  def test_put_pdf_in_request_to_pdf_a
+    file_name = '4pages.pdf'
+
+    res_file = 'result.pdf'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_pdf_a(@temp_folder + '/' + res_file, PdfAType::PDFA1_A, opts)
+    assert(response, 'Filed to convert PDF to PDFA.')
+  end
+
+  def test_get_pdf_in_storage_to_tiff
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_tiff(file_name, opts)
+    assert(response, 'Filed to convert PDF to Tiff.')
+  end
+
+  def test_put_pdf_in_storage_to_tiff
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.tiff'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_tiff(file_name, res_file, opts)
+    assert(response, 'Filed to convert PDF to Tiff.')
+  end
+
+  def test_put_pdf_in_request_to_tiff
+    file_name = '4pages.pdf'
+
+    res_file = 'result.pdf'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_tiff(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to Tiff.')
+  end
+
+  def test_get_pdf_in_storage_to_svg
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_svg(file_name, opts)
+    assert(response, 'Filed to convert PDF to SVG.')
+  end
+
+  def test_put_pdf_in_storage_to_svg
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.svg'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_svg(file_name, res_file, opts)
+    assert(response, 'Filed to convert PDF to SVG.')
+  end
+
+  def test_put_pdf_in_request_to_svg
+    file_name = '4pages.pdf'
+
+    res_file = 'result.svg'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_svg(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to SVG.')
+  end
+
+  def test_get_pdf_in_storage_to_xps
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_xps(file_name, opts)
+    assert(response, 'Filed to convert PDF to XPS.')
+  end
+
+  def test_put_pdf_in_storage_to_xps
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.xps'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_xps(file_name, res_file, opts)
+    assert(response, 'Filed to convert PDF to XPS.')
+  end
+
+  def test_put_pdf_in_request_to_xps
+    file_name = '4pages.pdf'
+
+    res_file = 'result.xps'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_xps(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to XPS.')
+  end
+
+  def test_get_pdf_in_storage_to_xls
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_xls(file_name, opts)
+    assert(response, 'Filed to convert PDF to XLS.')
+  end
+
+  def test_put_pdf_in_storage_to_xls
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.xls'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_xls(file_name, res_file, opts)
+    assert(response, 'Filed to convert PDF to XLS.')
+  end
+
+  def test_put_pdf_in_request_to_xls
+    file_name = '4pages.pdf'
+
+    res_file = 'result.xls'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_xls(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to XLS.')
+  end
 end
 
