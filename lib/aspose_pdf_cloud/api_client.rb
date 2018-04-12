@@ -1,27 +1,23 @@
-# -----------------------------------------------------------------------------------
-# <copyright company="Aspose" file="api_client.rb">
-#   Copyright (c) 2018 Aspose.Words for Cloud
-# </copyright>
-# <summary>
-#   Permission is hereby granted, free of charge, to any person obtaining a copy
-#  of this software and associated documentation files (the "Software"), to deal
-#  in the Software without restriction, including without limitation the rights
-#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#  copies of the Software, and to permit persons to whom the Software is
-#  furnished to do so, subject to the following conditions:
-#
-#  The above copyright notice and this permission notice shall be included in all
-#  copies or substantial portions of the Software.
-#
-#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#  SOFTWARE.
-# </summary>
-# -----------------------------------------------------------------------------------
+=begin
+--------------------------------------------------------------------------------------------------------------------
+  Copyright (c) 2018 Aspose.Pdf for Cloud
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+--------------------------------------------------------------------------------------------------------------------
+=end
 
 require 'date'
 require 'json'
@@ -36,9 +32,7 @@ require_relative 'api_error'
 module AsposePdfCloud
   #
   # api client is mainly responsible for making the HTTP call to the API backend.
-  #
-
-
+  # 
   class ApiClient
 
     include AsposeStorageCloud
@@ -121,7 +115,7 @@ module AsposePdfCloud
         :method => http_method,
         :headers => header_params,
         :params => query_params,
-        # :body => body
+        :body => body
       }
 
       if [:post, :patch, :put, :delete].include?(http_method)
@@ -152,10 +146,7 @@ module AsposePdfCloud
 
       case http_method
         when :post
-          return conn.post url do |req|
-            req.body = req_opts[:body]
-          end
-
+          return conn.post url, req_opts[:body]
         when :put
           return conn.put url, req_opts[:body]
         when :get
@@ -165,8 +156,6 @@ module AsposePdfCloud
             c.body = req_opts[:body]
           end
       end
-
-
     end
 
     # Check if the given MIME is a JSON MIME.
@@ -423,7 +412,6 @@ module AsposePdfCloud
         fail "unknown collection format: #{collection_format.inspect}"
       end
     end
-
     # Request access and refresh tokens
     def request_token
       # resource path
