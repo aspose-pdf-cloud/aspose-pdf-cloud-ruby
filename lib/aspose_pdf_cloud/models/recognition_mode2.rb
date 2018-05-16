@@ -19,6 +19,26 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.4.0"
+  class RecognitionMode2
+    
+    FLOW = "Flow".freeze
+    PDF_FLOW = "PdfFlow".freeze
+    FIXED = "Fixed".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = RecognitionMode2.constants.select{|c| c.to_s == value}
+      constantValues = RecognitionMode2.constants.select{ |const_name| RecognitionMode2.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #RecognitionMode2" if constantValues.empty?
+      value
+    end
+  end
+
 end

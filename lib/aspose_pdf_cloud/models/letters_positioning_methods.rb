@@ -19,6 +19,25 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.4.0"
+  class LettersPositioningMethods
+    
+    USE_EM_UNITS_AND_COMPENSATION_OF_ROUNDING_ERRORS_IN_CSS = "UseEmUnitsAndCompensationOfRoundingErrorsInCss".freeze
+    USE_PIXEL_UNITS_IN_CSS_LETTER_SPACING_FOR_IE = "UsePixelUnitsInCssLetterSpacingForIE".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = LettersPositioningMethods.constants.select{|c| c.to_s == value}
+      constantValues = LettersPositioningMethods.constants.select{ |const_name| LettersPositioningMethods.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #LettersPositioningMethods" if constantValues.empty?
+      value
+    end
+  end
+
 end

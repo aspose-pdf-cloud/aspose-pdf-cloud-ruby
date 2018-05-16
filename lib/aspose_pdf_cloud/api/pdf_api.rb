@@ -29,6 +29,73 @@ module AsposePdfCloud
       @api_client = api_client
     end
 
+    # Delete document field by name.
+    # 
+    # @param name The document name.
+    # @param field_name The field name/
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def delete_field(name, field_name, opts = {})
+      data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
+      return data
+    end
+
+    # Delete document field by name.
+    # 
+    # @param name The document name.
+    # @param field_name The field name/
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def delete_field_with_http_info(name, field_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_field ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_field"
+      end
+      # verify the required parameter 'field_name' is set
+      if @api_client.config.client_side_validation && field_name.nil?
+        fail ArgumentError, "Missing the required parameter 'field_name' when calling PdfApi.delete_field"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/{fieldName}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'fieldName' + '}', field_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete document page by its number.
     # 
     # @param name The document name.
@@ -607,6 +674,68 @@ module AsposePdfCloud
         :return_type => 'DocumentPropertyResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_property\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Download a specific file 
+    # 
+    # @param path Path of the file including the file name and extension e.g. /file.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id File&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [File]
+    def get_download(path, opts = {})
+      data, _status_code, _headers = get_download_with_http_info(path, opts)
+      return data
+    end
+
+    # Download a specific file 
+    # 
+    # @param path Path of the file including the file name and extension e.g. /file.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id File&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_download_with_http_info(path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_download ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.get_download"
+      end
+      # resource path
+      local_var_path = "/storage/file"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_download\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1844,6 +1973,328 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :content_recognition_mode �roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_epub(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :content_recognition_mode �roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_epub_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_epub ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_epub"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/epub".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'contentRecognitionMode'] = opts[:'content_recognition_mode'] if !opts[:'content_recognition_mode'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_epub\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to Html format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :additional_margin_width_in_points Defines width of margin that will be forcibly left around that output HTML-areas.
+    # @option opts [BOOLEAN] :compress_svg_graphics_if_any The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+    # @option opts [BOOLEAN] :convert_marked_content_to_layers If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \&quot;data-pdflayer\&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+    # @option opts [String] :default_font_name Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+    # @option opts [Integer] :document_type Result document type.
+    # @option opts [BOOLEAN] :fixed_layout The value indicating whether that HTML is created as fixed layout.
+    # @option opts [Integer] :image_resolution Resolution for image rendering.
+    # @option opts [Integer] :minimal_line_width This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+    # @option opts [BOOLEAN] :prevent_glyphs_grouping This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+    # @option opts [BOOLEAN] :split_css_into_pages When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+    # @option opts [BOOLEAN] :split_into_pages The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+    # @option opts [BOOLEAN] :use_z_order If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+    # @option opts [String] :antialiasing_processing The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+    # @option opts [String] :css_class_names_prefix When PDFtoHTML converter generates result CSSs, CSS class names (something like \&quot;.stl_01 {}\&quot; ... \&quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+    # @option opts [Array<Integer>] :explicit_list_of_saved_pages With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+    # @option opts [String] :font_encoding_strategy Defines encoding special rule to tune PDF decoding for current document.
+    # @option opts [String] :font_saving_mode Defines font saving mode that will be used during saving of PDF to desirable format.
+    # @option opts [String] :html_markup_generation_mode Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+    # @option opts [String] :letters_positioning_method The mode of positioning of letters in words in result HTML.
+    # @option opts [BOOLEAN] :pages_flow_type_depends_on_viewers_screen_size If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+    # @option opts [String] :parts_embedding_mode It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+    # @option opts [String] :raster_images_saving_mode Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+    # @option opts [BOOLEAN] :remove_empty_areas_on_top_and_bottom Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+    # @option opts [BOOLEAN] :save_shadowed_texts_as_transparent_texts Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+    # @option opts [BOOLEAN] :save_transparent_texts Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+    # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_html(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to Html format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :additional_margin_width_in_points Defines width of margin that will be forcibly left around that output HTML-areas.
+    # @option opts [BOOLEAN] :compress_svg_graphics_if_any The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+    # @option opts [BOOLEAN] :convert_marked_content_to_layers If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \&quot;data-pdflayer\&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+    # @option opts [String] :default_font_name Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+    # @option opts [Integer] :document_type Result document type.
+    # @option opts [BOOLEAN] :fixed_layout The value indicating whether that HTML is created as fixed layout.
+    # @option opts [Integer] :image_resolution Resolution for image rendering.
+    # @option opts [Integer] :minimal_line_width This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+    # @option opts [BOOLEAN] :prevent_glyphs_grouping This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+    # @option opts [BOOLEAN] :split_css_into_pages When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+    # @option opts [BOOLEAN] :split_into_pages The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+    # @option opts [BOOLEAN] :use_z_order If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+    # @option opts [String] :antialiasing_processing The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+    # @option opts [String] :css_class_names_prefix When PDFtoHTML converter generates result CSSs, CSS class names (something like \&quot;.stl_01 {}\&quot; ... \&quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+    # @option opts [Array<Integer>] :explicit_list_of_saved_pages With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+    # @option opts [String] :font_encoding_strategy Defines encoding special rule to tune PDF decoding for current document.
+    # @option opts [String] :font_saving_mode Defines font saving mode that will be used during saving of PDF to desirable format.
+    # @option opts [String] :html_markup_generation_mode Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+    # @option opts [String] :letters_positioning_method The mode of positioning of letters in words in result HTML.
+    # @option opts [BOOLEAN] :pages_flow_type_depends_on_viewers_screen_size If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+    # @option opts [String] :parts_embedding_mode It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+    # @option opts [String] :raster_images_saving_mode Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+    # @option opts [BOOLEAN] :remove_empty_areas_on_top_and_bottom Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+    # @option opts [BOOLEAN] :save_shadowed_texts_as_transparent_texts Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+    # @option opts [BOOLEAN] :save_transparent_texts Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+    # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_html_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_html ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_html"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/html".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'additionalMarginWidthInPoints'] = opts[:'additional_margin_width_in_points'] if !opts[:'additional_margin_width_in_points'].nil?
+      query_params[:'compressSvgGraphicsIfAny'] = opts[:'compress_svg_graphics_if_any'] if !opts[:'compress_svg_graphics_if_any'].nil?
+      query_params[:'convertMarkedContentToLayers'] = opts[:'convert_marked_content_to_layers'] if !opts[:'convert_marked_content_to_layers'].nil?
+      query_params[:'defaultFontName'] = opts[:'default_font_name'] if !opts[:'default_font_name'].nil?
+      query_params[:'documentType'] = opts[:'document_type'] if !opts[:'document_type'].nil?
+      query_params[:'fixedLayout'] = opts[:'fixed_layout'] if !opts[:'fixed_layout'].nil?
+      query_params[:'imageResolution'] = opts[:'image_resolution'] if !opts[:'image_resolution'].nil?
+      query_params[:'minimalLineWidth'] = opts[:'minimal_line_width'] if !opts[:'minimal_line_width'].nil?
+      query_params[:'preventGlyphsGrouping'] = opts[:'prevent_glyphs_grouping'] if !opts[:'prevent_glyphs_grouping'].nil?
+      query_params[:'splitCssIntoPages'] = opts[:'split_css_into_pages'] if !opts[:'split_css_into_pages'].nil?
+      query_params[:'splitIntoPages'] = opts[:'split_into_pages'] if !opts[:'split_into_pages'].nil?
+      query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
+      query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
+      query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
+      query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
+      query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
+      query_params[:'lettersPositioningMethod'] = opts[:'letters_positioning_method'] if !opts[:'letters_positioning_method'].nil?
+      query_params[:'pagesFlowTypeDependsOnViewersScreenSize'] = opts[:'pages_flow_type_depends_on_viewers_screen_size'] if !opts[:'pages_flow_type_depends_on_viewers_screen_size'].nil?
+      query_params[:'partsEmbeddingMode'] = opts[:'parts_embedding_mode'] if !opts[:'parts_embedding_mode'].nil?
+      query_params[:'rasterImagesSavingMode'] = opts[:'raster_images_saving_mode'] if !opts[:'raster_images_saving_mode'].nil?
+      query_params[:'removeEmptyAreasOnTopAndBottom'] = opts[:'remove_empty_areas_on_top_and_bottom'] if !opts[:'remove_empty_areas_on_top_and_bottom'].nil?
+      query_params[:'saveShadowedTextsAsTransparentTexts'] = opts[:'save_shadowed_texts_as_transparent_texts'] if !opts[:'save_shadowed_texts_as_transparent_texts'].nil?
+      query_params[:'saveTransparentTexts'] = opts[:'save_transparent_texts'] if !opts[:'save_transparent_texts'].nil?
+      query_params[:'specialFolderForAllImages'] = opts[:'special_folder_for_all_images'] if !opts[:'special_folder_for_all_images'].nil?
+      query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
+      query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :pages_count Pages count.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_la_te_x(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :pages_count Pages count.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_la_te_x_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_la_te_x ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_la_te_x"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/latex".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_mobi_xml(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_mobi_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_mobi_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/mobixml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_mobi_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
     # 
     # @param name The document name.
@@ -1905,6 +2356,70 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :separate_images Separate images.
+    # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_pptx(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :separate_images Separate images.
+    # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_pptx_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_pptx ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_pptx"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/pptx".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
+      query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_pptx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2139,6 +2654,64 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to XML format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_pdf_in_storage_to_xml(name, opts = {})
+      data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XML format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_xml_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2594,6 +3167,71 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Verify signature document.
+    # 
+    # @param name The document name.
+    # @param sign_name Sign name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [SignatureVerifyResponse]
+    def get_verify_signature(name, sign_name, opts = {})
+      data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
+      return data
+    end
+
+    # Verify signature document.
+    # 
+    # @param name The document name.
+    # @param sign_name Sign name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SignatureVerifyResponse, Fixnum, Hash)>] SignatureVerifyResponse data, response status code and response headers
+    def get_verify_signature_with_http_info(name, sign_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_verify_signature ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_verify_signature"
+      end
+      # verify the required parameter 'sign_name' is set
+      if @api_client.config.client_side_validation && sign_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sign_name' when calling PdfApi.get_verify_signature"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/verifySignature".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'signName'] = sign_name
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SignatureVerifyResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_verify_signature\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get number of words per document page.
     # 
     # @param name The document name.
@@ -2651,6 +3289,64 @@ module AsposePdfCloud
         :return_type => 'WordCountResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_words_per_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_xfa_pdf_in_storage_to_acro_form(name, opts = {})
+      data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
+      return data
+    end
+
+    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_xfa_pdf_in_storage_to_acro_form ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_xfa_pdf_in_storage_to_acro_form"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xfatoacroform".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_xfa_pdf_in_storage_to_acro_form\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3892,6 +4588,75 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Upload a specific file 
+    # 
+    # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext
+    # @param file File to upload
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id Source file&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [SaaSposeResponse]
+    def put_create(path, file, opts = {})
+      data, _status_code, _headers = put_create_with_http_info(path, file, opts)
+      return data
+    end
+
+    # Upload a specific file 
+    # 
+    # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext
+    # @param file File to upload
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id Source file&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_create_with_http_info(path, file, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_create ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.put_create"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling PdfApi.put_create"
+      end
+      # resource path
+      local_var_path = "/storage/file"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["File"] = file
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create new document.
     # 
     # @param name The new document name.
@@ -4148,6 +4913,67 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Flatten form fields in document.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_fields_flatten(name, opts = {})
+      data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
+      return data
+    end
+
+    # Flatten form fields in document.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_fields_flatten_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_fields_flatten ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_fields_flatten"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/flatten".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_fields_flatten\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Merge a list of documents.
     # 
     # @param name Resulting documen name.
@@ -4367,6 +5193,332 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :content_recognition_mode �roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_epub(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :content_recognition_mode �roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_epub_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_epub ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_epub"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/epub"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'contentRecognitionMode'] = opts[:'content_recognition_mode'] if !opts[:'content_recognition_mode'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_epub\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to Html format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.html)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :additional_margin_width_in_points Defines width of margin that will be forcibly left around that output HTML-areas.
+    # @option opts [BOOLEAN] :compress_svg_graphics_if_any The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+    # @option opts [BOOLEAN] :convert_marked_content_to_layers If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \&quot;data-pdflayer\&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+    # @option opts [String] :default_font_name Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+    # @option opts [Integer] :document_type Result document type.
+    # @option opts [BOOLEAN] :fixed_layout The value indicating whether that HTML is created as fixed layout.
+    # @option opts [Integer] :image_resolution Resolution for image rendering.
+    # @option opts [Integer] :minimal_line_width This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+    # @option opts [BOOLEAN] :prevent_glyphs_grouping This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+    # @option opts [BOOLEAN] :split_css_into_pages When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+    # @option opts [BOOLEAN] :split_into_pages The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+    # @option opts [BOOLEAN] :use_z_order If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+    # @option opts [String] :antialiasing_processing The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+    # @option opts [String] :css_class_names_prefix When PDFtoHTML converter generates result CSSs, CSS class names (something like \&quot;.stl_01 {}\&quot; ... \&quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+    # @option opts [Array<Integer>] :explicit_list_of_saved_pages With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+    # @option opts [String] :font_encoding_strategy Defines encoding special rule to tune PDF decoding for current document.
+    # @option opts [String] :font_saving_mode Defines font saving mode that will be used during saving of PDF to desirable format.
+    # @option opts [String] :html_markup_generation_mode Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+    # @option opts [String] :letters_positioning_method The mode of positioning of letters in words in result HTML.
+    # @option opts [BOOLEAN] :pages_flow_type_depends_on_viewers_screen_size If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+    # @option opts [String] :parts_embedding_mode It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+    # @option opts [String] :raster_images_saving_mode Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+    # @option opts [BOOLEAN] :remove_empty_areas_on_top_and_bottom Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+    # @option opts [BOOLEAN] :save_shadowed_texts_as_transparent_texts Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+    # @option opts [BOOLEAN] :save_transparent_texts Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+    # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_html(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to Html format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.html)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :additional_margin_width_in_points Defines width of margin that will be forcibly left around that output HTML-areas.
+    # @option opts [BOOLEAN] :compress_svg_graphics_if_any The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+    # @option opts [BOOLEAN] :convert_marked_content_to_layers If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \&quot;data-pdflayer\&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+    # @option opts [String] :default_font_name Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+    # @option opts [Integer] :document_type Result document type.
+    # @option opts [BOOLEAN] :fixed_layout The value indicating whether that HTML is created as fixed layout.
+    # @option opts [Integer] :image_resolution Resolution for image rendering.
+    # @option opts [Integer] :minimal_line_width This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+    # @option opts [BOOLEAN] :prevent_glyphs_grouping This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+    # @option opts [BOOLEAN] :split_css_into_pages When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+    # @option opts [BOOLEAN] :split_into_pages The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+    # @option opts [BOOLEAN] :use_z_order If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+    # @option opts [String] :antialiasing_processing The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+    # @option opts [String] :css_class_names_prefix When PDFtoHTML converter generates result CSSs, CSS class names (something like \&quot;.stl_01 {}\&quot; ... \&quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+    # @option opts [Array<Integer>] :explicit_list_of_saved_pages With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+    # @option opts [String] :font_encoding_strategy Defines encoding special rule to tune PDF decoding for current document.
+    # @option opts [String] :font_saving_mode Defines font saving mode that will be used during saving of PDF to desirable format.
+    # @option opts [String] :html_markup_generation_mode Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+    # @option opts [String] :letters_positioning_method The mode of positioning of letters in words in result HTML.
+    # @option opts [BOOLEAN] :pages_flow_type_depends_on_viewers_screen_size If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+    # @option opts [String] :parts_embedding_mode It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+    # @option opts [String] :raster_images_saving_mode Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+    # @option opts [BOOLEAN] :remove_empty_areas_on_top_and_bottom Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+    # @option opts [BOOLEAN] :save_shadowed_texts_as_transparent_texts Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+    # @option opts [BOOLEAN] :save_transparent_texts Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+    # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_html_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_html ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_html"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/html"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'additionalMarginWidthInPoints'] = opts[:'additional_margin_width_in_points'] if !opts[:'additional_margin_width_in_points'].nil?
+      query_params[:'compressSvgGraphicsIfAny'] = opts[:'compress_svg_graphics_if_any'] if !opts[:'compress_svg_graphics_if_any'].nil?
+      query_params[:'convertMarkedContentToLayers'] = opts[:'convert_marked_content_to_layers'] if !opts[:'convert_marked_content_to_layers'].nil?
+      query_params[:'defaultFontName'] = opts[:'default_font_name'] if !opts[:'default_font_name'].nil?
+      query_params[:'documentType'] = opts[:'document_type'] if !opts[:'document_type'].nil?
+      query_params[:'fixedLayout'] = opts[:'fixed_layout'] if !opts[:'fixed_layout'].nil?
+      query_params[:'imageResolution'] = opts[:'image_resolution'] if !opts[:'image_resolution'].nil?
+      query_params[:'minimalLineWidth'] = opts[:'minimal_line_width'] if !opts[:'minimal_line_width'].nil?
+      query_params[:'preventGlyphsGrouping'] = opts[:'prevent_glyphs_grouping'] if !opts[:'prevent_glyphs_grouping'].nil?
+      query_params[:'splitCssIntoPages'] = opts[:'split_css_into_pages'] if !opts[:'split_css_into_pages'].nil?
+      query_params[:'splitIntoPages'] = opts[:'split_into_pages'] if !opts[:'split_into_pages'].nil?
+      query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
+      query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
+      query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
+      query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
+      query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
+      query_params[:'lettersPositioningMethod'] = opts[:'letters_positioning_method'] if !opts[:'letters_positioning_method'].nil?
+      query_params[:'pagesFlowTypeDependsOnViewersScreenSize'] = opts[:'pages_flow_type_depends_on_viewers_screen_size'] if !opts[:'pages_flow_type_depends_on_viewers_screen_size'].nil?
+      query_params[:'partsEmbeddingMode'] = opts[:'parts_embedding_mode'] if !opts[:'parts_embedding_mode'].nil?
+      query_params[:'rasterImagesSavingMode'] = opts[:'raster_images_saving_mode'] if !opts[:'raster_images_saving_mode'].nil?
+      query_params[:'removeEmptyAreasOnTopAndBottom'] = opts[:'remove_empty_areas_on_top_and_bottom'] if !opts[:'remove_empty_areas_on_top_and_bottom'].nil?
+      query_params[:'saveShadowedTextsAsTransparentTexts'] = opts[:'save_shadowed_texts_as_transparent_texts'] if !opts[:'save_shadowed_texts_as_transparent_texts'].nil?
+      query_params[:'saveTransparentTexts'] = opts[:'save_transparent_texts'] if !opts[:'save_transparent_texts'].nil?
+      query_params[:'specialFolderForAllImages'] = opts[:'special_folder_for_all_images'] if !opts[:'special_folder_for_all_images'].nil?
+      query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
+      query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :pages_count Pages count.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_la_te_x(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :pages_count Pages count.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_la_te_x ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_la_te_x"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/latex"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_mobi_xml(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_mobi_xml ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_mobi_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/mobixml"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_mobi_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -4429,6 +5581,71 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pptx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :separate_images Separate images.
+    # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_pptx(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pptx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :separate_images Separate images.
+    # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_pptx_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_pptx ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_pptx"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/pptx"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
+      query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_pptx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4670,6 +5887,65 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (in request content) to XML format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_pdf_in_request_to_xml(out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (in request content) to XML format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_request_to_xml_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xml ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/xml"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
@@ -4818,6 +6094,356 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :content_recognition_mode �roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_epub(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :content_recognition_mode �roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_epub ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_epub"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_epub"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/epub".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'contentRecognitionMode'] = opts[:'content_recognition_mode'] if !opts[:'content_recognition_mode'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_epub\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to Html format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.html)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :additional_margin_width_in_points Defines width of margin that will be forcibly left around that output HTML-areas.
+    # @option opts [BOOLEAN] :compress_svg_graphics_if_any The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+    # @option opts [BOOLEAN] :convert_marked_content_to_layers If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \&quot;data-pdflayer\&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+    # @option opts [String] :default_font_name Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+    # @option opts [Integer] :document_type Result document type.
+    # @option opts [BOOLEAN] :fixed_layout The value indicating whether that HTML is created as fixed layout.
+    # @option opts [Integer] :image_resolution Resolution for image rendering.
+    # @option opts [Integer] :minimal_line_width This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+    # @option opts [BOOLEAN] :prevent_glyphs_grouping This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+    # @option opts [BOOLEAN] :split_css_into_pages When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+    # @option opts [BOOLEAN] :split_into_pages The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+    # @option opts [BOOLEAN] :use_z_order If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+    # @option opts [String] :antialiasing_processing The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+    # @option opts [String] :css_class_names_prefix When PDFtoHTML converter generates result CSSs, CSS class names (something like \&quot;.stl_01 {}\&quot; ... \&quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+    # @option opts [Array<Integer>] :explicit_list_of_saved_pages With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+    # @option opts [String] :font_encoding_strategy Defines encoding special rule to tune PDF decoding for current document.
+    # @option opts [String] :font_saving_mode Defines font saving mode that will be used during saving of PDF to desirable format.
+    # @option opts [String] :html_markup_generation_mode Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+    # @option opts [String] :letters_positioning_method The mode of positioning of letters in words in result HTML.
+    # @option opts [BOOLEAN] :pages_flow_type_depends_on_viewers_screen_size If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+    # @option opts [String] :parts_embedding_mode It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+    # @option opts [String] :raster_images_saving_mode Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+    # @option opts [BOOLEAN] :remove_empty_areas_on_top_and_bottom Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+    # @option opts [BOOLEAN] :save_shadowed_texts_as_transparent_texts Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+    # @option opts [BOOLEAN] :save_transparent_texts Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+    # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_html(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to Html format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.html)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :additional_margin_width_in_points Defines width of margin that will be forcibly left around that output HTML-areas.
+    # @option opts [BOOLEAN] :compress_svg_graphics_if_any The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+    # @option opts [BOOLEAN] :convert_marked_content_to_layers If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \&quot;data-pdflayer\&quot; attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+    # @option opts [String] :default_font_name Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+    # @option opts [Integer] :document_type Result document type.
+    # @option opts [BOOLEAN] :fixed_layout The value indicating whether that HTML is created as fixed layout.
+    # @option opts [Integer] :image_resolution Resolution for image rendering.
+    # @option opts [Integer] :minimal_line_width This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+    # @option opts [BOOLEAN] :prevent_glyphs_grouping This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+    # @option opts [BOOLEAN] :split_css_into_pages When multipage-mode selected(i.e &#39;SplitIntoPages&#39; is &#39;true&#39;), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+    # @option opts [BOOLEAN] :split_into_pages The flag that indicates whether each page of source document will be converted into it&#39;s own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+    # @option opts [BOOLEAN] :use_z_order If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+    # @option opts [String] :antialiasing_processing The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+    # @option opts [String] :css_class_names_prefix When PDFtoHTML converter generates result CSSs, CSS class names (something like \&quot;.stl_01 {}\&quot; ... \&quot;.stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+    # @option opts [Array<Integer>] :explicit_list_of_saved_pages With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+    # @option opts [String] :font_encoding_strategy Defines encoding special rule to tune PDF decoding for current document.
+    # @option opts [String] :font_saving_mode Defines font saving mode that will be used during saving of PDF to desirable format.
+    # @option opts [String] :html_markup_generation_mode Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+    # @option opts [String] :letters_positioning_method The mode of positioning of letters in words in result HTML.
+    # @option opts [BOOLEAN] :pages_flow_type_depends_on_viewers_screen_size If attribute &#39;SplitOnPages&#x3D;false&#39;, than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+    # @option opts [String] :parts_embedding_mode It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+    # @option opts [String] :raster_images_saving_mode Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+    # @option opts [BOOLEAN] :remove_empty_areas_on_top_and_bottom Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+    # @option opts [BOOLEAN] :save_shadowed_texts_as_transparent_texts Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+    # @option opts [BOOLEAN] :save_transparent_texts Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+    # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+    # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_html_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_html ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_html"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_html"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/html".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'additionalMarginWidthInPoints'] = opts[:'additional_margin_width_in_points'] if !opts[:'additional_margin_width_in_points'].nil?
+      query_params[:'compressSvgGraphicsIfAny'] = opts[:'compress_svg_graphics_if_any'] if !opts[:'compress_svg_graphics_if_any'].nil?
+      query_params[:'convertMarkedContentToLayers'] = opts[:'convert_marked_content_to_layers'] if !opts[:'convert_marked_content_to_layers'].nil?
+      query_params[:'defaultFontName'] = opts[:'default_font_name'] if !opts[:'default_font_name'].nil?
+      query_params[:'documentType'] = opts[:'document_type'] if !opts[:'document_type'].nil?
+      query_params[:'fixedLayout'] = opts[:'fixed_layout'] if !opts[:'fixed_layout'].nil?
+      query_params[:'imageResolution'] = opts[:'image_resolution'] if !opts[:'image_resolution'].nil?
+      query_params[:'minimalLineWidth'] = opts[:'minimal_line_width'] if !opts[:'minimal_line_width'].nil?
+      query_params[:'preventGlyphsGrouping'] = opts[:'prevent_glyphs_grouping'] if !opts[:'prevent_glyphs_grouping'].nil?
+      query_params[:'splitCssIntoPages'] = opts[:'split_css_into_pages'] if !opts[:'split_css_into_pages'].nil?
+      query_params[:'splitIntoPages'] = opts[:'split_into_pages'] if !opts[:'split_into_pages'].nil?
+      query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
+      query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
+      query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
+      query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
+      query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
+      query_params[:'lettersPositioningMethod'] = opts[:'letters_positioning_method'] if !opts[:'letters_positioning_method'].nil?
+      query_params[:'pagesFlowTypeDependsOnViewersScreenSize'] = opts[:'pages_flow_type_depends_on_viewers_screen_size'] if !opts[:'pages_flow_type_depends_on_viewers_screen_size'].nil?
+      query_params[:'partsEmbeddingMode'] = opts[:'parts_embedding_mode'] if !opts[:'parts_embedding_mode'].nil?
+      query_params[:'rasterImagesSavingMode'] = opts[:'raster_images_saving_mode'] if !opts[:'raster_images_saving_mode'].nil?
+      query_params[:'removeEmptyAreasOnTopAndBottom'] = opts[:'remove_empty_areas_on_top_and_bottom'] if !opts[:'remove_empty_areas_on_top_and_bottom'].nil?
+      query_params[:'saveShadowedTextsAsTransparentTexts'] = opts[:'save_shadowed_texts_as_transparent_texts'] if !opts[:'save_shadowed_texts_as_transparent_texts'].nil?
+      query_params[:'saveTransparentTexts'] = opts[:'save_transparent_texts'] if !opts[:'save_transparent_texts'].nil?
+      query_params[:'specialFolderForAllImages'] = opts[:'special_folder_for_all_images'] if !opts[:'special_folder_for_all_images'].nil?
+      query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
+      query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :pages_count Pages count.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_la_te_x(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :pages_count Pages count.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_la_te_x ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_la_te_x"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_la_te_x"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/latex".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_mobi_xml(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_mobi_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_mobi_xml"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_mobi_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/mobixml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_mobi_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
     # 
     # @param name The document name.
@@ -4886,6 +6512,77 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pptx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :separate_images Separate images.
+    # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_pptx(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pptx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :separate_images Separate images.
+    # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_pptx ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_pptx"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_pptx"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/pptx".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
+      query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_pptx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5145,6 +6842,71 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (located on storage) to XML format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_pdf_in_storage_to_xml(name, out_path, opts = {})
+      data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XML format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_xml"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
     # 
     # @param name The document name.
@@ -5206,6 +6968,66 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update privilege document.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [DocumentPrivilege] :privileges Document privileges. 
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_privileges(name, opts = {})
+      data, _status_code, _headers = put_privileges_with_http_info(name, opts)
+      return data
+    end
+
+    # Update privilege document.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [DocumentPrivilege] :privileges Document privileges. 
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_privileges_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_privileges ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_privileges"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/privileges".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'privileges'])
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_privileges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5471,6 +7293,130 @@ module AsposePdfCloud
         :return_type => 'FieldsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_update_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def put_xfa_pdf_in_request_to_acro_form(out_path, opts = {})
+      data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
+      return data
+    end
+
+    # Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_xfa_pdf_in_request_to_acro_form ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_xfa_pdf_in_request_to_acro_form"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/xfatoacroform"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_xfa_pdf_in_request_to_acro_form\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def put_xfa_pdf_in_storage_to_acro_form(name, out_path, opts = {})
+      data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
+      return data
+    end
+
+    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_xfa_pdf_in_storage_to_acro_form ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_xfa_pdf_in_storage_to_acro_form"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_xfa_pdf_in_storage_to_acro_form"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xfatoacroform".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_xfa_pdf_in_storage_to_acro_form\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -19,6 +19,26 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.4.0"
+  class RasterImagesSavingModes
+    
+    AS_PNG_IMAGES_EMBEDDED_INTO_SVG = "AsPngImagesEmbeddedIntoSvg".freeze
+    AS_EXTERNAL_PNG_FILES_REFERENCED_VIA_SVG = "AsExternalPngFilesReferencedViaSvg".freeze
+    AS_EMBEDDED_PARTS_OF_PNG_PAGE_BACKGROUND = "AsEmbeddedPartsOfPngPageBackground".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = RasterImagesSavingModes.constants.select{|c| c.to_s == value}
+      constantValues = RasterImagesSavingModes.constants.select{ |const_name| RasterImagesSavingModes.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #RasterImagesSavingModes" if constantValues.empty?
+      value
+    end
+  end
+
 end

@@ -19,6 +19,27 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.4.0"
+  class FontSavingModes
+    
+    ALWAYS_SAVE_AS_WOFF = "AlwaysSaveAsWOFF".freeze
+    ALWAYS_SAVE_AS_TTF = "AlwaysSaveAsTTF".freeze
+    ALWAYS_SAVE_AS_EOT = "AlwaysSaveAsEOT".freeze
+    SAVE_IN_ALL_FORMATS = "SaveInAllFormats".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = FontSavingModes.constants.select{|c| c.to_s == value}
+      constantValues = FontSavingModes.constants.select{ |const_name| FontSavingModes.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #FontSavingModes" if constantValues.empty?
+      value
+    end
+  end
+
 end
