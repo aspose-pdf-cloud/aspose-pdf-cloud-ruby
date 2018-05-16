@@ -25,9 +25,12 @@ module AsposePdfCloud
   class PdfApi
     attr_accessor :api_client
 
-    def initialize(api_client = ApiClient.default)
+    def initialize(app_key, app_sid, api_client = ApiClient.default)
       @api_client = api_client
+      @api_client.config.app_key = app_key
+      @api_client.config.app_sid = app_sid
     end
+
 
     # Delete document field by name.
     # 

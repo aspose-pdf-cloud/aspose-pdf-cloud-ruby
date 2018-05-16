@@ -35,7 +35,6 @@ module AsposePdfCloud
   # 
   class ApiClient
 
-    include AsposeStorageCloud
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
 
@@ -428,8 +427,8 @@ module AsposePdfCloud
       # form parameters
       form_params = {}
       form_params["grant_type"] = 'client_credentials'
-      form_params["client_id"] = AsposeApp.app_sid
-      form_params["client_secret"] = AsposeApp.app_key
+      form_params["client_id"] = @config.app_sid
+      form_params["client_secret"] = @config.app_key
 
 
       url = build_request_url(local_var_path).gsub(@config.base_path, '')
