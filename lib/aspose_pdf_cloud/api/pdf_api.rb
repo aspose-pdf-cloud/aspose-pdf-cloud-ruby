@@ -82,9 +82,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
@@ -149,9 +152,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
@@ -210,9 +216,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
@@ -277,9 +286,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
@@ -344,9 +356,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -411,9 +426,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -472,9 +490,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -536,9 +557,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -597,9 +621,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -664,9 +691,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -726,9 +756,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -793,9 +826,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -860,9 +896,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -921,9 +960,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -997,9 +1039,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1070,9 +1115,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1140,9 +1188,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1222,9 +1273,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1289,9 +1343,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1365,9 +1422,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1438,9 +1498,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1505,9 +1568,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1578,9 +1644,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1645,9 +1714,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1746,9 +1818,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1816,9 +1891,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1877,9 +1955,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -1959,9 +2040,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2020,9 +2104,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2162,9 +2249,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2223,9 +2313,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2281,9 +2374,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2346,9 +2442,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2410,9 +2509,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2471,9 +2573,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2574,9 +2679,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2644,9 +2752,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2702,9 +2813,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2760,9 +2874,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2839,9 +2956,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2918,9 +3038,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -2994,9 +3117,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -3089,9 +3215,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -3153,9 +3282,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -3218,9 +3350,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -3279,9 +3414,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -3337,9 +3475,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
@@ -3409,6 +3550,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'append_document'])
@@ -3479,6 +3622,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'field'])
@@ -3546,6 +3691,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(text_replace)
@@ -3613,6 +3760,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(text_replace_list_request)
@@ -3680,6 +3829,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(text_replace)
@@ -3754,9 +3905,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -3817,6 +3971,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'options'])
@@ -3890,6 +4046,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(text_replace)
@@ -3963,6 +4121,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(text_replace_list_request)
@@ -4036,6 +4196,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(text_replace_list_request)
@@ -4114,10 +4276,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["image"] = opts[:'image'] if !opts[:'image'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'image'] if !opts[:'image'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -4178,6 +4344,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'signature'])
@@ -4247,6 +4415,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'signature'])
@@ -4317,9 +4487,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -4378,9 +4551,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -4447,6 +4623,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'paragraph'])
@@ -4513,6 +4691,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'paragraph'])
@@ -4573,10 +4753,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -4642,10 +4826,15 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["File"] = file
+      # Fix header in file
+      post_body = nil
+      # Fix header in file
+      post_body = file
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -4719,9 +4908,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -4788,6 +4980,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'images'])
@@ -4899,6 +5093,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'export_options'])
@@ -4960,9 +5156,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5023,6 +5222,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'merge_documents'])
@@ -5096,6 +5297,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(stamp)
@@ -5178,10 +5381,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5240,10 +5447,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5383,10 +5594,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5445,10 +5660,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5504,10 +5723,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5570,10 +5793,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5635,10 +5862,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5697,10 +5928,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5801,10 +6036,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5872,10 +6111,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5931,10 +6174,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -5990,10 +6237,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6080,9 +6331,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6148,9 +6402,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6297,9 +6554,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6365,9 +6625,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6430,9 +6693,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6502,9 +6768,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6573,9 +6842,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6641,9 +6913,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6751,9 +7026,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6828,9 +7106,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6893,9 +7174,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -6958,9 +7242,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -7018,6 +7305,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'privileges'])
@@ -7082,9 +7371,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -7151,6 +7443,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'property'])
@@ -7220,6 +7514,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'field'])
@@ -7283,6 +7579,8 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'fields'])
@@ -7341,10 +7639,14 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -7407,9 +7709,12 @@ module AsposePdfCloud
 
       # form parameters
       form_params = {}
+      # Fix header in file
+      post_body = nil
 
       # http body (model)
-      post_body = nil
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
