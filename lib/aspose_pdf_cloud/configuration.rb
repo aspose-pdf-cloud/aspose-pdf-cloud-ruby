@@ -23,6 +23,13 @@ require 'uri'
 
 module AsposePdfCloud
   class Configuration
+
+    # App Key
+    attr_accessor :app_key
+
+    # App SID
+    attr_accessor :app_sid
+
     # Defines url scheme
     attr_accessor :scheme
 
@@ -31,16 +38,6 @@ module AsposePdfCloud
 
     # Defines url base path
     attr_accessor :base_path
-    
-    # Auth types
-    AUTH_TYPE_O_AUTH_2 = 'OAuth2'
-    
-    AUTH_TYPE_REQUEST_SIGNATURE = 'RequestSignature'
-    
-    # Defines authentication type.
-    #
-    # @return [AUTH_TYPE_O_AUTH_2, AUTH_TYPE_REQUEST_SIGNATURE]
-    attr_accessor :auth_type
 
     # Defines the access token (Bearer) used with OAuth2.
     attr_accessor :access_token
@@ -138,7 +135,6 @@ module AsposePdfCloud
       @inject_format = false
       @force_ending_format = false
       @logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
-      @auth_type = AUTH_TYPE_O_AUTH_2
 
       yield(self) if block_given?
     end

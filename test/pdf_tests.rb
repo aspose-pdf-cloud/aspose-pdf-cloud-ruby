@@ -21,23 +21,17 @@ SOFTWARE.
 
 require 'minitest/autorun'
 require 'minitest/unit'
-require 'aspose_storage_cloud'
 
 require_relative '../lib/aspose_pdf_cloud'
 
 class PdfTests < Minitest::Test
   include MiniTest::Assertions
   include AsposePdfCloud
-  include AsposeStorageCloud
 
 
   def setup
     # Get App key and App SID from https://cloud.aspose.com
-    AsposeApp.app_key_and_sid('app_key', 'app_sid')
-
-    @pdf_api = PdfApi.new
-    @storage_api = StorageApi.new
-    @storage_api.api_client.host = 'http://api-dev.aspose.cloud/v1.1'
+    @pdf_api = PdfApi.new('app_key', 'app_sid')
 
     @temp_folder = 'TempPdfCloud'
     @test_data_folder = '../test_data/'
@@ -53,7 +47,7 @@ class PdfTests < Minitest::Test
 
 
   def upload_file(file_name)
-    response = @storage_api.put_create(@temp_folder + '/' + file_name, File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
+    response = @pdf_api.put_create(@temp_folder + '/' + file_name, File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
     assert(response, "Failed to upload #{file_name} file.")
   end
 
@@ -84,7 +78,7 @@ class PdfTests < Minitest::Test
     upload_file(append_file_name)
 
     opts = {
-      :append_file => append_file_name,
+      :append_file => @temp_folder + '/' + append_file_name,
       :startPage => 2,
       :endPage => 4,
       :folder => @temp_folder
@@ -103,7 +97,7 @@ class PdfTests < Minitest::Test
     upload_file(append_file_name)
 
     append_document = AppendDocument.new
-    append_document.document = append_file_name
+    append_document.document = @temp_folder + '/' + append_file_name
     append_document.start_page = 2
     append_document.end_page = 4
 
@@ -428,6 +422,34 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.put_update_field(file_name, field_name, opts)
     assert(response, 'Failed to update fields.')
+  end
+
+
+  def test_delete_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'textField'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_field(file_name, field_name, opts)
+    assert(response, 'Failed to delete fields.')
+  end
+
+
+  def test_put_fields_flatten
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_fields_flatten(file_name, opts)
+    assert(response, 'Failed to make fields flatten.')
   end
 
 
@@ -1060,6 +1082,47 @@ class PdfTests < Minitest::Test
   end
 
 
+  def test_get_verify_signature
+    file_name = 'BlankWithSignature.pdf'
+    upload_file(file_name)
+
+    signature_file_name = 'test1234.pfx'
+    upload_file(signature_file_name)
+
+    rectangle = Rectangle.new
+    rectangle.x = 100
+    rectangle.y = 100
+    rectangle.width = 400
+    rectangle.height = 100
+
+    signature = Signature.new
+    signature.authority = 'Sergey Smal'
+    signature.contact = 'test@mail.ru'
+    signature.date = '08/01/2012 12:15:00.000 PM'
+    signature.form_field_name = 'Signature1'
+    signature.location = 'Ukraine'
+    signature.password = 'test1234'
+    signature.rectangle = rectangle
+    signature.signature_path = @temp_folder + '/' + signature_file_name
+    signature.signature_type = SignatureType::PKCS_7
+    signature.visible = true
+
+    opts = {
+        :signature => signature,
+        :folder => @temp_folder
+    }
+
+    response_sign = @pdf_api.post_sign_document(file_name, opts)
+    assert(response_sign, 'Failed to sign document.')
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.get_verify_signature(file_name, signature.form_field_name, opts)
+    assert(response, 'Failed to verify signature.')
+  end
+
+
   # Text Items Tests
 
   def test_get_page_text_items
@@ -1333,7 +1396,7 @@ class PdfTests < Minitest::Test
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_doc(file_name, res_file, opts)
+    response = @pdf_api.put_pdf_in_storage_to_doc(file_name, @temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to DOC.')
   end
 
@@ -1370,7 +1433,7 @@ class PdfTests < Minitest::Test
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_pdf_a(file_name, res_file, PdfAType::PDFA1_A, opts)
+    response = @pdf_api.put_pdf_in_storage_to_pdf_a(file_name, @temp_folder + '/' + res_file, PdfAType::PDFA1_A, opts)
     assert(response, 'Filed to convert PDF to PDFA.')
   end
 
@@ -1406,7 +1469,7 @@ class PdfTests < Minitest::Test
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_tiff(file_name, res_file, opts)
+    response = @pdf_api.put_pdf_in_storage_to_tiff(file_name, @temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to Tiff.')
   end
 
@@ -1442,7 +1505,7 @@ class PdfTests < Minitest::Test
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_svg(file_name, res_file, opts)
+    response = @pdf_api.put_pdf_in_storage_to_svg(file_name, @temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to SVG.')
   end
 
@@ -1478,7 +1541,7 @@ class PdfTests < Minitest::Test
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_xps(file_name, res_file, opts)
+    response = @pdf_api.put_pdf_in_storage_to_xps(file_name, @temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to XPS.')
   end
 
@@ -1514,7 +1577,7 @@ class PdfTests < Minitest::Test
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_xls(file_name, res_file, opts)
+    response = @pdf_api.put_pdf_in_storage_to_xls(file_name, @temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to XLS.')
   end
 
@@ -1529,5 +1592,300 @@ class PdfTests < Minitest::Test
     response = @pdf_api.put_pdf_in_request_to_xls(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to XLS.')
   end
+
+  def test_get_pdf_in_storage_to_html
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_html(file_name, opts)
+    assert(response, 'Filed to convert PDF to HTML.')
+  end
+
+  def test_put_pdf_in_storage_to_html
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.html'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_html(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to HTML.')
+  end
+
+  def test_put_pdf_in_request_to_html
+    file_name = '4pages.pdf'
+
+    res_file = 'result.html'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_html(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to HTML.')
+  end
+
+  def test_get_pdf_in_storage_to_epub
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_epub(file_name, opts)
+    assert(response, 'Filed to convert PDF to EPUB.')
+  end
+
+  def test_put_pdf_in_storage_to_epub
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.epub'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_epub(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to EPUB.')
+  end
+
+  def test_put_pdf_in_request_to_epub
+    file_name = '4pages.pdf'
+
+    res_file = 'result.epub'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_epub(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to EPUB.')
+  end
+
+  def test_get_pdf_in_storage_to_pptx
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_pptx(file_name, opts)
+    assert(response, 'Filed to convert PDF to PPTX.')
+  end
+
+  def test_put_pdf_in_storage_to_pptx
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.pptx'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_pptx(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to PPTX.')
+  end
+
+
+  def test_put_pdf_in_request_to_pptx
+    file_name = '4pages.pdf'
+
+    res_file = 'result.pptx'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_pptx(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to PPTX.')
+  end
+
+  def test_get_pdf_in_storage_to_la_te_x
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_la_te_x(file_name, opts)
+    assert(response, 'Filed to convert PDF to LaTex.')
+  end
+
+  def test_put_pdf_in_storage_to_la_te_x
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.latex'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_la_te_x(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to LaTeX.')
+  end
+
+
+  def test_put_pdf_in_request_to_la_te_x
+    file_name = '4pages.pdf'
+
+    res_file = 'result.latex'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_la_te_x(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to LaTeX.')
+  end
+
+  def test_get_pdf_in_storage_to_mobi_xml
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_mobi_xml(file_name, opts)
+    assert(response, 'Filed to convert PDF to Moby Xml.')
+  end
+
+  def test_put_pdf_in_storage_to_mobi_xml
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.mobi'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_mobi_xml(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to Moby Xml.')
+  end
+
+
+  def test_put_pdf_in_request_to_mobi_xml
+    file_name = '4pages.pdf'
+
+    res_file = 'result.mobi'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_mobi_xml(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to Moby Xml.')
+  end
+
+  def test_get_xfa_pdf_in_storage_to_acro_form
+    file_name = 'PdfWithXfaForm.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_xfa_pdf_in_storage_to_acro_form(file_name, opts)
+    assert(response, 'Filed to convert Xfa PDF to Acro form.')
+  end
+
+  def test_put_xfa_pdf_in_storage_to_acro_form
+    file_name = 'PdfWithXfaForm.pdf'
+    upload_file(file_name)
+    res_file = 'result.pdf'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_xfa_pdf_in_storage_to_acro_form(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert Xfa PDF to Acro form.')
+  end
+
+
+  def test_put_xfa_pdf_in_request_to_acro_form
+    file_name = 'PdfWithXfaForm.pdf'
+
+    res_file = 'result.pdf'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_xfa_pdf_in_request_to_acro_form(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert Xfa PDF to Acro form.')
+  end
+
+
+  def test_get_pdf_in_storage_to_xml
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_pdf_in_storage_to_xml(file_name, opts)
+    assert(response, 'Filed to convert PDF to Xml.')
+  end
+
+  def test_put_pdf_in_storage_to_xml
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    res_file = 'result.xml'
+
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_in_storage_to_xml(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to Xml.')
+  end
+
+
+  def test_put_pdf_in_request_to_xml
+    file_name = '4pages.pdf'
+
+    res_file = 'result.xml'
+
+    opts = {
+        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+    }
+    response = @pdf_api.put_pdf_in_request_to_xml(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to Xml.')
+  end
+
+  # Upload & Download Tests
+
+  def test_put_create
+    file_name = '4pages.pdf'
+
+    response = @pdf_api.put_create(@temp_folder + '/' + file_name, File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
+    assert(response, "Failed to upload #{file_name} file.")
+  end
+
+  def test_get_download
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+
+    response = @pdf_api.get_download(@temp_folder + '/' + file_name)
+    assert(response, "Failed to download #{file_name} file.")
+  end
+
+  # Privileges Tests
+
+  def test_put_privileges
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    privileges = DocumentPrivilege.new
+    privileges.allow_copy = false
+    privileges.allow_print = false
+
+    opts = {
+        :privileges => privileges,
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_privileges(file_name, opts)
+    assert(response, 'Failed to set pdf privileges.')
+  end
+
 end
 

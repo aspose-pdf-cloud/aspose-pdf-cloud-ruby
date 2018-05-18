@@ -19,6 +19,25 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.4.0"
+  class AntialiasingProcessingType
+    
+    NO_ADDITIONAL_PROCESSING = "NoAdditionalProcessing".freeze
+    TRY_CORRECT_RESULT_HTML = "TryCorrectResultHtml".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = AntialiasingProcessingType.constants.select{|c| c.to_s == value}
+      constantValues = AntialiasingProcessingType.constants.select{ |const_name| AntialiasingProcessingType.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #AntialiasingProcessingType" if constantValues.empty?
+      value
+    end
+  end
+
 end

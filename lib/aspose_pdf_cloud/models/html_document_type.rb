@@ -19,6 +19,25 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.4.0"
+  class HtmlDocumentType
+    
+    XHTML = 0.freeze
+    HTML_5 = 1.freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = HtmlDocumentType.constants.select{|c| c.to_s == value}
+      constantValues = HtmlDocumentType.constants.select{ |const_name| HtmlDocumentType.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #HtmlDocumentType" if constantValues.empty?
+      value
+    end
+  end
+
 end

@@ -37,19 +37,19 @@ spec/**
 
 #Ignore enums that are not properly generated. We have good ones in sources already.
 
-lib/aspose_pdf_cloud/models/field_type.rb
-lib/aspose_pdf_cloud/models/font_styles.rb
-lib/aspose_pdf_cloud/models/horizontal_alignment.rb
-lib/aspose_pdf_cloud/models/http_status_code.rb
+#lib/aspose_pdf_cloud/models/field_type.rb
+#lib/aspose_pdf_cloud/models/font_styles.rb
+#lib/aspose_pdf_cloud/models/horizontal_alignment.rb
+#lib/aspose_pdf_cloud/models/http_status_code.rb
 #lib/aspose_pdf_cloud/models/line_spacing.rb
-lib/aspose_pdf_cloud/models/link_highlighting_mode.rb
-lib/aspose_pdf_cloud/models/rotation.rb
+#lib/aspose_pdf_cloud/models/link_highlighting_mode.rb
+#lib/aspose_pdf_cloud/models/rotation.rb
 #lib/aspose_pdf_cloud/models/text_horizontal_alignment.rb
-lib/aspose_pdf_cloud/models/stamp_type.rb
+#lib/aspose_pdf_cloud/models/stamp_type.rb
 #lib/aspose_pdf_cloud/models/vertical_alignment.rb
 #lib/aspose_pdf_cloud/models/wrap_mode.rb
-lib/aspose_pdf_cloud/models/link_action_type.rb
-lib/aspose_pdf_cloud/models/signature_type.rb
+#lib/aspose_pdf_cloud/models/link_action_type.rb
+#lib/aspose_pdf_cloud/models/signature_type.rb
 # Ignore other files and folders
 
 .rspec
