@@ -24,7 +24,6 @@ require 'json'
 require 'logger'
 require 'tempfile'
 require 'uri'
-require 'typhoeus'
 require 'faraday'
 require_relative 'version'
 require_relative 'api_error'
@@ -411,58 +410,60 @@ module AsposePdfCloud
         fail "unknown collection format: #{collection_format.inspect}"
       end
     end
+
+
     # Request access and refresh tokens
     def request_token
       # resource path
       local_var_path = "/oauth2/token"
-
-      # query parameters
-      query_params = {}
+      url = build_request_url(local_var_path).gsub(@config.base_path, '')
 
       # header parameters
       header_params = {}
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = select_header_content_type(['application/x-www-form-urlencoded'])
 
+      query_params = {}
       # form parameters
       form_params = {}
       form_params["grant_type"] = 'client_credentials'
       form_params["client_id"] = @config.app_sid
       form_params["client_secret"] = @config.app_key
 
+      body =  {}
 
-      url = build_request_url(local_var_path).gsub(@config.base_path, '')
-      http_method = :POST.to_sym.downcase
-
-
-      # set ssl_verifyhosts option based on @config.verify_ssl_host (true/false)
-      _verify_ssl_host = @config.verify_ssl_host ? 2 : 0
 
       req_opts = {
-          :method => http_method,
           :headers => header_params,
           :params => query_params,
-          :params_encoding => @config.params_encoding,
-          :timeout => @config.timeout,
-          :ssl_verifypeer => @config.verify_ssl,
-          :ssl_verifyhost => _verify_ssl_host,
-          :sslcert => @config.cert_file,
-          :sslkey => @config.key_file,
-          :verbose => @config.debugging,
-          :body => form_params
+          :body => body
       }
 
-      # set custom cert, if provided
-      req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
 
-      request = Typhoeus::Request.new(url, req_opts)
-      response = request.run
+      req_body = build_request_body(header_params, form_params, body)
+      req_opts.update :body => req_body
 
+      req_opts[:params] = query_params
+
+
+      conn = Faraday.new url, {:params => query_params, :headers => header_params} do |f|
+        f.request :multipart
+        f.request :url_encoded
+        f.adapter Faraday.default_adapter
+      end
+
+      if req_opts[:body] == {}
+        req_opts[:body] = nil
+      end
+
+
+      response = conn.post url, form_params, req_opts[:body]
       data = JSON.parse("[#{response.body}]", :symbolize_names => true)[0]
 
       @config.access_token = data[:access_token]
       @config.refresh_token = data[:refresh_token]
     end
+
 
     # Adds OAuth2.0 token
     def add_o_auth_token(req_opts)

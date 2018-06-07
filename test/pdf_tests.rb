@@ -38,7 +38,7 @@ class PdfTests < Minitest::Test
 
     config = @pdf_api.api_client.config
     config.host = 'api-dev.aspose.cloud'
-    config.scheme = 'http'
+    config.scheme = 'https'
   end
 
 
