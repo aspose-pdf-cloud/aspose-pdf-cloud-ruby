@@ -37,7 +37,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 1.9"
 
-  s.add_runtime_dependency 'typhoeus', '~> 0.8'
   s.add_runtime_dependency 'json', '~> 1.7'
   s.add_runtime_dependency 'faraday', '~> 0.14.0'
   
