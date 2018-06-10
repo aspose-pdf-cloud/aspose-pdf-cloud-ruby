@@ -464,7 +464,6 @@ module AsposePdfCloud
       @config.refresh_token = data[:refresh_token]
     end
 
-
     # Adds OAuth2.0 token
     def add_o_auth_token(req_opts)
       req_opts[:headers][:Authorization] = "Bearer " + @config.access_token

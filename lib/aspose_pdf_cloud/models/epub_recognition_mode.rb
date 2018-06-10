@@ -22,20 +22,21 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
-  class RecognitionMode
+  class EpubRecognitionMode
     
-    TEXTBOX = "Textbox".freeze
     FLOW = "Flow".freeze
+    PDF_FLOW = "PdfFlow".freeze
+    FIXED = "Fixed".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
       # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
-      # consantValues = RecognitionMode.constants.select{|c| c.to_s == value}
-      constantValues = RecognitionMode.constants.select{ |const_name| RecognitionMode.const_get(const_name) == value}
+      # consantValues = EpubRecognitionMode.constants.select{|c| c.to_s == value}
+      constantValues = EpubRecognitionMode.constants.select{ |const_name| EpubRecognitionMode.const_get(const_name) == value}
       
-      raise "Invalid ENUM value #{value} for class #RecognitionMode" if constantValues.empty?
+      raise "Invalid ENUM value #{value} for class #EpubRecognitionMode" if constantValues.empty?
       value
     end
   end
