@@ -1887,5 +1887,236 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to set pdf privileges.')
   end
 
+  # Convert to PDF Tests
+
+  def test_get_epub_in_storage_to_pdf
+    file_name = '4pages.epub'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_epub_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert epub to pdf.')
+  end
+
+  def test_put_epub_in_storage_to_pdf
+    file_name = '4pages.epub'
+    upload_file(file_name)
+    result_name = 'fromEpub.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_epub_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert epub to pdf.')
+  end
+
+  def test_get_web_in_storage_to_pdf
+    url = 'http://google.com'
+
+    response = @pdf_api.get_web_in_storage_to_pdf(url)
+    assert(response, 'Failed to convert web page to pdf.')
+  end
+
+  def test_put_web_in_storage_to_pdf
+    url = 'http://google.com'
+    result_name = 'fromWeb.pdf'
+
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_web_in_storage_to_pdf(result_name, url, opts)
+    assert(response, 'Failed to convert web page to pdf.')
+  end
+
+
+  def test_get_la_te_x_in_storage_to_pdf
+    file_name = 'TexExample.tex'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_la_te_x_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert LaTeX to pdf.')
+  end
+
+  def test_put_la_te_x_in_storage_to_pdf
+    file_name = 'TexExample.tex'
+    upload_file(file_name)
+    result_name = 'fromTex.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_la_te_x_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert LaTeX to pdf.')
+  end
+
+  def test_get_mht_in_storage_to_pdf
+    file_name = 'MhtExample.mht'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_mht_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert mht to pdf.')
+  end
+
+  def test_put_mht_in_storage_to_pdf
+    file_name = 'MhtExample.mht'
+    upload_file(file_name)
+    result_name = 'fromMht.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_mht_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert mht to pdf.')
+  end
+
+
+  def test_get_html_in_storage_to_pdf
+    file_name = 'HtmlWithImage.zip'
+    upload_file(file_name)
+
+    html_file_name = 'HtmlWithImage.html'
+    opts = {
+        :height => 650,
+        :width => 250
+    }
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_html_in_storage_to_pdf(src_path, html_file_name, opts)
+    assert(response, 'Failed to convert html to pdf.')
+  end
+
+  def test_put_html_in_storage_to_pdf
+    file_name = 'HtmlWithImage.zip'
+    upload_file(file_name)
+    html_file_name = 'HtmlWithImage.html'
+
+    result_name = 'fromMht.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder,
+        :height => 650,
+        :width => 250
+    }
+    response = @pdf_api.put_html_in_storage_to_pdf(result_name, src_path, html_file_name, opts)
+    assert(response, 'Failed to convert html to pdf.')
+  end
+
+  def test_get_xsl_fo_in_storage_to_pdf
+    file_name = 'XslfoExample.xslfo'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_xsl_fo_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert xslfo to pdf.')
+  end
+
+  def test_put_xsl_fo_in_storage_to_pdf
+    file_name = 'XslfoExample.xslfo'
+    upload_file(file_name)
+    result_name = 'fromXslFo.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_xsl_fo_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert xslfo to pdf.')
+  end
+
+
+  def test_get_xps_in_storage_to_pdf
+    file_name = 'Simple.xps'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_xps_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert xps to pdf.')
+  end
+
+  def test_put_xps_in_storage_to_pdf
+    file_name = 'Simple.xps'
+    upload_file(file_name)
+    result_name = 'fromXps.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_xps_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert xps to pdf.')
+  end
+
+
+  def test_get_svg_in_storage_to_pdf
+    file_name = 'Simple.svg'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_svg_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert svg to pdf.')
+  end
+
+  def test_put_svg_in_storage_to_pdf
+    file_name = 'Simple.svg'
+    upload_file(file_name)
+    result_name = 'fromSvg.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_svg_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert svg to pdf.')
+  end
+
+  def test_get_pcl_in_storage_to_pdf
+    file_name = 'template.pcl'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_pcl_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert pcl to pdf.')
+  end
+
+  def test_put_pcl_in_storage_to_pdf
+    file_name = 'template.pcl'
+    upload_file(file_name)
+    result_name = 'fromPcl.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_pcl_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert pcl to pdf.')
+  end
+
+
+  def test_get_xml_in_storage_to_pdf
+    file_name = 'template.xml'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_xml_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert xml to pdf.')
+  end
+
+  def test_put_xml_in_storage_to_pdf
+    file_name = 'template.xml'
+    upload_file(file_name)
+    result_name = 'fromXml.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_xml_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert xml to pdf.')
+  end
 end
 

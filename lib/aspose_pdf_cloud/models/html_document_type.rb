@@ -24,8 +24,8 @@ require 'date'
 module AsposePdfCloud
   class HtmlDocumentType
     
-    XHTML = 0.freeze
-    HTML_5 = 1.freeze
+    XHTML = "Xhtml".freeze
+    HTML5 = "Html5".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
