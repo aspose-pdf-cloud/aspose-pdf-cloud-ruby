@@ -1852,6 +1852,444 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Convert document page to Bmp image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_page_convert_to_bmp(name, page_number, opts = {})
+      data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Convert document page to Bmp image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_page_convert_to_bmp_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_convert_to_bmp ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_convert_to_bmp"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_convert_to_bmp"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/bmp".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_convert_to_bmp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Emf image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_page_convert_to_emf(name, page_number, opts = {})
+      data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Convert document page to Emf image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_page_convert_to_emf_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_convert_to_emf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_convert_to_emf"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_convert_to_emf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/emf".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_convert_to_emf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Gif image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_page_convert_to_gif(name, page_number, opts = {})
+      data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Convert document page to Gif image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_page_convert_to_gif_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_convert_to_gif ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_convert_to_gif"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_convert_to_gif"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/gif".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_convert_to_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Jpeg image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_page_convert_to_jpeg(name, page_number, opts = {})
+      data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Convert document page to Jpeg image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_page_convert_to_jpeg_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_convert_to_jpeg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_convert_to_jpeg"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_convert_to_jpeg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/jpeg".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_convert_to_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Png image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_page_convert_to_png(name, page_number, opts = {})
+      data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Convert document page to Png image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_page_convert_to_png_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_convert_to_png ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_convert_to_png"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_convert_to_png"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/png".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_convert_to_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Tiff image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_page_convert_to_tiff(name, page_number, opts = {})
+      data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Convert document page to Tiff image.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_page_convert_to_tiff_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_convert_to_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_convert_to_tiff"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_convert_to_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/tiff".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_convert_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page link annotation by its index.
     # 
     # @param name The document name.
@@ -3213,6 +3651,65 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert PS file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def get_ps_in_storage_to_pdf(src_path, opts = {})
+      data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
+      return data
+    end
+
+    # Convert PS file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_ps_in_storage_to_pdf_with_http_info(src_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_ps_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'src_path' is set
+      if @api_client.config.client_side_validation && src_path.nil?
+        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.get_ps_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/create/ps"
+
+      # query parameters
+      query_params = {}
+      query_params[:'srcPath'] = src_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_ps_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6006,6 +6503,376 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Convert image file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param image_templates Image templates
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :dst_folder The destination document folder.
+    # @return [SaaSposeResponse]
+    def put_image_in_storage_to_pdf(name, image_templates, opts = {})
+      data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
+      return data
+    end
+
+    # Convert image file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param image_templates Image templates
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :dst_folder The destination document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_image_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_image_in_storage_to_pdf"
+      end
+      # verify the required parameter 'image_templates' is set
+      if @api_client.config.client_side_validation && image_templates.nil?
+        fail ArgumentError, "Missing the required parameter 'image_templates' when calling PdfApi.put_image_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/create/images".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(image_templates)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_image_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_images_extract_as_gif(name, page_number, opts = {})
+      data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_images_extract_as_gif_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_gif ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_images_extract_as_gif"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_images_extract_as_gif"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/extract/gif".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_images_extract_as_jpeg(name, page_number, opts = {})
+      data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_images_extract_as_jpeg_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_jpeg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_images_extract_as_jpeg"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_images_extract_as_jpeg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/extract/jpeg".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_images_extract_as_png(name, page_number, opts = {})
+      data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_images_extract_as_png_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_png ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_images_extract_as_png"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_images_extract_as_png"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/extract/png".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_images_extract_as_tiff(name, page_number, opts = {})
+      data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
+      return data
+    end
+
+    # Extract document images in format specified to folder.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_images_extract_as_tiff_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_images_extract_as_tiff"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_images_extract_as_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/extract/tiff".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
     # 
     # @param name The document name.
@@ -6278,6 +7145,486 @@ module AsposePdfCloud
         :return_type => 'SaaSposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_add_stamp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to bmp image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_page_convert_to_bmp(name, page_number, out_path, opts = {})
+      data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
+      return data
+    end
+
+    # Convert document page to bmp image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_bmp ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_page_convert_to_bmp"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_page_convert_to_bmp"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_page_convert_to_bmp"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/bmp".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_bmp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to emf image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_page_convert_to_emf(name, page_number, out_path, opts = {})
+      data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
+      return data
+    end
+
+    # Convert document page to emf image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_emf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_page_convert_to_emf"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_page_convert_to_emf"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_page_convert_to_emf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/emf".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_emf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to gif image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_page_convert_to_gif(name, page_number, out_path, opts = {})
+      data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
+      return data
+    end
+
+    # Convert document page to gif image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_gif ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_page_convert_to_gif"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_page_convert_to_gif"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_page_convert_to_gif"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/gif".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Jpeg image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_page_convert_to_jpeg(name, page_number, out_path, opts = {})
+      data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
+      return data
+    end
+
+    # Convert document page to Jpeg image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_jpeg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_page_convert_to_jpeg"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_page_convert_to_jpeg"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_page_convert_to_jpeg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/jpeg".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to png image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_page_convert_to_png(name, page_number, out_path, opts = {})
+      data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
+      return data
+    end
+
+    # Convert document page to png image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_page_convert_to_png_with_http_info(name, page_number, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_png ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_page_convert_to_png"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_page_convert_to_png"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_page_convert_to_png"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/png".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert document page to Tiff image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [SaaSposeResponse]
+    def put_page_convert_to_tiff(name, page_number, out_path, opts = {})
+      data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
+      return data
+    end
+
+    # Convert document page to Tiff image and save in storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_page_convert_to_tiff"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_page_convert_to_tiff"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_page_convert_to_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/convert/tiff".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8354,6 +9701,74 @@ module AsposePdfCloud
         :return_type => 'SaaSposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_privileges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :dst_folder The destination document folder.
+    # @return [SaaSposeResponse]
+    def put_ps_in_storage_to_pdf(name, src_path, opts = {})
+      data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      return data
+    end
+
+    # Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :dst_folder The destination document folder.
+    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    def put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_ps_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_ps_in_storage_to_pdf"
+      end
+      # verify the required parameter 'src_path' is set
+      if @api_client.config.client_side_validation && src_path.nil?
+        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.put_ps_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/create/ps".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'srcPath'] = src_path
+      query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SaaSposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_ps_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

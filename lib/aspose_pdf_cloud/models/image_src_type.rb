@@ -19,6 +19,25 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.6.0"
+  class ImageSrcType
+    
+    COMMON = "Common".freeze
+    EMF = "Emf".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = ImageSrcType.constants.select{|c| c.to_s == value}
+      constantValues = ImageSrcType.constants.select{ |const_name| ImageSrcType.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #ImageSrcType" if constantValues.empty?
+      value
+    end
+  end
+
 end
