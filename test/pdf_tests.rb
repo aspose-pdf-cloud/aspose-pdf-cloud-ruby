@@ -630,6 +630,62 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to replace document image.')
   end
 
+  def test_put_images_extract_as_jpeg
+    name = "PdfWithImages2.pdf"
+    upload_file(name)
+    page_number = 1
+
+    dest_folder = "extract_jpg"
+    opts = {
+        :dest_folder => @temp_folder + '/' + dest_folder,
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_images_extract_as_jpeg(name, page_number, opts)
+    assert(response, 'Failed to extract images as jpeg.')
+  end
+
+  def test_put_images_extract_as_tiff
+    name = "PdfWithImages2.pdf"
+    upload_file(name)
+    page_number = 1
+
+    dest_folder = "extract_tiff"
+    opts = {
+        :dest_folder => @temp_folder + '/' + dest_folder,
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_images_extract_as_tiff(name, page_number, opts)
+    assert(response, 'Failed to extract images as tiff.')
+  end
+
+  def test_put_images_extract_as_gif
+    name = "PdfWithImages2.pdf"
+    upload_file(name)
+    page_number = 1
+
+    dest_folder = "extract_gif"
+    opts = {
+        :dest_folder => @temp_folder + '/' + dest_folder,
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_images_extract_as_gif(name, page_number, opts)
+    assert(response, 'Failed to extract images as gif.')
+  end
+
+  def test_put_images_extract_as_png
+    name = "PdfWithImages2.pdf"
+    upload_file(name)
+    page_number = 1
+
+    dest_folder = "extract_png"
+    opts = {
+        :dest_folder => @temp_folder + '/' + dest_folder,
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_images_extract_as_png(name, page_number, opts)
+    assert(response, 'Failed to extract images as png.')
+  end
+
   # Links Tests
 
   def test_get_page_link_annotation_by_index
@@ -2117,6 +2173,216 @@ class PdfTests < Minitest::Test
     }
     response = @pdf_api.put_xml_in_storage_to_pdf(result_name, src_path, opts)
     assert(response, 'Failed to convert xml to pdf.')
+  end
+
+  def test_get_ps_in_storage_to_pdf
+    file_name = 'Typography.PS'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_ps_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert ps to pdf.')
+  end
+
+  def test_put_ps_in_storage_to_pdf
+    file_name = 'Typography.PS'
+    upload_file(file_name)
+    result_name = 'fromPs.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_ps_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert ps to pdf.')
+  end
+
+  def test_put_image_in_storage_to_pdf
+    data_file_1 = "33539.jpg"
+    upload_file(data_file_1)
+
+    data_file_2 = "44781.jpg"
+    upload_file(data_file_2)
+
+    result_name = "result.pdf";
+
+    image_template_1 = ImageTemplate.new
+    image_template_1.image_path = @temp_folder + '/' + data_file_1
+    image_template_1.image_src_type = ImageSrcType::COMMON
+
+    image_template_2 = ImageTemplate.new
+    image_template_2.image_path = @temp_folder + '/' + data_file_2
+    image_template_2.image_src_type = ImageSrcType::COMMON
+
+    image_templates_request = ImageTemplatesRequest.new
+    image_templates_request.is_ocr = true
+    image_templates_request.ocr_langs = "eng"
+    image_templates_request.images_list = [image_template_1, image_template_2]
+
+    opts = {
+        :dst_folder => @temp_folder
+    }
+
+    response = @pdf_api.put_image_in_storage_to_pdf(result_name, image_templates_request, opts)
+    assert(response, 'Failed to convert images to pdf.')
+  end
+
+  # Page Convert To Images Tests
+
+  def test_get_page_convert_to_tiff
+    name = "4pages.pdf"
+    upload_file(name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_convert_to_tiff(name, page_number, opts)
+    assert(response, 'Failed to convert page as tiff.')
+  end
+
+  def test_put_page_convert_to_tiff
+    name = "4pages.pdf"
+    upload_file(name)
+    result_file = "page.tiff"
+    out_path = @temp_folder + '/' + result_file
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_page_convert_to_tiff(name, page_number, out_path, opts)
+    assert(response, 'Failed to convert page as tiff.')
+  end
+
+  def test_get_page_convert_to_jpeg
+    name = "4pages.pdf"
+    upload_file(name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_convert_to_jpeg(name, page_number, opts)
+    assert(response, 'Failed to convert page as jpeg.')
+  end
+
+  def test_put_page_convert_to_jpeg
+    name = "4pages.pdf"
+    upload_file(name)
+    result_file = "page.jpeg"
+    out_path = @temp_folder + '/' + result_file
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_page_convert_to_jpeg(name, page_number, out_path, opts)
+    assert(response, 'Failed to convert page as jpeg.')
+  end
+
+  def test_get_page_convert_to_png
+    name = "4pages.pdf"
+    upload_file(name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_convert_to_png(name, page_number, opts)
+    assert(response, 'Failed to convert page as png.')
+  end
+
+  def test_put_page_convert_to_png
+    name = "4pages.pdf"
+    upload_file(name)
+    result_file = "page.png"
+    out_path = @temp_folder + '/' + result_file
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_page_convert_to_png(name, page_number, out_path, opts)
+    assert(response, 'Failed to convert page as png.')
+  end
+
+  def test_get_page_convert_to_emf
+    name = "4pages.pdf"
+    upload_file(name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_convert_to_emf(name, page_number, opts)
+    assert(response, 'Failed to convert page as emf.')
+  end
+
+  def test_put_page_convert_to_emf
+    name = "4pages.pdf"
+    upload_file(name)
+    result_file = "page.emf"
+    out_path = @temp_folder + '/' + result_file
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_page_convert_to_emf(name, page_number, out_path, opts)
+    assert(response, 'Failed to convert page as emf.')
+  end
+
+  def test_get_page_convert_to_bmp
+    name = "4pages.pdf"
+    upload_file(name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_convert_to_bmp(name, page_number, opts)
+    assert(response, 'Failed to convert page as bmp.')
+  end
+
+  def test_put_page_convert_to_bmp
+    name = "4pages.pdf"
+    upload_file(name)
+    result_file = "page.bmp"
+    out_path = @temp_folder + '/' + result_file
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_page_convert_to_bmp(name, page_number, out_path, opts)
+    assert(response, 'Failed to convert page as bmp.')
+  end
+
+  def test_get_page_convert_to_gif
+    name = "4pages.pdf"
+    upload_file(name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_convert_to_gif(name, page_number, opts)
+    assert(response, 'Failed to convert page as gif.')
+  end
+
+  def test_put_page_convert_to_gif
+    name = "4pages.pdf"
+    upload_file(name)
+    result_file = "page.gif"
+    out_path = @temp_folder + '/' + result_file
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_page_convert_to_gif(name, page_number, out_path, opts)
+    assert(response, 'Failed to convert page as gif.')
   end
 end
 
