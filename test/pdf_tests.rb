@@ -1664,7 +1664,7 @@ class PdfTests < Minitest::Test
   def test_put_pdf_in_storage_to_html
     file_name = '4pages.pdf'
     upload_file(file_name)
-    res_file = 'result.html'
+    res_file = 'result.zip'
 
     opts = {
         :folder => @temp_folder
@@ -1676,7 +1676,7 @@ class PdfTests < Minitest::Test
   def test_put_pdf_in_request_to_html
     file_name = '4pages.pdf'
 
-    res_file = 'result.html'
+    res_file = 'result.zip'
 
     opts = {
         :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
