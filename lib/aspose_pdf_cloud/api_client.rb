@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Aspose.Pdf for Cloud
+  Copyright (c) 2018 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -126,9 +126,7 @@ module AsposePdfCloud
 
       # OAuth 2.0
       req_opts[:params] = opts[:query_params]
-      if @config.access_token.nil?
-        request_token
-      end
+
       add_o_auth_token(req_opts)
 
 
@@ -412,8 +410,13 @@ module AsposePdfCloud
     end
 
 
-    # Request access and refresh tokens
-    def request_token
+    # Request access and refresh tokens if needed
+    def request_token_if_needed
+      # check token exists
+      if @config.access_token
+        return
+      end
+
       # resource path
       local_var_path = "/oauth2/token"
       url = build_request_url(local_var_path).gsub(@config.base_path, '')
@@ -429,6 +432,57 @@ module AsposePdfCloud
       form_params["grant_type"] = 'client_credentials'
       form_params["client_id"] = @config.app_sid
       form_params["client_secret"] = @config.app_key
+
+      body =  {}
+
+
+      req_opts = {
+          :headers => header_params,
+          :params => query_params,
+          :body => body
+      }
+
+
+      req_body = build_request_body(header_params, form_params, body)
+      req_opts.update :body => req_body
+
+      req_opts[:params] = query_params
+
+
+      conn = Faraday.new url, {:params => query_params, :headers => header_params} do |f|
+        f.request :multipart
+        f.request :url_encoded
+        f.adapter Faraday.default_adapter
+      end
+
+      if req_opts[:body] == {}
+        req_opts[:body] = nil
+      end
+
+
+      response = conn.post url, form_params, req_opts[:body]
+      data = JSON.parse("[#{response.body}]", :symbolize_names => true)[0]
+
+      @config.access_token = data[:access_token]
+      @config.refresh_token = data[:refresh_token]
+    end
+
+    # refresh OAuth tokens
+    def refresh_token
+      # resource path
+      local_var_path = "/oauth2/token"
+      url = build_request_url(local_var_path).gsub(@config.base_path, '')
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = select_header_content_type(['application/x-www-form-urlencoded'])
+
+      query_params = {}
+      # form parameters
+      form_params = {}
+      form_params["grant_type"] = 'refresh_token'
+      form_params["refresh_token"] = @config.refresh_token
 
       body =  {}
 

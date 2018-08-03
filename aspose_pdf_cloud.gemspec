@@ -2,7 +2,7 @@
 #
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Aspose.Pdf for Cloud
+  Copyright (c) 2018 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -28,11 +28,11 @@ Gem::Specification.new do |s|
   s.name        = "aspose_pdf_cloud"
   s.version     = AsposePdfCloud::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Aspose PDF for Cloud"]
+  s.authors     = ["Aspose PDF Cloud"]
   s.email       = [""]
   s.homepage    = "https://products.aspose.cloud/pdf/cloud"
-  s.summary     = %q{Aspose.PDF for Cloud}
-  s.description = %q{Aspose.PDF for Cloud is a REST API for creating and editing PDF files. It can also be used to convert PDF files to different formats like DOC, HTML, XPS, TIFF and many more. Aspose.Pdf for Cloud gives you control: create PDFs from scratch or from HTML, XML, template, database, XPS or an image. Render PDFs to image formats such as JPEG, PNG, GIF, BMP, TIFF and many others. Aspose.Pdf for Cloud helps you manipulate elements of a PDF file like text, annotations, watermarks, signatures, bookmarks, stamps and so on. Its REST API also allows you to manage PDF pages by using features like merging, splitting, and inserting. Add images to a PDF file or convert PDF pages to images.}
+  s.summary     = %q{Aspose.PDF Cloud}
+  s.description = %q{Aspose.PDF Cloud is a REST API for creating and editing PDF files. It can also be used to convert PDF files to different formats like DOC, HTML, XPS, TIFF and many more. Aspose.PDF Cloud gives you control: create PDFs from scratch or from HTML, XML, template, database, XPS or an image. Render PDFs to image formats such as JPEG, PNG, GIF, BMP, TIFF and many others. Aspose.PDF Cloud helps you manipulate elements of a PDF file like text, annotations, watermarks, signatures, bookmarks, stamps and so on. Its REST API also allows you to manage PDF pages by using features like merging, splitting, and inserting. Add images to a PDF file or convert PDF pages to images.}
   s.license     = "MIT"
 
   s.required_ruby_version = ">= 1.9"

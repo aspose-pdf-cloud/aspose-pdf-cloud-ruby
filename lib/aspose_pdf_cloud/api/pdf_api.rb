@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Aspose.Pdf for Cloud
+  Copyright (c) 2018 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -41,7 +41,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def delete_field(name, field_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -111,7 +119,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def delete_page(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = delete_page_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_page_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -180,7 +196,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [SaaSposeResponse]
     def delete_properties(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = delete_properties_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_properties_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -245,7 +269,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [SaaSposeResponse]
     def delete_property(name, property_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = delete_property_with_http_info(name, property_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_property_with_http_info(name, property_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -316,7 +348,15 @@ module AsposePdfCloud
     # @option opts [String] :out_path Path to save result
     # @return [File]
     def get_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -385,7 +425,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [AttachmentResponse]
     def get_document_attachment_by_index(name, attachment_index, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_attachment_by_index_with_http_info(name, attachment_index, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_attachment_by_index_with_http_info(name, attachment_index, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -454,7 +502,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [AttachmentsResponse]
     def get_document_attachments(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_attachments_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_attachments_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -519,7 +575,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_document_bookmarks(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -585,7 +649,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [DocumentPropertiesResponse]
     def get_document_properties(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_properties_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_properties_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -650,7 +722,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [DocumentPropertyResponse]
     def get_document_property(name, property_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_property_with_http_info(name, property_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_property_with_http_info(name, property_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -719,7 +799,15 @@ module AsposePdfCloud
     # @option opts [String] :storage User&#39;s storage name
     # @return [File]
     def get_download(path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_download_with_http_info(path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_download_with_http_info(path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -785,7 +873,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_download_document_attachment_by_index(name, attachment_index, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_download_document_attachment_by_index_with_http_info(name, attachment_index, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_download_document_attachment_by_index_with_http_info(name, attachment_index, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -852,7 +948,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_epub_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_epub_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_epub_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -914,7 +1018,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [FieldResponse]
     def get_field(name, field_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_field_with_http_info(name, field_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_field_with_http_info(name, field_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -983,7 +1095,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [FieldsResponse]
     def get_fields(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_fields_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_fields_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1050,7 +1170,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextItemsResponse]
     def get_fragment(name, page_number, fragment_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_fragment_with_http_info(name, page_number, fragment_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_fragment_with_http_info(name, page_number, fragment_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1128,7 +1256,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextFormatResponse]
     def get_fragment_text_format(name, page_number, fragment_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_fragment_text_format_with_http_info(name, page_number, fragment_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_fragment_text_format_with_http_info(name, page_number, fragment_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1204,7 +1340,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextItemsResponse]
     def get_fragments(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_fragments_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_fragments_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1281,7 +1425,15 @@ module AsposePdfCloud
     # @option opts [Float] :margin_top Page margin top
     # @return [File]
     def get_html_in_storage_to_pdf(src_path, html_file_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1367,7 +1519,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_image(name, page_number, image_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_image_with_http_info(name, page_number, image_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_image_with_http_info(name, page_number, image_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1448,7 +1608,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [ImagesResponse]
     def get_images(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_images_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_images_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1515,7 +1683,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_la_te_x_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1574,7 +1750,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_mht_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1639,7 +1823,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1716,7 +1908,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [AnnotationResponse]
     def get_page_annotation(name, page_number, annotation_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_annotation_with_http_info(name, page_number, annotation_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_annotation_with_http_info(name, page_number, annotation_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1791,7 +1991,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [AnnotationsResponse]
     def get_page_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1862,7 +2070,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page_convert_to_bmp(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -1935,7 +2151,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page_convert_to_emf(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2008,7 +2232,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page_convert_to_gif(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2081,7 +2313,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page_convert_to_jpeg(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2154,7 +2394,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page_convert_to_png(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2227,7 +2475,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_page_convert_to_tiff(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2300,7 +2556,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [LinkAnnotationResponse]
     def get_page_link_annotation_by_index(name, page_number, link_index, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2375,7 +2639,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [LinkAnnotationsResponse]
     def get_page_link_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_link_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_link_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2451,7 +2723,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [TextRectsResponse]
     def get_page_text(name, page_number, x, y, width, height, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_text_with_http_info(name, page_number, x, y, width, height, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_text_with_http_info(name, page_number, x, y, width, height, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2550,7 +2830,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextItemsResponse]
     def get_page_text_items(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_text_items_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_text_items_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2621,7 +2909,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [DocumentPagesResponse]
     def get_pages(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pages_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pages_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2683,7 +2979,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_pcl_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pcl_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pcl_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2751,7 +3055,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_doc(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2829,7 +3141,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_epub(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -2920,7 +3240,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_html(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3038,7 +3366,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_la_te_x(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3101,7 +3437,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_mobi_xml(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3163,7 +3507,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_pdf_a(name, type, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3232,7 +3584,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_pptx(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3298,7 +3658,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_svg(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3376,7 +3744,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_tiff(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3471,7 +3847,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_xls(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3540,7 +3924,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_xml(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3601,7 +3993,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_pdf_in_storage_to_xps(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3661,7 +4061,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_ps_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3725,7 +4133,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextItemResponse]
     def get_segment(name, page_number, fragment_number, segment_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_segment_with_http_info(name, page_number, fragment_number, segment_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_segment_with_http_info(name, page_number, fragment_number, segment_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3807,7 +4223,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextFormatResponse]
     def get_segment_text_format(name, page_number, fragment_number, segment_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3889,7 +4313,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextItemsResponse]
     def get_segments(name, page_number, fragment_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_segments_with_http_info(name, page_number, fragment_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_segments_with_http_info(name, page_number, fragment_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -3971,7 +4403,15 @@ module AsposePdfCloud
     # @option opts [Float] :margin_top Page margin top
     # @return [File]
     def get_svg_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_svg_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_svg_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4054,7 +4494,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [TextRectsResponse]
     def get_text(name, x, y, width, height, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_text_with_http_info(name, x, y, width, height, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_text_with_http_info(name, x, y, width, height, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4147,7 +4595,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextItemsResponse]
     def get_text_items(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_text_items_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_text_items_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4213,7 +4669,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SignatureVerifyResponse]
     def get_verify_signature(name, sign_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4286,7 +4750,15 @@ module AsposePdfCloud
     # @option opts [Float] :margin_top Page margin top
     # @return [File]
     def get_web_in_storage_to_pdf(url, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_web_in_storage_to_pdf_with_http_info(url, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_web_in_storage_to_pdf_with_http_info(url, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4361,7 +4833,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [WordCountResponse]
     def get_words_per_page(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_words_per_page_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_words_per_page_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4424,7 +4904,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [File]
     def get_xfa_pdf_in_storage_to_acro_form(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4485,7 +4973,15 @@ module AsposePdfCloud
     # @option opts [String] :xsl_file_path Full XSL source filename (ex. /folder1/folder2/template.xsl)
     # @return [File]
     def get_xml_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_xml_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_xml_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4546,7 +5042,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_xps_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_xps_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_xps_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4605,7 +5109,15 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @return [File]
     def get_xsl_fo_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4670,7 +5182,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The original document folder.
     # @return [DocumentResponse]
     def post_append_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_append_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_append_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4742,7 +5262,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def post_create_field(name, page, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_create_field_with_http_info(name, page, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_create_field_with_http_info(name, page, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4813,7 +5341,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [DocumentTextReplaceResponse]
     def post_document_replace_text(name, text_replace, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_document_replace_text_with_http_info(name, text_replace, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_replace_text_with_http_info(name, text_replace, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4882,7 +5418,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [DocumentTextReplaceResponse]
     def post_document_replace_text_list(name, text_replace_list_request, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_document_replace_text_list_with_http_info(name, text_replace_list_request, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_replace_text_list_with_http_info(name, text_replace_list_request, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -4951,7 +5495,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextReplaceResponse]
     def post_document_text_replace(name, text_replace, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_document_text_replace_with_http_info(name, text_replace, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_text_replace_with_http_info(name, text_replace, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5021,7 +5573,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def post_move_page(name, page_number, new_index, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_move_page_with_http_info(name, page_number, new_index, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_move_page_with_http_info(name, page_number, new_index, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5097,7 +5657,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def post_optimize_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_optimize_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_optimize_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5163,7 +5731,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [PageTextReplaceResponse]
     def post_page_replace_text(name, page_number, text_replace, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_page_replace_text_with_http_info(name, page_number, text_replace, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_replace_text_with_http_info(name, page_number, text_replace, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5238,7 +5814,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [PageTextReplaceResponse]
     def post_page_replace_text_list(name, page_number, text_replace_list_request, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5313,7 +5897,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [TextReplaceResponse]
     def post_page_text_replace(name, page_number, text_replace_list_request, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_page_text_replace_with_http_info(name, page_number, text_replace_list_request, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_text_replace_with_http_info(name, page_number, text_replace_list_request, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5390,7 +5982,15 @@ module AsposePdfCloud
     # @option opts [File] :image Image file.
     # @return [ImageResponse]
     def post_replace_image(name, page_number, image_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_replace_image_with_http_info(name, page_number, image_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_replace_image_with_http_info(name, page_number, image_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5470,7 +6070,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def post_sign_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_sign_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_sign_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5536,7 +6144,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def post_sign_page(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_sign_page_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_sign_page_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5608,7 +6224,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SplitResultResponse]
     def post_split_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = post_split_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = post_split_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5678,7 +6302,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [DocumentPagesResponse]
     def put_add_new_page(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_add_new_page_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_add_new_page_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5744,7 +6376,15 @@ module AsposePdfCloud
     # @option opts [String] :folder Document folder.
     # @return [SaaSposeResponse]
     def put_add_paragraph(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_add_paragraph_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_add_paragraph_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5814,7 +6454,15 @@ module AsposePdfCloud
     # @option opts [String] :folder Document folder.
     # @return [SaaSposeResponse]
     def put_add_text(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_add_text_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_add_text_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5882,7 +6530,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [File]
     def put_convert_document(opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_convert_document_with_http_info(opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_convert_document_with_http_info(opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -5947,7 +6603,15 @@ module AsposePdfCloud
     # @option opts [String] :storage User&#39;s storage name
     # @return [SaaSposeResponse]
     def put_create(path, file, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_create_with_http_info(path, file, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_create_with_http_info(path, file, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6025,7 +6689,15 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :fit_size Draw a margin around content in resulting pdf. (default to false)
     # @return [DocumentResponse]
     def put_create_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_create_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_create_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6102,7 +6774,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The new document folder.
     # @return [DocumentResponse]
     def put_create_document_from_images(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_create_document_from_images_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_create_document_from_images_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6187,7 +6867,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_document_save_as_tiff(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_document_save_as_tiff_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_document_save_as_tiff_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6283,7 +6971,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_epub_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6351,7 +7047,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_fields_flatten(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6423,7 +7127,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_html_in_storage_to_pdf(name, src_path, html_file_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6511,7 +7223,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_image_in_storage_to_pdf(name, image_templates, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6580,7 +7300,15 @@ module AsposePdfCloud
     # @option opts [String] :dest_folder The document folder.
     # @return [SaaSposeResponse]
     def put_images_extract_as_gif(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6656,7 +7384,15 @@ module AsposePdfCloud
     # @option opts [String] :dest_folder The document folder.
     # @return [SaaSposeResponse]
     def put_images_extract_as_jpeg(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6732,7 +7468,15 @@ module AsposePdfCloud
     # @option opts [String] :dest_folder The document folder.
     # @return [SaaSposeResponse]
     def put_images_extract_as_png(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6808,7 +7552,15 @@ module AsposePdfCloud
     # @option opts [String] :dest_folder The document folder.
     # @return [SaaSposeResponse]
     def put_images_extract_as_tiff(name, page_number, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6881,7 +7633,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_la_te_x_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -6950,7 +7710,15 @@ module AsposePdfCloud
     # @option opts [String] :folder Resulting document folder.
     # @return [DocumentResponse]
     def put_merge_documents(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_merge_documents_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_merge_documents_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7014,7 +7782,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_mht_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7084,7 +7860,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_add_stamp(name, page_number, stamp, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_add_stamp_with_http_info(name, page_number, stamp, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_add_stamp_with_http_info(name, page_number, stamp, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7160,7 +7944,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_convert_to_bmp(name, page_number, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7240,7 +8032,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_convert_to_emf(name, page_number, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7320,7 +8120,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_convert_to_gif(name, page_number, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7400,7 +8208,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_convert_to_jpeg(name, page_number, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7480,7 +8296,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_convert_to_png(name, page_number, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7560,7 +8384,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_page_convert_to_tiff(name, page_number, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7637,7 +8469,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_pcl_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7712,7 +8552,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_doc(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7792,7 +8640,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_epub(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -7885,7 +8741,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_html(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8005,7 +8869,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_la_te_x(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8070,7 +8942,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_mobi_xml(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8134,7 +9014,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_pdf_a(out_path, type, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8205,7 +9093,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_pptx(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8273,7 +9169,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_svg(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8353,7 +9257,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_tiff(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8450,7 +9362,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_xls(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8521,7 +9441,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_xml(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8584,7 +9512,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_pdf_in_request_to_xps(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8656,7 +9592,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_doc(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8741,7 +9685,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_epub(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8839,7 +9791,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_html(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -8964,7 +9924,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_la_te_x(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9034,7 +10002,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_mobi_xml(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9103,7 +10079,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_pdf_a(name, out_path, type, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9179,7 +10163,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_pptx(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9252,7 +10244,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_svg(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9337,7 +10337,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_tiff(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9439,7 +10447,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_xls(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9515,7 +10531,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_xml(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9583,7 +10607,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_pdf_in_storage_to_xps(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9651,7 +10683,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_privileges(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_privileges_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_privileges_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9713,7 +10753,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_ps_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9782,7 +10830,15 @@ module AsposePdfCloud
     # @option opts [String] :lang language for OCR engine. Possible values: eng, ara, bel, ben, bul, ces, dan, deu, ell, fin, fra, heb, hin, ind, isl, ita, jpn, kor, nld, nor, pol, por, ron, rus, spa, swe, tha, tur, ukr, vie, chi_sim, chi_tra or thier combination e.g. eng,rus 
     # @return [SaaSposeResponse]
     def put_searchable_document(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_searchable_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_searchable_document_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9850,7 +10906,15 @@ module AsposePdfCloud
     # @option opts [String] :folder 
     # @return [DocumentPropertyResponse]
     def put_set_property(name, property_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_set_property_with_http_info(name, property_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_set_property_with_http_info(name, property_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -9927,7 +10991,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_svg_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10013,7 +11085,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [FieldResponse]
     def put_update_field(name, field_name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_update_field_with_http_info(name, field_name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_update_field_with_http_info(name, field_name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10083,7 +11163,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [FieldsResponse]
     def put_update_fields(name, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_update_fields_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_update_fields_with_http_info(name, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10154,7 +11242,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_web_in_storage_to_pdf(name, url, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_web_in_storage_to_pdf_with_http_info(name, url, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_web_in_storage_to_pdf_with_http_info(name, url, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10235,7 +11331,15 @@ module AsposePdfCloud
     # @option opts [File] :file A file to be converted.
     # @return [SaaSposeResponse]
     def put_xfa_pdf_in_request_to_acro_form(out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10299,7 +11403,15 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @return [SaaSposeResponse]
     def put_xfa_pdf_in_storage_to_acro_form(name, out_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10368,7 +11480,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_xml_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10438,7 +11558,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_xps_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
@@ -10506,7 +11634,15 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @return [SaaSposeResponse]
     def put_xsl_fo_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
       data, _status_code, _headers = put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == HttpStatusCode::UNAUTHORIZED
+          @api_client.refresh_token
+          data, _status_code, _headers = put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
       return data
     end
 
