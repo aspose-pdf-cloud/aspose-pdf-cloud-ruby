@@ -23,22 +23,23 @@ require 'date'
 
 module AsposePdfCloud
   class HorizontalAlignment
-
-    NONE = 0.freeze
-    LEFT = 1.freeze
-    CENTER = 2.freeze
-    RIGHT = 3.freeze
+    
+    NONE = "None".freeze
+    LEFT = "Left".freeze
+    CENTER = "Center".freeze
+    RIGHT = "Right".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = HorizontalAlignment.constants.select{|c| c.to_s == value}
       constantValues = HorizontalAlignment.constants.select{ |const_name| HorizontalAlignment.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #HorizontalAlignment" if constantValues.empty?
       value
-      #constantValues[0]
     end
-
   end
 
 end

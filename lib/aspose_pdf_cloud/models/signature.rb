@@ -94,7 +94,7 @@ module AsposePdfCloud
         :'contact' => :'String',
         :'location' => :'String',
         :'visible' => :'BOOLEAN',
-        :'rectangle' => :'Rectangle',
+        :'rectangle' => :'RectanglePdf',
         :'form_field_name' => :'String',
         :'authority' => :'String',
         :'date' => :'String',
@@ -168,6 +168,10 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @signature_path.nil?
+        invalid_properties.push("invalid value for 'signature_path', signature_path cannot be nil.")
+      end
+
       if @signature_type.nil?
         invalid_properties.push("invalid value for 'signature_type', signature_type cannot be nil.")
       end
@@ -186,6 +190,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @signature_path.nil?
       return false if @signature_type.nil?
       return false if @visible.nil?
       return false if @show_properties.nil?

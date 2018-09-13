@@ -51,7 +51,7 @@ module AsposePdfCloud
         :'links' => :'Array<Link>',
         :'id' => :'Integer',
         :'images' => :'Images',
-        :'rectangle' => :'Rectangle'
+        :'rectangle' => :'RectanglePdf'
       }
     end
 

@@ -23,22 +23,23 @@ require 'date'
 
 module AsposePdfCloud
   class FieldType
-
-    TEXT = 0.freeze
-    INTEGER = 1.freeze
-    BOOLEAN = 2.freeze
-    LIST = 3.freeze
+    
+    TEXT = "Text".freeze
+    INTEGER = "Integer".freeze
+    BOOLEAN = "Boolean".freeze
+    LIST = "List".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = FieldType.constants.select{|c| c.to_s == value}
       constantValues = FieldType.constants.select{ |const_name| FieldType.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #FieldType" if constantValues.empty?
       value
-      #constantValues[0]
     end
-
   end
 
 end

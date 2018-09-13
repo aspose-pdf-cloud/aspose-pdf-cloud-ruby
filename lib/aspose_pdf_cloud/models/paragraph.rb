@@ -77,7 +77,7 @@ module AsposePdfCloud
         :'right_margin' => :'Float',
         :'top_margin' => :'Float',
         :'bottom_margin' => :'Float',
-        :'rectangle' => :'Rectangle',
+        :'rectangle' => :'RectanglePdf',
         :'rotation' => :'Float',
         :'subsequent_lines_indent' => :'Float',
         :'vertical_alignment' => :'VerticalAlignment',

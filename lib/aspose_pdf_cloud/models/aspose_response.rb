@@ -22,34 +22,28 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
-  # Represents rectangle DTO.
-  class Rectangle
-    attr_accessor :x
+  # Base class for all responses.
+  class AsposeResponse
+    # Response status code.
+    attr_accessor :code
 
-    attr_accessor :y
-
-    attr_accessor :width
-
-    attr_accessor :height
+    # Response status.
+    attr_accessor :status
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'x' => :'X',
-        :'y' => :'Y',
-        :'width' => :'Width',
-        :'height' => :'Height'
+        :'code' => :'Code',
+        :'status' => :'Status'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'x' => :'Integer',
-        :'y' => :'Integer',
-        :'width' => :'Integer',
-        :'height' => :'Integer'
+        :'code' => :'Integer',
+        :'status' => :'String'
       }
     end
 
@@ -61,20 +55,12 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'X')
-        self.x = attributes[:'X']
+      if attributes.has_key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.has_key?(:'Y')
-        self.y = attributes[:'Y']
-      end
-
-      if attributes.has_key?(:'Width')
-        self.width = attributes[:'Width']
-      end
-
-      if attributes.has_key?(:'Height')
-        self.height = attributes[:'Height']
+      if attributes.has_key?(:'Status')
+        self.status = attributes[:'Status']
       end
 
     end
@@ -83,20 +69,8 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @x.nil?
-        invalid_properties.push("invalid value for 'x', x cannot be nil.")
-      end
-
-      if @y.nil?
-        invalid_properties.push("invalid value for 'y', y cannot be nil.")
-      end
-
-      if @width.nil?
-        invalid_properties.push("invalid value for 'width', width cannot be nil.")
-      end
-
-      if @height.nil?
-        invalid_properties.push("invalid value for 'height', height cannot be nil.")
+      if @code.nil?
+        invalid_properties.push("invalid value for 'code', code cannot be nil.")
       end
 
       return invalid_properties
@@ -105,10 +79,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @x.nil?
-      return false if @y.nil?
-      return false if @width.nil?
-      return false if @height.nil?
+      return false if @code.nil?
       return true
     end
 
@@ -117,10 +88,8 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          x == o.x &&
-          y == o.y &&
-          width == o.width &&
-          height == o.height
+          code == o.code &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -132,7 +101,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [x, y, width, height].hash
+      [code, status].hash
     end
 
     # Builds the object from hash

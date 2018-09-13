@@ -23,19 +23,21 @@ require 'date'
 
 module AsposePdfCloud
   class SignatureType
-
-    PKCS_1 = 0.freeze
-    PKCS_7 = 1.freeze
-    PKCS_7_DETACHED = 2.freeze
+    
+    PKCS1 = "PKCS1".freeze
+    PKCS7 = "PKCS7".freeze
+    PKCS7_DETACHED = "PKCS7Detached".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = SignatureType.constants.select{|c| c.to_s == value}
       constantValues = SignatureType.constants.select{ |const_name| SignatureType.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #SignatureType" if constantValues.empty?
       value
-      #constantValues[0]
     end
   end
 

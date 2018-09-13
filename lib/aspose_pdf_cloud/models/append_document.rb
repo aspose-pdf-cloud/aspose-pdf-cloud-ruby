@@ -78,6 +78,10 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @document.nil?
+        invalid_properties.push("invalid value for 'document', document cannot be nil.")
+      end
+
       if @start_page.nil?
         invalid_properties.push("invalid value for 'start_page', start_page cannot be nil.")
       end
@@ -92,6 +96,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @document.nil?
       return false if @start_page.nil?
       return false if @end_page.nil?
       return true

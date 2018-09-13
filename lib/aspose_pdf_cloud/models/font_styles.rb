@@ -23,21 +23,23 @@ require 'date'
 
 module AsposePdfCloud
   class FontStyles
-
-    REGULAR = 0.freeze
-    BOLD = 1.freeze
-    ITALIC = 2.freeze
+    
+    REGULAR = "Regular".freeze
+    BOLD = "Bold".freeze
+    ITALIC = "Italic".freeze
+    BOLD_ITALIC = "BoldItalic".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = FontStyles.constants.select{|c| c.to_s == value}
       constantValues = FontStyles.constants.select{ |const_name| FontStyles.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #FontStyles" if constantValues.empty?
       value
-      #constantValues[0]
     end
-
   end
 
 end

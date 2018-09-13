@@ -23,14 +23,12 @@ require 'date'
 
 module AsposePdfCloud
 
-  class PageTextReplaceResponse
+  class DocumentPageResponse
     # Response status code.
     attr_accessor :code
 
     # Response status.
     attr_accessor :status
-
-    attr_accessor :matches
 
     attr_accessor :page
 
@@ -40,7 +38,6 @@ module AsposePdfCloud
       {
         :'code' => :'Code',
         :'status' => :'Status',
-        :'matches' => :'Matches',
         :'page' => :'Page'
       }
     end
@@ -48,9 +45,8 @@ module AsposePdfCloud
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'HttpStatusCode',
+        :'code' => :'Integer',
         :'status' => :'String',
-        :'matches' => :'Integer',
         :'page' => :'Page'
       }
     end
@@ -69,10 +65,6 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'Status')
         self.status = attributes[:'Status']
-      end
-
-      if attributes.has_key?(:'Matches')
-        self.matches = attributes[:'Matches']
       end
 
       if attributes.has_key?(:'Page')
@@ -106,7 +98,6 @@ module AsposePdfCloud
       self.class == o.class &&
           code == o.code &&
           status == o.status &&
-          matches == o.matches &&
           page == o.page
     end
 
@@ -119,7 +110,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, matches, page].hash
+      [code, status, page].hash
     end
 
     # Builds the object from hash

@@ -33,13 +33,25 @@ module AsposePdfCloud
     # Gets height of the image.
     attr_accessor :height
 
+    # Gets ID of the image.
+    attr_accessor :id
+
+    # Gets rectangle of the image.
+    attr_accessor :rectangle
+
+    # Gets page number.
+    attr_accessor :page_number
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
         :'width' => :'Width',
-        :'height' => :'Height'
+        :'height' => :'Height',
+        :'id' => :'Id',
+        :'rectangle' => :'Rectangle',
+        :'page_number' => :'PageNumber'
       }
     end
 
@@ -48,7 +60,10 @@ module AsposePdfCloud
       {
         :'links' => :'Array<Link>',
         :'width' => :'Integer',
-        :'height' => :'Integer'
+        :'height' => :'Integer',
+        :'id' => :'String',
+        :'rectangle' => :'RectanglePdf',
+        :'page_number' => :'Integer'
       }
     end
 
@@ -74,6 +89,18 @@ module AsposePdfCloud
         self.height = attributes[:'Height']
       end
 
+      if attributes.has_key?(:'Id')
+        self.id = attributes[:'Id']
+      end
+
+      if attributes.has_key?(:'Rectangle')
+        self.rectangle = attributes[:'Rectangle']
+      end
+
+      if attributes.has_key?(:'PageNumber')
+        self.page_number = attributes[:'PageNumber']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -96,7 +123,10 @@ module AsposePdfCloud
       self.class == o.class &&
           links == o.links &&
           width == o.width &&
-          height == o.height
+          height == o.height &&
+          id == o.id &&
+          rectangle == o.rectangle &&
+          page_number == o.page_number
     end
 
     # @see the `==` method
@@ -108,7 +138,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, width, height].hash
+      [links, width, height, id, rectangle, page_number].hash
     end
 
     # Builds the object from hash

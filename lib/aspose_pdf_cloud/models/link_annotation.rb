@@ -35,6 +35,10 @@ module AsposePdfCloud
 
     attr_accessor :color
 
+    attr_accessor :rect
+
+    attr_accessor :id
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -43,7 +47,9 @@ module AsposePdfCloud
         :'action_type' => :'ActionType',
         :'action' => :'Action',
         :'highlighting' => :'Highlighting',
-        :'color' => :'Color'
+        :'color' => :'Color',
+        :'rect' => :'Rect',
+        :'id' => :'Id'
       }
     end
 
@@ -54,7 +60,9 @@ module AsposePdfCloud
         :'action_type' => :'LinkActionType',
         :'action' => :'String',
         :'highlighting' => :'LinkHighlightingMode',
-        :'color' => :'Color'
+        :'color' => :'Color',
+        :'rect' => :'RectanglePdf',
+        :'id' => :'String'
       }
     end
 
@@ -88,6 +96,14 @@ module AsposePdfCloud
         self.color = attributes[:'Color']
       end
 
+      if attributes.has_key?(:'Rect')
+        self.rect = attributes[:'Rect']
+      end
+
+      if attributes.has_key?(:'Id')
+        self.id = attributes[:'Id']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +128,9 @@ module AsposePdfCloud
           action_type == o.action_type &&
           action == o.action &&
           highlighting == o.highlighting &&
-          color == o.color
+          color == o.color &&
+          rect == o.rect &&
+          id == o.id
     end
 
     # @see the `==` method
@@ -124,7 +142,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, action_type, action, highlighting, color].hash
+      [links, action_type, action, highlighting, color, rect, id].hash
     end
 
     # Builds the object from hash
