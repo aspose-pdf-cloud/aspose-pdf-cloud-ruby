@@ -23,24 +23,25 @@ require 'date'
 
 module AsposePdfCloud
   class LinkActionType
-
-    GO_TO_ACTION = 0.freeze
-    GO_TO_URI_ACTION = 1.freeze
-    JAVASCRIPT_ACTION = 2.freeze
-    LAUNCH_ACTION = 3.freeze
-    NAMED_ACTION = 4.freeze
-    SUBMIT_FORM_ACTION = 5.freeze
+    
+    GO_TO_ACTION = "GoToAction".freeze
+    GO_TO_URI_ACTION = "GoToURIAction".freeze
+    JAVASCRIPT_ACTION = "JavascriptAction".freeze
+    LAUNCH_ACTION = "LaunchAction".freeze
+    NAMED_ACTION = "NamedAction".freeze
+    SUBMIT_FORM_ACTION = "SubmitFormAction".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = LinkActionType.constants.select{|c| c.to_s == value}
       constantValues = LinkActionType.constants.select{ |const_name| LinkActionType.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #LinkActionType" if constantValues.empty?
       value
-      #constantValues[0]
     end
-
   end
 
 end

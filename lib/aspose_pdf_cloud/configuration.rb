@@ -36,9 +36,6 @@ module AsposePdfCloud
     # Defines url host
     attr_accessor :host
 
-    # Defines url base path
-    attr_accessor :base_path
-
     # Defines the access token (Bearer) used with OAuth2.
     attr_accessor :access_token
 
@@ -123,7 +120,6 @@ module AsposePdfCloud
     def initialize
       @scheme = 'https'
       @host = 'api.aspose.cloud'
-      @base_path = '/v1.1'
       @timeout = 5 * 60
       @client_side_validation = true
       @verify_ssl = true
@@ -158,14 +154,8 @@ module AsposePdfCloud
       @host = host.sub(/https?:\/\//, '').split('/').first
     end
 
-    def base_path=(base_path)
-      # Add leading and trailing slashes to base_path
-      @base_path = "/#{base_path}".gsub(/\/+/, '/')
-      @base_path = "" if @base_path == "/"
-    end
-
     def base_url
-      url = "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
+      url = "#{scheme}://#{[host, '/v2.0'].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
       URI.encode(url)
     end
 

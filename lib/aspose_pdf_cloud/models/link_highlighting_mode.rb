@@ -23,23 +23,24 @@ require 'date'
 
 module AsposePdfCloud
   class LinkHighlightingMode
-
-    NONE = 0.freeze
-    INVERT = 1.freeze
-    OUTLINE = 2.freeze
-    PUSH = 3.freeze
-    TOGGLE = 4.freeze
+    
+    NONE = "None".freeze
+    INVERT = "Invert".freeze
+    OUTLINE = "Outline".freeze
+    PUSH = "Push".freeze
+    TOGGLE = "Toggle".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = LinkHighlightingMode.constants.select{|c| c.to_s == value}
       constantValues = LinkHighlightingMode.constants.select{ |const_name| LinkHighlightingMode.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #LinkHighlightingMode" if constantValues.empty?
       value
-      #constantValues[0]
     end
-
   end
 
 end

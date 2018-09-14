@@ -45,7 +45,7 @@ module AsposePdfCloud
       {
         :'text' => :'String',
         :'page' => :'Integer',
-        :'rect' => :'Rectangle'
+        :'rect' => :'RectanglePdf'
       }
     end
 

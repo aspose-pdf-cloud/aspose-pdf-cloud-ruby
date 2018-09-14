@@ -45,7 +45,7 @@ module AsposePdfCloud
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'HttpStatusCode',
+        :'code' => :'Integer',
         :'status' => :'String',
         :'fields' => :'Fields'
       }

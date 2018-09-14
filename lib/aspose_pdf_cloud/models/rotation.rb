@@ -23,22 +23,23 @@ require 'date'
 
 module AsposePdfCloud
   class Rotation
-
-    NONE = 0.freeze
-    ON_90 = 1.freeze
-    ON_180 = 2.freeze
-    ON_270 = 3.freeze
+    
+    NONE = "None".freeze
+    ON90 = "on90".freeze
+    ON180 = "on180".freeze
+    ON270 = "on270".freeze
 
     # Builds the enum from string
-    # @param [Fixnum] The enum value in the form of the string
-    # @return [Fixnum] The enum value
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
     def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = Rotation.constants.select{|c| c.to_s == value}
       constantValues = Rotation.constants.select{ |const_name| Rotation.const_get(const_name) == value}
+      
       raise "Invalid ENUM value #{value} for class #Rotation" if constantValues.empty?
       value
-      #constantValues[0]
     end
-
   end
 
 end

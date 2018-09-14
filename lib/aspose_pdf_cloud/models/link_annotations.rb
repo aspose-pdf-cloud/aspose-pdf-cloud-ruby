@@ -42,7 +42,7 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
-        :'list' => :'Array<LinkElement>'
+        :'list' => :'Array<LinkAnnotation>'
       }
     end
 

@@ -419,7 +419,7 @@ module AsposePdfCloud
 
       # resource path
       local_var_path = "/oauth2/token"
-      url = build_request_url(local_var_path).gsub(@config.base_path, '')
+      url = build_request_url(local_var_path).gsub('/v2.0', '')
 
       # header parameters
       header_params = {}
@@ -471,7 +471,7 @@ module AsposePdfCloud
     def refresh_token
       # resource path
       local_var_path = "/oauth2/token"
-      url = build_request_url(local_var_path).gsub(@config.base_path, '')
+      url = build_request_url(local_var_path).gsub('/v2.0', '')
 
       # header parameters
       header_params = {}

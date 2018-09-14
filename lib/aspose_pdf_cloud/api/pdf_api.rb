@@ -32,6 +32,78 @@ module AsposePdfCloud
     end
 
 
+    # Delete all link annotations from the document
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_document_link_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_document_link_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_document_link_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete all link annotations from the document
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_document_link_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_document_link_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_document_link_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/links".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_document_link_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete document field by name.
     # 
     # @param name The document name.
@@ -39,12 +111,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def delete_field(name, field_name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
         else
@@ -60,7 +132,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_field_with_http_info(name, field_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.delete_field ..."
@@ -103,9 +175,165 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#delete_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete image from document page.
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_image(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_image_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_image_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete image from document page.
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_image_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_image ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_image"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.delete_image"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete document page link annotation by ID
+    # 
+    # @param name The document name.
+    # @param link_id The link ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_link_annotation(name, link_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_link_annotation_with_http_info(name, link_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_link_annotation_with_http_info(name, link_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete document page link annotation by ID
+    # 
+    # @param name The document name.
+    # @param link_id The link ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_link_annotation_with_http_info(name, link_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_link_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_link_annotation"
+      end
+      # verify the required parameter 'link_id' is set
+      if @api_client.config.client_side_validation && link_id.nil?
+        fail ArgumentError, "Missing the required parameter 'link_id' when calling PdfApi.delete_link_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/links/{linkId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'linkId' + '}', link_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_link_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -117,12 +345,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def delete_page(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = delete_page_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = delete_page_with_http_info(name, page_number, opts)
         else
@@ -138,7 +366,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_page_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.delete_page ..."
@@ -181,9 +409,87 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#delete_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete all link annotations from the page
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_page_link_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_page_link_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_page_link_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete all link annotations from the page
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_page_link_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_page_link_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_page_link_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.delete_page_link_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/links".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_page_link_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -194,12 +500,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage 
     # @option opts [String] :folder 
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def delete_properties(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = delete_properties_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = delete_properties_with_http_info(name, opts)
         else
@@ -214,7 +520,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage 
     # @option opts [String] :folder 
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_properties_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.delete_properties ..."
@@ -253,7 +559,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#delete_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -267,12 +573,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage 
     # @option opts [String] :folder 
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def delete_property(name, property_name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = delete_property_with_http_info(name, property_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = delete_property_with_http_info(name, property_name, opts)
         else
@@ -288,7 +594,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage 
     # @option opts [String] :folder 
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_property_with_http_info(name, property_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.delete_property ..."
@@ -331,27 +637,25 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#delete_property\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Read common document info or convert to some format if the format specified.
+    # Read common document info.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :format The format to convert.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @option opts [String] :out_path Path to save result
-    # @return [File]
+    # @return [DocumentResponse]
     def get_document(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_document_with_http_info(name, opts)
         else
@@ -360,15 +664,13 @@ module AsposePdfCloud
       return data
     end
 
-    # Read common document info or convert to some format if the format specified.
+    # Read common document info.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :format The format to convert.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @option opts [String] :out_path Path to save result
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(DocumentResponse, Fixnum, Hash)>] DocumentResponse data, response status code and response headers
     def get_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_document ..."
@@ -382,10 +684,8 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-      query_params[:'outPath'] = opts[:'out_path'] if !opts[:'out_path'].nil?
 
       # header parameters
       header_params = {}
@@ -409,7 +709,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'File')
+        :return_type => 'DocumentResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -428,7 +728,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_attachment_by_index_with_http_info(name, attachment_index, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_document_attachment_by_index_with_http_info(name, attachment_index, opts)
         else
@@ -505,7 +805,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_attachments_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_document_attachments_with_http_info(name, opts)
         else
@@ -578,7 +878,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
         else
@@ -652,7 +952,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_properties_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_document_properties_with_http_info(name, opts)
         else
@@ -725,7 +1025,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_document_property_with_http_info(name, property_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_document_property_with_http_info(name, property_name, opts)
         else
@@ -802,7 +1102,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_download_with_http_info(path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_download_with_http_info(path, opts)
         else
@@ -876,7 +1176,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_download_document_attachment_by_index_with_http_info(name, attachment_index, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_download_document_attachment_by_index_with_http_info(name, attachment_index, opts)
         else
@@ -946,12 +1246,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.epub)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_epub_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_epub_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_epub_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -964,6 +1265,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.epub)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_epub_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -979,6 +1281,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -1021,7 +1324,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_field_with_http_info(name, field_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_field_with_http_info(name, field_name, opts)
         else
@@ -1098,7 +1401,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_fields_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_fields_with_http_info(name, opts)
         else
@@ -1159,258 +1462,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read page fragment.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextItemsResponse]
-    def get_fragment(name, page_number, fragment_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_fragment_with_http_info(name, page_number, fragment_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_fragment_with_http_info(name, page_number, fragment_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read page fragment.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextItemsResponse, Fixnum, Hash)>] TextItemsResponse data, response status code and response headers
-    def get_fragment_with_http_info(name, page_number, fragment_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_fragment ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_fragment"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_fragment"
-      end
-      # verify the required parameter 'fragment_number' is set
-      if @api_client.config.client_side_validation && fragment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'fragment_number' when calling PdfApi.get_fragment"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'fragmentNumber' + '}', fragment_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'withEmpty'] = opts[:'with_empty'] if !opts[:'with_empty'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_fragment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Read page fragment text format.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextFormatResponse]
-    def get_fragment_text_format(name, page_number, fragment_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_fragment_text_format_with_http_info(name, page_number, fragment_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_fragment_text_format_with_http_info(name, page_number, fragment_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read page fragment text format.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextFormatResponse, Fixnum, Hash)>] TextFormatResponse data, response status code and response headers
-    def get_fragment_text_format_with_http_info(name, page_number, fragment_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_fragment_text_format ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_fragment_text_format"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_fragment_text_format"
-      end
-      # verify the required parameter 'fragment_number' is set
-      if @api_client.config.client_side_validation && fragment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'fragment_number' when calling PdfApi.get_fragment_text_format"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/textFormat".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'fragmentNumber' + '}', fragment_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextFormatResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_fragment_text_format\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Read page fragments.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextItemsResponse]
-    def get_fragments(name, page_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_fragments_with_http_info(name, page_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_fragments_with_http_info(name, page_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read page fragments.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextItemsResponse, Fixnum, Hash)>] TextItemsResponse data, response status code and response headers
-    def get_fragments_with_http_info(name, page_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_fragments ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_fragments"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_fragments"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/fragments".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'withEmpty'] = opts[:'with_empty'] if !opts[:'with_empty'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_fragments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Convert HTML file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.zip)
@@ -1423,12 +1474,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_bottom Page margin bottom
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_html_in_storage_to_pdf(src_path, html_file_name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts)
         else
@@ -1449,6 +1501,7 @@ module AsposePdfCloud
     # @option opts [Float] :margin_bottom Page margin bottom
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts = {})
       if @api_client.config.debugging
@@ -1476,6 +1529,7 @@ module AsposePdfCloud
       query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
       query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
       query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -1506,44 +1560,36 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Extract document image in format specified.
+    # Read document image by ID.
     # 
     # @param name The document name.
-    # @param page_number The page number.
-    # @param image_number The image format.
+    # @param image_id Image ID.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :format Image format to convert, if not specified the common image data is read.
-    # @option opts [Integer] :width The converted image width. (default to 0)
-    # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [File]
-    def get_image(name, page_number, image_number, opts = {})
+    # @return [ImageResponse]
+    def get_image(name, image_id, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = get_image_with_http_info(name, page_number, image_number, opts)
+      data, _status_code, _headers = get_image_with_http_info(name, image_id, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = get_image_with_http_info(name, page_number, image_number, opts)
+          data, _status_code, _headers = get_image_with_http_info(name, image_id, opts)
         else
           raise
         end
       return data
     end
 
-    # Extract document image in format specified.
+    # Read document image by ID.
     # 
     # @param name The document name.
-    # @param page_number The page number.
-    # @param image_number The image format.
+    # @param image_id Image ID.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :format Image format to convert, if not specified the common image data is read.
-    # @option opts [Integer] :width The converted image width.
-    # @option opts [Integer] :height The converted image height.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_image_with_http_info(name, page_number, image_number, opts = {})
+    # @return [Array<(ImageResponse, Fixnum, Hash)>] ImageResponse data, response status code and response headers
+    def get_image_with_http_info(name, image_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_image ..."
       end
@@ -1551,20 +1597,97 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && name.nil?
         fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_image"
       end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_image"
-      end
-      # verify the required parameter 'image_number' is set
-      if @api_client.config.client_side_validation && image_number.nil?
-        fail ArgumentError, "Missing the required parameter 'image_number' when calling PdfApi.get_image"
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.get_image"
       end
       # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/{imageNumber}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'imageNumber' + '}', image_number.to_s)
+      local_var_path = "/pdf/{name}/images/{imageId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ImageResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in GIF format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_image_extract_as_gif(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_image_extract_as_gif_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_image_extract_as_gif_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in GIF format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_image_extract_as_gif_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_image_extract_as_gif ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_image_extract_as_gif"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.get_image_extract_as_gif"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/gif".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
@@ -1573,7 +1696,7 @@ module AsposePdfCloud
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -1594,7 +1717,259 @@ module AsposePdfCloud
         :auth_names => auth_names,
         :return_type => 'File')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: PdfApi#get_image_extract_as_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in JPEG format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_image_extract_as_jpeg(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_image_extract_as_jpeg_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_image_extract_as_jpeg_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in JPEG format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_image_extract_as_jpeg_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_image_extract_as_jpeg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_image_extract_as_jpeg"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.get_image_extract_as_jpeg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/jpeg".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_image_extract_as_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in PNG format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_image_extract_as_png(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_image_extract_as_png_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_image_extract_as_png_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in PNG format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_image_extract_as_png_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_image_extract_as_png ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_image_extract_as_png"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.get_image_extract_as_png"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/png".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_image_extract_as_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in TIFF format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_image_extract_as_tiff(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_image_extract_as_tiff_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_image_extract_as_tiff_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in TIFF format
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_image_extract_as_tiff_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_image_extract_as_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_image_extract_as_tiff"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.get_image_extract_as_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/tiff".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_image_extract_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1611,7 +1986,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_images_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_images_with_http_info(name, page_number, opts)
         else
@@ -1681,12 +2056,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_la_te_x_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -1699,6 +2075,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -1714,6 +2091,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -1748,12 +2126,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_mht_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -1766,6 +2145,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_mht_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -1781,6 +2161,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -1811,22 +2192,19 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to format specified.
+    # Read document page info.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :format The format to convert if specified.
-    # @option opts [Integer] :width The converted image width. (default to 0)
-    # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [File]
+    # @return [DocumentPageResponse]
     def get_page(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_with_http_info(name, page_number, opts)
         else
@@ -1835,17 +2213,14 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to format specified.
+    # Read document page info.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :format The format to convert if specified.
-    # @option opts [Integer] :width The converted image width.
-    # @option opts [Integer] :height The converted image height.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(DocumentPageResponse, Fixnum, Hash)>] DocumentPageResponse data, response status code and response headers
     def get_page_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_page ..."
@@ -1863,9 +2238,6 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
-      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
-      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -1891,7 +2263,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'File')
+        :return_type => 'DocumentPageResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -1911,7 +2283,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_annotation_with_http_info(name, page_number, annotation_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_annotation_with_http_info(name, page_number, annotation_number, opts)
         else
@@ -1994,7 +2366,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_annotations_with_http_info(name, page_number, opts)
         else
@@ -2060,7 +2432,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to Bmp image.
+    # Convert document page to Bmp image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2068,12 +2440,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_page_convert_to_bmp(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
         else
@@ -2082,7 +2455,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Bmp image.
+    # Convert document page to Bmp image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2090,6 +2463,7 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_bmp_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -2111,6 +2485,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2141,7 +2516,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to Emf image.
+    # Convert document page to Emf image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2149,12 +2524,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_page_convert_to_emf(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
         else
@@ -2163,7 +2539,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Emf image.
+    # Convert document page to Emf image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2171,6 +2547,7 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_emf_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -2192,6 +2569,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2222,7 +2600,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to Gif image.
+    # Convert document page to Gif image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2230,12 +2608,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_page_convert_to_gif(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
         else
@@ -2244,7 +2623,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Gif image.
+    # Convert document page to Gif image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2252,6 +2631,7 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_gif_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -2273,6 +2653,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2303,7 +2684,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to Jpeg image.
+    # Convert document page to Jpeg image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2311,12 +2692,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_page_convert_to_jpeg(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
         else
@@ -2325,7 +2707,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Jpeg image.
+    # Convert document page to Jpeg image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2333,6 +2715,7 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_jpeg_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -2354,6 +2737,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2384,7 +2768,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to Png image.
+    # Convert document page to Png image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2392,12 +2776,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_page_convert_to_png(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
         else
@@ -2406,7 +2791,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Png image.
+    # Convert document page to Png image and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2414,6 +2799,7 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_png_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -2435,6 +2821,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2465,7 +2852,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert document page to Tiff image.
+    # Convert document page to Tiff image  and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2473,12 +2860,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_page_convert_to_tiff(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
         else
@@ -2487,7 +2875,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Tiff image.
+    # Convert document page to Tiff image  and return resulting file in response.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -2495,6 +2883,7 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_tiff_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -2516,6 +2905,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2546,55 +2936,55 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read document page link annotation by its index.
+    # Read document page link annotation by ID.
     # 
     # @param name The document name.
     # @param page_number The page number.
-    # @param link_index The link index.
+    # @param link_id The link ID.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [LinkAnnotationResponse]
-    def get_page_link_annotation_by_index(name, page_number, link_index, opts = {})
+    def get_page_link_annotation(name, page_number, link_id, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, opts)
+      data, _status_code, _headers = get_page_link_annotation_with_http_info(name, page_number, link_id, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, opts)
+          data, _status_code, _headers = get_page_link_annotation_with_http_info(name, page_number, link_id, opts)
         else
           raise
         end
       return data
     end
 
-    # Read document page link annotation by its index.
+    # Read document page link annotation by ID.
     # 
     # @param name The document name.
     # @param page_number The page number.
-    # @param link_index The link index.
+    # @param link_id The link ID.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [Array<(LinkAnnotationResponse, Fixnum, Hash)>] LinkAnnotationResponse data, response status code and response headers
-    def get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, opts = {})
+    def get_page_link_annotation_with_http_info(name, page_number, link_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_page_link_annotation_by_index ..."
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_link_annotation ..."
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_link_annotation_by_index"
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_link_annotation"
       end
       # verify the required parameter 'page_number' is set
       if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_link_annotation_by_index"
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_link_annotation"
       end
-      # verify the required parameter 'link_index' is set
-      if @api_client.config.client_side_validation && link_index.nil?
-        fail ArgumentError, "Missing the required parameter 'link_index' when calling PdfApi.get_page_link_annotation_by_index"
+      # verify the required parameter 'link_id' is set
+      if @api_client.config.client_side_validation && link_id.nil?
+        fail ArgumentError, "Missing the required parameter 'link_id' when calling PdfApi.get_page_link_annotation"
       end
       # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/links/{linkIndex}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'linkIndex' + '}', link_index.to_s)
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/links/{linkId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'linkId' + '}', link_id.to_s)
 
       # query parameters
       query_params = {}
@@ -2625,7 +3015,7 @@ module AsposePdfCloud
         :auth_names => auth_names,
         :return_type => 'LinkAnnotationResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_page_link_annotation_by_index\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: PdfApi#get_page_link_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2642,7 +3032,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_page_link_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_page_link_annotations_with_http_info(name, page_number, opts)
         else
@@ -2712,23 +3102,24 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param page_number Number of page (starting from 1).
-    # @param x 
-    # @param y 
-    # @param width 
-    # @param height 
+    # @param llx 
+    # @param lly 
+    # @param urx 
+    # @param ury 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
     # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [TextRectsResponse]
-    def get_page_text(name, page_number, x, y, width, height, opts = {})
+    def get_page_text(name, page_number, llx, lly, urx, ury, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = get_page_text_with_http_info(name, page_number, x, y, width, height, opts)
+      data, _status_code, _headers = get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = get_page_text_with_http_info(name, page_number, x, y, width, height, opts)
+          data, _status_code, _headers = get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, opts)
         else
           raise
         end
@@ -2739,17 +3130,18 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param page_number Number of page (starting from 1).
-    # @param x 
-    # @param y 
-    # @param width 
-    # @param height 
+    # @param llx 
+    # @param lly 
+    # @param urx 
+    # @param ury 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
     # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(TextRectsResponse, Fixnum, Hash)>] TextRectsResponse data, response status code and response headers
-    def get_page_text_with_http_info(name, page_number, x, y, width, height, opts = {})
+    def get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_page_text ..."
       end
@@ -2761,35 +3153,36 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && page_number.nil?
         fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_text"
       end
-      # verify the required parameter 'x' is set
-      if @api_client.config.client_side_validation && x.nil?
-        fail ArgumentError, "Missing the required parameter 'x' when calling PdfApi.get_page_text"
+      # verify the required parameter 'llx' is set
+      if @api_client.config.client_side_validation && llx.nil?
+        fail ArgumentError, "Missing the required parameter 'llx' when calling PdfApi.get_page_text"
       end
-      # verify the required parameter 'y' is set
-      if @api_client.config.client_side_validation && y.nil?
-        fail ArgumentError, "Missing the required parameter 'y' when calling PdfApi.get_page_text"
+      # verify the required parameter 'lly' is set
+      if @api_client.config.client_side_validation && lly.nil?
+        fail ArgumentError, "Missing the required parameter 'lly' when calling PdfApi.get_page_text"
       end
-      # verify the required parameter 'width' is set
-      if @api_client.config.client_side_validation && width.nil?
-        fail ArgumentError, "Missing the required parameter 'width' when calling PdfApi.get_page_text"
+      # verify the required parameter 'urx' is set
+      if @api_client.config.client_side_validation && urx.nil?
+        fail ArgumentError, "Missing the required parameter 'urx' when calling PdfApi.get_page_text"
       end
-      # verify the required parameter 'height' is set
-      if @api_client.config.client_side_validation && height.nil?
-        fail ArgumentError, "Missing the required parameter 'height' when calling PdfApi.get_page_text"
+      # verify the required parameter 'ury' is set
+      if @api_client.config.client_side_validation && ury.nil?
+        fail ArgumentError, "Missing the required parameter 'ury' when calling PdfApi.get_page_text"
       end
       # resource path
       local_var_path = "/pdf/{name}/pages/{pageNumber}/text".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'X'] = x
-      query_params[:'Y'] = y
-      query_params[:'Width'] = width
-      query_params[:'Height'] = height
+      query_params[:'LLX'] = llx
+      query_params[:'LLY'] = lly
+      query_params[:'URX'] = urx
+      query_params[:'URY'] = ury
       query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -2820,87 +3213,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read page text items.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextItemsResponse]
-    def get_page_text_items(name, page_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_page_text_items_with_http_info(name, page_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_page_text_items_with_http_info(name, page_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read page text items.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextItemsResponse, Fixnum, Hash)>] TextItemsResponse data, response status code and response headers
-    def get_page_text_items_with_http_info(name, page_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_page_text_items ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_text_items"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_text_items"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/textItems".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'withEmpty'] = opts[:'with_empty'] if !opts[:'with_empty'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_page_text_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Read document pages info.
     # 
     # @param name The document name.
@@ -2912,7 +3224,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pages_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pages_with_http_info(name, opts)
         else
@@ -2977,12 +3289,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.pcl)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pcl_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pcl_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pcl_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -2995,6 +3308,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.pcl)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pcl_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -3010,6 +3324,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3048,17 +3363,18 @@ module AsposePdfCloud
     # @option opts [String] :format Allows to specify .doc or .docx file format.
     # @option opts [Integer] :image_resolution_x Image resolution X.
     # @option opts [Integer] :image_resolution_y Image resolution Y.
-    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [Float] :max_distance_between_text_lines Max distance between text lines.
     # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_doc(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
         else
@@ -3075,11 +3391,12 @@ module AsposePdfCloud
     # @option opts [String] :format Allows to specify .doc or .docx file format.
     # @option opts [Integer] :image_resolution_x Image resolution X.
     # @option opts [Integer] :image_resolution_y Image resolution Y.
-    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [Float] :max_distance_between_text_lines Max distance between text lines.
     # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_doc_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3103,6 +3420,7 @@ module AsposePdfCloud
       query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
       query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3137,14 +3455,15 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_epub(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
         else
@@ -3157,8 +3476,9 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_epub_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3175,6 +3495,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'contentRecognitionMode'] = opts[:'content_recognition_mode'] if !opts[:'content_recognition_mode'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3238,12 +3559,13 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_html(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
         else
@@ -3285,6 +3607,7 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_html_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3328,6 +3651,7 @@ module AsposePdfCloud
       query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3364,12 +3688,13 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_la_te_x(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
         else
@@ -3384,6 +3709,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_la_te_x_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3400,6 +3726,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3435,12 +3762,13 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_mobi_xml(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
         else
@@ -3454,6 +3782,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3469,6 +3798,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3505,12 +3835,13 @@ module AsposePdfCloud
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_pdf_a(name, type, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
         else
@@ -3525,6 +3856,7 @@ module AsposePdfCloud
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts = {})
       if @api_client.config.debugging
@@ -3545,6 +3877,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'type'] = type
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3582,12 +3915,13 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_pptx(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
         else
@@ -3603,6 +3937,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_pptx_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3620,6 +3955,7 @@ module AsposePdfCloud
       query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
       query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3656,12 +3992,13 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_svg(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
         else
@@ -3676,6 +4013,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_svg_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3692,6 +4030,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3742,12 +4081,13 @@ module AsposePdfCloud
     # @option opts [Integer] :page_index Start page to export.
     # @option opts [Integer] :page_count Number of pages to export.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_tiff(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
         else
@@ -3776,6 +4116,7 @@ module AsposePdfCloud
     # @option opts [Integer] :page_index Start page to export.
     # @option opts [Integer] :page_count Number of pages to export.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_tiff_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3806,6 +4147,7 @@ module AsposePdfCloud
       query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
       query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3845,12 +4187,13 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_xls(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
         else
@@ -3868,6 +4211,7 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_xls_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3887,6 +4231,7 @@ module AsposePdfCloud
       query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3922,12 +4267,13 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_xml(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
         else
@@ -3941,6 +4287,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_xml_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -3956,6 +4303,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -3991,12 +4339,13 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_pdf_in_storage_to_xps(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
         else
@@ -4010,6 +4359,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_xps_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -4025,6 +4375,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -4059,12 +4410,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_ps_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -4077,6 +4429,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_ps_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -4092,6 +4445,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -4122,273 +4476,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read segment.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param segment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextItemResponse]
-    def get_segment(name, page_number, fragment_number, segment_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_segment_with_http_info(name, page_number, fragment_number, segment_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_segment_with_http_info(name, page_number, fragment_number, segment_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read segment.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param segment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextItemResponse, Fixnum, Hash)>] TextItemResponse data, response status code and response headers
-    def get_segment_with_http_info(name, page_number, fragment_number, segment_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_segment ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_segment"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_segment"
-      end
-      # verify the required parameter 'fragment_number' is set
-      if @api_client.config.client_side_validation && fragment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'fragment_number' when calling PdfApi.get_segment"
-      end
-      # verify the required parameter 'segment_number' is set
-      if @api_client.config.client_side_validation && segment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'segment_number' when calling PdfApi.get_segment"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/segments/{segmentNumber}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'fragmentNumber' + '}', fragment_number.to_s).sub('{' + 'segmentNumber' + '}', segment_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextItemResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Read segment text format.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param segment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextFormatResponse]
-    def get_segment_text_format(name, page_number, fragment_number, segment_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read segment text format.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param segment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextFormatResponse, Fixnum, Hash)>] TextFormatResponse data, response status code and response headers
-    def get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_segment_text_format ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_segment_text_format"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_segment_text_format"
-      end
-      # verify the required parameter 'fragment_number' is set
-      if @api_client.config.client_side_validation && fragment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'fragment_number' when calling PdfApi.get_segment_text_format"
-      end
-      # verify the required parameter 'segment_number' is set
-      if @api_client.config.client_side_validation && segment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'segment_number' when calling PdfApi.get_segment_text_format"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/segments/{segmentNumber}/textformat".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'fragmentNumber' + '}', fragment_number.to_s).sub('{' + 'segmentNumber' + '}', segment_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextFormatResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_segment_text_format\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Read fragment segments.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextItemsResponse]
-    def get_segments(name, page_number, fragment_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_segments_with_http_info(name, page_number, fragment_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_segments_with_http_info(name, page_number, fragment_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read fragment segments.
-    # 
-    # @param name 
-    # @param page_number 
-    # @param fragment_number 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextItemsResponse, Fixnum, Hash)>] TextItemsResponse data, response status code and response headers
-    def get_segments_with_http_info(name, page_number, fragment_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_segments ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_segments"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_segments"
-      end
-      # verify the required parameter 'fragment_number' is set
-      if @api_client.config.client_side_validation && fragment_number.nil?
-        fail ArgumentError, "Missing the required parameter 'fragment_number' when calling PdfApi.get_segments"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/segments".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'fragmentNumber' + '}', fragment_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'withEmpty'] = opts[:'with_empty'] if !opts[:'with_empty'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_segments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Convert SVG file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.svg)
@@ -4401,12 +4488,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_bottom Page margin bottom
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_svg_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_svg_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_svg_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -4427,6 +4515,7 @@ module AsposePdfCloud
     # @option opts [Float] :margin_bottom Page margin bottom
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_svg_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -4450,6 +4539,7 @@ module AsposePdfCloud
       query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
       query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
       query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -4483,23 +4573,24 @@ module AsposePdfCloud
     # Read document text.
     # 
     # @param name The document name.
-    # @param x 
-    # @param y 
-    # @param width 
-    # @param height 
+    # @param llx 
+    # @param lly 
+    # @param urx 
+    # @param ury 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
     # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [TextRectsResponse]
-    def get_text(name, x, y, width, height, opts = {})
+    def get_text(name, llx, lly, urx, ury, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = get_text_with_http_info(name, x, y, width, height, opts)
+      data, _status_code, _headers = get_text_with_http_info(name, llx, lly, urx, ury, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = get_text_with_http_info(name, x, y, width, height, opts)
+          data, _status_code, _headers = get_text_with_http_info(name, llx, lly, urx, ury, opts)
         else
           raise
         end
@@ -4509,17 +4600,18 @@ module AsposePdfCloud
     # Read document text.
     # 
     # @param name The document name.
-    # @param x 
-    # @param y 
-    # @param width 
-    # @param height 
+    # @param llx 
+    # @param lly 
+    # @param urx 
+    # @param ury 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
     # @option opts [BOOLEAN] :split_rects Split result fragments (default is true).
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(TextRectsResponse, Fixnum, Hash)>] TextRectsResponse data, response status code and response headers
-    def get_text_with_http_info(name, x, y, width, height, opts = {})
+    def get_text_with_http_info(name, llx, lly, urx, ury, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_text ..."
       end
@@ -4527,35 +4619,36 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && name.nil?
         fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_text"
       end
-      # verify the required parameter 'x' is set
-      if @api_client.config.client_side_validation && x.nil?
-        fail ArgumentError, "Missing the required parameter 'x' when calling PdfApi.get_text"
+      # verify the required parameter 'llx' is set
+      if @api_client.config.client_side_validation && llx.nil?
+        fail ArgumentError, "Missing the required parameter 'llx' when calling PdfApi.get_text"
       end
-      # verify the required parameter 'y' is set
-      if @api_client.config.client_side_validation && y.nil?
-        fail ArgumentError, "Missing the required parameter 'y' when calling PdfApi.get_text"
+      # verify the required parameter 'lly' is set
+      if @api_client.config.client_side_validation && lly.nil?
+        fail ArgumentError, "Missing the required parameter 'lly' when calling PdfApi.get_text"
       end
-      # verify the required parameter 'width' is set
-      if @api_client.config.client_side_validation && width.nil?
-        fail ArgumentError, "Missing the required parameter 'width' when calling PdfApi.get_text"
+      # verify the required parameter 'urx' is set
+      if @api_client.config.client_side_validation && urx.nil?
+        fail ArgumentError, "Missing the required parameter 'urx' when calling PdfApi.get_text"
       end
-      # verify the required parameter 'height' is set
-      if @api_client.config.client_side_validation && height.nil?
-        fail ArgumentError, "Missing the required parameter 'height' when calling PdfApi.get_text"
+      # verify the required parameter 'ury' is set
+      if @api_client.config.client_side_validation && ury.nil?
+        fail ArgumentError, "Missing the required parameter 'ury' when calling PdfApi.get_text"
       end
       # resource path
       local_var_path = "/pdf/{name}/text".sub('{' + 'name' + '}', name.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'X'] = x
-      query_params[:'Y'] = y
-      query_params[:'Width'] = width
-      query_params[:'Height'] = height
+      query_params[:'LLX'] = llx
+      query_params[:'LLY'] = lly
+      query_params[:'URX'] = urx
+      query_params[:'URY'] = ury
       query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -4586,93 +4679,19 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read document text items.
-    # 
-    # @param name 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [TextItemsResponse]
-    def get_text_items(name, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_text_items_with_http_info(name, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = get_text_items_with_http_info(name, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read document text items.
-    # 
-    # @param name 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :with_empty 
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(TextItemsResponse, Fixnum, Hash)>] TextItemsResponse data, response status code and response headers
-    def get_text_items_with_http_info(name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_text_items ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_text_items"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/textItems".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'withEmpty'] = opts[:'with_empty'] if !opts[:'with_empty'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TextItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_text_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Verify signature document.
     # 
     # @param name The document name.
     # @param sign_name Sign name.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [SignatureVerifyResponse]
     def get_verify_signature(name, sign_name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
         else
@@ -4686,6 +4705,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param sign_name Sign name.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @return [Array<(SignatureVerifyResponse, Fixnum, Hash)>] SignatureVerifyResponse data, response status code and response headers
     def get_verify_signature_with_http_info(name, sign_name, opts = {})
@@ -4706,6 +4726,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'signName'] = sign_name
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
       # header parameters
@@ -4748,12 +4769,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_bottom Page margin bottom
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_web_in_storage_to_pdf(url, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_web_in_storage_to_pdf_with_http_info(url, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_web_in_storage_to_pdf_with_http_info(url, opts)
         else
@@ -4773,6 +4795,7 @@ module AsposePdfCloud
     # @option opts [Float] :margin_bottom Page margin bottom
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_web_in_storage_to_pdf_with_http_info(url, opts = {})
       if @api_client.config.debugging
@@ -4795,6 +4818,7 @@ module AsposePdfCloud
       query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
       query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
       query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -4836,7 +4860,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_words_per_page_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_words_per_page_with_http_info(name, opts)
         else
@@ -4902,12 +4926,13 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_xfa_pdf_in_storage_to_acro_form(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
         else
@@ -4921,6 +4946,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -4936,6 +4962,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -4971,12 +4998,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.xml)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :xsl_file_path Full XSL source filename (ex. /folder1/folder2/template.xsl)
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_xml_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_xml_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_xml_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -4990,6 +5018,7 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.xml)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :xsl_file_path Full XSL source filename (ex. /folder1/folder2/template.xsl)
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_xml_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -5006,6 +5035,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'xslFilePath'] = opts[:'xsl_file_path'] if !opts[:'xsl_file_path'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -5040,12 +5070,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.xps)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_xps_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_xps_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_xps_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -5058,6 +5089,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.xps)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_xps_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -5073,6 +5105,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -5107,12 +5140,13 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.xslfo)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [File]
     def get_xsl_fo_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts)
         else
@@ -5125,6 +5159,7 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.xslfo)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
@@ -5140,6 +5175,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -5185,7 +5221,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_append_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_append_document_with_http_info(name, opts)
         else
@@ -5260,12 +5296,12 @@ module AsposePdfCloud
     # @option opts [Field] :field with the field data.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def post_create_field(name, page, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_create_field_with_http_info(name, page, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_create_field_with_http_info(name, page, opts)
         else
@@ -5282,7 +5318,7 @@ module AsposePdfCloud
     # @option opts [Field] :field with the field data.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_create_field_with_http_info(name, page, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.post_create_field ..."
@@ -5325,163 +5361,9 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_create_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Document's replace text method. Deprecated
-    # 
-    # @param name 
-    # @param text_replace 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [DocumentTextReplaceResponse]
-    def post_document_replace_text(name, text_replace, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = post_document_replace_text_with_http_info(name, text_replace, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = post_document_replace_text_with_http_info(name, text_replace, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Document&#39;s replace text method. Deprecated
-    # 
-    # @param name 
-    # @param text_replace 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(DocumentTextReplaceResponse, Fixnum, Hash)>] DocumentTextReplaceResponse data, response status code and response headers
-    def post_document_replace_text_with_http_info(name, text_replace, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.post_document_replace_text ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_replace_text"
-      end
-      # verify the required parameter 'text_replace' is set
-      if @api_client.config.client_side_validation && text_replace.nil?
-        fail ArgumentError, "Missing the required parameter 'text_replace' when calling PdfApi.post_document_replace_text"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/replaceText".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(text_replace)
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'DocumentTextReplaceResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#post_document_replace_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Document's replace text method. Deprecated
-    # 
-    # @param name 
-    # @param text_replace_list_request 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [DocumentTextReplaceResponse]
-    def post_document_replace_text_list(name, text_replace_list_request, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = post_document_replace_text_list_with_http_info(name, text_replace_list_request, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = post_document_replace_text_list_with_http_info(name, text_replace_list_request, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Document&#39;s replace text method. Deprecated
-    # 
-    # @param name 
-    # @param text_replace_list_request 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(DocumentTextReplaceResponse, Fixnum, Hash)>] DocumentTextReplaceResponse data, response status code and response headers
-    def post_document_replace_text_list_with_http_info(name, text_replace_list_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.post_document_replace_text_list ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_replace_text_list"
-      end
-      # verify the required parameter 'text_replace_list_request' is set
-      if @api_client.config.client_side_validation && text_replace_list_request.nil?
-        fail ArgumentError, "Missing the required parameter 'text_replace_list_request' when calling PdfApi.post_document_replace_text_list"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/replaceTextList".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(text_replace_list_request)
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'DocumentTextReplaceResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#post_document_replace_text_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5498,7 +5380,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_document_text_replace_with_http_info(name, text_replace, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_document_text_replace_with_http_info(name, text_replace, opts)
         else
@@ -5563,6 +5445,119 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Insert image to document page.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param llx Coordinate lower left X.
+    # @param lly Coordinate lower left Y.
+    # @param urx Coordinate upper right X.
+    # @param ury Coordinate upper right Y.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :image_file_path Path to image file if specified. Request content is used otherwise.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
+    # @return [AsposeResponse]
+    def post_insert_image(name, page_number, llx, lly, urx, ury, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Insert image to document page.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param llx Coordinate lower left X.
+    # @param lly Coordinate lower left Y.
+    # @param urx Coordinate upper right X.
+    # @param ury Coordinate upper right Y.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :image_file_path Path to image file if specified. Request content is used otherwise.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_insert_image ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_insert_image"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_insert_image"
+      end
+      # verify the required parameter 'llx' is set
+      if @api_client.config.client_side_validation && llx.nil?
+        fail ArgumentError, "Missing the required parameter 'llx' when calling PdfApi.post_insert_image"
+      end
+      # verify the required parameter 'lly' is set
+      if @api_client.config.client_side_validation && lly.nil?
+        fail ArgumentError, "Missing the required parameter 'lly' when calling PdfApi.post_insert_image"
+      end
+      # verify the required parameter 'urx' is set
+      if @api_client.config.client_side_validation && urx.nil?
+        fail ArgumentError, "Missing the required parameter 'urx' when calling PdfApi.post_insert_image"
+      end
+      # verify the required parameter 'ury' is set
+      if @api_client.config.client_side_validation && ury.nil?
+        fail ArgumentError, "Missing the required parameter 'ury' when calling PdfApi.post_insert_image"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/images".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'llx'] = llx
+      query_params[:'lly'] = lly
+      query_params[:'urx'] = urx
+      query_params[:'ury'] = ury
+      query_params[:'imageFilePath'] = opts[:'image_file_path'] if !opts[:'image_file_path'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'image'] if !opts[:'image'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_insert_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Move page to new position.
     # 
     # @param name The document name.
@@ -5571,12 +5566,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def post_move_page(name, page_number, new_index, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_move_page_with_http_info(name, page_number, new_index, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_move_page_with_http_info(name, page_number, new_index, opts)
         else
@@ -5593,7 +5588,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_move_page_with_http_info(name, page_number, new_index, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.post_move_page ..."
@@ -5641,7 +5636,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_move_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -5655,12 +5650,12 @@ module AsposePdfCloud
     # @option opts [OptimizeOptions] :options The optimization options.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def post_optimize_document(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_optimize_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_optimize_document_with_http_info(name, opts)
         else
@@ -5676,7 +5671,7 @@ module AsposePdfCloud
     # @option opts [OptimizeOptions] :options The optimization options.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_optimize_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.post_optimize_document ..."
@@ -5714,62 +5709,62 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_optimize_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Page's replace text method. Deprecated
+    # Add document page link annotations.
     # 
-    # @param name 
-    # @param page_number 
-    # @param text_replace 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param links Array of link anotation.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [PageTextReplaceResponse]
-    def post_page_replace_text(name, page_number, text_replace, opts = {})
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_link_annotations(name, page_number, links, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = post_page_replace_text_with_http_info(name, page_number, text_replace, opts)
+      data, _status_code, _headers = post_page_link_annotations_with_http_info(name, page_number, links, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = post_page_replace_text_with_http_info(name, page_number, text_replace, opts)
+          data, _status_code, _headers = post_page_link_annotations_with_http_info(name, page_number, links, opts)
         else
           raise
         end
       return data
     end
 
-    # Page&#39;s replace text method. Deprecated
+    # Add document page link annotations.
     # 
-    # @param name 
-    # @param page_number 
-    # @param text_replace 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param links Array of link anotation.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(PageTextReplaceResponse, Fixnum, Hash)>] PageTextReplaceResponse data, response status code and response headers
-    def post_page_replace_text_with_http_info(name, page_number, text_replace, opts = {})
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_link_annotations_with_http_info(name, page_number, links, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.post_page_replace_text ..."
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_link_annotations ..."
       end
       # verify the required parameter 'name' is set
       if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_replace_text"
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_link_annotations"
       end
       # verify the required parameter 'page_number' is set
       if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_replace_text"
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_link_annotations"
       end
-      # verify the required parameter 'text_replace' is set
-      if @api_client.config.client_side_validation && text_replace.nil?
-        fail ArgumentError, "Missing the required parameter 'text_replace' when calling PdfApi.post_page_replace_text"
+      # verify the required parameter 'links' is set
+      if @api_client.config.client_side_validation && links.nil?
+        fail ArgumentError, "Missing the required parameter 'links' when calling PdfApi.post_page_link_annotations"
       end
       # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/replaceText".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/links".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
 
       # query parameters
       query_params = {}
@@ -5789,7 +5784,7 @@ module AsposePdfCloud
       post_body = nil
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(text_replace)
+      post_body = @api_client.object_to_http_body(links)
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -5797,92 +5792,9 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'PageTextReplaceResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#post_page_replace_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Page's replace text method. Deprecated
-    # 
-    # @param name 
-    # @param page_number 
-    # @param text_replace_list_request 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [PageTextReplaceResponse]
-    def post_page_replace_text_list(name, page_number, text_replace_list_request, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Page&#39;s replace text method. Deprecated
-    # 
-    # @param name 
-    # @param page_number 
-    # @param text_replace_list_request 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
-    # @return [Array<(PageTextReplaceResponse, Fixnum, Hash)>] PageTextReplaceResponse data, response status code and response headers
-    def post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.post_page_replace_text_list ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_replace_text_list"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_replace_text_list"
-      end
-      # verify the required parameter 'text_replace_list_request' is set
-      if @api_client.config.client_side_validation && text_replace_list_request.nil?
-        fail ArgumentError, "Missing the required parameter 'text_replace_list_request' when calling PdfApi.post_page_replace_text_list"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/replaceTextList".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(text_replace_list_request)
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'PageTextReplaceResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#post_page_replace_text_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: PdfApi#post_page_link_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5900,7 +5812,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_page_text_replace_with_http_info(name, page_number, text_replace_list_request, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_page_text_replace_with_http_info(name, page_number, text_replace_list_request, opts)
         else
@@ -5970,97 +5882,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Replace document image.
-    # 
-    # @param name The document name.
-    # @param page_number The page number.
-    # @param image_number The image number.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :image_file Path to image file if specified. Request content is used otherwise.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The document folder.
-    # @option opts [File] :image Image file.
-    # @return [ImageResponse]
-    def post_replace_image(name, page_number, image_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = post_replace_image_with_http_info(name, page_number, image_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = post_replace_image_with_http_info(name, page_number, image_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Replace document image.
-    # 
-    # @param name The document name.
-    # @param page_number The page number.
-    # @param image_number The image number.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :image_file Path to image file if specified. Request content is used otherwise.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The document folder.
-    # @option opts [File] :image Image file.
-    # @return [Array<(ImageResponse, Fixnum, Hash)>] ImageResponse data, response status code and response headers
-    def post_replace_image_with_http_info(name, page_number, image_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.post_replace_image ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_replace_image"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_replace_image"
-      end
-      # verify the required parameter 'image_number' is set
-      if @api_client.config.client_side_validation && image_number.nil?
-        fail ArgumentError, "Missing the required parameter 'image_number' when calling PdfApi.post_replace_image"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/{imageNumber}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s).sub('{' + 'imageNumber' + '}', image_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'imageFile'] = opts[:'image_file'] if !opts[:'image_file'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-      post_body =  opts[:'image'] if !opts[:'image'].nil?
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ImageResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#post_replace_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Sign document.
     # 
     # @param name The document name.
@@ -6068,12 +5889,12 @@ module AsposePdfCloud
     # @option opts [Signature] :signature Signature object containing signature data.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def post_sign_document(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_sign_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_sign_document_with_http_info(name, opts)
         else
@@ -6089,7 +5910,7 @@ module AsposePdfCloud
     # @option opts [Signature] :signature Signature object containing signature data.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_sign_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.post_sign_document ..."
@@ -6127,7 +5948,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_sign_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -6142,12 +5963,12 @@ module AsposePdfCloud
     # @option opts [Signature] :signature Signature object containing signature data.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def post_sign_page(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_sign_page_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_sign_page_with_http_info(name, page_number, opts)
         else
@@ -6164,7 +5985,7 @@ module AsposePdfCloud
     # @option opts [Signature] :signature Signature object containing signature data.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_sign_page_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.post_sign_page ..."
@@ -6206,7 +6027,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_sign_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -6227,7 +6048,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = post_split_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = post_split_document_with_http_info(name, opts)
         else
@@ -6305,7 +6126,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_add_new_page_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_add_new_page_with_http_info(name, opts)
         else
@@ -6366,85 +6187,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Add text to PDF document page. Deprecated
-    # 
-    # @param name Name of the document to which text should be added.
-    # @param page_number Number of page (starting with 1) to which text should be added.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Paragraph] :paragraph Paragraph data.
-    # @option opts [String] :storage File storage to be used.
-    # @option opts [String] :folder Document folder.
-    # @return [SaaSposeResponse]
-    def put_add_paragraph(name, page_number, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_add_paragraph_with_http_info(name, page_number, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = put_add_paragraph_with_http_info(name, page_number, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Add text to PDF document page. Deprecated
-    # 
-    # @param name Name of the document to which text should be added.
-    # @param page_number Number of page (starting with 1) to which text should be added.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Paragraph] :paragraph Paragraph data.
-    # @option opts [String] :storage File storage to be used.
-    # @option opts [String] :folder Document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
-    def put_add_paragraph_with_http_info(name, page_number, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_add_paragraph ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_add_paragraph"
-      end
-      # verify the required parameter 'page_number' is set
-      if @api_client.config.client_side_validation && page_number.nil?
-        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_add_paragraph"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/pages/{pageNumber}/paragraph".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'paragraph'])
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_add_paragraph\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Add text to PDF document page.
     # 
     # @param name The document name.
@@ -6452,12 +6194,13 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [Paragraph] :paragraph Paragraph data.
     # @option opts [String] :folder Document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_add_text(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_add_text_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_add_text_with_http_info(name, page_number, opts)
         else
@@ -6473,7 +6216,8 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [Paragraph] :paragraph Paragraph data.
     # @option opts [String] :folder Document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_add_text_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_add_text ..."
@@ -6492,6 +6236,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -6514,82 +6259,9 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_add_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Convert document from request content to format specified.
-    # 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :format The format to convert.
-    # @option opts [String] :url 
-    # @option opts [String] :out_path Path to save result
-    # @option opts [File] :file A file to be converted.
-    # @return [File]
-    def put_convert_document(opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_convert_document_with_http_info(opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = put_convert_document_with_http_info(opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Convert document from request content to format specified.
-    # 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :format The format to convert.
-    # @option opts [String] :url 
-    # @option opts [String] :out_path Path to save result
-    # @option opts [File] :file A file to be converted.
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def put_convert_document_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_convert_document ..."
-      end
-      # resource path
-      local_var_path = "/pdf/convert"
-
-      # query parameters
-      query_params = {}
-      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
-      query_params[:'url'] = opts[:'url'] if !opts[:'url'].nil?
-      query_params[:'outPath'] = opts[:'out_path'] if !opts[:'out_path'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-      post_body =  opts[:'file'] if !opts[:'file'].nil?
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_convert_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6601,12 +6273,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :version_id Source file&#39;s version
     # @option opts [String] :storage User&#39;s storage name
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_create(path, file, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_create_with_http_info(path, file, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_create_with_http_info(path, file, opts)
         else
@@ -6622,7 +6294,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :version_id Source file&#39;s version
     # @option opts [String] :storage User&#39;s storage name
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_create_with_http_info(path, file, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_create ..."
@@ -6669,30 +6341,25 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Create new document.
+    # Create empty document.
     # 
     # @param name The new document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :template_file The template file server path if defined.
-    # @option opts [String] :data_file The data file path (for xml template only).
-    # @option opts [String] :template_type The template type, can be xml, html, bmp, jpg, png, tiff, emf, cgm, tex.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The new document folder.
-    # @option opts [String] :url The url of web page if defined.
-    # @option opts [BOOLEAN] :fit_size Draw a margin around content in resulting pdf. (default to false)
     # @return [DocumentResponse]
     def put_create_document(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_create_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_create_document_with_http_info(name, opts)
         else
@@ -6701,17 +6368,12 @@ module AsposePdfCloud
       return data
     end
 
-    # Create new document.
+    # Create empty document.
     # 
     # @param name The new document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :template_file The template file server path if defined.
-    # @option opts [String] :data_file The data file path (for xml template only).
-    # @option opts [String] :template_type The template type, can be xml, html, bmp, jpg, png, tiff, emf, cgm, tex.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The new document folder.
-    # @option opts [String] :url The url of web page if defined.
-    # @option opts [BOOLEAN] :fit_size Draw a margin around content in resulting pdf.
     # @return [Array<(DocumentResponse, Fixnum, Hash)>] DocumentResponse data, response status code and response headers
     def put_create_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -6726,13 +6388,8 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'templateFile'] = opts[:'template_file'] if !opts[:'template_file'].nil?
-      query_params[:'dataFile'] = opts[:'data_file'] if !opts[:'data_file'].nil?
-      query_params[:'templateType'] = opts[:'template_type'] if !opts[:'template_type'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-      query_params[:'url'] = opts[:'url'] if !opts[:'url'].nil?
-      query_params[:'fitSize'] = opts[:'fit_size'] if !opts[:'fit_size'].nil?
 
       # header parameters
       header_params = {}
@@ -6763,218 +6420,19 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Create new document from images.
-    # 
-    # @param name The new document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [ImagesListRequest] :images The images file paths set.  
-    # @option opts [BOOLEAN] :ocr To create OCR layer for image or not. (default to false)
-    # @option opts [String] :ocr_lang The language which is defined for OCR engine. Default is eng. (default to eng)
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The new document folder.
-    # @return [DocumentResponse]
-    def put_create_document_from_images(name, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_create_document_from_images_with_http_info(name, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = put_create_document_from_images_with_http_info(name, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Create new document from images.
-    # 
-    # @param name The new document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [ImagesListRequest] :images The images file paths set.  
-    # @option opts [BOOLEAN] :ocr To create OCR layer for image or not.
-    # @option opts [String] :ocr_lang The language which is defined for OCR engine. Default is eng.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The new document folder.
-    # @return [Array<(DocumentResponse, Fixnum, Hash)>] DocumentResponse data, response status code and response headers
-    def put_create_document_from_images_with_http_info(name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_create_document_from_images ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_create_document_from_images"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/fromimages".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'ocr'] = opts[:'ocr'] if !opts[:'ocr'].nil?
-      query_params[:'ocrLang'] = opts[:'ocr_lang'] if !opts[:'ocr_lang'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'images'])
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'DocumentResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_create_document_from_images\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Save document as Tiff image.
-    # 
-    # @param name The document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [TiffExportOptions] :export_options with tiff export options.
-    # @option opts [String] :result_file The resulting file.
-    # @option opts [Float] :brightness The image brightness.
-    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-    # @option opts [Integer] :left_margin Left image margin.
-    # @option opts [Integer] :right_margin Right image margin.
-    # @option opts [Integer] :top_margin Top image margin.
-    # @option opts [Integer] :bottom_margin Bottom image margin.
-    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
-    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
-    # @option opts [Integer] :width Image width.
-    # @option opts [Integer] :height Image height.
-    # @option opts [Integer] :x_resolution Horizontal resolution.
-    # @option opts [Integer] :y_resolution Vertical resolution.
-    # @option opts [Integer] :page_index Start page to export.
-    # @option opts [Integer] :page_count Number of pages to export.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
-    def put_document_save_as_tiff(name, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_document_save_as_tiff_with_http_info(name, opts)
-      rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
-          @api_client.refresh_token
-          data, _status_code, _headers = put_document_save_as_tiff_with_http_info(name, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Save document as Tiff image.
-    # 
-    # @param name The document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [TiffExportOptions] :export_options with tiff export options.
-    # @option opts [String] :result_file The resulting file.
-    # @option opts [Float] :brightness The image brightness.
-    # @option opts [String] :compression Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-    # @option opts [String] :color_depth Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-    # @option opts [Integer] :left_margin Left image margin.
-    # @option opts [Integer] :right_margin Right image margin.
-    # @option opts [Integer] :top_margin Top image margin.
-    # @option opts [Integer] :bottom_margin Bottom image margin.
-    # @option opts [String] :orientation Image orientation. Possible values are: None, Landscape, Portait.
-    # @option opts [BOOLEAN] :skip_blank_pages Skip blank pages flag.
-    # @option opts [Integer] :width Image width.
-    # @option opts [Integer] :height Image height.
-    # @option opts [Integer] :x_resolution Horizontal resolution.
-    # @option opts [Integer] :y_resolution Vertical resolution.
-    # @option opts [Integer] :page_index Start page to export.
-    # @option opts [Integer] :page_count Number of pages to export.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
-    def put_document_save_as_tiff_with_http_info(name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_document_save_as_tiff ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_document_save_as_tiff"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/SaveAs/tiff".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'resultFile'] = opts[:'result_file'] if !opts[:'result_file'].nil?
-      query_params[:'brightness'] = opts[:'brightness'] if !opts[:'brightness'].nil?
-      query_params[:'compression'] = opts[:'compression'] if !opts[:'compression'].nil?
-      query_params[:'colorDepth'] = opts[:'color_depth'] if !opts[:'color_depth'].nil?
-      query_params[:'leftMargin'] = opts[:'left_margin'] if !opts[:'left_margin'].nil?
-      query_params[:'rightMargin'] = opts[:'right_margin'] if !opts[:'right_margin'].nil?
-      query_params[:'topMargin'] = opts[:'top_margin'] if !opts[:'top_margin'].nil?
-      query_params[:'bottomMargin'] = opts[:'bottom_margin'] if !opts[:'bottom_margin'].nil?
-      query_params[:'orientation'] = opts[:'orientation'] if !opts[:'orientation'].nil?
-      query_params[:'skipBlankPages'] = opts[:'skip_blank_pages'] if !opts[:'skip_blank_pages'].nil?
-      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
-      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
-      query_params[:'xResolution'] = opts[:'x_resolution'] if !opts[:'x_resolution'].nil?
-      query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
-      query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
-      query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'export_options'])
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_document_save_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
     # 
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.epub)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_epub_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -6988,8 +6446,9 @@ module AsposePdfCloud
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.epub)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_epub_in_storage_to_pdf ..."
@@ -7008,6 +6467,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
 
       # header parameters
@@ -7032,7 +6492,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_epub_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -7045,12 +6505,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_fields_flatten(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
         else
@@ -7065,7 +6525,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_fields_flatten_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_fields_flatten ..."
@@ -7104,7 +6564,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_fields_flatten\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -7125,12 +6585,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_html_in_storage_to_pdf(name, src_path, html_file_name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts)
         else
@@ -7153,7 +6614,8 @@ module AsposePdfCloud
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_html_in_storage_to_pdf ..."
@@ -7185,6 +6647,7 @@ module AsposePdfCloud
       query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
       query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -7208,9 +6671,357 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_html_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in GIF format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [AsposeResponse]
+    def put_image_extract_as_gif(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_image_extract_as_gif_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_image_extract_as_gif_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in GIF format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_image_extract_as_gif_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_image_extract_as_gif ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_image_extract_as_gif"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.put_image_extract_as_gif"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/gif".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_image_extract_as_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in JPEG format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [AsposeResponse]
+    def put_image_extract_as_jpeg(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_image_extract_as_jpeg_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_image_extract_as_jpeg_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in JPEG format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_image_extract_as_jpeg_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_image_extract_as_jpeg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_image_extract_as_jpeg"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.put_image_extract_as_jpeg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/jpeg".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_image_extract_as_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in PNG format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [AsposeResponse]
+    def put_image_extract_as_png(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_image_extract_as_png_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_image_extract_as_png_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in PNG format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_image_extract_as_png_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_image_extract_as_png ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_image_extract_as_png"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.put_image_extract_as_png"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/png".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_image_extract_as_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document image in TIFF format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [AsposeResponse]
+    def put_image_extract_as_tiff(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_image_extract_as_tiff_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_image_extract_as_tiff_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document image in TIFF format to folder
+    # 
+    # @param name The document name.
+    # @param image_id Image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :width The converted image width.
+    # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :dest_folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_image_extract_as_tiff_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_image_extract_as_tiff ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_image_extract_as_tiff"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.put_image_extract_as_tiff"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}/extract/tiff".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_image_extract_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7221,12 +7032,13 @@ module AsposePdfCloud
     # @param image_templates Image templates
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_image_in_storage_to_pdf(name, image_templates, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
         else
@@ -7241,7 +7053,8 @@ module AsposePdfCloud
     # @param image_templates Image templates
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_image_in_storage_to_pdf ..."
@@ -7260,6 +7073,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -7282,28 +7096,29 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_image_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in GIF format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_images_extract_as_gif(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
         else
@@ -7312,16 +7127,17 @@ module AsposePdfCloud
       return data
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in GIF format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_images_extract_as_gif_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_gif ..."
@@ -7341,6 +7157,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
 
@@ -7366,28 +7183,29 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in JPEG format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage 
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_images_extract_as_jpeg(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
         else
@@ -7396,16 +7214,17 @@ module AsposePdfCloud
       return data
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in JPEG format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage 
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_images_extract_as_jpeg_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_jpeg ..."
@@ -7425,6 +7244,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
 
@@ -7450,28 +7270,29 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in PNG format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_images_extract_as_png(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
         else
@@ -7480,16 +7301,17 @@ module AsposePdfCloud
       return data
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in PNG format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_images_extract_as_png_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_png ..."
@@ -7509,6 +7331,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
 
@@ -7534,28 +7357,29 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in TIFF format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_images_extract_as_tiff(name, page_number, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
         else
@@ -7564,16 +7388,17 @@ module AsposePdfCloud
       return data
     end
 
-    # Extract document images in format specified to folder.
+    # Extract document images in TIFF format to folder.
     # 
     # @param name The document name.
     # @param page_number The page number.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :dest_folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_images_extract_as_tiff_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_images_extract_as_tiff ..."
@@ -7593,6 +7418,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'destFolder'] = opts[:'dest_folder'] if !opts[:'dest_folder'].nil?
 
@@ -7618,7 +7444,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -7631,12 +7457,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_la_te_x_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -7651,7 +7478,8 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_la_te_x_in_storage_to_pdf ..."
@@ -7671,6 +7499,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -7694,9 +7523,92 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_la_te_x_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document page link annotations
+    # 
+    # @param name The document name.
+    # @param link_id The link ID.
+    # @param link Link anotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [LinkAnnotationResponse]
+    def put_link_annotation(name, link_id, link, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_link_annotation_with_http_info(name, link_id, link, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_link_annotation_with_http_info(name, link_id, link, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document page link annotations
+    # 
+    # @param name The document name.
+    # @param link_id The link ID.
+    # @param link Link anotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(LinkAnnotationResponse, Fixnum, Hash)>] LinkAnnotationResponse data, response status code and response headers
+    def put_link_annotation_with_http_info(name, link_id, link, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_link_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_link_annotation"
+      end
+      # verify the required parameter 'link_id' is set
+      if @api_client.config.client_side_validation && link_id.nil?
+        fail ArgumentError, "Missing the required parameter 'link_id' when calling PdfApi.put_link_annotation"
+      end
+      # verify the required parameter 'link' is set
+      if @api_client.config.client_side_validation && link.nil?
+        fail ArgumentError, "Missing the required parameter 'link' when calling PdfApi.put_link_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/links/{linkId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'linkId' + '}', link_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(link)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'LinkAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_link_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7713,7 +7625,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_merge_documents_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_merge_documents_with_http_info(name, opts)
         else
@@ -7780,12 +7692,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_mht_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -7800,7 +7713,8 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_mht_in_storage_to_pdf ..."
@@ -7820,6 +7734,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -7843,7 +7758,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_mht_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -7858,12 +7773,12 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_page_add_stamp(name, page_number, stamp, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_add_stamp_with_http_info(name, page_number, stamp, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_add_stamp_with_http_info(name, page_number, stamp, opts)
         else
@@ -7880,7 +7795,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_add_stamp_with_http_info(name, page_number, stamp, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_add_stamp ..."
@@ -7926,14 +7841,14 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_add_stamp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Convert document page to bmp image and save in storage.
+    # Convert document page to bmp image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -7942,12 +7857,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_page_convert_to_bmp(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
         else
@@ -7956,7 +7872,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to bmp image and save in storage.
+    # Convert document page to bmp image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -7965,7 +7881,8 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_bmp ..."
@@ -7991,6 +7908,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8014,14 +7932,14 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_bmp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Convert document page to emf image and save in storage.
+    # Convert document page to emf image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8030,12 +7948,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_page_convert_to_emf(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
         else
@@ -8044,7 +7963,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to emf image and save in storage.
+    # Convert document page to emf image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8053,7 +7972,8 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_emf ..."
@@ -8079,6 +7999,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8102,14 +8023,14 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_emf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Convert document page to gif image and save in storage.
+    # Convert document page to gif image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8118,12 +8039,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_page_convert_to_gif(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
         else
@@ -8132,7 +8054,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to gif image and save in storage.
+    # Convert document page to gif image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8141,7 +8063,8 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_gif ..."
@@ -8167,6 +8090,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8190,14 +8114,14 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Convert document page to Jpeg image and save in storage.
+    # Convert document page to Jpeg image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8206,12 +8130,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_page_convert_to_jpeg(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
         else
@@ -8220,7 +8145,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Jpeg image and save in storage.
+    # Convert document page to Jpeg image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8229,7 +8154,8 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_jpeg ..."
@@ -8255,6 +8181,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8278,14 +8205,14 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_jpeg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Convert document page to png image and save in storage.
+    # Convert document page to png image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8294,12 +8221,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_page_convert_to_png(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
         else
@@ -8308,7 +8236,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to png image and save in storage.
+    # Convert document page to png image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8317,7 +8245,8 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_png_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_png ..."
@@ -8343,6 +8272,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8366,14 +8296,14 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Convert document page to Tiff image and save in storage.
+    # Convert document page to Tiff image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8382,12 +8312,13 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_page_convert_to_tiff(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
         else
@@ -8396,7 +8327,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Convert document page to Tiff image and save in storage.
+    # Convert document page to Tiff image and upload resulting file to storage.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -8405,7 +8336,8 @@ module AsposePdfCloud
     # @option opts [Integer] :width The converted image width.
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_page_convert_to_tiff ..."
@@ -8431,6 +8363,7 @@ module AsposePdfCloud
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8454,7 +8387,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_page_convert_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -8467,12 +8400,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.pcl)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pcl_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -8487,7 +8421,8 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.pcl)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pcl_in_storage_to_pdf ..."
@@ -8507,6 +8442,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8530,7 +8466,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pcl_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -8545,17 +8481,18 @@ module AsposePdfCloud
     # @option opts [String] :format Allows to specify .doc or .docx file format.
     # @option opts [Integer] :image_resolution_x Image resolution X.
     # @option opts [Integer] :image_resolution_y Image resolution Y.
-    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [Float] :max_distance_between_text_lines Max distance between text lines.
     # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_doc(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
         else
@@ -8572,12 +8509,13 @@ module AsposePdfCloud
     # @option opts [String] :format Allows to specify .doc or .docx file format.
     # @option opts [Integer] :image_resolution_x Image resolution X.
     # @option opts [Integer] :image_resolution_y Image resolution Y.
-    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [Float] :max_distance_between_text_lines Max distance between text lines.
     # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_doc_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_doc ..."
@@ -8600,6 +8538,7 @@ module AsposePdfCloud
       query_params[:'mode'] = opts[:'mode'] if !opts[:'mode'].nil?
       query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
       query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8625,7 +8564,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_doc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -8636,14 +8575,15 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_epub(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
         else
@@ -8656,9 +8596,10 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_epub_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_epub ..."
@@ -8674,6 +8615,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'contentRecognitionMode'] = opts[:'content_recognition_mode'] if !opts[:'content_recognition_mode'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8699,7 +8641,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_epub\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -8738,13 +8680,14 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_html(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
         else
@@ -8785,8 +8728,9 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_all_images The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_html_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_html ..."
@@ -8829,6 +8773,7 @@ module AsposePdfCloud
       query_params[:'specialFolderForAllImages'] = opts[:'special_folder_for_all_images'] if !opts[:'special_folder_for_all_images'].nil?
       query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8854,7 +8799,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -8866,13 +8811,14 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :pages_count Pages count.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_la_te_x(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
         else
@@ -8886,8 +8832,9 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :pages_count Pages count.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_la_te_x ..."
@@ -8903,6 +8850,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8928,7 +8876,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -8939,13 +8887,14 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_mobi_xml(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
         else
@@ -8958,8 +8907,9 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_mobi_xml ..."
@@ -8974,6 +8924,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -8999,7 +8950,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_mobi_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9011,13 +8962,14 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_pdf_a(out_path, type, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
         else
@@ -9031,8 +8983,9 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_pdf_a ..."
@@ -9052,6 +9005,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'type'] = type
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9077,7 +9031,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9090,13 +9044,14 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_pptx(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
         else
@@ -9111,8 +9066,9 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_pptx_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_pptx ..."
@@ -9129,6 +9085,7 @@ module AsposePdfCloud
       query_params[:'outPath'] = out_path
       query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
       query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9154,7 +9111,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_pptx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9165,14 +9122,14 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
     # @param [Hash] opts the optional parameters
-    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_svg(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
         else
@@ -9185,9 +9142,9 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
     # @param [Hash] opts the optional parameters
-    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_svg_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_svg ..."
@@ -9202,7 +9159,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
-      query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9228,7 +9185,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9254,13 +9211,14 @@ module AsposePdfCloud
     # @option opts [Integer] :y_resolution Vertical resolution.
     # @option opts [Integer] :page_index Start page to export.
     # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_tiff(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
         else
@@ -9288,8 +9246,9 @@ module AsposePdfCloud
     # @option opts [Integer] :y_resolution Vertical resolution.
     # @option opts [Integer] :page_index Start page to export.
     # @option opts [Integer] :page_count Number of pages to export.
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_tiff_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_tiff ..."
@@ -9319,6 +9278,7 @@ module AsposePdfCloud
       query_params[:'yResolution'] = opts[:'y_resolution'] if !opts[:'y_resolution'].nil?
       query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
       query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9344,7 +9304,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9359,13 +9319,14 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
     # @option opts [Float] :scale_factor Scale factor
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_xls(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
         else
@@ -9382,8 +9343,9 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
     # @option opts [Float] :scale_factor Scale factor
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_xls_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xls ..."
@@ -9402,6 +9364,7 @@ module AsposePdfCloud
       query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
       query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9427,7 +9390,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9438,13 +9401,14 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_xml(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
         else
@@ -9457,8 +9421,9 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_xml_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xml ..."
@@ -9473,6 +9438,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9498,7 +9464,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9509,13 +9475,14 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_pdf_in_request_to_xps(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
         else
@@ -9528,8 +9495,9 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_xps_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xps ..."
@@ -9544,6 +9512,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9569,7 +9538,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9585,17 +9554,18 @@ module AsposePdfCloud
     # @option opts [String] :format Allows to specify .doc or .docx file format.
     # @option opts [Integer] :image_resolution_x Image resolution X.
     # @option opts [Integer] :image_resolution_y Image resolution Y.
-    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [Float] :max_distance_between_text_lines Max distance between text lines.
     # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_doc(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
         else
@@ -9613,12 +9583,13 @@ module AsposePdfCloud
     # @option opts [String] :format Allows to specify .doc or .docx file format.
     # @option opts [Integer] :image_resolution_x Image resolution X.
     # @option opts [Integer] :image_resolution_y Image resolution Y.
-    # @option opts [Integer] :max_distance_between_text_lines Max distance between text lines.
+    # @option opts [Float] :max_distance_between_text_lines Max distance between text lines.
     # @option opts [String] :mode Allows to control how a PDF document is converted into a word processing document.
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_doc ..."
@@ -9646,6 +9617,7 @@ module AsposePdfCloud
       query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
       query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9669,7 +9641,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_doc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9681,14 +9653,15 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_epub(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
         else
@@ -9702,9 +9675,10 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_epub ..."
@@ -9725,6 +9699,7 @@ module AsposePdfCloud
       query_params[:'outPath'] = out_path
       query_params[:'contentRecognitionMode'] = opts[:'content_recognition_mode'] if !opts[:'content_recognition_mode'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9748,7 +9723,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_epub\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9789,12 +9764,13 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_html(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
         else
@@ -9837,7 +9813,8 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_html_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_html ..."
@@ -9885,6 +9862,7 @@ module AsposePdfCloud
       query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9908,7 +9886,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -9922,12 +9900,13 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_la_te_x(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
         else
@@ -9943,7 +9922,8 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_la_te_x ..."
@@ -9964,6 +9944,7 @@ module AsposePdfCloud
       query_params[:'outPath'] = out_path
       query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -9987,7 +9968,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10000,12 +9981,13 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_mobi_xml(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
         else
@@ -10020,7 +10002,8 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_mobi_xml ..."
@@ -10040,6 +10023,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10063,7 +10047,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_mobi_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10077,12 +10061,13 @@ module AsposePdfCloud
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_pdf_a(name, out_path, type, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
         else
@@ -10098,7 +10083,8 @@ module AsposePdfCloud
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_pdf_a ..."
@@ -10123,6 +10109,7 @@ module AsposePdfCloud
       query_params[:'outPath'] = out_path
       query_params[:'type'] = type
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10146,7 +10133,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_pdf_a\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10161,12 +10148,13 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_pptx(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
         else
@@ -10183,7 +10171,8 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_pptx ..."
@@ -10205,6 +10194,7 @@ module AsposePdfCloud
       query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
       query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10228,7 +10218,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_pptx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10240,14 +10230,14 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
     # @param [Hash] opts the optional parameters
-    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_svg(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
         else
@@ -10261,9 +10251,9 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
     # @param [Hash] opts the optional parameters
-    # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_svg ..."
@@ -10282,8 +10272,8 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
-      query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10307,7 +10297,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10335,12 +10325,13 @@ module AsposePdfCloud
     # @option opts [Integer] :page_index Start page to export.
     # @option opts [Integer] :page_count Number of pages to export.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_tiff(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
         else
@@ -10370,7 +10361,8 @@ module AsposePdfCloud
     # @option opts [Integer] :page_index Start page to export.
     # @option opts [Integer] :page_count Number of pages to export.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_tiff ..."
@@ -10405,6 +10397,7 @@ module AsposePdfCloud
       query_params[:'pageIndex'] = opts[:'page_index'] if !opts[:'page_index'].nil?
       query_params[:'pageCount'] = opts[:'page_count'] if !opts[:'page_count'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10428,7 +10421,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10445,12 +10438,13 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_xls(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
         else
@@ -10469,7 +10463,8 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xls ..."
@@ -10493,6 +10488,7 @@ module AsposePdfCloud
       query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10516,7 +10512,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10529,12 +10525,13 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_xml(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
         else
@@ -10549,7 +10546,8 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xml ..."
@@ -10569,6 +10567,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10592,7 +10591,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10605,12 +10604,13 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_pdf_in_storage_to_xps(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
         else
@@ -10625,7 +10625,8 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xps)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xps ..."
@@ -10645,6 +10646,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10668,7 +10670,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10680,13 +10682,14 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [DocumentPrivilege] :privileges Document privileges. 
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_privileges(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_privileges_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_privileges_with_http_info(name, opts)
         else
@@ -10700,8 +10703,9 @@ module AsposePdfCloud
     # @param name The document name.
     # @param [Hash] opts the optional parameters
     # @option opts [DocumentPrivilege] :privileges Document privileges. 
+    # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_privileges_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_privileges ..."
@@ -10715,6 +10719,7 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
       # header parameters
@@ -10738,7 +10743,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_privileges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10751,12 +10756,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_ps_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -10771,7 +10777,8 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_ps_in_storage_to_pdf ..."
@@ -10791,6 +10798,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -10814,9 +10822,94 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_ps_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document image.
+    # 
+    # @param name The document name.
+    # @param image_id The image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :image_file_path Path to image file if specified. Request content is used otherwise.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
+    # @return [ImageResponse]
+    def put_replace_image(name, image_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_replace_image_with_http_info(name, image_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_replace_image_with_http_info(name, image_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document image.
+    # 
+    # @param name The document name.
+    # @param image_id The image ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :image_file_path Path to image file if specified. Request content is used otherwise.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
+    # @return [Array<(ImageResponse, Fixnum, Hash)>] ImageResponse data, response status code and response headers
+    def put_replace_image_with_http_info(name, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_replace_image ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_replace_image"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PdfApi.put_replace_image"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/{imageId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'imageId' + '}', image_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'imageFilePath'] = opts[:'image_file_path'] if !opts[:'image_file_path'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'image'] if !opts[:'image'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ImageResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_replace_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -10828,12 +10921,12 @@ module AsposePdfCloud
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :lang language for OCR engine. Possible values: eng, ara, bel, ben, bul, ces, dan, deu, ell, fin, fra, heb, hin, ind, isl, ita, jpn, kor, nld, nor, pol, por, ron, rus, spa, swe, tha, tur, ukr, vie, chi_sim, chi_tra or thier combination e.g. eng,rus 
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_searchable_document(name, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_searchable_document_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_searchable_document_with_http_info(name, opts)
         else
@@ -10849,7 +10942,7 @@ module AsposePdfCloud
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :lang language for OCR engine. Possible values: eng, ara, bel, ben, bul, ces, dan, deu, ell, fin, fra, heb, hin, ind, isl, ita, jpn, kor, nld, nor, pol, por, ron, rus, spa, swe, tha, tur, ukr, vie, chi_sim, chi_tra or thier combination e.g. eng,rus 
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_searchable_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_searchable_document ..."
@@ -10889,7 +10982,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_searchable_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -10900,18 +10993,18 @@ module AsposePdfCloud
     # 
     # @param name 
     # @param property_name 
+    # @param value 
     # @param [Hash] opts the optional parameters
-    # @option opts [DocumentProperty] :property 
     # @option opts [String] :storage 
     # @option opts [String] :folder 
     # @return [DocumentPropertyResponse]
-    def put_set_property(name, property_name, opts = {})
+    def put_set_property(name, property_name, value, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = put_set_property_with_http_info(name, property_name, opts)
+      data, _status_code, _headers = put_set_property_with_http_info(name, property_name, value, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = put_set_property_with_http_info(name, property_name, opts)
+          data, _status_code, _headers = put_set_property_with_http_info(name, property_name, value, opts)
         else
           raise
         end
@@ -10922,12 +11015,12 @@ module AsposePdfCloud
     # 
     # @param name 
     # @param property_name 
+    # @param value 
     # @param [Hash] opts the optional parameters
-    # @option opts [DocumentProperty] :property 
     # @option opts [String] :storage 
     # @option opts [String] :folder 
     # @return [Array<(DocumentPropertyResponse, Fixnum, Hash)>] DocumentPropertyResponse data, response status code and response headers
-    def put_set_property_with_http_info(name, property_name, opts = {})
+    def put_set_property_with_http_info(name, property_name, value, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_set_property ..."
       end
@@ -10939,11 +11032,16 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && property_name.nil?
         fail ArgumentError, "Missing the required parameter 'property_name' when calling PdfApi.put_set_property"
       end
+      # verify the required parameter 'value' is set
+      if @api_client.config.client_side_validation && value.nil?
+        fail ArgumentError, "Missing the required parameter 'value' when calling PdfApi.put_set_property"
+      end
       # resource path
       local_var_path = "/pdf/{name}/documentproperties/{propertyName}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'propertyName' + '}', property_name.to_s)
 
       # query parameters
       query_params = {}
+      query_params[:'value'] = value
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -10960,7 +11058,8 @@ module AsposePdfCloud
       post_body = nil
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'property'])
+      # Fix header in file
+      # post_body = nil
       auth_names = []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -10989,12 +11088,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_svg_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -11017,7 +11117,8 @@ module AsposePdfCloud
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_svg_in_storage_to_pdf ..."
@@ -11045,6 +11146,7 @@ module AsposePdfCloud
       query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
       query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11068,7 +11170,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_svg_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -11088,7 +11190,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_update_field_with_http_info(name, field_name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_update_field_with_http_info(name, field_name, opts)
         else
@@ -11166,7 +11268,7 @@ module AsposePdfCloud
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_update_fields_with_http_info(name, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_update_fields_with_http_info(name, opts)
         else
@@ -11240,12 +11342,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_web_in_storage_to_pdf(name, url, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_web_in_storage_to_pdf_with_http_info(name, url, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_web_in_storage_to_pdf_with_http_info(name, url, opts)
         else
@@ -11267,7 +11370,8 @@ module AsposePdfCloud
     # @option opts [Float] :margin_right Page margin right
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_web_in_storage_to_pdf_with_http_info(name, url, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_web_in_storage_to_pdf ..."
@@ -11294,6 +11398,7 @@ module AsposePdfCloud
       query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
       query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11317,7 +11422,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_web_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -11328,13 +11433,14 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [SaaSposeResponse]
+    # @return [AsposeResponse]
     def put_xfa_pdf_in_request_to_acro_form(out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
         else
@@ -11347,8 +11453,9 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_xfa_pdf_in_request_to_acro_form ..."
@@ -11363,6 +11470,7 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11388,7 +11496,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_xfa_pdf_in_request_to_acro_form\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -11401,12 +11509,13 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_xfa_pdf_in_storage_to_acro_form(name, out_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
         else
@@ -11421,7 +11530,8 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_xfa_pdf_in_storage_to_acro_form ..."
@@ -11441,6 +11551,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11464,7 +11575,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_xfa_pdf_in_storage_to_acro_form\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -11478,12 +11589,13 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :xsl_file_path Full XSL source filename (ex. /folder1/folder2/template.xsl)
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_xml_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -11499,7 +11611,8 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :xsl_file_path Full XSL source filename (ex. /folder1/folder2/template.xsl)
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_xml_in_storage_to_pdf ..."
@@ -11520,6 +11633,7 @@ module AsposePdfCloud
       query_params[:'srcPath'] = src_path
       query_params[:'xslFilePath'] = opts[:'xsl_file_path'] if !opts[:'xsl_file_path'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11543,7 +11657,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_xml_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -11556,12 +11670,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.xps)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_xps_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -11576,7 +11691,8 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.xps)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_xps_in_storage_to_pdf ..."
@@ -11596,6 +11712,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11619,7 +11736,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_xps_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -11632,12 +11749,13 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.xpsfo)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [SaaSposeResponse]
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
     def put_xsl_fo_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
       data, _status_code, _headers = put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
-        if error.code == HttpStatusCode::UNAUTHORIZED
+        if error.code == 401
           @api_client.refresh_token
           data, _status_code, _headers = put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
@@ -11652,7 +11770,8 @@ module AsposePdfCloud
     # @param src_path Full source filename (ex. /folder1/folder2/template.xpsfo)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dst_folder The destination document folder.
-    # @return [Array<(SaaSposeResponse, Fixnum, Hash)>] SaaSposeResponse data, response status code and response headers
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_xsl_fo_in_storage_to_pdf ..."
@@ -11672,6 +11791,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'srcPath'] = src_path
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
       header_params = {}
@@ -11695,7 +11815,7 @@ module AsposePdfCloud
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'SaaSposeResponse')
+        :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_xsl_fo_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
