@@ -1155,7 +1155,7 @@ class PdfTests < Minitest::Test
 
 
     response = @pdf_api.get_image(file_name, image_id, opts)
-    assert(response, 'Failed to read document image by number.')
+    assert(response, 'Failed to read document image by image id.')
   end
 
   def test_delete_image
@@ -1172,7 +1172,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.delete_image(file_name, image_id, opts)
-    assert(response, 'Failed to read document image by number.')
+    assert(response, 'Failed to delete document image.')
   end
 
   def test_get_images
@@ -1185,7 +1185,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_images(file_name, page_number, opts)
-    assert(response, 'Failed to read document images.')
+    assert(response, 'Failed to read page images.')
   end
 
   def test_put_replace_image
@@ -1196,7 +1196,7 @@ class PdfTests < Minitest::Test
     upload_file(image_file_name)
 
     opts = {
-        :image_file => @temp_folder + '/' + image_file_name,
+        :image_file_path => @temp_folder + '/' + image_file_name,
         :folder => @temp_folder
     }
 
@@ -1222,7 +1222,7 @@ class PdfTests < Minitest::Test
     ury = 100
 
     opts = {
-        :image_file => @temp_folder + '/' + image_file_name,
+        :image_file_path => @temp_folder + '/' + image_file_name,
         :folder => @temp_folder
     }
 
@@ -1303,7 +1303,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.put_image_extract_as_jpeg(name, image_id, opts)
-    assert(response, 'Failed to extract images as jpeg.')
+    assert(response, 'Failed to extract image as jpeg.')
   end
 
   def test_get_image_extract_as_jpeg
@@ -1320,7 +1320,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.get_image_extract_as_jpeg(name, image_id, opts)
-    assert(response, 'Failed to extract images as jpeg.')
+    assert(response, 'Failed to extract image as jpeg.')
   end
 
   def test_put_image_extract_as_tiff
@@ -1340,7 +1340,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.put_image_extract_as_tiff(name, image_id, opts)
-    assert(response, 'Failed to extract images as tiff.')
+    assert(response, 'Failed to extract image as tiff.')
   end
 
   def test_get_image_extract_as_tiff
@@ -1357,7 +1357,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.get_image_extract_as_tiff(name, image_id, opts)
-    assert(response, 'Failed to extract images as tiff.')
+    assert(response, 'Failed to extract image as tiff.')
   end
 
   def test_put_image_extract_as_gif
@@ -1377,7 +1377,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.put_image_extract_as_gif(name, image_id, opts)
-    assert(response, 'Failed to extract images as gif.')
+    assert(response, 'Failed to extract image as gif.')
   end
 
   def test_get_image_extract_as_gif
@@ -1394,7 +1394,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.get_image_extract_as_gif(name, image_id, opts)
-    assert(response, 'Failed to extract images as gif.')
+    assert(response, 'Failed to extract image as gif.')
   end
 
   def test_put_image_extract_as_png
