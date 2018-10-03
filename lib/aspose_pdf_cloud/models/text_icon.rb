@@ -19,6 +19,34 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.9.0"
+  class TextIcon
+    
+    NOTE = "Note".freeze
+    COMMENT = "Comment".freeze
+    KEY = "Key".freeze
+    HELP = "Help".freeze
+    NEW_PARAGRAPH = "NewParagraph".freeze
+    PARAGRAPH = "Paragraph".freeze
+    INSERT = "Insert".freeze
+    CHECK = "Check".freeze
+    CROSS = "Cross".freeze
+    CIRCLE = "Circle".freeze
+    STAR = "Star".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = TextIcon.constants.select{|c| c.to_s == value}
+      constantValues = TextIcon.constants.select{ |const_name| TextIcon.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #TextIcon" if constantValues.empty?
+      value
+    end
+  end
+
 end

@@ -19,6 +19,34 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.9.0"
+  class AnnotationFlags
+    
+    DEFAULT = "Default".freeze
+    INVISIBLE = "Invisible".freeze
+    HIDDEN = "Hidden".freeze
+    PRINT = "Print".freeze
+    NO_ZOOM = "NoZoom".freeze
+    NO_ROTATE = "NoRotate".freeze
+    NO_VIEW = "NoView".freeze
+    READ_ONLY = "ReadOnly".freeze
+    LOCKED = "Locked".freeze
+    TOGGLE_NO_VIEW = "ToggleNoView".freeze
+    LOCKED_CONTENTS = "LockedContents".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = AnnotationFlags.constants.select{|c| c.to_s == value}
+      constantValues = AnnotationFlags.constants.select{ |const_name| AnnotationFlags.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #AnnotationFlags" if constantValues.empty?
+      value
+    end
+  end
+
 end

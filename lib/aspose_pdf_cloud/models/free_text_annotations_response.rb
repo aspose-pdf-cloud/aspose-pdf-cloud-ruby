@@ -22,48 +22,32 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
-  # Represents form field.
-  class Field
-    # Link to the document.
-    attr_accessor :links
 
-    # Field name.
-    attr_accessor :name
+  class FreeTextAnnotationsResponse
+    # Response status code.
+    attr_accessor :code
 
-    # Selected items.
-    attr_accessor :selected_items
+    # Response status.
+    attr_accessor :status
 
-    # Field type.
-    attr_accessor :type
-
-    # Field rectangle.
-    attr_accessor :rect
-
-    # Field values.
-    attr_accessor :values
+    attr_accessor :annotations
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'links' => :'Links',
-        :'name' => :'Name',
-        :'selected_items' => :'SelectedItems',
-        :'type' => :'Type',
-        :'rect' => :'Rect',
-        :'values' => :'Values'
+        :'code' => :'Code',
+        :'status' => :'Status',
+        :'annotations' => :'Annotations'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'links' => :'Array<Link>',
-        :'name' => :'String',
-        :'selected_items' => :'Array<Integer>',
-        :'type' => :'FieldType',
-        :'rect' => :'RectanglePdf',
-        :'values' => :'Array<String>'
+        :'code' => :'Integer',
+        :'status' => :'String',
+        :'annotations' => :'FreeTextAnnotations'
       }
     end
 
@@ -75,34 +59,16 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Links')
-        if (value = attributes[:'Links']).is_a?(Array)
-          self.links = value
-        end
+      if attributes.has_key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.has_key?(:'Name')
-        self.name = attributes[:'Name']
+      if attributes.has_key?(:'Status')
+        self.status = attributes[:'Status']
       end
 
-      if attributes.has_key?(:'SelectedItems')
-        if (value = attributes[:'SelectedItems']).is_a?(Array)
-          self.selected_items = value
-        end
-      end
-
-      if attributes.has_key?(:'Type')
-        self.type = attributes[:'Type']
-      end
-
-      if attributes.has_key?(:'Rect')
-        self.rect = attributes[:'Rect']
-      end
-
-      if attributes.has_key?(:'Values')
-        if (value = attributes[:'Values']).is_a?(Array)
-          self.values = value
-        end
+      if attributes.has_key?(:'Annotations')
+        self.annotations = attributes[:'Annotations']
       end
 
     end
@@ -111,12 +77,17 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @code.nil?
+        invalid_properties.push("invalid value for 'code', code cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @code.nil?
       return true
     end
 
@@ -125,12 +96,9 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          links == o.links &&
-          name == o.name &&
-          selected_items == o.selected_items &&
-          type == o.type &&
-          rect == o.rect &&
-          values == o.values
+          code == o.code &&
+          status == o.status &&
+          annotations == o.annotations
     end
 
     # @see the `==` method
@@ -142,7 +110,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, name, selected_items, type, rect, values].hash
+      [code, status, annotations].hash
     end
 
     # Builds the object from hash

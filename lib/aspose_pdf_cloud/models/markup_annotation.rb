@@ -22,19 +22,72 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
-  # List of annotations.
-  class Annotations
+  # Provides MarkupAnnotation.
+  class MarkupAnnotation
     # Link to the document.
     attr_accessor :links
 
-    attr_accessor :list
+    # Get the annotation content.
+    attr_accessor :contents
+
+    # The date and time when the annotation was created.
+    attr_accessor :creation_date
+
+    # Get the annotation subject.
+    attr_accessor :subject
+
+    # Get the annotation title.
+    attr_accessor :title
+
+    # The date and time when the annotation was last modified.
+    attr_accessor :modified
+
+    # Gets ID of the annotation.
+    attr_accessor :id
+
+    # Gets Flags of the annotation.
+    attr_accessor :flags
+
+    # Gets Name of the annotation.
+    attr_accessor :name
+
+    # Gets Rect of the annotation.
+    attr_accessor :rect
+
+    # Gets PageIndex of the annotation.
+    attr_accessor :page_index
+
+    # Gets ZIndex of the annotation.
+    attr_accessor :z_index
+
+    # Gets HorizontalAlignment of the annotation.
+    attr_accessor :horizontal_alignment
+
+    # Gets VerticalAlignment of the annotation.
+    attr_accessor :vertical_alignment
+
+    # Get the annotation RichText.
+    attr_accessor :rich_text
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
-        :'list' => :'List'
+        :'contents' => :'Contents',
+        :'creation_date' => :'CreationDate',
+        :'subject' => :'Subject',
+        :'title' => :'Title',
+        :'modified' => :'Modified',
+        :'id' => :'Id',
+        :'flags' => :'Flags',
+        :'name' => :'Name',
+        :'rect' => :'Rect',
+        :'page_index' => :'PageIndex',
+        :'z_index' => :'ZIndex',
+        :'horizontal_alignment' => :'HorizontalAlignment',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'rich_text' => :'RichText'
       }
     end
 
@@ -42,7 +95,20 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
-        :'list' => :'Array<LinkElement>'
+        :'contents' => :'String',
+        :'creation_date' => :'String',
+        :'subject' => :'String',
+        :'title' => :'String',
+        :'modified' => :'String',
+        :'id' => :'String',
+        :'flags' => :'Array<AnnotationFlags>',
+        :'name' => :'String',
+        :'rect' => :'RectanglePdf',
+        :'page_index' => :'Integer',
+        :'z_index' => :'Integer',
+        :'horizontal_alignment' => :'HorizontalAlignment',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'rich_text' => :'String'
       }
     end
 
@@ -60,10 +126,62 @@ module AsposePdfCloud
         end
       end
 
-      if attributes.has_key?(:'List')
-        if (value = attributes[:'List']).is_a?(Array)
-          self.list = value
+      if attributes.has_key?(:'Contents')
+        self.contents = attributes[:'Contents']
+      end
+
+      if attributes.has_key?(:'CreationDate')
+        self.creation_date = attributes[:'CreationDate']
+      end
+
+      if attributes.has_key?(:'Subject')
+        self.subject = attributes[:'Subject']
+      end
+
+      if attributes.has_key?(:'Title')
+        self.title = attributes[:'Title']
+      end
+
+      if attributes.has_key?(:'Modified')
+        self.modified = attributes[:'Modified']
+      end
+
+      if attributes.has_key?(:'Id')
+        self.id = attributes[:'Id']
+      end
+
+      if attributes.has_key?(:'Flags')
+        if (value = attributes[:'Flags']).is_a?(Array)
+          self.flags = value
         end
+      end
+
+      if attributes.has_key?(:'Name')
+        self.name = attributes[:'Name']
+      end
+
+      if attributes.has_key?(:'Rect')
+        self.rect = attributes[:'Rect']
+      end
+
+      if attributes.has_key?(:'PageIndex')
+        self.page_index = attributes[:'PageIndex']
+      end
+
+      if attributes.has_key?(:'ZIndex')
+        self.z_index = attributes[:'ZIndex']
+      end
+
+      if attributes.has_key?(:'HorizontalAlignment')
+        self.horizontal_alignment = attributes[:'HorizontalAlignment']
+      end
+
+      if attributes.has_key?(:'VerticalAlignment')
+        self.vertical_alignment = attributes[:'VerticalAlignment']
+      end
+
+      if attributes.has_key?(:'RichText')
+        self.rich_text = attributes[:'RichText']
       end
 
     end
@@ -87,7 +205,20 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
-          list == o.list
+          contents == o.contents &&
+          creation_date == o.creation_date &&
+          subject == o.subject &&
+          title == o.title &&
+          modified == o.modified &&
+          id == o.id &&
+          flags == o.flags &&
+          name == o.name &&
+          rect == o.rect &&
+          page_index == o.page_index &&
+          z_index == o.z_index &&
+          horizontal_alignment == o.horizontal_alignment &&
+          vertical_alignment == o.vertical_alignment &&
+          rich_text == o.rich_text
     end
 
     # @see the `==` method
@@ -99,7 +230,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, list].hash
+      [links, contents, creation_date, subject, title, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, rich_text].hash
     end
 
     # Builds the object from hash
