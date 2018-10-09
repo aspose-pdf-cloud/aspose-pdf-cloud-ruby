@@ -22,36 +22,72 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
-  # Represents form field.
-  class Field
+  # Provides annotation.
+  class AnnotationInfo
     # Link to the document.
     attr_accessor :links
 
-    # Field name.
+    # Get the annotation content.
+    attr_accessor :contents
+
+    # The date and time when the annotation was created.
+    attr_accessor :creation_date
+
+    # Get the annotation subject.
+    attr_accessor :subject
+
+    # Get the annotation title.
+    attr_accessor :title
+
+    # The date and time when the annotation was last modified.
+    attr_accessor :modified
+
+    # Gets ID of the annotation.
+    attr_accessor :id
+
+    # Gets Flags of the annotation.
+    attr_accessor :flags
+
+    # Gets Name of the annotation.
     attr_accessor :name
 
-    # Selected items.
-    attr_accessor :selected_items
-
-    # Field type.
-    attr_accessor :type
-
-    # Field rectangle.
+    # Gets Rect of the annotation.
     attr_accessor :rect
 
-    # Field values.
-    attr_accessor :values
+    # Gets PageIndex of the annotation.
+    attr_accessor :page_index
+
+    # Gets ZIndex of the annotation.
+    attr_accessor :z_index
+
+    # Gets HorizontalAlignment of the annotation.
+    attr_accessor :horizontal_alignment
+
+    # Gets VerticalAlignment of the annotation.
+    attr_accessor :vertical_alignment
+
+    # Gets annotation type.
+    attr_accessor :annotation_type
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
+        :'contents' => :'Contents',
+        :'creation_date' => :'CreationDate',
+        :'subject' => :'Subject',
+        :'title' => :'Title',
+        :'modified' => :'Modified',
+        :'id' => :'Id',
+        :'flags' => :'Flags',
         :'name' => :'Name',
-        :'selected_items' => :'SelectedItems',
-        :'type' => :'Type',
         :'rect' => :'Rect',
-        :'values' => :'Values'
+        :'page_index' => :'PageIndex',
+        :'z_index' => :'ZIndex',
+        :'horizontal_alignment' => :'HorizontalAlignment',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'annotation_type' => :'AnnotationType'
       }
     end
 
@@ -59,11 +95,20 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
+        :'contents' => :'String',
+        :'creation_date' => :'String',
+        :'subject' => :'String',
+        :'title' => :'String',
+        :'modified' => :'String',
+        :'id' => :'String',
+        :'flags' => :'Array<AnnotationFlags>',
         :'name' => :'String',
-        :'selected_items' => :'Array<Integer>',
-        :'type' => :'FieldType',
         :'rect' => :'RectanglePdf',
-        :'values' => :'Array<String>'
+        :'page_index' => :'Integer',
+        :'z_index' => :'Integer',
+        :'horizontal_alignment' => :'HorizontalAlignment',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'annotation_type' => :'AnnotationType'
       }
     end
 
@@ -81,28 +126,62 @@ module AsposePdfCloud
         end
       end
 
-      if attributes.has_key?(:'Name')
-        self.name = attributes[:'Name']
+      if attributes.has_key?(:'Contents')
+        self.contents = attributes[:'Contents']
       end
 
-      if attributes.has_key?(:'SelectedItems')
-        if (value = attributes[:'SelectedItems']).is_a?(Array)
-          self.selected_items = value
+      if attributes.has_key?(:'CreationDate')
+        self.creation_date = attributes[:'CreationDate']
+      end
+
+      if attributes.has_key?(:'Subject')
+        self.subject = attributes[:'Subject']
+      end
+
+      if attributes.has_key?(:'Title')
+        self.title = attributes[:'Title']
+      end
+
+      if attributes.has_key?(:'Modified')
+        self.modified = attributes[:'Modified']
+      end
+
+      if attributes.has_key?(:'Id')
+        self.id = attributes[:'Id']
+      end
+
+      if attributes.has_key?(:'Flags')
+        if (value = attributes[:'Flags']).is_a?(Array)
+          self.flags = value
         end
       end
 
-      if attributes.has_key?(:'Type')
-        self.type = attributes[:'Type']
+      if attributes.has_key?(:'Name')
+        self.name = attributes[:'Name']
       end
 
       if attributes.has_key?(:'Rect')
         self.rect = attributes[:'Rect']
       end
 
-      if attributes.has_key?(:'Values')
-        if (value = attributes[:'Values']).is_a?(Array)
-          self.values = value
-        end
+      if attributes.has_key?(:'PageIndex')
+        self.page_index = attributes[:'PageIndex']
+      end
+
+      if attributes.has_key?(:'ZIndex')
+        self.z_index = attributes[:'ZIndex']
+      end
+
+      if attributes.has_key?(:'HorizontalAlignment')
+        self.horizontal_alignment = attributes[:'HorizontalAlignment']
+      end
+
+      if attributes.has_key?(:'VerticalAlignment')
+        self.vertical_alignment = attributes[:'VerticalAlignment']
+      end
+
+      if attributes.has_key?(:'AnnotationType')
+        self.annotation_type = attributes[:'AnnotationType']
       end
 
     end
@@ -126,11 +205,20 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
+          contents == o.contents &&
+          creation_date == o.creation_date &&
+          subject == o.subject &&
+          title == o.title &&
+          modified == o.modified &&
+          id == o.id &&
+          flags == o.flags &&
           name == o.name &&
-          selected_items == o.selected_items &&
-          type == o.type &&
           rect == o.rect &&
-          values == o.values
+          page_index == o.page_index &&
+          z_index == o.z_index &&
+          horizontal_alignment == o.horizontal_alignment &&
+          vertical_alignment == o.vertical_alignment &&
+          annotation_type == o.annotation_type
     end
 
     # @see the `==` method
@@ -142,7 +230,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, name, selected_items, type, rect, values].hash
+      [links, contents, creation_date, subject, title, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, annotation_type].hash
     end
 
     # Builds the object from hash

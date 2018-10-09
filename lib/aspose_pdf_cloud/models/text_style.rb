@@ -22,32 +22,38 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
+  # Represents a text style of a text
+  class TextStyle
+    # Gets or sets font size of the text.
+    attr_accessor :font_size
 
-  class AnnotationResponse
-    # Response status code.
-    attr_accessor :code
+    # Gets or sets font of the text.
+    attr_accessor :font
 
-    # Response status.
-    attr_accessor :status
+    # Gets or sets foreground color of the text.
+    attr_accessor :foreground_color
 
-    attr_accessor :annotation
+    # Sets background color of the text.
+    attr_accessor :background_color
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status',
-        :'annotation' => :'Annotation'
+        :'font_size' => :'FontSize',
+        :'font' => :'Font',
+        :'foreground_color' => :'ForegroundColor',
+        :'background_color' => :'BackgroundColor'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'Integer',
-        :'status' => :'String',
-        :'annotation' => :'Annotation'
+        :'font_size' => :'Float',
+        :'font' => :'String',
+        :'foreground_color' => :'Color',
+        :'background_color' => :'Color'
       }
     end
 
@@ -59,16 +65,20 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.has_key?(:'FontSize')
+        self.font_size = attributes[:'FontSize']
       end
 
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.has_key?(:'Font')
+        self.font = attributes[:'Font']
       end
 
-      if attributes.has_key?(:'Annotation')
-        self.annotation = attributes[:'Annotation']
+      if attributes.has_key?(:'ForegroundColor')
+        self.foreground_color = attributes[:'ForegroundColor']
+      end
+
+      if attributes.has_key?(:'BackgroundColor')
+        self.background_color = attributes[:'BackgroundColor']
       end
 
     end
@@ -77,8 +87,8 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
+      if @font_size.nil?
+        invalid_properties.push("invalid value for 'font_size', font_size cannot be nil.")
       end
 
       return invalid_properties
@@ -87,7 +97,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
+      return false if @font_size.nil?
       return true
     end
 
@@ -96,9 +106,10 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          status == o.status &&
-          annotation == o.annotation
+          font_size == o.font_size &&
+          font == o.font &&
+          foreground_color == o.foreground_color &&
+          background_color == o.background_color
     end
 
     # @see the `==` method
@@ -110,7 +121,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, annotation].hash
+      [font_size, font, foreground_color, background_color].hash
     end
 
     # Builds the object from hash

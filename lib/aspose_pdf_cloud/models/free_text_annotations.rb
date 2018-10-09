@@ -22,36 +22,19 @@ SOFTWARE.
 require 'date'
 
 module AsposePdfCloud
-  # Represents form field.
-  class Field
+  # List of annotations.
+  class FreeTextAnnotations
     # Link to the document.
     attr_accessor :links
 
-    # Field name.
-    attr_accessor :name
-
-    # Selected items.
-    attr_accessor :selected_items
-
-    # Field type.
-    attr_accessor :type
-
-    # Field rectangle.
-    attr_accessor :rect
-
-    # Field values.
-    attr_accessor :values
+    attr_accessor :list
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
-        :'name' => :'Name',
-        :'selected_items' => :'SelectedItems',
-        :'type' => :'Type',
-        :'rect' => :'Rect',
-        :'values' => :'Values'
+        :'list' => :'List'
       }
     end
 
@@ -59,11 +42,7 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
-        :'name' => :'String',
-        :'selected_items' => :'Array<Integer>',
-        :'type' => :'FieldType',
-        :'rect' => :'RectanglePdf',
-        :'values' => :'Array<String>'
+        :'list' => :'Array<FreeTextAnnotation>'
       }
     end
 
@@ -81,27 +60,9 @@ module AsposePdfCloud
         end
       end
 
-      if attributes.has_key?(:'Name')
-        self.name = attributes[:'Name']
-      end
-
-      if attributes.has_key?(:'SelectedItems')
-        if (value = attributes[:'SelectedItems']).is_a?(Array)
-          self.selected_items = value
-        end
-      end
-
-      if attributes.has_key?(:'Type')
-        self.type = attributes[:'Type']
-      end
-
-      if attributes.has_key?(:'Rect')
-        self.rect = attributes[:'Rect']
-      end
-
-      if attributes.has_key?(:'Values')
-        if (value = attributes[:'Values']).is_a?(Array)
-          self.values = value
+      if attributes.has_key?(:'List')
+        if (value = attributes[:'List']).is_a?(Array)
+          self.list = value
         end
       end
 
@@ -126,11 +87,7 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
-          name == o.name &&
-          selected_items == o.selected_items &&
-          type == o.type &&
-          rect == o.rect &&
-          values == o.values
+          list == o.list
     end
 
     # @see the `==` method
@@ -142,7 +99,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, name, selected_items, type, rect, values].hash
+      [links, list].hash
     end
 
     # Builds the object from hash

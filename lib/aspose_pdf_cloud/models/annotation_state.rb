@@ -19,6 +19,31 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.9.0"
+  class AnnotationState
+    
+    UNDEFINED = "Undefined".freeze
+    MARKED = "Marked".freeze
+    UNMARKED = "Unmarked".freeze
+    ACCEPTED = "Accepted".freeze
+    REJECTED = "Rejected".freeze
+    CANCELLED = "Cancelled".freeze
+    COMPLETED = "Completed".freeze
+    NONE = "None".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = AnnotationState.constants.select{|c| c.to_s == value}
+      constantValues = AnnotationState.constants.select{ |const_name| AnnotationState.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #AnnotationState" if constantValues.empty?
+      value
+    end
+  end
+
 end

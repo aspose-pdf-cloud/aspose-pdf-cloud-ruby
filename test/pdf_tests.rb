@@ -54,6 +54,30 @@ class PdfTests < Minitest::Test
 
   # Annotations Tests
 
+  def test_get_document_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_annotations(file_name, opts)
+    assert(response, 'Failed to read document annotations.')
+  end
+
+  def test_delete_document_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_document_annotations(file_name, opts)
+    assert(response, 'Failed to delete document annotations.')
+  end
+
   def test_get_page_annotations
     file_name = 'PdfWithAnnotations.pdf'
     upload_file(file_name)
@@ -67,18 +91,235 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read document page annotations.')
   end
 
-  def test_get_page_annotation
+  def test_delete_page_annotations
     file_name = 'PdfWithAnnotations.pdf'
     upload_file(file_name)
 
     page_number = 2
-    annotation_number = 2
     opts = {
         :folder => @temp_folder
     }
 
-    response = @pdf_api.get_page_annotation(file_name, page_number, annotation_number, opts)
+    response = @pdf_api.delete_page_annotations(file_name, page_number, opts)
     assert(response, 'Failed to read document page annotations.')
+  end
+
+  def test_delete_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.delete_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to delete annotation.')
+  end
+
+  # Free Text Annotations Tests
+
+  def test_get_document_free_text_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_free_text_annotations(file_name, opts)
+    assert(response, 'Failed to read document free text annotations.')
+  end
+
+  def test_post_page_free_text_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    text_style = TextStyle.new
+    text_style.font_size = 12
+    text_style.font = 'Arial'
+    text_style.foreground_color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    text_style.background_color = Color.new({:A => 0xFF, :R => 0xFF, :G => 0, :B => 0})
+
+    annotation = FreeTextAnnotation.new
+    annotation.name = 'Test Free Text'
+    annotation.text_style = text_style
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.intent = FreeTextIntent::FREE_TEXT_TYPE_WRITER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Text Box Subj'
+    annotation.z_index = 1
+    annotation.justification = Justification::CENTER
+    annotation.title = 'Title'
+
+    response = @pdf_api.post_page_free_text_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add free text annotations into page.')
+  end
+
+  def test_get_page_free_text_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_free_text_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page free text annotations.')
+  end
+
+  def test_get_free_text_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_free_text_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document free text annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_free_text_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page free text annotations.')
+  end
+
+  def test_put_free_text_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    text_style = TextStyle.new
+    text_style.font_size = 12
+    text_style.font = 'Arial'
+    text_style.foreground_color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    text_style.background_color = Color.new({:A => 0xFF, :R => 0xFF, :G => 0, :B => 0})
+
+    annotation = FreeTextAnnotation.new
+    annotation.name = 'Test Free Text'
+    annotation.text_style = text_style
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.intent = FreeTextIntent::FREE_TEXT_TYPE_WRITER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Text Box Subj'
+    annotation.z_index = 1
+    annotation.justification = Justification::CENTER
+    annotation.title = 'Title'
+
+    annotations_response = @pdf_api.get_document_free_text_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document free text annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_free_text_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace free text annotation.')
+  end
+
+
+  # Text Annotations Tests
+
+  def test_get_document_text_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_text_annotations(file_name, opts)
+    assert(response, 'Failed to read document text annotations.')
+  end
+
+  def test_post_page_text_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = TextAnnotation.new
+    annotation.name = 'Test Free Text'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Text Box Subj'
+    annotation.z_index = 1
+    annotation.state = AnnotationState::UNDEFINED
+
+    response = @pdf_api.post_page_text_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add text annotations into page.')
+  end
+
+  def test_get_page_text_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_text_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page text annotations.')
+  end
+
+  def test_get_text_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_text_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document text annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_text_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page text annotations.')
+  end
+
+  def test_put_text_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = TextAnnotation.new
+    annotation.name = 'Test Free Text'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Text Box Subj'
+    annotation.z_index = 1
+    annotation.state = AnnotationState::UNDEFINED
+
+    annotations_response = @pdf_api.get_document_text_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document text annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_text_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace text annotation.')
   end
 
 
@@ -1155,7 +1396,7 @@ class PdfTests < Minitest::Test
 
 
     response = @pdf_api.get_image(file_name, image_id, opts)
-    assert(response, 'Failed to read document image by number.')
+    assert(response, 'Failed to read document image by image id.')
   end
 
   def test_delete_image
@@ -1172,7 +1413,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.delete_image(file_name, image_id, opts)
-    assert(response, 'Failed to read document image by number.')
+    assert(response, 'Failed to delete document image.')
   end
 
   def test_get_images
@@ -1185,7 +1426,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_images(file_name, page_number, opts)
-    assert(response, 'Failed to read document images.')
+    assert(response, 'Failed to read page images.')
   end
 
   def test_put_replace_image
@@ -1196,7 +1437,7 @@ class PdfTests < Minitest::Test
     upload_file(image_file_name)
 
     opts = {
-        :image_file => @temp_folder + '/' + image_file_name,
+        :image_file_path => @temp_folder + '/' + image_file_name,
         :folder => @temp_folder
     }
 
@@ -1222,7 +1463,7 @@ class PdfTests < Minitest::Test
     ury = 100
 
     opts = {
-        :image_file => @temp_folder + '/' + image_file_name,
+        :image_file_path => @temp_folder + '/' + image_file_name,
         :folder => @temp_folder
     }
 
@@ -1303,7 +1544,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.put_image_extract_as_jpeg(name, image_id, opts)
-    assert(response, 'Failed to extract images as jpeg.')
+    assert(response, 'Failed to extract image as jpeg.')
   end
 
   def test_get_image_extract_as_jpeg
@@ -1320,7 +1561,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.get_image_extract_as_jpeg(name, image_id, opts)
-    assert(response, 'Failed to extract images as jpeg.')
+    assert(response, 'Failed to extract image as jpeg.')
   end
 
   def test_put_image_extract_as_tiff
@@ -1340,7 +1581,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.put_image_extract_as_tiff(name, image_id, opts)
-    assert(response, 'Failed to extract images as tiff.')
+    assert(response, 'Failed to extract image as tiff.')
   end
 
   def test_get_image_extract_as_tiff
@@ -1357,7 +1598,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.get_image_extract_as_tiff(name, image_id, opts)
-    assert(response, 'Failed to extract images as tiff.')
+    assert(response, 'Failed to extract image as tiff.')
   end
 
   def test_put_image_extract_as_gif
@@ -1377,7 +1618,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.put_image_extract_as_gif(name, image_id, opts)
-    assert(response, 'Failed to extract images as gif.')
+    assert(response, 'Failed to extract image as gif.')
   end
 
   def test_get_image_extract_as_gif
@@ -1394,7 +1635,7 @@ class PdfTests < Minitest::Test
     image_id = responseImages[0].images.list[0].id
 
     response = @pdf_api.get_image_extract_as_gif(name, image_id, opts)
-    assert(response, 'Failed to extract images as gif.')
+    assert(response, 'Failed to extract image as gif.')
   end
 
   def test_put_image_extract_as_png
@@ -1562,6 +1803,22 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to delete document link annotations.')
   end
 
+  def test_get_link_annotation
+    file_name = 'PdfWithLinks.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_page_link_annotations(file_name, page_number, opts)
+    assert(annotations_response, 'Failed to read document page link annotations.')
+    link_id = annotations_response[0].links.list[0].id
+
+    response = @pdf_api.get_link_annotation(file_name, link_id, opts)
+    assert(response, 'Failed to delete link annotation.')
+  end
 
   # Merge Tests
 
