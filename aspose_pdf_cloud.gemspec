@@ -24,6 +24,10 @@ SOFTWARE.
 $:.push File.expand_path("../lib", __FILE__)
 require "aspose_pdf_cloud/version"
 
+files = `git ls-files`.split("\n")
+files.delete('.gitignore')
+files.delete('.swagger-codegen-ignore')
+
 Gem::Specification.new do |s|
   s.name        = "aspose_pdf_cloud"
   s.version     = AsposePdfCloud::VERSION
@@ -42,7 +46,7 @@ Gem::Specification.new do |s|
   
   s.add_development_dependency 'minitest', '~> 5.8'
 
-  s.files         = `git ls-files`.split("\n")
+  s.files         = files
   s.test_files    = `git ls-files -- test/*`.split("\n")
   s.executables   = []
   s.require_paths = ["lib"]
