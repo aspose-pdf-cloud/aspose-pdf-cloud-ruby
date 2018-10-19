@@ -179,10 +179,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -207,10 +203,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -234,10 +226,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -264,10 +252,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -292,10 +276,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -322,10 +302,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -350,10 +326,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -380,10 +352,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -409,10 +377,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -436,10 +400,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -466,10 +426,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -494,10 +450,6 @@ Name | Type | Description  | Notes
 
 [**DocumentResponse**](DocumentResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -521,10 +473,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AnnotationsInfoResponse**](AnnotationsInfoResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -551,10 +499,6 @@ Name | Type | Description  | Notes
 
 [**AttachmentResponse**](AttachmentResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -578,10 +522,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AttachmentsResponse**](AttachmentsResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -608,10 +548,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -636,10 +572,6 @@ Name | Type | Description  | Notes
 
 [**FreeTextAnnotationsResponse**](FreeTextAnnotationsResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -663,10 +595,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentPropertiesResponse**](DocumentPropertiesResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -693,10 +621,6 @@ Name | Type | Description  | Notes
 
 [**DocumentPropertyResponse**](DocumentPropertyResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -721,10 +645,6 @@ Name | Type | Description  | Notes
 
 [**TextAnnotationsResponse**](TextAnnotationsResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -748,10 +668,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -778,10 +694,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -804,10 +716,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -834,10 +742,6 @@ Name | Type | Description  | Notes
 
 [**FieldResponse**](FieldResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -861,10 +765,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FieldsResponse**](FieldsResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -890,10 +790,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeTextAnnotationResponse**](FreeTextAnnotationResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -926,10 +822,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -954,10 +846,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImageResponse**](ImageResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -986,10 +874,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1016,10 +900,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1048,10 +928,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1079,10 +955,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1108,10 +980,6 @@ Name | Type | Description  | Notes
 
 [**ImagesResponse**](ImagesResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1134,10 +1002,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1164,10 +1028,6 @@ Name | Type | Description  | Notes
 
 [**LinkAnnotationResponse**](LinkAnnotationResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1190,10 +1050,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1220,10 +1076,6 @@ Name | Type | Description  | Notes
 
 [**DocumentPageResponse**](DocumentPageResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1248,10 +1100,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AnnotationsInfoResponse**](AnnotationsInfoResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1280,10 +1128,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1310,10 +1154,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1342,10 +1182,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1372,10 +1208,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1404,10 +1236,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1435,10 +1263,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1463,10 +1287,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeTextAnnotationsResponse**](FreeTextAnnotationsResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1494,10 +1314,6 @@ Name | Type | Description  | Notes
 
 [**LinkAnnotationResponse**](LinkAnnotationResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1522,10 +1338,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LinkAnnotationsResponse**](LinkAnnotationsResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1559,10 +1371,6 @@ Name | Type | Description  | Notes
 
 [**TextRectsResponse**](TextRectsResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1588,10 +1396,6 @@ Name | Type | Description  | Notes
 
 [**TextAnnotationsResponse**](TextAnnotationsResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1616,10 +1420,6 @@ Name | Type | Description  | Notes
 
 [**DocumentPagesResponse**](DocumentPagesResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1642,10 +1442,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1679,10 +1475,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1707,10 +1499,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1764,10 +1552,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1793,10 +1577,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1820,10 +1600,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1849,10 +1625,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1880,10 +1652,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1908,10 +1676,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -1952,10 +1716,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -1984,10 +1744,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2011,10 +1767,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2040,10 +1792,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2066,10 +1814,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2102,10 +1846,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2137,10 +1877,6 @@ Name | Type | Description  | Notes
 
 [**TextRectsResponse**](TextRectsResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2166,10 +1902,6 @@ Name | Type | Description  | Notes
 
 [**TextAnnotationResponse**](TextAnnotationResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2194,10 +1926,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SignatureVerifyResponse**](SignatureVerifyResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2229,10 +1957,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2256,10 +1980,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WordCountResponse**](WordCountResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2285,10 +2005,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2313,10 +2029,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2340,10 +2052,6 @@ Name | Type | Description  | Notes
 
 **File**
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2366,10 +2074,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2399,10 +2103,6 @@ Name | Type | Description  | Notes
 
 [**DocumentResponse**](DocumentResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2429,10 +2129,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2457,10 +2153,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TextReplaceResponse**](TextReplaceResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2493,10 +2185,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -2523,10 +2211,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2551,10 +2235,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2582,10 +2262,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2611,10 +2287,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2642,10 +2314,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2672,10 +2340,6 @@ Name | Type | Description  | Notes
 
 [**TextReplaceResponse**](TextReplaceResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2700,10 +2364,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2730,10 +2390,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2762,10 +2418,6 @@ Name | Type | Description  | Notes
 
 [**SplitResultResponse**](SplitResultResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2789,10 +2441,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentPagesResponse**](DocumentPagesResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2820,10 +2468,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2849,10 +2493,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -2876,10 +2516,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2906,10 +2542,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -2933,10 +2565,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -2963,10 +2591,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeTextAnnotationResponse**](FreeTextAnnotationResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3001,10 +2625,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3032,10 +2652,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3065,10 +2681,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3096,10 +2708,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3129,10 +2737,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3157,10 +2761,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3190,10 +2790,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3221,10 +2817,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3254,10 +2846,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3286,10 +2874,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3314,10 +2898,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3345,10 +2925,6 @@ Name | Type | Description  | Notes
 
 [**LinkAnnotationResponse**](LinkAnnotationResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3373,10 +2949,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **File**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3403,10 +2975,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3432,10 +3000,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3465,10 +3029,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3496,10 +3056,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3529,10 +3085,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3560,10 +3112,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3593,10 +3141,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3625,10 +3169,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -3653,10 +3193,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3690,10 +3226,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -3718,10 +3250,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3775,10 +3303,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -3804,10 +3328,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -3831,10 +3351,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3860,10 +3376,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3891,10 +3403,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -3918,10 +3426,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -3962,10 +3466,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -3994,10 +3494,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -4022,10 +3518,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -4049,10 +3541,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4087,10 +3575,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4116,10 +3600,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4174,10 +3654,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4204,10 +3680,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4232,10 +3704,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4262,10 +3730,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4294,10 +3758,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4322,10 +3782,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4367,10 +3823,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4400,10 +3852,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4428,10 +3876,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4458,10 +3902,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4487,10 +3927,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4515,10 +3951,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4547,10 +3979,6 @@ Name | Type | Description  | Notes
 
 [**ImageResponse**](ImageResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -4575,10 +4003,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4605,10 +4029,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentPropertyResponse**](DocumentPropertyResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4643,10 +4063,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4672,10 +4088,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TextAnnotationResponse**](TextAnnotationResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4703,10 +4115,6 @@ Name | Type | Description  | Notes
 
 [**FieldResponse**](FieldResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4731,10 +4139,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FieldsResponse**](FieldsResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4768,10 +4172,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4795,10 +4195,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4824,10 +4220,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -4855,10 +4247,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4884,10 +4272,6 @@ Name | Type | Description  | Notes
 
 [**AsposeResponse**](AsposeResponse.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -4912,10 +4296,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
