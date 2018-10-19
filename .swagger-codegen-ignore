@@ -27,8 +27,8 @@
 *.sh
 #.travis.yml
 .gitignore
-*.md
-docs/*
+#*.md
+#docs/*
 spec/**
 #spec/api/*
 #spec/models/*
