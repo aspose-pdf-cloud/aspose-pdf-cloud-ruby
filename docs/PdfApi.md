@@ -166,31 +166,6 @@ Method | HTTP request | Description
 
 Delete document annotation by ID
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-annotation_id = "annotation_id_example" # String | The annotation ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete document annotation by ID
-  result = api_instance.delete_annotation(name, annotation_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_annotation: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -220,29 +195,6 @@ No authorization required
 
 Delete all annotations from the document
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete all annotations from the document
-  result = api_instance.delete_document_annotations(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_document_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -271,29 +223,6 @@ No authorization required
 
 Delete all link annotations from the document
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete all link annotations from the document
-  result = api_instance.delete_document_link_annotations(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_document_link_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -321,31 +250,6 @@ No authorization required
 > AsposeResponse delete_field(name, field_name, opts)
 
 Delete document field by name.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-field_name = "field_name_example" # String | The field name/
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete document field by name.
-  result = api_instance.delete_field(name, field_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_field: #{e}"
-end
-```
 
 ### Parameters
 
@@ -376,31 +280,6 @@ No authorization required
 
 Delete image from document page.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete image from document page.
-  result = api_instance.delete_image(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_image: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -429,31 +308,6 @@ No authorization required
 > AsposeResponse delete_link_annotation(name, link_id, opts)
 
 Delete document page link annotation by ID
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-link_id = "link_id_example" # String | The link ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete document page link annotation by ID
-  result = api_instance.delete_link_annotation(name, link_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_link_annotation: #{e}"
-end
-```
 
 ### Parameters
 
@@ -484,31 +338,6 @@ No authorization required
 
 Delete document page by its number.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete document page by its number.
-  result = api_instance.delete_page(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_page: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -537,31 +366,6 @@ No authorization required
 > AsposeResponse delete_page_annotations(name, page_number, opts)
 
 Delete all annotations from the page
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete all annotations from the page
-  result = api_instance.delete_page_annotations(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_page_annotations: #{e}"
-end
-```
 
 ### Parameters
 
@@ -592,31 +396,6 @@ No authorization required
 
 Delete all link annotations from the page
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Delete all link annotations from the page
-  result = api_instance.delete_page_link_annotations(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_page_link_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -646,29 +425,6 @@ No authorization required
 
 Delete custom document properties.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Delete custom document properties.
-  result = api_instance.delete_properties(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_properties: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -696,31 +452,6 @@ No authorization required
 > AsposeResponse delete_property(name, property_name, opts)
 
 Delete document property.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-property_name = "property_name_example" # String | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Delete document property.
-  result = api_instance.delete_property(name, property_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->delete_property: #{e}"
-end
-```
 
 ### Parameters
 
@@ -751,29 +482,6 @@ No authorization required
 
 Read common document info.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read common document info.
-  result = api_instance.get_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -802,29 +510,6 @@ No authorization required
 
 Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
-  result = api_instance.get_document_annotations(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -852,31 +537,6 @@ No authorization required
 > AttachmentResponse get_document_attachment_by_index(name, attachment_index, opts)
 
 Read document attachment info by its index.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-attachment_index = 56 # Integer | The attachment index.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document attachment info by its index.
-  result = api_instance.get_document_attachment_by_index(name, attachment_index, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_attachment_by_index: #{e}"
-end
-```
 
 ### Parameters
 
@@ -907,29 +567,6 @@ No authorization required
 
 Read document attachments info.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document attachments info.
-  result = api_instance.get_document_attachments(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_attachments: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -957,30 +594,6 @@ No authorization required
 > File get_document_bookmarks(name, opts)
 
 Read document bookmark/bookmarks (including children).
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  bookmark_path: "bookmark_path_example", # String | The bookmark path. Leave it empty if you want to get all the bookmarks in the document.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document bookmark/bookmarks (including children).
-  result = api_instance.get_document_bookmarks(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_bookmarks: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1011,29 +624,6 @@ No authorization required
 
 Read document free text annotations.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document free text annotations.
-  result = api_instance.get_document_free_text_annotations(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_free_text_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1062,29 +652,6 @@ No authorization required
 
 Read document properties.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Read document properties.
-  result = api_instance.get_document_properties(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_properties: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1112,31 +679,6 @@ No authorization required
 > DocumentPropertyResponse get_document_property(name, property_name, opts)
 
 Read document property by name.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-property_name = "property_name_example" # String | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Read document property by name.
-  result = api_instance.get_document_property(name, property_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_property: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1167,29 +709,6 @@ No authorization required
 
 Read document text annotations.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document text annotations.
-  result = api_instance.get_document_text_annotations(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_document_text_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1218,29 +737,6 @@ No authorization required
 
 Download a specific file 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-path = "path_example" # String | Path of the file including the file name and extension e.g. /file.ext
-
-opts = { 
-  version_id: "version_id_example", # String | File's version
-  storage: "storage_example" # String | User's storage name
-}
-
-begin
-  #Download a specific file 
-  result = api_instance.get_download(path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_download: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1268,31 +764,6 @@ No authorization required
 > File get_download_document_attachment_by_index(name, attachment_index, opts)
 
 Download document attachment content by its index.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-attachment_index = 56 # Integer | The attachment index.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Download document attachment content by its index.
-  result = api_instance.get_download_document_attachment_by_index(name, attachment_index, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_download_document_attachment_by_index: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1323,28 +794,6 @@ No authorization required
 
 Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.epub)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_epub_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_epub_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1371,31 +820,6 @@ No authorization required
 > FieldResponse get_field(name, field_name, opts)
 
 Get document field by name.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-field_name = "field_name_example" # String | The field name/
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Get document field by name.
-  result = api_instance.get_field(name, field_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_field: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1426,29 +850,6 @@ No authorization required
 
 Get document fields.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Get document fields.
-  result = api_instance.get_fields(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_fields: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1476,31 +877,6 @@ No authorization required
 > FreeTextAnnotationResponse get_free_text_annotation(name, annotation_id, opts)
 
 Read document page free text annotation by ID.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-annotation_id = "annotation_id_example" # String | The annotation ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page free text annotation by ID.
-  result = api_instance.get_free_text_annotation(name, annotation_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_free_text_annotation: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1530,37 +906,6 @@ No authorization required
 > File get_html_in_storage_to_pdf(src_path, html_file_name, opts)
 
 Convert HTML file (located on storage) to PDF format and return resulting file in response. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.zip)
-
-html_file_name = "html_file_name_example" # String | Name of HTML file in ZIP.
-
-opts = { 
-  height: 1.2, # Float | Page height
-  width: 1.2, # Float | Page width
-  is_landscape: true, # BOOLEAN | Is page landscaped
-  margin_left: 1.2, # Float | Page margin left
-  margin_bottom: 1.2, # Float | Page margin bottom
-  margin_right: 1.2, # Float | Page margin right
-  margin_top: 1.2, # Float | Page margin top
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert HTML file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_html_in_storage_to_pdf(src_path, html_file_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_html_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1597,31 +942,6 @@ No authorization required
 
 Read document image by ID.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document image by ID.
-  result = api_instance.get_image(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_image: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1650,33 +970,6 @@ No authorization required
 > File get_image_extract_as_gif(name, image_id, opts)
 
 Extract document image in GIF format
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in GIF format
-  result = api_instance.get_image_extract_as_gif(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_image_extract_as_gif: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1709,33 +1002,6 @@ No authorization required
 
 Extract document image in JPEG format
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in JPEG format
-  result = api_instance.get_image_extract_as_jpeg(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_image_extract_as_jpeg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1766,33 +1032,6 @@ No authorization required
 > File get_image_extract_as_png(name, image_id, opts)
 
 Extract document image in PNG format
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in PNG format
-  result = api_instance.get_image_extract_as_png(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_image_extract_as_png: #{e}"
-end
-```
 
 ### Parameters
 
@@ -1825,33 +1064,6 @@ No authorization required
 
 Extract document image in TIFF format
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in TIFF format
-  result = api_instance.get_image_extract_as_tiff(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_image_extract_as_tiff: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1883,31 +1095,6 @@ No authorization required
 
 Read document images.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document images.
-  result = api_instance.get_images(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_images: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1937,28 +1124,6 @@ No authorization required
 
 Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.tex)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_la_te_x_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_la_te_x_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1985,31 +1150,6 @@ No authorization required
 > LinkAnnotationResponse get_link_annotation(name, link_id, opts)
 
 Read document link annotation by ID.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-link_id = "link_id_example" # String | The link ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document link annotation by ID.
-  result = api_instance.get_link_annotation(name, link_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_link_annotation: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2040,28 +1180,6 @@ No authorization required
 
 Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.mht)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert MHT file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_mht_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_mht_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2088,31 +1206,6 @@ No authorization required
 > DocumentPageResponse get_page(name, page_number, opts)
 
 Read document page info.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page info.
-  result = api_instance.get_page(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2143,31 +1236,6 @@ No authorization required
 
 Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
-  result = api_instance.get_page_annotations(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2196,33 +1264,6 @@ No authorization required
 > File get_page_convert_to_bmp(name, page_number, opts)
 
 Convert document page to Bmp image and return resulting file in response.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Bmp image and return resulting file in response.
-  result = api_instance.get_page_convert_to_bmp(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_convert_to_bmp: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2255,33 +1296,6 @@ No authorization required
 
 Convert document page to Emf image and return resulting file in response.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Emf image and return resulting file in response.
-  result = api_instance.get_page_convert_to_emf(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_convert_to_emf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2312,33 +1326,6 @@ No authorization required
 > File get_page_convert_to_gif(name, page_number, opts)
 
 Convert document page to Gif image and return resulting file in response.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Gif image and return resulting file in response.
-  result = api_instance.get_page_convert_to_gif(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_convert_to_gif: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2371,33 +1358,6 @@ No authorization required
 
 Convert document page to Jpeg image and return resulting file in response.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Jpeg image and return resulting file in response.
-  result = api_instance.get_page_convert_to_jpeg(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_convert_to_jpeg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2428,33 +1388,6 @@ No authorization required
 > File get_page_convert_to_png(name, page_number, opts)
 
 Convert document page to Png image and return resulting file in response.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Png image and return resulting file in response.
-  result = api_instance.get_page_convert_to_png(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_convert_to_png: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2487,33 +1420,6 @@ No authorization required
 
 Convert document page to Tiff image  and return resulting file in response.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Tiff image  and return resulting file in response.
-  result = api_instance.get_page_convert_to_tiff(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_convert_to_tiff: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2545,31 +1451,6 @@ No authorization required
 
 Read document page free text annotations.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page free text annotations.
-  result = api_instance.get_page_free_text_annotations(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_free_text_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2598,33 +1479,6 @@ No authorization required
 > LinkAnnotationResponse get_page_link_annotation(name, page_number, link_id, opts)
 
 Read document page link annotation by ID.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-link_id = "link_id_example" # String | The link ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page link annotation by ID.
-  result = api_instance.get_page_link_annotation(name, page_number, link_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_link_annotation: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2656,31 +1510,6 @@ No authorization required
 
 Read document page link annotations.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page link annotations.
-  result = api_instance.get_page_link_annotations(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_link_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2709,42 +1538,6 @@ No authorization required
 > TextRectsResponse get_page_text(name, page_number, llx, lly, urx, ury, opts)
 
 Read page text items.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | Number of page (starting from 1).
-
-llx = 1.2 # Float | 
-
-lly = 1.2 # Float | 
-
-urx = 1.2 # Float | 
-
-ury = 1.2 # Float | 
-
-opts = { 
-  format: ["format_example"], # Array<String> | List of formats for search.
-  regex: "regex_example", # String | Formats are specified as a regular expression.
-  split_rects: true, # BOOLEAN | Split result fragments (default is true).
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Read page text items.
-  result = api_instance.get_page_text(name, page_number, llx, lly, urx, ury, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_text: #{e}"
-end
-```
 
 ### Parameters
 
@@ -2782,31 +1575,6 @@ No authorization required
 
 Read document page text annotations.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page text annotations.
-  result = api_instance.get_page_text_annotations(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_page_text_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2836,29 +1604,6 @@ No authorization required
 
 Read document pages info.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document pages info.
-  result = api_instance.get_pages(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pages: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2887,28 +1632,6 @@ No authorization required
 
 Convert PCL file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.pcl)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert PCL file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_pcl_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pcl_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2935,37 +1658,6 @@ No authorization required
 > File get_pdf_in_storage_to_doc(name, opts)
 
 Converts PDF document (located on storage) to DOC format and returns resulting file in response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  add_return_to_line_end: true, # BOOLEAN | Add return to line end.
-  format: "format_example", # String | Allows to specify .doc or .docx file format.
-  image_resolution_x: 56, # Integer | Image resolution X.
-  image_resolution_y: 56, # Integer | Image resolution Y.
-  max_distance_between_text_lines: 1.2, # Float | Max distance between text lines.
-  mode: "mode_example", # String | Allows to control how a PDF document is converted into a word processing document.
-  recognize_bullets: true, # BOOLEAN | Recognize bullets.
-  relative_horizontal_proximity: 1.2, # Float | Relative horizontal proximity.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to DOC format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_doc(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_doc: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3003,30 +1695,6 @@ No authorization required
 
 Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  content_recognition_mode: "content_recognition_mode_example", # String | ?roperty tunes conversion for this or that desirable method of recognition of content.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_epub(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_epub: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3055,57 +1723,6 @@ No authorization required
 > File get_pdf_in_storage_to_html(name, opts)
 
 Converts PDF document (located on storage) to Html format and returns resulting file in response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  additional_margin_width_in_points: 56, # Integer | Defines width of margin that will be forcibly left around that output HTML-areas.
-  compress_svg_graphics_if_any: true, # BOOLEAN | The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
-  convert_marked_content_to_layers: true, # BOOLEAN | If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
-  default_font_name: "default_font_name_example", # String | Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-  document_type: "document_type_example", # String | Result document type.
-  fixed_layout: true, # BOOLEAN | The value indicating whether that HTML is created as fixed layout.
-  image_resolution: 56, # Integer | Resolution for image rendering.
-  minimal_line_width: 56, # Integer | This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
-  prevent_glyphs_grouping: true, # BOOLEAN | This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
-  split_css_into_pages: true, # BOOLEAN | When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
-  split_into_pages: true, # BOOLEAN | The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
-  use_z_order: true, # BOOLEAN | If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
-  antialiasing_processing: "antialiasing_processing_example", # String | The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
-  css_class_names_prefix: "css_class_names_prefix_example", # String | When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
-  explicit_list_of_saved_pages: [56], # Array<Integer> | With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
-  font_encoding_strategy: "font_encoding_strategy_example", # String | Defines encoding special rule to tune PDF decoding for current document.
-  font_saving_mode: "font_saving_mode_example", # String | Defines font saving mode that will be used during saving of PDF to desirable format.
-  html_markup_generation_mode: "html_markup_generation_mode_example", # String | Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
-  letters_positioning_method: "letters_positioning_method_example", # String | The mode of positioning of letters in words in result HTML.
-  pages_flow_type_depends_on_viewers_screen_size: true, # BOOLEAN | If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
-  parts_embedding_mode: "parts_embedding_mode_example", # String | It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
-  raster_images_saving_mode: "raster_images_saving_mode_example", # String | Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
-  remove_empty_areas_on_top_and_bottom: true, # BOOLEAN | Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
-  save_shadowed_texts_as_transparent_texts: true, # BOOLEAN | Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
-  save_transparent_texts: true, # BOOLEAN | Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
-  special_folder_for_all_images: "special_folder_for_all_images_example", # String | The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
-  special_folder_for_svg_images: "special_folder_for_svg_images_example", # String | The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
-  try_save_text_underlining_and_strikeouting_in_css: true, # BOOLEAN | PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to Html format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_html(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_html: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3163,30 +1780,6 @@ No authorization required
 
 Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  pages_count: 56, # Integer | Pages count.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_la_te_x(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_la_te_x: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3216,29 +1809,6 @@ No authorization required
 
 Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_mobi_xml(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_mobi_xml: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3266,31 +1836,6 @@ No authorization required
 > File get_pdf_in_storage_to_pdf_a(name, type, opts)
 
 Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-type = "type_example" # String | Type of PdfA format.
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_pdf_a(name, type, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_pdf_a: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3320,31 +1865,6 @@ No authorization required
 > File get_pdf_in_storage_to_pptx(name, opts)
 
 Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  separate_images: true, # BOOLEAN | Separate images.
-  slides_as_images: true, # BOOLEAN | Slides as images.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_pptx(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_pptx: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3376,30 +1896,6 @@ No authorization required
 
 Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  compress_output_to_zip_archive: true, # BOOLEAN | Specifies whether output will be created as one zip-archive.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to SVG format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_svg(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_svg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3428,44 +1924,6 @@ No authorization required
 > File get_pdf_in_storage_to_tiff(name, opts)
 
 Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  brightness: 1.2, # Float | Image brightness.
-  compression: "compression_example", # String | Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-  color_depth: "color_depth_example", # String | Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-  left_margin: 56, # Integer | Left image margin.
-  right_margin: 56, # Integer | Right image margin.
-  top_margin: 56, # Integer | Top image margin.
-  bottom_margin: 56, # Integer | Bottom image margin.
-  orientation: "orientation_example", # String | Image orientation. Possible values are: None, Landscape, Portait.
-  skip_blank_pages: true, # BOOLEAN | Skip blank pages flag.
-  width: 56, # Integer | Image width.
-  height: 56, # Integer | Image height.
-  x_resolution: 56, # Integer | Horizontal resolution.
-  y_resolution: 56, # Integer | Vertical resolution.
-  page_index: 56, # Integer | Start page to export.
-  page_count: 56, # Integer | Number of pages to export.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_tiff(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_tiff: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3510,33 +1968,6 @@ No authorization required
 
 Converts PDF document (located on storage) to XLS format and returns resulting file in response content
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  insert_blank_column_at_first: true, # BOOLEAN | Insert blank column at first
-  minimize_the_number_of_worksheets: true, # BOOLEAN | Minimize the number of worksheets
-  scale_factor: 1.2, # Float | Scale factor
-  uniform_worksheets: true, # BOOLEAN | Uniform worksheets
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to XLS format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_xls(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_xls: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3569,29 +2000,6 @@ No authorization required
 
 Converts PDF document (located on storage) to XML format and returns resulting file in response content
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to XML format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_xml(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_xml: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3619,29 +2027,6 @@ No authorization required
 > File get_pdf_in_storage_to_xps(name, opts)
 
 Converts PDF document (located on storage) to XPS format and returns resulting file in response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to XPS format and returns resulting file in response content
-  result = api_instance.get_pdf_in_storage_to_xps(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_pdf_in_storage_to_xps: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3671,28 +2056,6 @@ No authorization required
 
 Convert PS file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.ps)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert PS file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_ps_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_ps_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3719,36 +2082,6 @@ No authorization required
 > File get_svg_in_storage_to_pdf(src_path, opts)
 
 Convert SVG file (located on storage) to PDF format and return resulting file in response. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.svg)
-
-opts = { 
-  adjust_page_size: true, # BOOLEAN | Adjust page size
-  height: 1.2, # Float | Page height
-  width: 1.2, # Float | Page width
-  is_landscape: true, # BOOLEAN | Is page landscaped
-  margin_left: 1.2, # Float | Page margin left
-  margin_bottom: 1.2, # Float | Page margin bottom
-  margin_right: 1.2, # Float | Page margin right
-  margin_top: 1.2, # Float | Page margin top
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert SVG file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_svg_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_svg_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -3785,40 +2118,6 @@ No authorization required
 
 Read document text.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-llx = 1.2 # Float | 
-
-lly = 1.2 # Float | 
-
-urx = 1.2 # Float | 
-
-ury = 1.2 # Float | 
-
-opts = { 
-  format: ["format_example"], # Array<String> | List of formats for search.
-  regex: "regex_example", # String | Formats are specified as a regular expression.
-  split_rects: true, # BOOLEAN | Split result fragments (default is true).
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Read document text.
-  result = api_instance.get_text(name, llx, lly, urx, ury, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_text: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3854,31 +2153,6 @@ No authorization required
 
 Read document page text annotation by ID.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-annotation_id = "annotation_id_example" # String | The annotation ID.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Read document page text annotation by ID.
-  result = api_instance.get_text_annotation(name, annotation_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_text_annotation: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3908,31 +2182,6 @@ No authorization required
 
 Verify signature document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-sign_name = "sign_name_example" # String | Sign name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Verify signature document.
-  result = api_instance.get_verify_signature(name, sign_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_verify_signature: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3961,35 +2210,6 @@ No authorization required
 > File get_web_in_storage_to_pdf(url, opts)
 
 Convert web page to PDF format and return resulting file in response. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-url = "url_example" # String | Source url
-
-opts = { 
-  height: 1.2, # Float | Page height
-  width: 1.2, # Float | Page width
-  is_landscape: true, # BOOLEAN | Is page landscaped
-  margin_left: 1.2, # Float | Page margin left
-  margin_bottom: 1.2, # Float | Page margin bottom
-  margin_right: 1.2, # Float | Page margin right
-  margin_top: 1.2, # Float | Page margin top
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert web page to PDF format and return resulting file in response. 
-  result = api_instance.get_web_in_storage_to_pdf(url, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_web_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4025,29 +2245,6 @@ No authorization required
 
 Get number of words per document page.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Get number of words per document page.
-  result = api_instance.get_words_per_page(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_words_per_page: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4075,29 +2272,6 @@ No authorization required
 > File get_xfa_pdf_in_storage_to_acro_form(name, opts)
 
 Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
-  result = api_instance.get_xfa_pdf_in_storage_to_acro_form(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_xfa_pdf_in_storage_to_acro_form: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4127,29 +2301,6 @@ No authorization required
 
 Convert XML file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.xml)
-
-opts = { 
-  xsl_file_path: "xsl_file_path_example", # String | Full XSL source filename (ex. /folder1/folder2/template.xsl)
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert XML file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_xml_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_xml_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4178,28 +2329,6 @@ No authorization required
 
 Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.xps)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert XPS file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_xps_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_xps_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4227,28 +2356,6 @@ No authorization required
 
 Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.xslfo)
-
-opts = { 
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
-  result = api_instance.get_xsl_fo_in_storage_to_pdf(src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->get_xsl_fo_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4275,33 +2382,6 @@ No authorization required
 > DocumentResponse post_append_document(name, opts)
 
 Append document to existing one.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The original document name.
-
-opts = { 
-  append_document: AsposePdfCloud::AppendDocument.new, # AppendDocument | with the append document data.
-  append_file: "append_file_example", # String | Append file server path.
-  start_page: 0, # Integer | Appending start page.
-  end_page: 0, # Integer | Appending end page.
-  storage: "storage_example", # String | The documents storage.
-  folder: "folder_example" # String | The original document folder.
-}
-
-begin
-  #Append document to existing one.
-  result = api_instance.post_append_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_append_document: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4335,32 +2415,6 @@ No authorization required
 
 Create field.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page = 56 # Integer | Document page number.
-
-opts = { 
-  field: AsposePdfCloud::Field.new, # Field | with the field data.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Create field.
-  result = api_instance.post_create_field(name, page, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_create_field: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4391,31 +2445,6 @@ No authorization required
 
 Document's replace text method.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-text_replace = AsposePdfCloud::TextReplaceListRequest.new # TextReplaceListRequest | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Document's replace text method.
-  result = api_instance.post_document_text_replace(name, text_replace, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_document_text_replace: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4444,41 +2473,6 @@ No authorization required
 > AsposeResponse post_insert_image(name, page_number, llx, lly, urx, ury, opts)
 
 Insert image to document page.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-llx = 1.2 # Float | Coordinate lower left X.
-
-lly = 1.2 # Float | Coordinate lower left Y.
-
-urx = 1.2 # Float | Coordinate upper right X.
-
-ury = 1.2 # Float | Coordinate upper right Y.
-
-opts = { 
-  image_file_path: "image_file_path_example", # String | Path to image file if specified. Request content is used otherwise.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  image: File.new("/path/to/file.txt") # File | Image file.
-}
-
-begin
-  #Insert image to document page.
-  result = api_instance.post_insert_image(name, page_number, llx, lly, urx, ury, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_insert_image: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4515,33 +2509,6 @@ No authorization required
 
 Move page to new position.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-new_index = 56 # Integer | The new page position/index.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Move page to new position.
-  result = api_instance.post_move_page(name, page_number, new_index, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_move_page: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4572,30 +2539,6 @@ No authorization required
 
 Optimize document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  options: AsposePdfCloud::OptimizeOptions.new, # OptimizeOptions | The optimization options.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Optimize document.
-  result = api_instance.post_optimize_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_optimize_document: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4624,33 +2567,6 @@ No authorization required
 > AsposeResponse post_page_free_text_annotations(name, page_number, annotations, opts)
 
 Add document page free text annotations.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-annotations = [AsposePdfCloud::FreeTextAnnotation.new] # Array<FreeTextAnnotation> | The array of annotation.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Add document page free text annotations.
-  result = api_instance.post_page_free_text_annotations(name, page_number, annotations, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_page_free_text_annotations: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4682,33 +2598,6 @@ No authorization required
 
 Add document page link annotations.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-links = [AsposePdfCloud::LinkAnnotation.new] # Array<LinkAnnotation> | Array of link anotation.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Add document page link annotations.
-  result = api_instance.post_page_link_annotations(name, page_number, links, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_page_link_annotations: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4738,33 +2627,6 @@ No authorization required
 > AsposeResponse post_page_text_annotations(name, page_number, annotations, opts)
 
 Add document page text annotations.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-annotations = [AsposePdfCloud::TextAnnotation.new] # Array<TextAnnotation> | The array of annotation.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Add document page text annotations.
-  result = api_instance.post_page_text_annotations(name, page_number, annotations, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_page_text_annotations: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4796,33 +2658,6 @@ No authorization required
 
 Page's replace text method.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-page_number = 56 # Integer | 
-
-text_replace_list_request = AsposePdfCloud::TextReplaceListRequest.new # TextReplaceListRequest | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Page's replace text method.
-  result = api_instance.post_page_text_replace(name, page_number, text_replace_list_request, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_page_text_replace: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4853,30 +2688,6 @@ No authorization required
 
 Sign document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  signature: AsposePdfCloud::Signature.new, # Signature | Signature object containing signature data.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Sign document.
-  result = api_instance.post_sign_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_sign_document: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4905,32 +2716,6 @@ No authorization required
 > AsposeResponse post_sign_page(name, page_number, opts)
 
 Sign page.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  signature: AsposePdfCloud::Signature.new, # Signature | Signature object containing signature data.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Sign page.
-  result = api_instance.post_sign_page(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_sign_page: #{e}"
-end
-```
 
 ### Parameters
 
@@ -4961,32 +2746,6 @@ No authorization required
 > SplitResultResponse post_split_document(name, opts)
 
 Split document to parts.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | Document name.
-
-opts = { 
-  format: "format_example", # String | Resulting documents format.
-  from: 56, # Integer | Start page if defined.
-  to: 56, # Integer | End page if defined.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Split document to parts.
-  result = api_instance.post_split_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->post_split_document: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5019,29 +2778,6 @@ No authorization required
 
 Add new page to end of the document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Add new page to end of the document.
-  result = api_instance.put_add_new_page(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_add_new_page: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5069,32 +2805,6 @@ No authorization required
 > AsposeResponse put_add_text(name, page_number, opts)
 
 Add text to PDF document page.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | Number of page (starting from 1).
-
-opts = { 
-  paragraph: AsposePdfCloud::Paragraph.new, # Paragraph | Paragraph data.
-  folder: "folder_example", # String | Document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Add text to PDF document page.
-  result = api_instance.put_add_text(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_add_text: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5126,31 +2836,6 @@ No authorization required
 
 Upload a specific file 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-path = "path_example" # String | Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext
-
-file = File.new("/path/to/file.txt") # File | File to upload
-
-opts = { 
-  version_id: "version_id_example", # String | Source file's version
-  storage: "storage_example" # String | User's storage name
-}
-
-begin
-  #Upload a specific file 
-  result = api_instance.put_create(path, file, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_create: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5180,29 +2865,6 @@ No authorization required
 
 Create empty document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The new document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The new document folder.
-}
-
-begin
-  #Create empty document.
-  result = api_instance.put_create_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_create_document: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5230,31 +2892,6 @@ No authorization required
 > AsposeResponse put_epub_in_storage_to_pdf(name, src_path, opts)
 
 Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.epub)
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  dst_folder: "dst_folder_example" # String | The destination document folder.
-}
-
-begin
-  #Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_epub_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_epub_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5285,29 +2922,6 @@ No authorization required
 
 Flatten form fields in document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Flatten form fields in document.
-  result = api_instance.put_fields_flatten(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_fields_flatten: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5335,33 +2949,6 @@ No authorization required
 > FreeTextAnnotationResponse put_free_text_annotation(name, annotation_id, annotation, opts)
 
 Replace document free text annotation
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-annotation_id = "annotation_id_example" # String | The annotation ID.
-
-annotation = AsposePdfCloud::FreeTextAnnotation.new # FreeTextAnnotation | Annotation.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Replace document free text annotation
-  result = api_instance.put_free_text_annotation(name, annotation_id, annotation, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_free_text_annotation: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5392,40 +2979,6 @@ No authorization required
 > AsposeResponse put_html_in_storage_to_pdf(name, src_path, html_file_name, opts)
 
 Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.zip)
-
-html_file_name = "html_file_name_example" # String | Name of HTML file in ZIP.
-
-opts = { 
-  height: 1.2, # Float | Page height
-  width: 1.2, # Float | Page width
-  is_landscape: true, # BOOLEAN | Is page landscaped
-  margin_left: 1.2, # Float | Page margin left
-  margin_bottom: 1.2, # Float | Page margin bottom
-  margin_right: 1.2, # Float | Page margin right
-  margin_top: 1.2, # Float | Page margin top
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_html_in_storage_to_pdf(name, src_path, html_file_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_html_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5464,34 +3017,6 @@ No authorization required
 
 Extract document image in GIF format to folder
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in GIF format to folder
-  result = api_instance.put_image_extract_as_gif(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_image_extract_as_gif: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5523,34 +3048,6 @@ No authorization required
 > AsposeResponse put_image_extract_as_jpeg(name, image_id, opts)
 
 Extract document image in JPEG format to folder
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in JPEG format to folder
-  result = api_instance.put_image_extract_as_jpeg(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_image_extract_as_jpeg: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5584,34 +3081,6 @@ No authorization required
 
 Extract document image in PNG format to folder
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in PNG format to folder
-  result = api_instance.put_image_extract_as_png(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_image_extract_as_png: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5643,34 +3112,6 @@ No authorization required
 > AsposeResponse put_image_extract_as_tiff(name, image_id, opts)
 
 Extract document image in TIFF format to folder
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | Image ID.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document image in TIFF format to folder
-  result = api_instance.put_image_extract_as_tiff(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_image_extract_as_tiff: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5704,31 +3145,6 @@ No authorization required
 
 Convert image file (located on storage) to PDF format and upload resulting file to storage. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_templates = AsposePdfCloud::ImageTemplatesRequest.new # ImageTemplatesRequest | Image templates
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert image file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_image_in_storage_to_pdf(name, image_templates, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_image_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5757,34 +3173,6 @@ No authorization required
 > AsposeResponse put_images_extract_as_gif(name, page_number, opts)
 
 Extract document images in GIF format to folder.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document images in GIF format to folder.
-  result = api_instance.put_images_extract_as_gif(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_images_extract_as_gif: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5818,34 +3206,6 @@ No authorization required
 
 Extract document images in JPEG format to folder.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | 
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document images in JPEG format to folder.
-  result = api_instance.put_images_extract_as_jpeg(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_images_extract_as_jpeg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5877,34 +3237,6 @@ No authorization required
 > AsposeResponse put_images_extract_as_png(name, page_number, opts)
 
 Extract document images in PNG format to folder.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document images in PNG format to folder.
-  result = api_instance.put_images_extract_as_png(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_images_extract_as_png: #{e}"
-end
-```
 
 ### Parameters
 
@@ -5938,34 +3270,6 @@ No authorization required
 
 Extract document images in TIFF format to folder.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  dest_folder: "dest_folder_example" # String | The document folder.
-}
-
-begin
-  #Extract document images in TIFF format to folder.
-  result = api_instance.put_images_extract_as_tiff(name, page_number, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_images_extract_as_tiff: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -5998,31 +3302,6 @@ No authorization required
 
 Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.tex)
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_la_te_x_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_la_te_x_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6051,33 +3330,6 @@ No authorization required
 > LinkAnnotationResponse put_link_annotation(name, link_id, link, opts)
 
 Replace document page link annotations
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-link_id = "link_id_example" # String | The link ID.
-
-link = AsposePdfCloud::LinkAnnotation.new # LinkAnnotation | Link anotation.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Replace document page link annotations
-  result = api_instance.put_link_annotation(name, link_id, link, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_link_annotation: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6109,30 +3361,6 @@ No authorization required
 
 Merge a list of documents.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | Resulting documen name.
-
-opts = { 
-  merge_documents: AsposePdfCloud::MergeDocuments.new, # MergeDocuments | with a list of documents.
-  storage: "storage_example", # String | Resulting document storage.
-  folder: "folder_example" # String | Resulting document folder.
-}
-
-begin
-  #Merge a list of documents.
-  result = api_instance.put_merge_documents(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_merge_documents: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6161,31 +3389,6 @@ No authorization required
 > AsposeResponse put_mht_in_storage_to_pdf(name, src_path, opts)
 
 Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.mht)
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_mht_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_mht_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6216,33 +3419,6 @@ No authorization required
 
 Add page stamp.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-stamp = AsposePdfCloud::Stamp.new # Stamp | with data.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Add page stamp.
-  result = api_instance.put_page_add_stamp(name, page_number, stamp, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_add_stamp: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6272,35 +3448,6 @@ No authorization required
 > AsposeResponse put_page_convert_to_bmp(name, page_number, out_path, opts)
 
 Convert document page to bmp image and upload resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-out_path = "out_path_example" # String | The out path of result image.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to bmp image and upload resulting file to storage.
-  result = api_instance.put_page_convert_to_bmp(name, page_number, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_convert_to_bmp: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6334,35 +3481,6 @@ No authorization required
 
 Convert document page to emf image and upload resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-out_path = "out_path_example" # String | The out path of result image.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to emf image and upload resulting file to storage.
-  result = api_instance.put_page_convert_to_emf(name, page_number, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_convert_to_emf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6394,35 +3512,6 @@ No authorization required
 > AsposeResponse put_page_convert_to_gif(name, page_number, out_path, opts)
 
 Convert document page to gif image and upload resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-out_path = "out_path_example" # String | The out path of result image.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to gif image and upload resulting file to storage.
-  result = api_instance.put_page_convert_to_gif(name, page_number, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_convert_to_gif: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6456,35 +3545,6 @@ No authorization required
 
 Convert document page to Jpeg image and upload resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-out_path = "out_path_example" # String | The out path of result image.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Jpeg image and upload resulting file to storage.
-  result = api_instance.put_page_convert_to_jpeg(name, page_number, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_convert_to_jpeg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6516,35 +3576,6 @@ No authorization required
 > AsposeResponse put_page_convert_to_png(name, page_number, out_path, opts)
 
 Convert document page to png image and upload resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-out_path = "out_path_example" # String | The out path of result image.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to png image and upload resulting file to storage.
-  result = api_instance.put_page_convert_to_png(name, page_number, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_convert_to_png: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6578,35 +3609,6 @@ No authorization required
 
 Convert document page to Tiff image and upload resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-page_number = 56 # Integer | The page number.
-
-out_path = "out_path_example" # String | The out path of result image.
-
-opts = { 
-  width: 56, # Integer | The converted image width.
-  height: 56, # Integer | The converted image height.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert document page to Tiff image and upload resulting file to storage.
-  result = api_instance.put_page_convert_to_tiff(name, page_number, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_page_convert_to_tiff: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6639,31 +3641,6 @@ No authorization required
 
 Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.pcl)
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_pcl_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pcl_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6692,37 +3669,6 @@ No authorization required
 > AsposeResponse put_pdf_in_request_to_doc(out_path, opts)
 
 Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.doc)
-
-opts = { 
-  add_return_to_line_end: true, # BOOLEAN | Add return to line end.
-  format: "format_example", # String | Allows to specify .doc or .docx file format.
-  image_resolution_x: 56, # Integer | Image resolution X.
-  image_resolution_y: 56, # Integer | Image resolution Y.
-  max_distance_between_text_lines: 1.2, # Float | Max distance between text lines.
-  mode: "mode_example", # String | Allows to control how a PDF document is converted into a word processing document.
-  recognize_bullets: true, # BOOLEAN | Recognize bullets.
-  relative_horizontal_proximity: 1.2, # Float | Relative horizontal proximity.
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_doc(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_doc: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6760,30 +3706,6 @@ No authorization required
 
 Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.epub)
-
-opts = { 
-  content_recognition_mode: "content_recognition_mode_example", # String | ?roperty tunes conversion for this or that desirable method of recognition of content.
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_epub(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_epub: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6812,57 +3734,6 @@ No authorization required
 > AsposeResponse put_pdf_in_request_to_html(out_path, opts)
 
 Converts PDF document (in request content) to Html format and uploads resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.html)
-
-opts = { 
-  additional_margin_width_in_points: 56, # Integer | Defines width of margin that will be forcibly left around that output HTML-areas.
-  compress_svg_graphics_if_any: true, # BOOLEAN | The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
-  convert_marked_content_to_layers: true, # BOOLEAN | If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
-  default_font_name: "default_font_name_example", # String | Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-  document_type: "document_type_example", # String | Result document type.
-  fixed_layout: true, # BOOLEAN | The value indicating whether that HTML is created as fixed layout.
-  image_resolution: 56, # Integer | Resolution for image rendering.
-  minimal_line_width: 56, # Integer | This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
-  prevent_glyphs_grouping: true, # BOOLEAN | This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
-  split_css_into_pages: true, # BOOLEAN | When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
-  split_into_pages: true, # BOOLEAN | The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
-  use_z_order: true, # BOOLEAN | If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
-  antialiasing_processing: "antialiasing_processing_example", # String | The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
-  css_class_names_prefix: "css_class_names_prefix_example", # String | When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
-  explicit_list_of_saved_pages: [56], # Array<Integer> | With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
-  font_encoding_strategy: "font_encoding_strategy_example", # String | Defines encoding special rule to tune PDF decoding for current document.
-  font_saving_mode: "font_saving_mode_example", # String | Defines font saving mode that will be used during saving of PDF to desirable format.
-  html_markup_generation_mode: "html_markup_generation_mode_example", # String | Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
-  letters_positioning_method: "letters_positioning_method_example", # String | The mode of positioning of letters in words in result HTML.
-  pages_flow_type_depends_on_viewers_screen_size: true, # BOOLEAN | If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
-  parts_embedding_mode: "parts_embedding_mode_example", # String | It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
-  raster_images_saving_mode: "raster_images_saving_mode_example", # String | Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
-  remove_empty_areas_on_top_and_bottom: true, # BOOLEAN | Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
-  save_shadowed_texts_as_transparent_texts: true, # BOOLEAN | Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
-  save_transparent_texts: true, # BOOLEAN | Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
-  special_folder_for_all_images: "special_folder_for_all_images_example", # String | The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
-  special_folder_for_svg_images: "special_folder_for_svg_images_example", # String | The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
-  try_save_text_underlining_and_strikeouting_in_css: true, # BOOLEAN | PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to Html format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_html(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_html: #{e}"
-end
-```
 
 ### Parameters
 
@@ -6920,30 +3791,6 @@ No authorization required
 
 Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.tex)
-
-opts = { 
-  pages_count: 56, # Integer | Pages count.
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_la_te_x(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_la_te_x: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -6973,29 +3820,6 @@ No authorization required
 
 Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.mobixml)
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_mobi_xml(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_mobi_xml: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7023,31 +3847,6 @@ No authorization required
 > AsposeResponse put_pdf_in_request_to_pdf_a(out_path, type, opts)
 
 Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pdf)
-
-type = "type_example" # String | Type of PdfA format.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_pdf_a(out_path, type, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_pdf_a: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7077,31 +3876,6 @@ No authorization required
 > AsposeResponse put_pdf_in_request_to_pptx(out_path, opts)
 
 Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pptx)
-
-opts = { 
-  separate_images: true, # BOOLEAN | Separate images.
-  slides_as_images: true, # BOOLEAN | Slides as images.
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_pptx(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_pptx: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7133,29 +3907,6 @@ No authorization required
 
 Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.svg)
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_svg(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_svg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7183,44 +3934,6 @@ No authorization required
 > AsposeResponse put_pdf_in_request_to_tiff(out_path, opts)
 
 Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.tiff)
-
-opts = { 
-  brightness: 1.2, # Float | Image brightness.
-  compression: "compression_example", # String | Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-  color_depth: "color_depth_example", # String | Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-  left_margin: 56, # Integer | Left image margin.
-  right_margin: 56, # Integer | Right image margin.
-  top_margin: 56, # Integer | Top image margin.
-  bottom_margin: 56, # Integer | Bottom image margin.
-  orientation: "orientation_example", # String | Image orientation. Possible values are: None, Landscape, Portait.
-  skip_blank_pages: true, # BOOLEAN | Skip blank pages flag.
-  width: 56, # Integer | Image width.
-  height: 56, # Integer | Image height.
-  x_resolution: 56, # Integer | Horizontal resolution.
-  y_resolution: 56, # Integer | Vertical resolution.
-  page_index: 56, # Integer | Start page to export.
-  page_count: 56, # Integer | Number of pages to export.
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_tiff(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_tiff: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7265,33 +3978,6 @@ No authorization required
 
 Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xls)
-
-opts = { 
-  insert_blank_column_at_first: true, # BOOLEAN | Insert blank column at first
-  minimize_the_number_of_worksheets: true, # BOOLEAN | Minimize the number of worksheets
-  scale_factor: 1.2, # Float | Scale factor
-  uniform_worksheets: true, # BOOLEAN | Uniform worksheets
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_xls(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_xls: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7324,29 +4010,6 @@ No authorization required
 
 Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xml)
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to XML format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_xml(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_xml: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7375,29 +4038,6 @@ No authorization required
 
 Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xps)
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
-  result = api_instance.put_pdf_in_request_to_xps(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_request_to_xps: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7425,39 +4065,6 @@ No authorization required
 > AsposeResponse put_pdf_in_storage_to_doc(name, out_path, opts)
 
 Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.doc)
-
-opts = { 
-  add_return_to_line_end: true, # BOOLEAN | Add return to line end.
-  format: "format_example", # String | Allows to specify .doc or .docx file format.
-  image_resolution_x: 56, # Integer | Image resolution X.
-  image_resolution_y: 56, # Integer | Image resolution Y.
-  max_distance_between_text_lines: 1.2, # Float | Max distance between text lines.
-  mode: "mode_example", # String | Allows to control how a PDF document is converted into a word processing document.
-  recognize_bullets: true, # BOOLEAN | Recognize bullets.
-  relative_horizontal_proximity: 1.2, # Float | Relative horizontal proximity.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_doc(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_doc: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7496,32 +4103,6 @@ No authorization required
 
 Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.epub)
-
-opts = { 
-  content_recognition_mode: "content_recognition_mode_example", # String | ?roperty tunes conversion for this or that desirable method of recognition of content.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_epub(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_epub: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7551,59 +4132,6 @@ No authorization required
 > AsposeResponse put_pdf_in_storage_to_html(name, out_path, opts)
 
 Converts PDF document (located on storage) to Html format and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.html)
-
-opts = { 
-  additional_margin_width_in_points: 56, # Integer | Defines width of margin that will be forcibly left around that output HTML-areas.
-  compress_svg_graphics_if_any: true, # BOOLEAN | The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
-  convert_marked_content_to_layers: true, # BOOLEAN | If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
-  default_font_name: "default_font_name_example", # String | Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-  document_type: "document_type_example", # String | Result document type.
-  fixed_layout: true, # BOOLEAN | The value indicating whether that HTML is created as fixed layout.
-  image_resolution: 56, # Integer | Resolution for image rendering.
-  minimal_line_width: 56, # Integer | This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
-  prevent_glyphs_grouping: true, # BOOLEAN | This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
-  split_css_into_pages: true, # BOOLEAN | When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
-  split_into_pages: true, # BOOLEAN | The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
-  use_z_order: true, # BOOLEAN | If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
-  antialiasing_processing: "antialiasing_processing_example", # String | The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
-  css_class_names_prefix: "css_class_names_prefix_example", # String | When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
-  explicit_list_of_saved_pages: [56], # Array<Integer> | With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
-  font_encoding_strategy: "font_encoding_strategy_example", # String | Defines encoding special rule to tune PDF decoding for current document.
-  font_saving_mode: "font_saving_mode_example", # String | Defines font saving mode that will be used during saving of PDF to desirable format.
-  html_markup_generation_mode: "html_markup_generation_mode_example", # String | Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
-  letters_positioning_method: "letters_positioning_method_example", # String | The mode of positioning of letters in words in result HTML.
-  pages_flow_type_depends_on_viewers_screen_size: true, # BOOLEAN | If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
-  parts_embedding_mode: "parts_embedding_mode_example", # String | It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
-  raster_images_saving_mode: "raster_images_saving_mode_example", # String | Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
-  remove_empty_areas_on_top_and_bottom: true, # BOOLEAN | Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
-  save_shadowed_texts_as_transparent_texts: true, # BOOLEAN | Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
-  save_transparent_texts: true, # BOOLEAN | Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
-  special_folder_for_all_images: "special_folder_for_all_images_example", # String | The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
-  special_folder_for_svg_images: "special_folder_for_svg_images_example", # String | The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
-  try_save_text_underlining_and_strikeouting_in_css: true, # BOOLEAN | PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to Html format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_html(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_html: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7662,32 +4190,6 @@ No authorization required
 
 Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.tex)
-
-opts = { 
-  pages_count: 56, # Integer | Pages count.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_la_te_x(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_la_te_x: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7718,31 +4220,6 @@ No authorization required
 
 Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.mobixml)
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_mobi_xml(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_mobi_xml: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7771,33 +4248,6 @@ No authorization required
 > AsposeResponse put_pdf_in_storage_to_pdf_a(name, out_path, type, opts)
 
 Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pdf)
-
-type = "type_example" # String | Type of PdfA format.
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_pdf_a(name, out_path, type, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_pdf_a: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7828,33 +4278,6 @@ No authorization required
 > AsposeResponse put_pdf_in_storage_to_pptx(name, out_path, opts)
 
 Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pptx)
-
-opts = { 
-  separate_images: true, # BOOLEAN | Separate images.
-  slides_as_images: true, # BOOLEAN | Slides as images.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_pptx(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_pptx: #{e}"
-end
-```
 
 ### Parameters
 
@@ -7887,31 +4310,6 @@ No authorization required
 
 Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.svg)
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_svg(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_svg: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -7940,46 +4338,6 @@ No authorization required
 > AsposeResponse put_pdf_in_storage_to_tiff(name, out_path, opts)
 
 Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.tiff)
-
-opts = { 
-  brightness: 1.2, # Float | Image brightness.
-  compression: "compression_example", # String | Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-  color_depth: "color_depth_example", # String | Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-  left_margin: 56, # Integer | Left image margin.
-  right_margin: 56, # Integer | Right image margin.
-  top_margin: 56, # Integer | Top image margin.
-  bottom_margin: 56, # Integer | Bottom image margin.
-  orientation: "orientation_example", # String | Image orientation. Possible values are: None, Landscape, Portait.
-  skip_blank_pages: true, # BOOLEAN | Skip blank pages flag.
-  width: 56, # Integer | Image width.
-  height: 56, # Integer | Image height.
-  x_resolution: 56, # Integer | Horizontal resolution.
-  y_resolution: 56, # Integer | Vertical resolution.
-  page_index: 56, # Integer | Start page to export.
-  page_count: 56, # Integer | Number of pages to export.
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_tiff(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_tiff: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8025,35 +4383,6 @@ No authorization required
 
 Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xls)
-
-opts = { 
-  insert_blank_column_at_first: true, # BOOLEAN | Insert blank column at first
-  minimize_the_number_of_worksheets: true, # BOOLEAN | Minimize the number of worksheets
-  scale_factor: 1.2, # Float | Scale factor
-  uniform_worksheets: true, # BOOLEAN | Uniform worksheets
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_xls(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_xls: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8087,31 +4416,6 @@ No authorization required
 
 Converts PDF document (located on storage) to XML format and uploads resulting file to storage
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xml)
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to XML format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_xml(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_xml: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8140,31 +4444,6 @@ No authorization required
 > AsposeResponse put_pdf_in_storage_to_xps(name, out_path, opts)
 
 Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.xps)
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
-  result = api_instance.put_pdf_in_storage_to_xps(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_pdf_in_storage_to_xps: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8195,30 +4474,6 @@ No authorization required
 
 Update privilege document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  privileges: AsposePdfCloud::DocumentPrivilege.new, # DocumentPrivilege | Document privileges. 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Update privilege document.
-  result = api_instance.put_privileges(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_privileges: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8248,31 +4503,6 @@ No authorization required
 
 Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.ps)
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_ps_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_ps_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8301,33 +4531,6 @@ No authorization required
 > ImageResponse put_replace_image(name, image_id, opts)
 
 Replace document image.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-image_id = "image_id_example" # String | The image ID.
-
-opts = { 
-  image_file_path: "image_file_path_example", # String | Path to image file if specified. Request content is used otherwise.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  image: File.new("/path/to/file.txt") # File | Image file.
-}
-
-begin
-  #Replace document image.
-  result = api_instance.put_replace_image(name, image_id, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_replace_image: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8360,30 +4563,6 @@ No authorization required
 
 Create searchable PDF document. Generate OCR layer for images in input PDF document.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example", # String | The document folder.
-  lang: "lang_example" # String | language for OCR engine. Possible values: eng, ara, bel, ben, bul, ces, dan, deu, ell, fin, fra, heb, hin, ind, isl, ita, jpn, kor, nld, nor, pol, por, ron, rus, spa, swe, tha, tur, ukr, vie, chi_sim, chi_tra or thier combination e.g. eng,rus 
-}
-
-begin
-  #Create searchable PDF document. Generate OCR layer for images in input PDF document.
-  result = api_instance.put_searchable_document(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_searchable_document: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8412,33 +4591,6 @@ No authorization required
 > DocumentPropertyResponse put_set_property(name, property_name, value, opts)
 
 Add/update document property.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | 
-
-property_name = "property_name_example" # String | 
-
-value = "value_example" # String | 
-
-opts = { 
-  storage: "storage_example", # String | 
-  folder: "folder_example" # String | 
-}
-
-begin
-  #Add/update document property.
-  result = api_instance.put_set_property(name, property_name, value, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_set_property: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8469,39 +4621,6 @@ No authorization required
 > AsposeResponse put_svg_in_storage_to_pdf(name, src_path, opts)
 
 Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.svg)
-
-opts = { 
-  adjust_page_size: true, # BOOLEAN | Adjust page size
-  height: 1.2, # Float | Page height
-  width: 1.2, # Float | Page width
-  is_landscape: true, # BOOLEAN | Is page landscaped
-  margin_left: 1.2, # Float | Page margin left
-  margin_bottom: 1.2, # Float | Page margin bottom
-  margin_right: 1.2, # Float | Page margin right
-  margin_top: 1.2, # Float | Page margin top
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_svg_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_svg_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8540,33 +4659,6 @@ No authorization required
 
 Replace document text annotation
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-annotation_id = "annotation_id_example" # String | The annotation ID.
-
-annotation = AsposePdfCloud::TextAnnotation.new # TextAnnotation | Annotation.
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Replace document text annotation
-  result = api_instance.put_text_annotation(name, annotation_id, annotation, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_text_annotation: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8596,32 +4688,6 @@ No authorization required
 > FieldResponse put_update_field(name, field_name, opts)
 
 Update field.
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-field_name = "field_name_example" # String | The name of a field to be updated.
-
-opts = { 
-  field: AsposePdfCloud::Field.new, # Field | with the field data.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Update field.
-  result = api_instance.put_update_field(name, field_name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_update_field: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8653,30 +4719,6 @@ No authorization required
 
 Update fields.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-opts = { 
-  fields: AsposePdfCloud::Fields.new, # Fields | with the fields data.
-  storage: "storage_example", # String | The document storage.
-  folder: "folder_example" # String | The document folder.
-}
-
-begin
-  #Update fields.
-  result = api_instance.put_update_fields(name, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_update_fields: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8705,38 +4747,6 @@ No authorization required
 > AsposeResponse put_web_in_storage_to_pdf(name, url, opts)
 
 Convert web page to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-url = "url_example" # String | Source url
-
-opts = { 
-  height: 1.2, # Float | Page height
-  width: 1.2, # Float | Page width
-  is_landscape: true, # BOOLEAN | Is page landscaped
-  margin_left: 1.2, # Float | Page margin left
-  margin_bottom: 1.2, # Float | Page margin bottom
-  margin_right: 1.2, # Float | Page margin right
-  margin_top: 1.2, # Float | Page margin top
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert web page to PDF format and upload resulting file to storage. 
-  result = api_instance.put_web_in_storage_to_pdf(name, url, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_web_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8774,29 +4784,6 @@ No authorization required
 
 Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pdf)
-
-opts = { 
-  storage: "storage_example", # String | The document storage.
-  file: File.new("/path/to/file.txt") # File | A file to be converted.
-}
-
-begin
-  #Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
-  result = api_instance.put_xfa_pdf_in_request_to_acro_form(out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_xfa_pdf_in_request_to_acro_form: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8824,31 +4811,6 @@ No authorization required
 > AsposeResponse put_xfa_pdf_in_storage_to_acro_form(name, out_path, opts)
 
 Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-out_path = "out_path_example" # String | Full resulting filename (ex. /folder1/folder2/result.pdf)
-
-opts = { 
-  folder: "folder_example", # String | The document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
-  result = api_instance.put_xfa_pdf_in_storage_to_acro_form(name, out_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_xfa_pdf_in_storage_to_acro_form: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8878,32 +4840,6 @@ No authorization required
 > AsposeResponse put_xml_in_storage_to_pdf(name, src_path, opts)
 
 Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.xml)
-
-opts = { 
-  xsl_file_path: "xsl_file_path_example", # String | Full XSL source filename (ex. /folder1/folder2/template.xsl)
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_xml_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_xml_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
@@ -8935,31 +4871,6 @@ No authorization required
 
 Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
 
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.xps)
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_xps_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_xps_in_storage_to_pdf: #{e}"
-end
-```
-
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -8988,31 +4899,6 @@ No authorization required
 > AsposeResponse put_xsl_fo_in_storage_to_pdf(name, src_path, opts)
 
 Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Example
-```ruby
-# load the gem
-require 'aspose_pdf_cloud'
-
-api_instance = AsposePdfCloud::PdfApi.new
-
-name = "name_example" # String | The document name.
-
-src_path = "src_path_example" # String | Full source filename (ex. /folder1/folder2/template.xpsfo)
-
-opts = { 
-  dst_folder: "dst_folder_example", # String | The destination document folder.
-  storage: "storage_example" # String | The document storage.
-}
-
-begin
-  #Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
-  result = api_instance.put_xsl_fo_in_storage_to_pdf(name, src_path, opts)
-  p result
-rescue AsposePdfCloud::ApiError => e
-  puts "Exception when calling PdfApi->put_xsl_fo_in_storage_to_pdf: #{e}"
-end
-```
 
 ### Parameters
 
