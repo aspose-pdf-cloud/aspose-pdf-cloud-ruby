@@ -121,6 +121,488 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to delete annotation.')
   end
 
+  # PolyLine Annotations Tests
+
+  def test_get_document_poly_line_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_poly_line_annotations(file_name, opts)
+    assert(response, 'Failed to read document polyline annotations.')
+  end
+
+  def test_post_page_poly_line_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = PolyLineAnnotation.new
+    annotation.name = 'Test poly_line'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.vertices = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+
+    response = @pdf_api.post_page_poly_line_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add polyline annotations into page.')
+  end
+
+  def test_get_page_poly_line_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_poly_line_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page polyline annotations.')
+  end
+
+  def test_get_poly_line_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_poly_line_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document polyline annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_poly_line_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page polyline annotations.')
+  end
+
+  def test_put_poly_line_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = PolyLineAnnotation.new
+    annotation.name = 'Test poly_line'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.vertices = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+
+    annotations_response = @pdf_api.get_document_poly_line_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document polyline annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_poly_line_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace polyline annotation.')
+  end
+
+
+  # Polygon Annotations Tests
+
+  def test_get_document_polygon_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_polygon_annotations(file_name, opts)
+    assert(response, 'Failed to read document polygon annotations.')
+  end
+
+  def test_post_page_polygon_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = PolygonAnnotation.new
+    annotation.name = 'Test polygon'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.vertices = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+
+    response = @pdf_api.post_page_polygon_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add polygon annotations into page.')
+  end
+
+  def test_get_page_polygon_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_polygon_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page polygon annotations.')
+  end
+
+  def test_get_polygon_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_polygon_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document polygon annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_polygon_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page polygon annotations.')
+  end
+
+  def test_put_polygon_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = PolygonAnnotation.new
+    annotation.name = 'Test polygon'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.vertices = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+
+    annotations_response = @pdf_api.get_document_polygon_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document polygon annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_polygon_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace polygon annotation.')
+  end
+
+  # Circle Annotations Tests
+
+  def test_get_document_circle_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_circle_annotations(file_name, opts)
+    assert(response, 'Failed to read document circle annotations.')
+  end
+
+  def test_post_page_circle_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = CircleAnnotation.new
+    annotation.name = 'Test circle'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+
+    response = @pdf_api.post_page_circle_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add circle annotations into page.')
+  end
+
+  def test_get_page_circle_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_circle_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page circle annotations.')
+  end
+
+  def test_get_circle_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_circle_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document circle annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_circle_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page circle annotations.')
+  end
+
+  def test_put_circle_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = CircleAnnotation.new
+    annotation.name = 'Test circle'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+
+    annotations_response = @pdf_api.get_document_circle_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document circle annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_circle_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace circle annotation.')
+  end
+
+
+  # Square Annotations Tests
+
+  def test_get_document_square_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_square_annotations(file_name, opts)
+    assert(response, 'Failed to read document square annotations.')
+  end
+
+  def test_post_page_square_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = SquareAnnotation.new
+    annotation.name = 'Test square'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+
+    response = @pdf_api.post_page_square_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add square annotations into page.')
+  end
+
+  def test_get_page_square_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_square_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page square annotations.')
+  end
+
+  def test_get_square_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_square_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document square annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_square_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page square annotations.')
+  end
+
+  def test_put_square_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = SquareAnnotation.new
+    annotation.name = 'Test square'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+
+    annotations_response = @pdf_api.get_document_square_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document square annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_square_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace square annotation.')
+  end
+
+
+  # Line Annotations Tests
+
+  def test_get_document_line_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_line_annotations(file_name, opts)
+    assert(response, 'Failed to read document line annotations.')
+  end
+
+  def test_post_page_line_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = LineAnnotation.new
+    annotation.name = 'Test Line'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.starting = Point.new({:X => 10, :Y => 10})
+    annotation.ending = Point.new({:X => 100, :Y => 100})
+
+    response = @pdf_api.post_page_line_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add line annotations into page.')
+  end
+
+  def test_get_page_line_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_line_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page line annotations.')
+  end
+
+  def test_get_line_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_line_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document line annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_line_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page line annotations.')
+  end
+
+  def test_put_line_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = LineAnnotation.new
+    annotation.name = 'Test Line'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::DEFAULT]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.starting = Point.new({:X => 10, :Y => 10})
+    annotation.ending = Point.new({:X => 100, :Y => 100})
+
+    annotations_response = @pdf_api.get_document_line_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document line annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_line_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace line annotation.')
+  end
+
+
   # Free Text Annotations Tests
 
   def test_get_document_free_text_annotations
@@ -1676,7 +2158,7 @@ class PdfTests < Minitest::Test
   end
 
 
-  # Links Tests
+  # Link Annotations Tests
 
   def test_get_page_link_annotation
     file_name = 'PdfWithLinks.pdf'
