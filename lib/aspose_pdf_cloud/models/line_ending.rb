@@ -19,6 +19,33 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.10.0"
+  class LineEnding
+    
+    NONE = "None".freeze
+    SQUARE = "Square".freeze
+    CIRCLE = "Circle".freeze
+    DIAMOND = "Diamond".freeze
+    OPEN_ARROW = "OpenArrow".freeze
+    CLOSED_ARROW = "ClosedArrow".freeze
+    BUTT = "Butt".freeze
+    R_OPEN_ARROW = "ROpenArrow".freeze
+    R_CLOSED_ARROW = "RClosedArrow".freeze
+    SLASH = "Slash".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = LineEnding.constants.select{|c| c.to_s == value}
+      constantValues = LineEnding.constants.select{ |const_name| LineEnding.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #LineEnding" if constantValues.empty?
+      value
+    end
+  end
+
 end

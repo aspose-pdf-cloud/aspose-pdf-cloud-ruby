@@ -19,6 +19,26 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.10.0"
+  class LineIntent
+    
+    UNDEFINED = "Undefined".freeze
+    LINE_ARROW = "LineArrow".freeze
+    LINE_DIMENSION = "LineDimension".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = LineIntent.constants.select{|c| c.to_s == value}
+      constantValues = LineIntent.constants.select{ |const_name| LineIntent.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #LineIntent" if constantValues.empty?
+      value
+    end
+  end
+
 end

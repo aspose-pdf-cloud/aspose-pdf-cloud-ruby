@@ -19,6 +19,27 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+
 module AsposePdfCloud
-  VERSION = "18.10.0"
+  class PolyIntent
+    
+    UNDEFINED = "Undefined".freeze
+    POLYGON_CLOUD = "PolygonCloud".freeze
+    POLY_LINE_DIMENSION = "PolyLineDimension".freeze
+    POLYGON_DIMENSION = "PolygonDimension".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = PolyIntent.constants.select{|c| c.to_s == value}
+      constantValues = PolyIntent.constants.select{ |const_name| PolyIntent.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #PolyIntent" if constantValues.empty?
+      value
+    end
+  end
+
 end
