@@ -20,6 +20,7 @@ SOFTWARE.
 =end
 
 require 'date'
+require 'time'
 
 module AsposePdfCloud
   class Rotation
