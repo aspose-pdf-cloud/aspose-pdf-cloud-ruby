@@ -20,6 +20,7 @@ SOFTWARE.
 =end
 
 require 'date'
+require 'time'
 
 module AsposePdfCloud
   # Provides information for the object link. This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7
@@ -146,9 +147,11 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        DateTime.parse(value)
+        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
+        Time.strptime(value, format).utc.to_datetime
       when :Date
-        Date.parse(value)
+        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
+        Time.strptime(value, format).utc.to_datetime.to_date
       when :String
         value.to_s
       when :Integer

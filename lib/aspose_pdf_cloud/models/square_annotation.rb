@@ -20,6 +20,7 @@ SOFTWARE.
 =end
 
 require 'date'
+require 'time'
 
 module AsposePdfCloud
   # Provides SquareAnnotation.
@@ -29,15 +30,6 @@ module AsposePdfCloud
 
     # Get the annotation content.
     attr_accessor :contents
-
-    # The date and time when the annotation was created.
-    attr_accessor :creation_date
-
-    # Get the annotation subject.
-    attr_accessor :subject
-
-    # Get the annotation title.
-    attr_accessor :title
 
     # The date and time when the annotation was last modified.
     attr_accessor :modified
@@ -66,6 +58,15 @@ module AsposePdfCloud
     # Gets VerticalAlignment of the annotation.
     attr_accessor :vertical_alignment
 
+    # The date and time when the annotation was created.
+    attr_accessor :creation_date
+
+    # Get the annotation subject.
+    attr_accessor :subject
+
+    # Get the annotation title.
+    attr_accessor :title
+
     # Get the annotation RichText.
     attr_accessor :rich_text
 
@@ -84,9 +85,6 @@ module AsposePdfCloud
       {
         :'links' => :'Links',
         :'contents' => :'Contents',
-        :'creation_date' => :'CreationDate',
-        :'subject' => :'Subject',
-        :'title' => :'Title',
         :'modified' => :'Modified',
         :'id' => :'Id',
         :'flags' => :'Flags',
@@ -96,6 +94,9 @@ module AsposePdfCloud
         :'z_index' => :'ZIndex',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'creation_date' => :'CreationDate',
+        :'subject' => :'Subject',
+        :'title' => :'Title',
         :'rich_text' => :'RichText',
         :'interior_color' => :'InteriorColor',
         :'frame' => :'Frame',
@@ -108,9 +109,6 @@ module AsposePdfCloud
       {
         :'links' => :'Array<Link>',
         :'contents' => :'String',
-        :'creation_date' => :'String',
-        :'subject' => :'String',
-        :'title' => :'String',
         :'modified' => :'String',
         :'id' => :'String',
         :'flags' => :'Array<AnnotationFlags>',
@@ -120,6 +118,9 @@ module AsposePdfCloud
         :'z_index' => :'Integer',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'creation_date' => :'String',
+        :'subject' => :'String',
+        :'title' => :'String',
         :'rich_text' => :'String',
         :'interior_color' => :'Color',
         :'frame' => :'RectanglePdf',
@@ -143,18 +144,6 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'Contents')
         self.contents = attributes[:'Contents']
-      end
-
-      if attributes.has_key?(:'CreationDate')
-        self.creation_date = attributes[:'CreationDate']
-      end
-
-      if attributes.has_key?(:'Subject')
-        self.subject = attributes[:'Subject']
-      end
-
-      if attributes.has_key?(:'Title')
-        self.title = attributes[:'Title']
       end
 
       if attributes.has_key?(:'Modified')
@@ -195,6 +184,18 @@ module AsposePdfCloud
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
+      if attributes.has_key?(:'CreationDate')
+        self.creation_date = attributes[:'CreationDate']
+      end
+
+      if attributes.has_key?(:'Subject')
+        self.subject = attributes[:'Subject']
+      end
+
+      if attributes.has_key?(:'Title')
+        self.title = attributes[:'Title']
+      end
+
       if attributes.has_key?(:'RichText')
         self.rich_text = attributes[:'RichText']
       end
@@ -233,9 +234,6 @@ module AsposePdfCloud
       self.class == o.class &&
           links == o.links &&
           contents == o.contents &&
-          creation_date == o.creation_date &&
-          subject == o.subject &&
-          title == o.title &&
           modified == o.modified &&
           id == o.id &&
           flags == o.flags &&
@@ -245,6 +243,9 @@ module AsposePdfCloud
           z_index == o.z_index &&
           horizontal_alignment == o.horizontal_alignment &&
           vertical_alignment == o.vertical_alignment &&
+          creation_date == o.creation_date &&
+          subject == o.subject &&
+          title == o.title &&
           rich_text == o.rich_text &&
           interior_color == o.interior_color &&
           frame == o.frame &&
@@ -260,7 +261,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, contents, creation_date, subject, title, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, rich_text, interior_color, frame, color].hash
+      [links, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, interior_color, frame, color].hash
     end
 
     # Builds the object from hash
@@ -290,9 +291,11 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        DateTime.parse(value)
+        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
+        Time.strptime(value, format).utc.to_datetime
       when :Date
-        Date.parse(value)
+        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
+        Time.strptime(value, format).utc.to_datetime.to_date
       when :String
         value.to_s
       when :Integer

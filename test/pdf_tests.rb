@@ -47,7 +47,7 @@ class PdfTests < Minitest::Test
 
 
   def upload_file(file_name)
-    response = @pdf_api.put_create(@temp_folder + '/' + file_name, File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
+    response = @pdf_api.put_create(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
     assert(response, "Failed to upload #{file_name} file.")
   end
 
@@ -804,6 +804,730 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to replace text annotation.')
   end
 
+  # Highlight Annotations Tests
+
+  def test_get_document_highlight_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_highlight_annotations(file_name, opts)
+    assert(response, 'Failed to read document highlight annotations.')
+  end
+
+  def test_post_page_highlight_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = HighlightAnnotation.new
+    annotation.name = 'Test highlight'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+
+    response = @pdf_api.post_page_highlight_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add highlight annotations into page.')
+  end
+
+  def test_get_page_highlight_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_highlight_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page highlight annotations.')
+  end
+
+  def test_get_highlight_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_highlight_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document highlight annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_highlight_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page highlight annotations.')
+  end
+
+  def test_put_highlight_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = HighlightAnnotation.new
+    annotation.name = 'Test highlight'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+
+    annotations_response = @pdf_api.get_document_highlight_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document highlight annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_highlight_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace highlight annotation.')
+  end
+
+  # Underline Annotations Tests
+
+  def test_get_document_underline_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_underline_annotations(file_name, opts)
+    assert(response, 'Failed to read document underline annotations.')
+  end
+
+  def test_post_page_underline_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = UnderlineAnnotation.new
+    annotation.name = 'Test underline'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    response = @pdf_api.post_page_underline_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add underline annotations into page.')
+  end
+
+  def test_get_page_underline_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_underline_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page underline annotations.')
+  end
+
+  def test_get_underline_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_underline_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document underline annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_underline_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page underline annotations.')
+  end
+
+  def test_put_underline_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = UnderlineAnnotation.new
+    annotation.name = 'Test underline'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_underline_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document underline annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_underline_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace underline annotation.')
+  end
+
+  # Squiggly Annotations Tests
+
+  def test_get_document_squiggly_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_squiggly_annotations(file_name, opts)
+    assert(response, 'Failed to read document squiggly annotations.')
+  end
+
+  def test_post_page_squiggly_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = SquigglyAnnotation.new
+    annotation.name = 'Test squiggly'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    response = @pdf_api.post_page_squiggly_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add squiggly annotations into page.')
+  end
+
+  def test_get_page_squiggly_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_squiggly_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page squiggly annotations.')
+  end
+
+  def test_get_squiggly_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_squiggly_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document squiggly annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_squiggly_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page squiggly annotations.')
+  end
+
+  def test_put_squiggly_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = SquigglyAnnotation.new
+    annotation.name = 'Test squiggly'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_squiggly_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document squiggly annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_squiggly_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace squiggly annotation.')
+  end
+
+  # StrikeOut Annotations Tests
+
+  def test_get_document_strike_out_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_strike_out_annotations(file_name, opts)
+    assert(response, 'Failed to read document strikeout annotations.')
+  end
+
+  def test_post_page_strike_out_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = StrikeOutAnnotation.new
+    annotation.name = 'Test strike_out'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    response = @pdf_api.post_page_strike_out_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add strikeout annotations into page.')
+  end
+
+  def test_get_page_strike_out_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_strike_out_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page strikeout annotations.')
+  end
+
+  def test_get_strike_out_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_strike_out_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document strikeout annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_strike_out_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page strikeout annotations.')
+  end
+
+  def test_put_strike_out_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = StrikeOutAnnotation.new
+    annotation.name = 'Test strike_out'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.quad_points = [
+        Point.new({:X => 10, :Y => 10}),
+        Point.new({:X => 20, :Y => 10}),
+        Point.new({:X => 10, :Y => 20}),
+        Point.new({:X => 10, :Y => 10})
+    ]
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_strike_out_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document strikeout annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_strike_out_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace strikeout annotation.')
+  end
+
+  # Caret Annotations Tests
+
+  def test_get_document_caret_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_caret_annotations(file_name, opts)
+    assert(response, 'Failed to read document caret annotations.')
+  end
+
+  def test_post_page_caret_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = CaretAnnotation.new
+    annotation.name = 'Test caret'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.frame = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    response = @pdf_api.post_page_caret_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add caret annotations into page.')
+  end
+
+  def test_get_page_caret_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_caret_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page caret annotations.')
+  end
+
+  def test_get_caret_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_caret_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document caret annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_caret_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page caret annotations.')
+  end
+
+  def test_put_caret_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = CaretAnnotation.new
+    annotation.name = 'Test caret'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.frame = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_caret_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document caret annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_caret_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace caret annotation.')
+  end
+
+  # Ink Annotations Tests
+
+  def test_get_document_ink_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_ink_annotations(file_name, opts)
+    assert(response, 'Failed to read document ink annotations.')
+  end
+
+  def test_post_page_ink_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = InkAnnotation.new
+    annotation.name = 'Test ink'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.ink_list = [
+        [
+            Point.new({:X => 10, :Y => 40}),
+            Point.new({:X => 30, :Y => 40})
+        ],
+        [
+            Point.new({:X => 10, :Y => 20}),
+            Point.new({:X => 20, :Y => 20}),
+            Point.new({:X => 30, :Y => 20})
+        ]
+    ]
+    annotation.cap_style = CapStyle::ROUNDED
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    response = @pdf_api.post_page_ink_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add ink annotations into page.')
+  end
+
+  def test_get_page_ink_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_ink_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page ink annotations.')
+  end
+
+  def test_get_ink_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_ink_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document ink annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_ink_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page ink annotations.')
+  end
+
+  def test_put_ink_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = InkAnnotation.new
+    annotation.name = 'Test ink'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.ink_list = [
+        [
+            Point.new({:X => 10, :Y => 40}),
+            Point.new({:X => 30, :Y => 40})
+        ],
+        [
+            Point.new({:X => 10, :Y => 20}),
+            Point.new({:X => 20, :Y => 20}),
+            Point.new({:X => 30, :Y => 20})
+        ]
+    ]
+    annotation.cap_style = CapStyle::ROUNDED
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_ink_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document ink annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_ink_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace ink annotation.')
+  end
+
+  # Popup Annotations Tests
+
+  def test_get_document_popup_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_popup_annotations(file_name, opts)
+    assert(response, 'Failed to read document popup annotations.')
+  end
+
+  def test_get_document_popup_annotations_by_parent
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    parent_id = 'GI5TAOZRGU3CYNZSGEWDCNZWFQ3TGOI'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_popup_annotations_by_parent(file_name, parent_id, opts)
+    assert(response, 'Failed to read document popup annotations.')
+  end
+
+  def test_post_popup_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    parent_id = 'GI5TCMR3GE2TQLBSGM3CYMJYGUWDENRV'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = PopupAnnotation.new
+    annotation.name = 'Test popup'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    response = @pdf_api.post_popup_annotation(file_name, parent_id,  annotation, opts)
+    assert(response, 'Failed to add popup annotations into page.')
+  end
+
+  def test_get_page_popup_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_popup_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page popup annotations.')
+  end
+
+  def test_get_popup_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_popup_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document popup annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_popup_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page popup annotations.')
+  end
+
+  def test_put_popup_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = PopupAnnotation.new
+    annotation.name = 'Test popup'
+    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_popup_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document popup annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_popup_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace popup annotation.')
+  end
 
   # Append Tests
 
@@ -938,7 +1662,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.doc'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
         # :file => @test_data_folder + file_name
     }
     response = @pdf_api.put_pdf_in_request_to_tiff(@temp_folder + '/' + res_file, opts)
@@ -975,7 +1699,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.pdf'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_pdf_a(@temp_folder + '/' + res_file, PdfAType::PDFA1_A, opts)
     assert(response, 'Filed to convert PDF to PDFA.')
@@ -1011,7 +1735,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.pdf'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_tiff(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to Tiff.')
@@ -1047,7 +1771,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.svg'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_svg(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to SVG.')
@@ -1083,7 +1807,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.xps'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xps(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to XPS.')
@@ -1119,7 +1843,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.xls'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xls(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to XLS.')
@@ -1155,7 +1879,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.zip'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_html(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to HTML.')
@@ -1191,7 +1915,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.epub'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_epub(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to EPUB.')
@@ -1228,7 +1952,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.pptx'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_pptx(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to PPTX.')
@@ -1265,7 +1989,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.latex'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_la_te_x(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to LaTeX.')
@@ -1302,7 +2026,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.mobi'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_mobi_xml(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to Moby Xml.')
@@ -1339,7 +2063,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.pdf'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_xfa_pdf_in_request_to_acro_form(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert Xfa PDF to Acro form.')
@@ -1377,7 +2101,7 @@ class PdfTests < Minitest::Test
     res_file = 'result.xml'
 
     opts = {
-        :file => File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xml(@temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to Xml.')
@@ -1479,10 +2203,11 @@ class PdfTests < Minitest::Test
     html_file_name = 'HtmlWithImage.html'
     opts = {
         :height => 650,
-        :width => 250
+        :width => 250,
+        :html_file_name => html_file_name
     }
     src_path = @temp_folder + '/' + file_name
-    response = @pdf_api.get_html_in_storage_to_pdf(src_path, html_file_name, opts)
+    response = @pdf_api.get_html_in_storage_to_pdf(src_path, opts)
     assert(response, 'Failed to convert html to pdf.')
   end
 
@@ -1497,9 +2222,10 @@ class PdfTests < Minitest::Test
     opts = {
         :dst_folder => @temp_folder,
         :height => 650,
-        :width => 250
+        :width => 250,
+        :html_file_name => html_file_name
     }
-    response = @pdf_api.put_html_in_storage_to_pdf(result_name, src_path, html_file_name, opts)
+    response = @pdf_api.put_html_in_storage_to_pdf(result_name, src_path, opts)
     assert(response, 'Failed to convert html to pdf.')
   end
 
@@ -3021,12 +3747,12 @@ class PdfTests < Minitest::Test
   end
 
 
-  # Upload & Download Tests
+  # Storage Tests
 
   def test_put_create
     file_name = '4pages.pdf'
 
-    response = @pdf_api.put_create(@temp_folder + '/' + file_name, File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
+    response = @pdf_api.put_create(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
     assert(response, "Failed to upload #{file_name} file.")
   end
 
@@ -3037,5 +3763,15 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.get_download(@temp_folder + '/' + file_name)
     assert(response, "Failed to download #{file_name} file.")
+  end
+
+  def test_get_list_files
+
+    opts = {
+        :path => @temp_folder
+    }
+
+    response = @pdf_api.get_list_files(opts)
+    assert(response, 'Failed get file list.')
   end
 end

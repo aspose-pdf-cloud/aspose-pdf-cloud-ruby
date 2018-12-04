@@ -20,6 +20,7 @@ SOFTWARE.
 =end
 
 require 'date'
+require 'time'
 
 module AsposePdfCloud
   # Represents the privileges for accessing Pdf file./>.
@@ -216,9 +217,11 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        DateTime.parse(value)
+        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
+        Time.strptime(value, format).utc.to_datetime
       when :Date
-        Date.parse(value)
+        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
+        Time.strptime(value, format).utc.to_datetime.to_date
       when :String
         value.to_s
       when :Integer

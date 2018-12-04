@@ -872,6 +872,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page caret annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [CaretAnnotationResponse]
+    def get_caret_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_caret_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_caret_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page caret annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(CaretAnnotationResponse, Fixnum, Hash)>] CaretAnnotationResponse data, response status code and response headers
+    def get_caret_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_caret_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_caret_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_caret_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/caret/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CaretAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_caret_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page circle annotation by ID.
     # 
     # @param name The document name.
@@ -1319,6 +1397,78 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document caret annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [CaretAnnotationsResponse]
+    def get_document_caret_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_caret_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_caret_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document caret annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(CaretAnnotationsResponse, Fixnum, Hash)>] CaretAnnotationsResponse data, response status code and response headers
+    def get_document_caret_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_caret_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_caret_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/caret".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CaretAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_caret_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document circle annotations.
     # 
     # @param name The document name.
@@ -1459,6 +1609,150 @@ module AsposePdfCloud
         :return_type => 'FreeTextAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_free_text_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document highlight annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [HighlightAnnotationsResponse]
+    def get_document_highlight_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_highlight_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_highlight_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document highlight annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(HighlightAnnotationsResponse, Fixnum, Hash)>] HighlightAnnotationsResponse data, response status code and response headers
+    def get_document_highlight_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_highlight_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_highlight_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/highlight".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'HighlightAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_highlight_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document ink annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [InkAnnotationsResponse]
+    def get_document_ink_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_ink_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_ink_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document ink annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(InkAnnotationsResponse, Fixnum, Hash)>] InkAnnotationsResponse data, response status code and response headers
+    def get_document_ink_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_ink_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_ink_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/ink".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InkAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_ink_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1675,6 +1969,156 @@ module AsposePdfCloud
         :return_type => 'PolygonAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_polygon_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document popup annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [PopupAnnotationsResponse]
+    def get_document_popup_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_popup_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_popup_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document popup annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(PopupAnnotationsResponse, Fixnum, Hash)>] PopupAnnotationsResponse data, response status code and response headers
+    def get_document_popup_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_popup_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_popup_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/popup".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'PopupAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_popup_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document popup annotations by parent id.
+    # 
+    # @param name The document name.
+    # @param annotation_id The parent annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [PopupAnnotationsResponse]
+    def get_document_popup_annotations_by_parent(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document popup annotations by parent id.
+    # 
+    # @param name The document name.
+    # @param annotation_id The parent annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(PopupAnnotationsResponse, Fixnum, Hash)>] PopupAnnotationsResponse data, response status code and response headers
+    def get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_popup_annotations_by_parent ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_popup_annotations_by_parent"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_document_popup_annotations_by_parent"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/{annotationId}/popup".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'PopupAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_popup_annotations_by_parent\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1901,6 +2345,150 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document squiggly annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SquigglyAnnotationsResponse]
+    def get_document_squiggly_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_squiggly_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_squiggly_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document squiggly annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SquigglyAnnotationsResponse, Fixnum, Hash)>] SquigglyAnnotationsResponse data, response status code and response headers
+    def get_document_squiggly_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_squiggly_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_squiggly_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/squiggly".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SquigglyAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_squiggly_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document StrikeOut annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [StrikeOutAnnotationsResponse]
+    def get_document_strike_out_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_strike_out_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_strike_out_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document StrikeOut annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(StrikeOutAnnotationsResponse, Fixnum, Hash)>] StrikeOutAnnotationsResponse data, response status code and response headers
+    def get_document_strike_out_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_strike_out_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_strike_out_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/strikeout".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StrikeOutAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_strike_out_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document text annotations.
     # 
     # @param name The document name.
@@ -1969,6 +2557,78 @@ module AsposePdfCloud
         :return_type => 'TextAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_text_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document underline annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [UnderlineAnnotationsResponse]
+    def get_document_underline_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_underline_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_underline_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document underline annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(UnderlineAnnotationsResponse, Fixnum, Hash)>] UnderlineAnnotationsResponse data, response status code and response headers
+    def get_document_underline_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_underline_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_underline_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/underline".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'UnderlineAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_underline_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2422,11 +3082,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page highlight annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [HighlightAnnotationResponse]
+    def get_highlight_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_highlight_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_highlight_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page highlight annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(HighlightAnnotationResponse, Fixnum, Hash)>] HighlightAnnotationResponse data, response status code and response headers
+    def get_highlight_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_highlight_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_highlight_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_highlight_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/highlight/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'HighlightAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_highlight_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert HTML file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.zip)
-    # @param html_file_name Name of HTML file in ZIP.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :html_file_name Name of HTML file in ZIP.
     # @option opts [Float] :height Page height
     # @option opts [Float] :width Page width
     # @option opts [BOOLEAN] :is_landscape Is page landscaped
@@ -2436,13 +3174,13 @@ module AsposePdfCloud
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :storage The document storage.
     # @return [File]
-    def get_html_in_storage_to_pdf(src_path, html_file_name, opts = {})
+    def get_html_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts)
+      data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts)
+          data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
         end
@@ -2452,8 +3190,8 @@ module AsposePdfCloud
     # Convert HTML file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.zip)
-    # @param html_file_name Name of HTML file in ZIP.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :html_file_name Name of HTML file in ZIP.
     # @option opts [Float] :height Page height
     # @option opts [Float] :width Page width
     # @option opts [BOOLEAN] :is_landscape Is page landscaped
@@ -2463,7 +3201,7 @@ module AsposePdfCloud
     # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, opts = {})
+    def get_html_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_html_in_storage_to_pdf ..."
       end
@@ -2471,17 +3209,13 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && src_path.nil?
         fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.get_html_in_storage_to_pdf"
       end
-      # verify the required parameter 'html_file_name' is set
-      if @api_client.config.client_side_validation && html_file_name.nil?
-        fail ArgumentError, "Missing the required parameter 'html_file_name' when calling PdfApi.get_html_in_storage_to_pdf"
-      end
       # resource path
       local_var_path = "/pdf/create/html"
 
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
-      query_params[:'htmlFileName'] = html_file_name
+      query_params[:'htmlFileName'] = opts[:'html_file_name'] if !opts[:'html_file_name'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'isLandscape'] = opts[:'is_landscape'] if !opts[:'is_landscape'].nil?
@@ -3012,6 +3746,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page ink annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [InkAnnotationResponse]
+    def get_ink_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_ink_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_ink_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page ink annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(InkAnnotationResponse, Fixnum, Hash)>] InkAnnotationResponse data, response status code and response headers
+    def get_ink_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_ink_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_ink_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_ink_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/ink/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InkAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_ink_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
@@ -3238,6 +4050,72 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Get the file listing of a specific folder 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :path Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39; (default to /)
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [FilesResponse]
+    def get_list_files(opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_list_files_with_http_info(opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_list_files_with_http_info(opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Get the file listing of a specific folder 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :path Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39;
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(FilesResponse, Fixnum, Hash)>] FilesResponse data, response status code and response headers
+    def get_list_files_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_list_files ..."
+      end
+      # resource path
+      local_var_path = "/storage/folder"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FilesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_list_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert MHT file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
@@ -3460,6 +4338,84 @@ module AsposePdfCloud
         :return_type => 'AnnotationsInfoResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page caret annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [CaretAnnotationsResponse]
+    def get_page_caret_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_caret_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_caret_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page caret annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(CaretAnnotationsResponse, Fixnum, Hash)>] CaretAnnotationsResponse data, response status code and response headers
+    def get_page_caret_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_caret_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_caret_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_caret_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/caret".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CaretAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_caret_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4124,6 +5080,162 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page highlight annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [HighlightAnnotationsResponse]
+    def get_page_highlight_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_highlight_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_highlight_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page highlight annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(HighlightAnnotationsResponse, Fixnum, Hash)>] HighlightAnnotationsResponse data, response status code and response headers
+    def get_page_highlight_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_highlight_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_highlight_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_highlight_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/highlight".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'HighlightAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_highlight_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page ink annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [InkAnnotationsResponse]
+    def get_page_ink_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_ink_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_ink_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page ink annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(InkAnnotationsResponse, Fixnum, Hash)>] InkAnnotationsResponse data, response status code and response headers
+    def get_page_ink_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_ink_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_ink_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_ink_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/ink".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InkAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_ink_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page line annotations.
     # 
     # @param name The document name.
@@ -4520,6 +5632,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page popup annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [PopupAnnotationsResponse]
+    def get_page_popup_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_popup_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_popup_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page popup annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(PopupAnnotationsResponse, Fixnum, Hash)>] PopupAnnotationsResponse data, response status code and response headers
+    def get_page_popup_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_popup_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_popup_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_popup_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/popup".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'PopupAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_popup_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page square annotations.
     # 
     # @param name The document name.
@@ -4594,6 +5784,162 @@ module AsposePdfCloud
         :return_type => 'SquareAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page_square_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page squiggly annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SquigglyAnnotationsResponse]
+    def get_page_squiggly_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_squiggly_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_squiggly_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page squiggly annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SquigglyAnnotationsResponse, Fixnum, Hash)>] SquigglyAnnotationsResponse data, response status code and response headers
+    def get_page_squiggly_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_squiggly_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_squiggly_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_squiggly_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/squiggly".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SquigglyAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_squiggly_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page StrikeOut annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [StrikeOutAnnotationsResponse]
+    def get_page_strike_out_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_strike_out_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_strike_out_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page StrikeOut annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(StrikeOutAnnotationsResponse, Fixnum, Hash)>] StrikeOutAnnotationsResponse data, response status code and response headers
+    def get_page_strike_out_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_strike_out_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_strike_out_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_strike_out_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/strikeout".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StrikeOutAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_strike_out_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4787,6 +6133,84 @@ module AsposePdfCloud
         :return_type => 'TextAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page_text_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page underline annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [UnderlineAnnotationsResponse]
+    def get_page_underline_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_underline_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_underline_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page underline annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(UnderlineAnnotationsResponse, Fixnum, Hash)>] UnderlineAnnotationsResponse data, response status code and response headers
+    def get_page_underline_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_underline_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_underline_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_underline_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/underline".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'UnderlineAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_underline_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6140,6 +7564,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page popup annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [PopupAnnotationResponse]
+    def get_popup_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_popup_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_popup_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page popup annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(PopupAnnotationResponse, Fixnum, Hash)>] PopupAnnotationResponse data, response status code and response headers
+    def get_popup_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_popup_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_popup_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_popup_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/popup/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'PopupAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_popup_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert PS file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.ps)
@@ -6284,6 +7786,162 @@ module AsposePdfCloud
         :return_type => 'SquareAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_square_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page squiggly annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SquigglyAnnotationResponse]
+    def get_squiggly_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_squiggly_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_squiggly_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page squiggly annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SquigglyAnnotationResponse, Fixnum, Hash)>] SquigglyAnnotationResponse data, response status code and response headers
+    def get_squiggly_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_squiggly_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_squiggly_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_squiggly_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/squiggly/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SquigglyAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_squiggly_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page StrikeOut annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [StrikeOutAnnotationResponse]
+    def get_strike_out_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_strike_out_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_strike_out_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page StrikeOut annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(StrikeOutAnnotationResponse, Fixnum, Hash)>] StrikeOutAnnotationResponse data, response status code and response headers
+    def get_strike_out_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_strike_out_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_strike_out_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_strike_out_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/strikeout/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StrikeOutAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_strike_out_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6565,6 +8223,84 @@ module AsposePdfCloud
         :return_type => 'TextAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_text_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page underline annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [UnderlineAnnotationResponse]
+    def get_underline_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_underline_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_underline_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page underline annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(UnderlineAnnotationResponse, Fixnum, Hash)>] UnderlineAnnotationResponse data, response status code and response headers
+    def get_underline_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_underline_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_underline_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_underline_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/underline/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'UnderlineAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_underline_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7606,6 +9342,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document page caret annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_caret_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_caret_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_caret_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page caret annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_caret_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_caret_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_caret_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_caret_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_caret_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/caret".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_caret_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page circle annotations.
     # 
     # @param name The document name.
@@ -7768,6 +9587,172 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_free_text_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page highlight annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_highlight_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_highlight_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_highlight_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page highlight annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_highlight_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_highlight_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_highlight_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_highlight_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_highlight_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/highlight".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_highlight_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page ink annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_ink_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_ink_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_ink_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page ink annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_ink_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_ink_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_ink_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_ink_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_ink_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/ink".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_ink_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8187,6 +10172,172 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document page squiggly annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_squiggly_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_squiggly_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_squiggly_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page squiggly annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_squiggly_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_squiggly_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_squiggly_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_squiggly_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_squiggly_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/squiggly".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_squiggly_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page StrikeOut annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_strike_out_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_strike_out_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_strike_out_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page StrikeOut annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_strike_out_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_strike_out_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_strike_out_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_strike_out_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_strike_out_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/strikeout".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_strike_out_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page text annotations.
     # 
     # @param name The document name.
@@ -8349,6 +10500,172 @@ module AsposePdfCloud
         :return_type => 'TextReplaceResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_text_replace\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page underline annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_underline_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_underline_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_underline_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page underline annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_underline_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_underline_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_underline_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_underline_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_underline_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/underline".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_underline_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document popup annotations.
+    # 
+    # @param name The document name.
+    # @param annotation_id The parent annotation ID.
+    # @param annotation The annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_popup_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document popup annotations.
+    # 
+    # @param name The document name.
+    # @param annotation_id The parent annotation ID.
+    # @param annotation The annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_popup_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_popup_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_popup_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.post_popup_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.post_popup_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/{annotationId}/popup".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_popup_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8733,6 +11050,89 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_add_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document caret annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [CaretAnnotationResponse]
+    def put_caret_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_caret_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_caret_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document caret annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(CaretAnnotationResponse, Fixnum, Hash)>] CaretAnnotationResponse data, response status code and response headers
+    def put_caret_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_caret_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_caret_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_caret_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_caret_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/caret/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CaretAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_caret_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9208,12 +11608,95 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Replace document highlight annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [HighlightAnnotationResponse]
+    def put_highlight_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_highlight_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_highlight_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document highlight annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(HighlightAnnotationResponse, Fixnum, Hash)>] HighlightAnnotationResponse data, response status code and response headers
+    def put_highlight_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_highlight_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_highlight_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_highlight_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_highlight_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/highlight/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'HighlightAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_highlight_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
     # 
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.zip)
-    # @param html_file_name Name of HTML file in ZIP.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :html_file_name Name of HTML file in ZIP.
     # @option opts [Float] :height Page height
     # @option opts [Float] :width Page width
     # @option opts [BOOLEAN] :is_landscape Is page landscaped
@@ -9224,13 +11707,13 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @option opts [String] :storage The document storage.
     # @return [AsposeResponse]
-    def put_html_in_storage_to_pdf(name, src_path, html_file_name, opts = {})
+    def put_html_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts)
+      data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
           @api_client.refresh_token
-          data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts)
+          data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
         end
@@ -9241,8 +11724,8 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.zip)
-    # @param html_file_name Name of HTML file in ZIP.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :html_file_name Name of HTML file in ZIP.
     # @option opts [Float] :height Page height
     # @option opts [Float] :width Page width
     # @option opts [BOOLEAN] :is_landscape Is page landscaped
@@ -9253,7 +11736,7 @@ module AsposePdfCloud
     # @option opts [String] :dst_folder The destination document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
-    def put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, opts = {})
+    def put_html_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_html_in_storage_to_pdf ..."
       end
@@ -9265,17 +11748,13 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && src_path.nil?
         fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.put_html_in_storage_to_pdf"
       end
-      # verify the required parameter 'html_file_name' is set
-      if @api_client.config.client_side_validation && html_file_name.nil?
-        fail ArgumentError, "Missing the required parameter 'html_file_name' when calling PdfApi.put_html_in_storage_to_pdf"
-      end
       # resource path
       local_var_path = "/pdf/{name}/create/html".sub('{' + 'name' + '}', name.to_s)
 
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
-      query_params[:'htmlFileName'] = html_file_name
+      query_params[:'htmlFileName'] = opts[:'html_file_name'] if !opts[:'html_file_name'].nil?
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
       query_params[:'isLandscape'] = opts[:'is_landscape'] if !opts[:'is_landscape'].nil?
@@ -10084,6 +12563,89 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document ink annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [InkAnnotationResponse]
+    def put_ink_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_ink_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_ink_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document ink annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(InkAnnotationResponse, Fixnum, Hash)>] InkAnnotationResponse data, response status code and response headers
+    def put_ink_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_ink_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_ink_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_ink_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_ink_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/ink/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InkAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_ink_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13563,6 +16125,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Replace document popup annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [PopupAnnotationResponse]
+    def put_popup_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document popup annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(PopupAnnotationResponse, Fixnum, Hash)>] PopupAnnotationResponse data, response status code and response headers
+    def put_popup_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_popup_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_popup_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_popup_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_popup_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/popup/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'PopupAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_popup_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update privilege document.
     # 
     # @param name The document name.
@@ -14043,6 +16688,172 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Replace document squiggly annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SquigglyAnnotationResponse]
+    def put_squiggly_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_squiggly_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_squiggly_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document squiggly annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SquigglyAnnotationResponse, Fixnum, Hash)>] SquigglyAnnotationResponse data, response status code and response headers
+    def put_squiggly_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_squiggly_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_squiggly_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_squiggly_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_squiggly_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/squiggly/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SquigglyAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_squiggly_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document StrikeOut annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [StrikeOutAnnotationResponse]
+    def put_strike_out_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_strike_out_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_strike_out_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document StrikeOut annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(StrikeOutAnnotationResponse, Fixnum, Hash)>] StrikeOutAnnotationResponse data, response status code and response headers
+    def put_strike_out_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_strike_out_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_strike_out_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_strike_out_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_strike_out_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/strikeout/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StrikeOutAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_strike_out_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
     # 
     # @param name The document name.
@@ -14225,6 +17036,89 @@ module AsposePdfCloud
         :return_type => 'TextAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_text_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document underline annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [UnderlineAnnotationResponse]
+    def put_underline_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_underline_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_underline_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document underline annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(UnderlineAnnotationResponse, Fixnum, Hash)>] UnderlineAnnotationResponse data, response status code and response headers
+    def put_underline_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_underline_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_underline_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_underline_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_underline_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/underline/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'UnderlineAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_underline_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
