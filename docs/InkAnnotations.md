@@ -1,4 +1,4 @@
-# AsposePdfCloud::InkAnnotations
+﻿# AsposePdfCloud::InkAnnotations
 List of annotations.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::LineAnnotationsResponse
+﻿# AsposePdfCloud::LineAnnotationsResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::Document
+﻿# AsposePdfCloud::Document
 Represents document DTO.
 
 ## Properties

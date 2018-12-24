@@ -1,4 +1,4 @@
-# AsposePdfCloud::CaretAnnotationResponse
+﻿# AsposePdfCloud::CaretAnnotationResponse
 
 
 ## Properties

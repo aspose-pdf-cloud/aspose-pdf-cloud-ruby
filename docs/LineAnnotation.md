@@ -1,4 +1,4 @@
-# AsposePdfCloud::LineAnnotation
+﻿# AsposePdfCloud::LineAnnotation
 Provides LineAnnotation.
 
 ## Properties

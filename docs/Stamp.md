@@ -1,4 +1,4 @@
-# AsposePdfCloud::Stamp
+﻿# AsposePdfCloud::Stamp
 Represents Pdf stamps.
 
 ## Properties

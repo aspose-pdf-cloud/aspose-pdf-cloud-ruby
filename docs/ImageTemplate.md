@@ -1,4 +1,4 @@
-# AsposePdfCloud::ImageTemplate
+﻿# AsposePdfCloud::ImageTemplate
 Template of image.
 
 ## Properties

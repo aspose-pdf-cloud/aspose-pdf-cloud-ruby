@@ -1,4 +1,4 @@
-# AsposePdfCloud::PageWordCount
+﻿# AsposePdfCloud::PageWordCount
 Page words count.
 
 ## Properties

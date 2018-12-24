@@ -1,4 +1,4 @@
-# AsposePdfCloud::Attachment
+﻿# AsposePdfCloud::Attachment
 Provides link to attachment.
 
 ## Properties

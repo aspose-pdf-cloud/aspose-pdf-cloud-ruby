@@ -1,4 +1,4 @@
-# AsposePdfCloud::Color
+﻿# AsposePdfCloud::Color
 Represents color DTO.
 
 ## Properties

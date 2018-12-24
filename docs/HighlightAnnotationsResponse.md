@@ -1,4 +1,4 @@
-# AsposePdfCloud::HighlightAnnotationsResponse
+﻿# AsposePdfCloud::HighlightAnnotationsResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::DocumentPropertiesResponse
+﻿# AsposePdfCloud::DocumentPropertiesResponse
 
 
 ## Properties

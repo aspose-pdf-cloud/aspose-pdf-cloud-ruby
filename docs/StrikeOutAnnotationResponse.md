@@ -1,4 +1,4 @@
-# AsposePdfCloud::StrikeOutAnnotationResponse
+﻿# AsposePdfCloud::StrikeOutAnnotationResponse
 
 
 ## Properties

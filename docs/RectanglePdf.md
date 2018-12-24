@@ -1,4 +1,4 @@
-# AsposePdfCloud::RectanglePdf
+﻿# AsposePdfCloud::RectanglePdf
 Represents rectangle DTO.
 
 ## Properties

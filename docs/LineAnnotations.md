@@ -1,4 +1,4 @@
-# AsposePdfCloud::LineAnnotations
+﻿# AsposePdfCloud::LineAnnotations
 List of annotations.
 
 ## Properties

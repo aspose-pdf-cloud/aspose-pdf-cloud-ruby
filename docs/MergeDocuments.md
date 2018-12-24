@@ -1,4 +1,4 @@
-# AsposePdfCloud::MergeDocuments
+﻿# AsposePdfCloud::MergeDocuments
 Documents for merging.
 
 ## Properties

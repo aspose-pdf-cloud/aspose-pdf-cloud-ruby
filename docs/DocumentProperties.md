@@ -1,4 +1,4 @@
-# AsposePdfCloud::DocumentProperties
+﻿# AsposePdfCloud::DocumentProperties
 Pdf document properties.
 
 ## Properties

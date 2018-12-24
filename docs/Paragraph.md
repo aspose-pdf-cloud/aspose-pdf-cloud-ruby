@@ -1,4 +1,4 @@
-# AsposePdfCloud::Paragraph
+﻿# AsposePdfCloud::Paragraph
 Paragraph DTO for add text functionality.
 
 ## Properties

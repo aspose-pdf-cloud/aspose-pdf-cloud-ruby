@@ -1,4 +1,4 @@
-# AsposePdfCloud::MarginInfo
+﻿# AsposePdfCloud::MarginInfo
 
 
 ## Properties

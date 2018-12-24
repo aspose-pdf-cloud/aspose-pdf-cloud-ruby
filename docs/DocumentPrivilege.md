@@ -1,4 +1,4 @@
-# AsposePdfCloud::DocumentPrivilege
+﻿# AsposePdfCloud::DocumentPrivilege
 Represents the privileges for accessing Pdf file./>.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::SquigglyAnnotation
+﻿# AsposePdfCloud::SquigglyAnnotation
 Provides SquigglyAnnotation.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::CaretAnnotation
+﻿# AsposePdfCloud::CaretAnnotation
 Provides CaretAnnotation.
 
 ## Properties

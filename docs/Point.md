@@ -1,4 +1,4 @@
-# AsposePdfCloud::Point
+﻿# AsposePdfCloud::Point
 Represent point with fractional coordinates.
 
 ## Properties

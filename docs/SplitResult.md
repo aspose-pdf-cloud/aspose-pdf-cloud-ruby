@@ -1,4 +1,4 @@
-# AsposePdfCloud::SplitResult
+﻿# AsposePdfCloud::SplitResult
 Represents split result object.
 
 ## Properties

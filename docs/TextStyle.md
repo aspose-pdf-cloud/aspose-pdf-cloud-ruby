@@ -1,4 +1,4 @@
-# AsposePdfCloud::TextStyle
+﻿# AsposePdfCloud::TextStyle
 Represents a text style of a text
 
 ## Properties

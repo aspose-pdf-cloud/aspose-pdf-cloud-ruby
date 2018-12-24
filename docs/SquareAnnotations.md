@@ -1,4 +1,4 @@
-# AsposePdfCloud::SquareAnnotations
+﻿# AsposePdfCloud::SquareAnnotations
 List of annotations.
 
 ## Properties

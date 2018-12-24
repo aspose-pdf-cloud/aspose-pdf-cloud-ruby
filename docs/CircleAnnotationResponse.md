@@ -1,4 +1,4 @@
-# AsposePdfCloud::CircleAnnotationResponse
+﻿# AsposePdfCloud::CircleAnnotationResponse
 
 
 ## Properties

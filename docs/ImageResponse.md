@@ -1,4 +1,4 @@
-# AsposePdfCloud::ImageResponse
+﻿# AsposePdfCloud::ImageResponse
 
 
 ## Properties

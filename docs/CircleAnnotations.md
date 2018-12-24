@@ -1,4 +1,4 @@
-# AsposePdfCloud::CircleAnnotations
+﻿# AsposePdfCloud::CircleAnnotations
 List of annotations.
 
 ## Properties

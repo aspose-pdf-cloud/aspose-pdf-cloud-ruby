@@ -1,4 +1,4 @@
-# AsposePdfCloud::PolyLineAnnotationResponse
+﻿# AsposePdfCloud::PolyLineAnnotationResponse
 
 
 ## Properties

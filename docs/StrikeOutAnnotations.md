@@ -1,4 +1,4 @@
-# AsposePdfCloud::StrikeOutAnnotations
+﻿# AsposePdfCloud::StrikeOutAnnotations
 List of annotations.
 
 ## Properties

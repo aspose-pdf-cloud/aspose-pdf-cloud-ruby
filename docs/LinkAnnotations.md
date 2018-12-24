@@ -1,4 +1,4 @@
-# AsposePdfCloud::LinkAnnotations
+﻿# AsposePdfCloud::LinkAnnotations
 List of LinkAnnotations.
 
 ## Properties

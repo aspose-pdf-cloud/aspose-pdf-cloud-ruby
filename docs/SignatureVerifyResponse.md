@@ -1,4 +1,4 @@
-# AsposePdfCloud::SignatureVerifyResponse
+﻿# AsposePdfCloud::SignatureVerifyResponse
 Returns also a message.
 
 ## Properties

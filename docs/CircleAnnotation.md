@@ -1,4 +1,4 @@
-# AsposePdfCloud::CircleAnnotation
+﻿# AsposePdfCloud::CircleAnnotation
 Provides CircleAnnotation.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::TextReplaceListRequest
+﻿# AsposePdfCloud::TextReplaceListRequest
 Multiple text replacements request.
 
 ## Properties
