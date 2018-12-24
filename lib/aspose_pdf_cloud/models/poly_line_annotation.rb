@@ -70,7 +70,7 @@ module AsposePdfCloud
     # Get the annotation RichText.
     attr_accessor :rich_text
 
-    # Gets or sets the interior color with which to fill the annotation?s line endings.
+    # Gets or sets the interior color with which to fill the annotation’s line endings.
     attr_accessor :interior_color
 
     # Gets or sets the style of first line ending.

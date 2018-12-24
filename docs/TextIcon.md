@@ -1,20 +1,20 @@
-# AsposePdfCloud::TextIcon
+﻿# AsposePdfCloud::TextIcon
 Enumerates the icons to be used in displaying the annotation.
 
 ## Enum
-Name | Type | Value
------------- | ------------- | -------------
-**NOTE** | **String** | 'Note'
-**COMMENT** | **String** | 'Comment'
-**KEY** | **String** | 'Key'
-**HELP** | **String** | 'Help'
-**NEW_PARAGRAPH** | **String** | 'NewParagraph'
-**PARAGRAPH** | **String** | 'Paragraph'
-**INSERT** | **String** | 'Insert'
-**CHECK** | **String** | 'Check'
-**CROSS** | **String** | 'Cross'
-**CIRCLE** | **String** | 'Circle'
-**STAR** | **String** | 'Star'
+Name | Type | Value | Description
+------------ | ------------- | ------------- | -------------
+**NOTE** | **String** | 'Note' | Note icon.
+**COMMENT** | **String** | 'Comment' | Comment icon.
+**KEY** | **String** | 'Key' | Key icon.
+**HELP** | **String** | 'Help' | Help icon.
+**NEW_PARAGRAPH** | **String** | 'NewParagraph' | NewParagraph icon.
+**PARAGRAPH** | **String** | 'Paragraph' | Paragraph icon.
+**INSERT** | **String** | 'Insert' | Insert icon.
+**CHECK** | **String** | 'Check' | Check icon.
+**CROSS** | **String** | 'Cross' | Cross icon.
+**CIRCLE** | **String** | 'Circle' | Circle icon.
+**STAR** | **String** | 'Star' | Star icon.
 
 
 

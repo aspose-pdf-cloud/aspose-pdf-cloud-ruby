@@ -1,4 +1,4 @@
-# AsposePdfCloud::HighlightAnnotation
+﻿# AsposePdfCloud::HighlightAnnotation
 Provides HighlightAnnotation.
 
 ## Properties

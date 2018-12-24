@@ -1,4 +1,4 @@
-# AsposePdfCloud::PolyLineAnnotations
+﻿# AsposePdfCloud::PolyLineAnnotations
 List of annotations.
 
 ## Properties

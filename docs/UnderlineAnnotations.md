@@ -1,4 +1,4 @@
-# AsposePdfCloud::UnderlineAnnotations
+﻿# AsposePdfCloud::UnderlineAnnotations
 List of annotations.
 
 ## Properties

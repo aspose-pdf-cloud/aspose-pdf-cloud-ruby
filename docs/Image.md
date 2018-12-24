@@ -1,4 +1,4 @@
-# AsposePdfCloud::Image
+﻿# AsposePdfCloud::Image
 Represents image DTO.
 
 ## Properties

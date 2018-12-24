@@ -1,4 +1,4 @@
-# AsposePdfCloud::FreeTextAnnotation
+﻿# AsposePdfCloud::FreeTextAnnotation
 Provides FreeTextAnnotation.
 
 ## Properties

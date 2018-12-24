@@ -1,4 +1,4 @@
-# AsposePdfCloud::TextRectsResponse
+﻿# AsposePdfCloud::TextRectsResponse
 
 
 ## Properties

@@ -1,37 +1,37 @@
-# AsposePdfCloud::AnnotationType
+﻿# AsposePdfCloud::AnnotationType
 
 
 ## Enum
-Name | Type | Value
------------- | ------------- | -------------
-**TEXT** | **String** | 'Text'
-**CIRCLE** | **String** | 'Circle'
-**POLYGON** | **String** | 'Polygon'
-**POLY_LINE** | **String** | 'PolyLine'
-**LINE** | **String** | 'Line'
-**SQUARE** | **String** | 'Square'
-**FREE_TEXT** | **String** | 'FreeText'
-**HIGHLIGHT** | **String** | 'Highlight'
-**UNDERLINE** | **String** | 'Underline'
-**SQUIGGLY** | **String** | 'Squiggly'
-**STRIKE_OUT** | **String** | 'StrikeOut'
-**CARET** | **String** | 'Caret'
-**INK** | **String** | 'Ink'
-**LINK** | **String** | 'Link'
-**POPUP** | **String** | 'Popup'
-**FILE_ATTACHMENT** | **String** | 'FileAttachment'
-**SOUND** | **String** | 'Sound'
-**MOVIE** | **String** | 'Movie'
-**SCREEN** | **String** | 'Screen'
-**WIDGET** | **String** | 'Widget'
-**WATERMARK** | **String** | 'Watermark'
-**TRAP_NET** | **String** | 'TrapNet'
-**PRINTER_MARK** | **String** | 'PrinterMark'
-**REDACTION** | **String** | 'Redaction'
-**STAMP** | **String** | 'Stamp'
-**RICH_MEDIA** | **String** | 'RichMedia'
-**UNKNOWN** | **String** | 'Unknown'
-**PDF3_D** | **String** | 'PDF3D'
+Name | Type | Value | Description
+------------ | ------------- | ------------- | -------------
+**TEXT** | **String** | 'Text' | Text annotation type.
+**CIRCLE** | **String** | 'Circle' | Circle annotation type.
+**POLYGON** | **String** | 'Polygon' | Polygon annotation type.
+**POLY_LINE** | **String** | 'PolyLine' | Plyline annotation type.
+**LINE** | **String** | 'Line' | Line annotation type.
+**SQUARE** | **String** | 'Square' | Square annotatotion type.
+**FREE_TEXT** | **String** | 'FreeText' | Free text annotation type.
+**HIGHLIGHT** | **String** | 'Highlight' | Highlight annotation type.
+**UNDERLINE** | **String** | 'Underline' | Underline annotation type.
+**SQUIGGLY** | **String** | 'Squiggly' | Squiggle annotation type.
+**STRIKE_OUT** | **String** | 'StrikeOut' | Strikeout annotation type.
+**CARET** | **String** | 'Caret' | Caret annotation type.
+**INK** | **String** | 'Ink' | Ink annotation type.
+**LINK** | **String** | 'Link' | Link annotation type.
+**POPUP** | **String** | 'Popup' | Popup annotation type.
+**FILE_ATTACHMENT** | **String** | 'FileAttachment' | File attachment annotation type.
+**SOUND** | **String** | 'Sound' | Sound annotation type.
+**MOVIE** | **String** | 'Movie' | Movie annotation type.
+**SCREEN** | **String** | 'Screen' | Screen annotation type.
+**WIDGET** | **String** | 'Widget' | Widget annotation type.
+**WATERMARK** | **String** | 'Watermark' | Watermark annotation type.
+**TRAP_NET** | **String** | 'TrapNet' | Trap network annotation type.
+**PRINTER_MARK** | **String** | 'PrinterMark' | Printer mark annotation type.
+**REDACTION** | **String** | 'Redaction' | Redaction annotation type.
+**STAMP** | **String** | 'Stamp' | Rubber stamp annotation type.
+**RICH_MEDIA** | **String** | 'RichMedia' | Rich media annotation type
+**UNKNOWN** | **String** | 'Unknown' | Unknown annotation.
+**PDF3_D** | **String** | 'PDF3D' | 
 
 
 

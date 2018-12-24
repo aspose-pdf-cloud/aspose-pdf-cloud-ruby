@@ -1,4 +1,4 @@
-# AsposePdfCloud::InkAnnotationsResponse
+﻿# AsposePdfCloud::InkAnnotationsResponse
 
 
 ## Properties

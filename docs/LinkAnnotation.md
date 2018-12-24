@@ -1,4 +1,4 @@
-# AsposePdfCloud::LinkAnnotation
+﻿# AsposePdfCloud::LinkAnnotation
 Provides link to linkAnnotation.
 
 ## Properties

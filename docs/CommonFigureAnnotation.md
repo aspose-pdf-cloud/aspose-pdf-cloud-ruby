@@ -1,4 +1,4 @@
-# AsposePdfCloud::CommonFigureAnnotation
+﻿# AsposePdfCloud::CommonFigureAnnotation
 Provides CommonFigureAnnotation.
 
 ## Properties

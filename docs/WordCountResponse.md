@@ -1,4 +1,4 @@
-# AsposePdfCloud::WordCountResponse
+﻿# AsposePdfCloud::WordCountResponse
 Number of words per document pages.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::AsposeResponse
+﻿# AsposePdfCloud::AsposeResponse
 Base class for all responses.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::TextReplace
+﻿# AsposePdfCloud::TextReplace
 Single text replacement setting.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::TextReplaceResponse
+﻿# AsposePdfCloud::TextReplaceResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::ImageTemplatesRequest
+﻿# AsposePdfCloud::ImageTemplatesRequest
 Create document from images request.
 
 ## Properties

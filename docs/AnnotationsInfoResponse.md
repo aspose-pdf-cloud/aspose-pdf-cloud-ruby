@@ -1,4 +1,4 @@
-# AsposePdfCloud::AnnotationsInfoResponse
+﻿# AsposePdfCloud::AnnotationsInfoResponse
 
 
 ## Properties

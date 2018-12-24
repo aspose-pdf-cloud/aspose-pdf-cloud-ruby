@@ -1,4 +1,4 @@
-# AsposePdfCloud::SquareAnnotation
+﻿# AsposePdfCloud::SquareAnnotation
 Provides SquareAnnotation.
 
 ## Properties

@@ -1,4 +1,4 @@
-# AsposePdfCloud::PolygonAnnotationResponse
+﻿# AsposePdfCloud::PolygonAnnotationResponse
 
 
 ## Properties

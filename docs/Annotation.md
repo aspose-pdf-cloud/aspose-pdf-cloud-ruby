@@ -1,4 +1,4 @@
-# AsposePdfCloud::Annotation
+﻿# AsposePdfCloud::Annotation
 Provides annotation.
 
 ## Properties

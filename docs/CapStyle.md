@@ -1,11 +1,11 @@
-# AsposePdfCloud::CapStyle
+﻿# AsposePdfCloud::CapStyle
 Style of line ending of Ink annotation line. 
 
 ## Enum
-Name | Type | Value
------------- | ------------- | -------------
-**RECTANGULAR** | **String** | 'Rectangular'
-**ROUNDED** | **String** | 'Rounded'
+Name | Type | Value | Description
+------------ | ------------- | ------------- | -------------
+**RECTANGULAR** | **String** | 'Rectangular' | End is rectangular.
+**ROUNDED** | **String** | 'Rounded' | End is rounded.
 
 
 

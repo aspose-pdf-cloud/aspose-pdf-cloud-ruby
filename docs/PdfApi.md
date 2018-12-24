@@ -1,4 +1,4 @@
-# AsposePdfCloud::PdfApi
+﻿# AsposePdfCloud::PdfApi
 
 All URIs are relative to *https://api.aspose.cloud/v2.0*
 
@@ -2315,7 +2315,7 @@ Converts PDF document (located on storage) to EPUB format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
- **content_recognition_mode** | **String**| ?roperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
+ **content_recognition_mode** | **String**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
@@ -4683,7 +4683,7 @@ Converts PDF document (in request content) to EPUB format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) | 
- **content_recognition_mode** | **String**| ?roperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
+ **content_recognition_mode** | **String**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
 
@@ -5033,7 +5033,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.epub) | 
- **content_recognition_mode** | **String**| ?roperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
+ **content_recognition_mode** | **String**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 

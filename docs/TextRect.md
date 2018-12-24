@@ -1,4 +1,4 @@
-# AsposePdfCloud::TextRect
+﻿# AsposePdfCloud::TextRect
 Represents text DTO.
 
 ## Properties

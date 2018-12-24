@@ -1,12 +1,12 @@
-# AsposePdfCloud::Justification
-Enumerates the forms of quadding (justification) to be used in displaying the annotation?s text.
+﻿# AsposePdfCloud::Justification
+Enumerates the forms of quadding (justification) to be used in displaying the annotation’s text.
 
 ## Enum
-Name | Type | Value
------------- | ------------- | -------------
-**LEFT** | **String** | 'Left'
-**CENTER** | **String** | 'Center'
-**RIGHT** | **String** | 'Right'
+Name | Type | Value | Description
+------------ | ------------- | ------------- | -------------
+**LEFT** | **String** | 'Left' | Left justification.
+**CENTER** | **String** | 'Center' | Center justification.
+**RIGHT** | **String** | 'Right' | Right justification.
 
 
 

@@ -1,4 +1,4 @@
-# AsposePdfCloud::HighlightAnnotations
+﻿# AsposePdfCloud::HighlightAnnotations
 List of annotations.
 
 ## Properties

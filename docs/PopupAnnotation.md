@@ -1,4 +1,4 @@
-# AsposePdfCloud::PopupAnnotation
+﻿# AsposePdfCloud::PopupAnnotation
 Provides PopupAnnotation.
 
 ## Properties

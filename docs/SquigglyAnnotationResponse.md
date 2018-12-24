@@ -1,4 +1,4 @@
-# AsposePdfCloud::SquigglyAnnotationResponse
+﻿# AsposePdfCloud::SquigglyAnnotationResponse
 
 
 ## Properties

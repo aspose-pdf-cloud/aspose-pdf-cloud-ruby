@@ -1,4 +1,4 @@
-# AsposePdfCloud::Segment
+﻿# AsposePdfCloud::Segment
 
 
 ## Properties

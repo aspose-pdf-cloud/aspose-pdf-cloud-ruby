@@ -1,4 +1,4 @@
-# AsposePdfCloud::SquigglyAnnotations
+﻿# AsposePdfCloud::SquigglyAnnotations
 List of annotations.
 
 ## Properties

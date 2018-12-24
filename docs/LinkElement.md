@@ -1,4 +1,4 @@
-# AsposePdfCloud::LinkElement
+﻿# AsposePdfCloud::LinkElement
 Represents base DTO object.
 
 ## Properties

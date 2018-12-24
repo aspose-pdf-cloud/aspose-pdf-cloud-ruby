@@ -1,4 +1,4 @@
-# AsposePdfCloud::OptimizeOptions
+﻿# AsposePdfCloud::OptimizeOptions
 Represents Pdf optimize options.
 
 ## Properties

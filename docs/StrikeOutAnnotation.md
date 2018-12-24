@@ -1,4 +1,4 @@
-# AsposePdfCloud::StrikeOutAnnotation
+﻿# AsposePdfCloud::StrikeOutAnnotation
 Provides StrikeOutAnnotation.
 
 ## Properties

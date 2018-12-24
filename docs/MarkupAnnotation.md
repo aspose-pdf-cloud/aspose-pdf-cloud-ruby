@@ -1,4 +1,4 @@
-# AsposePdfCloud::MarkupAnnotation
+﻿# AsposePdfCloud::MarkupAnnotation
 Provides MarkupAnnotation.
 
 ## Properties

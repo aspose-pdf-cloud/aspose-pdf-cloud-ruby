@@ -6457,7 +6457,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [File]
@@ -6478,7 +6478,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -13857,7 +13857,7 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
@@ -13878,7 +13878,7 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
@@ -14935,7 +14935,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [AsposeResponse]
@@ -14957,7 +14957,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode ?roperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
