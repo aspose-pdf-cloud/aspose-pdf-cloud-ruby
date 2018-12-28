@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents response containing multiple text occurrences info
   class TextRectsResponse
     # Response status code.
     attr_accessor :code
@@ -31,7 +31,8 @@ module AsposePdfCloud
     # Response status.
     attr_accessor :status
 
-    attr_accessor :text_occurences
+    # TextRects object
+    attr_accessor :text_occurrences
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -39,7 +40,7 @@ module AsposePdfCloud
       {
         :'code' => :'Code',
         :'status' => :'Status',
-        :'text_occurences' => :'TextOccurences'
+        :'text_occurrences' => :'TextOccurrences'
       }
     end
 
@@ -48,7 +49,7 @@ module AsposePdfCloud
       {
         :'code' => :'Integer',
         :'status' => :'String',
-        :'text_occurences' => :'TextRects'
+        :'text_occurrences' => :'TextRects'
       }
     end
 
@@ -68,8 +69,8 @@ module AsposePdfCloud
         self.status = attributes[:'Status']
       end
 
-      if attributes.has_key?(:'TextOccurences')
-        self.text_occurences = attributes[:'TextOccurences']
+      if attributes.has_key?(:'TextOccurrences')
+        self.text_occurrences = attributes[:'TextOccurrences']
       end
 
     end
@@ -99,7 +100,7 @@ module AsposePdfCloud
       self.class == o.class &&
           code == o.code &&
           status == o.status &&
-          text_occurences == o.text_occurences
+          text_occurrences == o.text_occurrences
     end
 
     # @see the `==` method
@@ -111,7 +112,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, text_occurences].hash
+      [code, status, text_occurrences].hash
     end
 
     # Builds the object from hash

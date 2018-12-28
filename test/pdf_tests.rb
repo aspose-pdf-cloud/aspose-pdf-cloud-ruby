@@ -145,7 +145,7 @@ class PdfTests < Minitest::Test
 
     annotation = PolyLineAnnotation.new
     annotation.name = 'Test poly_line'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -202,7 +202,7 @@ class PdfTests < Minitest::Test
 
     annotation = PolyLineAnnotation.new
     annotation.name = 'Test poly_line'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -248,7 +248,7 @@ class PdfTests < Minitest::Test
 
     annotation = PolygonAnnotation.new
     annotation.name = 'Test polygon'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -305,7 +305,7 @@ class PdfTests < Minitest::Test
 
     annotation = PolygonAnnotation.new
     annotation.name = 'Test polygon'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -350,7 +350,7 @@ class PdfTests < Minitest::Test
 
     annotation = CircleAnnotation.new
     annotation.name = 'Test circle'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -401,7 +401,7 @@ class PdfTests < Minitest::Test
 
     annotation = CircleAnnotation.new
     annotation.name = 'Test circle'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -441,7 +441,7 @@ class PdfTests < Minitest::Test
 
     annotation = SquareAnnotation.new
     annotation.name = 'Test square'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -492,7 +492,7 @@ class PdfTests < Minitest::Test
 
     annotation = SquareAnnotation.new
     annotation.name = 'Test square'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -532,7 +532,7 @@ class PdfTests < Minitest::Test
 
     annotation = LineAnnotation.new
     annotation.name = 'Test Line'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -585,7 +585,7 @@ class PdfTests < Minitest::Test
 
     annotation = LineAnnotation.new
     annotation.name = 'Test Line'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -634,7 +634,7 @@ class PdfTests < Minitest::Test
     annotation = FreeTextAnnotation.new
     annotation.name = 'Test Free Text'
     annotation.text_style = text_style
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.intent = FreeTextIntent::FREE_TEXT_TYPE_WRITER
@@ -694,7 +694,7 @@ class PdfTests < Minitest::Test
     annotation = FreeTextAnnotation.new
     annotation.name = 'Test Free Text'
     annotation.text_style = text_style
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.intent = FreeTextIntent::FREE_TEXT_TYPE_WRITER
@@ -737,7 +737,7 @@ class PdfTests < Minitest::Test
 
     annotation = TextAnnotation.new
     annotation.name = 'Test Free Text'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -788,7 +788,7 @@ class PdfTests < Minitest::Test
 
     annotation = TextAnnotation.new
     annotation.name = 'Test Free Text'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::DEFAULT]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -828,7 +828,7 @@ class PdfTests < Minitest::Test
 
     annotation = HighlightAnnotation.new
     annotation.name = 'Test highlight'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -885,7 +885,7 @@ class PdfTests < Minitest::Test
 
     annotation = HighlightAnnotation.new
     annotation.name = 'Test highlight'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -930,7 +930,7 @@ class PdfTests < Minitest::Test
 
     annotation = UnderlineAnnotation.new
     annotation.name = 'Test underline'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -988,7 +988,7 @@ class PdfTests < Minitest::Test
 
     annotation = UnderlineAnnotation.new
     annotation.name = 'Test underline'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1034,7 +1034,7 @@ class PdfTests < Minitest::Test
 
     annotation = SquigglyAnnotation.new
     annotation.name = 'Test squiggly'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1092,7 +1092,7 @@ class PdfTests < Minitest::Test
 
     annotation = SquigglyAnnotation.new
     annotation.name = 'Test squiggly'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1138,7 +1138,7 @@ class PdfTests < Minitest::Test
 
     annotation = StrikeOutAnnotation.new
     annotation.name = 'Test strike_out'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1196,7 +1196,7 @@ class PdfTests < Minitest::Test
 
     annotation = StrikeOutAnnotation.new
     annotation.name = 'Test strike_out'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1242,14 +1242,14 @@ class PdfTests < Minitest::Test
 
     annotation = CaretAnnotation.new
     annotation.name = 'Test caret'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
     annotation.subject = 'Subj'
     annotation.z_index = 1
     annotation.title = 'Title'
-    annotation.frame = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.frame = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.modified = '02/02/2018 00:00:00.000 AM'
 
     response = @pdf_api.post_page_caret_annotations(file_name, 1,  [annotation], opts)
@@ -1295,13 +1295,13 @@ class PdfTests < Minitest::Test
 
     annotation = CaretAnnotation.new
     annotation.name = 'Test caret'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
     annotation.subject = 'Subj'
     annotation.z_index = 1
-    annotation.frame = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.frame = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.modified = '02/02/2018 00:00:00.000 AM'
 
     annotations_response = @pdf_api.get_document_caret_annotations(file_name, opts)
@@ -1336,7 +1336,7 @@ class PdfTests < Minitest::Test
 
     annotation = InkAnnotation.new
     annotation.name = 'Test ink'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1400,7 +1400,7 @@ class PdfTests < Minitest::Test
 
     annotation = InkAnnotation.new
     annotation.name = 'Test ink'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.rich_text = 'Rich Text'
@@ -1466,7 +1466,7 @@ class PdfTests < Minitest::Test
 
     annotation = PopupAnnotation.new
     annotation.name = 'Test popup'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.z_index = 1
@@ -1515,7 +1515,7 @@ class PdfTests < Minitest::Test
 
     annotation = PopupAnnotation.new
     annotation.name = 'Test popup'
-    annotation.rect = RectanglePdf.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
     annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
     annotation.horizontal_alignment = HorizontalAlignment::CENTER
     annotation.z_index = 1
@@ -2489,7 +2489,7 @@ class PdfTests < Minitest::Test
     file_name = 'Hello_world.pdf'
     upload_file(file_name)
 
-    rect = RectanglePdf.new
+    rect = Rectangle.new
     rect.llx = 50
     rect.lly = 200
     rect.urx = 200
@@ -2585,6 +2585,18 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to make fields flatten.')
   end
 
+  def test_post_flatten_document
+
+    name = 'PdfWithAcroForm.pdf'
+
+    opts = {
+        :hideButtons => true,
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_flatten_document(name, opts)
+    assert(response, 'Failed flatten document.')
+  end
 
   # Images Tests
 
@@ -2942,7 +2954,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
 
-    rect = RectanglePdf.new
+    rect = Rectangle.new
     rect.llx = 100
     rect.lly = 100
     rect.urx = 500
@@ -2970,7 +2982,7 @@ class PdfTests < Minitest::Test
     assert(annotations_response, 'Failed to read document page link annotations.')
     link_id = annotations_response[0].links.list[0].id
 
-    rect = RectanglePdf.new
+    rect = Rectangle.new
     rect.llx = 100
     rect.lly = 100
     rect.urx = 500
@@ -3478,7 +3490,7 @@ class PdfTests < Minitest::Test
     signature_file_name = 'test1234.pfx'
     upload_file(signature_file_name)
 
-    rectangle = RectanglePdf.new
+    rectangle = Rectangle.new
     rectangle.llx = 100
     rectangle.lly = 100
     rectangle.urx = 400
@@ -3514,7 +3526,7 @@ class PdfTests < Minitest::Test
 
     page_number = 1
 
-    rectangle = RectanglePdf.new
+    rectangle = Rectangle.new
     rectangle.llx = 100
     rectangle.lly = 100
     rectangle.urx = 400
@@ -3549,7 +3561,7 @@ class PdfTests < Minitest::Test
     signature_file_name = 'test1234.pfx'
     upload_file(signature_file_name)
 
-    rectangle = RectanglePdf.new
+    rectangle = Rectangle.new
     rectangle.llx = 100
     rectangle.lly = 100
     rectangle.urx = 400
@@ -3589,7 +3601,7 @@ class PdfTests < Minitest::Test
     file_name = 'marketing.pdf'
     upload_file(file_name)
 
-    rect = RectanglePdf.new
+    rect = Rectangle.new
     rect.llx = 100
     rect.lly = 100
     rect.urx = 300
@@ -3621,7 +3633,7 @@ class PdfTests < Minitest::Test
     upload_file(file_name)
     page_number = 1
 
-    rect = RectanglePdf.new
+    rect = Rectangle.new
     rect.llx = 100
     rect.lly = 100
     rect.urx = 300
@@ -3690,7 +3702,7 @@ class PdfTests < Minitest::Test
 
     page_number = 1
 
-    rectangle = RectanglePdf.new
+    rectangle = Rectangle.new
     rectangle.llx = 100
     rectangle.lly = 100
     rectangle.urx = 200
@@ -3773,5 +3785,82 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.get_list_files(opts)
     assert(response, 'Failed get file list.')
+  end
+
+  def test_post_move_file
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    src = @temp_folder + '/' + file_name
+    dest = @temp_folder + '/4pages_renamed.pdf'
+
+    response = @pdf_api.post_move_file(src, dest, {})
+    assert(response, "Failed to rename #{file_name} file.")
+  end
+
+  def test_delete_file
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    path = @temp_folder + '/' + file_name
+
+    response = @pdf_api.delete_file(path, {})
+    assert(response, "Failed to delete #{file_name} file.")
+  end
+
+  def test_put_create_folder
+    path = @temp_folder + '/testFolder'
+
+    response = @pdf_api.put_create_folder(path, {})
+    assert(response, 'Failed to create folder.')
+  end
+
+  def test_post_move_folder
+    src = @temp_folder + '/testFolder'
+    responseFolder = @pdf_api.put_create_folder(src, {})
+    assert(responseFolder, 'Failed to create folder.')
+
+    dest = @temp_folder + '/testFolderRednamed'
+
+    response = @pdf_api.post_move_folder(src, dest,{})
+    assert(response, 'Failed to move folder.')
+  end
+
+  def test_delete_folder
+    path = @temp_folder + '/testFolder'
+    responseFolder = @pdf_api.put_create_folder(path, {})
+    assert(responseFolder, 'Failed to create folder.')
+
+    response = @pdf_api.delete_folder(path, {})
+    assert(response, 'Failed to delete folder.')
+  end
+
+  def test_get_is_storage_exist
+    name = 'PDF-CI'
+
+    response = @pdf_api.get_is_storage_exist(name, {})
+    assert(response, 'Failed to check storage.')
+  end
+
+  def test_get_is_exist
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    path = @temp_folder + '/' + file_name
+
+    response = @pdf_api.get_is_exist(path, {})
+    assert(response, 'Failed to check file.')
+  end
+
+  def test_get_disc_usage
+
+    response = @pdf_api.get_disc_usage({})
+    assert(response, 'Failed to check disk usage.')
+  end
+
+  def test_get_list_file_versions
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    path = @temp_folder + '/' + file_name
+
+    response = @pdf_api.get_list_file_versions(path, {})
+    assert(response, 'Failed to get file versions.')
   end
 end

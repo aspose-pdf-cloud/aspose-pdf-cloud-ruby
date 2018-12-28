@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents response containing the result of text replacement
   class TextReplaceResponse
     # Response status code.
     attr_accessor :code
@@ -31,6 +31,7 @@ module AsposePdfCloud
     # Response status.
     attr_accessor :status
 
+    # Number of matches
     attr_accessor :matches
 
 

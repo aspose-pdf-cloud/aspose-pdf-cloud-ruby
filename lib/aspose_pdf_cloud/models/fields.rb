@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of form fields.
+  # Represents list of form fields.
   class Fields
     # Link to the document.
     attr_accessor :links
 
+    # List of form fields.
     attr_accessor :list
 
 

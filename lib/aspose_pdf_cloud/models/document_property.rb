@@ -28,10 +28,13 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
+    # Pame of the property.
     attr_accessor :name
 
+    # Property value.
     attr_accessor :value
 
+    # Value indicating whether it is a built-in property.
     attr_accessor :built_in
 
 

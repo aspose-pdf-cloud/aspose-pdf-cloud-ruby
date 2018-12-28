@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Pdf document properties.
+  # Represents list of PDF document properties.
   class DocumentProperties
     # Link to the document.
     attr_accessor :links
 
+    # List of PDF document properties.
     attr_accessor :list
 
 

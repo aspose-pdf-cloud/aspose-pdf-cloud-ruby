@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents response containing single ink annotation object
   class InkAnnotationResponse
     # Response status code.
     attr_accessor :code
@@ -31,6 +31,7 @@ module AsposePdfCloud
     # Response status.
     attr_accessor :status
 
+    # Ink annotation object
     attr_accessor :annotation
 
 

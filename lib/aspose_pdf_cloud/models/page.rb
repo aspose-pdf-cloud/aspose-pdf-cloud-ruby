@@ -31,8 +31,10 @@ module AsposePdfCloud
     # Page's id.
     attr_accessor :id
 
+    # Page's images
     attr_accessor :images
 
+    # Page's rectangle
     attr_accessor :rectangle
 
 
@@ -52,7 +54,7 @@ module AsposePdfCloud
         :'links' => :'Array<Link>',
         :'id' => :'Integer',
         :'images' => :'Images',
-        :'rectangle' => :'RectanglePdf'
+        :'rectangle' => :'Rectangle'
       }
     end
 

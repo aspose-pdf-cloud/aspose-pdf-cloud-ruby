@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of strikeout annotations.
   class StrikeOutAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of strikeout annotations.
     attr_accessor :list
 
 

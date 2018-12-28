@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of caret annotations.
   class CaretAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of caret annotations.
     attr_accessor :list
 
 

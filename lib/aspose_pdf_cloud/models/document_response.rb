@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents response containing document info
   class DocumentResponse
     # Response status code.
     attr_accessor :code
@@ -31,8 +31,10 @@ module AsposePdfCloud
     # Response status.
     attr_accessor :status
 
+    # Document object
     attr_accessor :document
 
+    # A list of messages obtained while producing the responce
     attr_accessor :messages
 
 

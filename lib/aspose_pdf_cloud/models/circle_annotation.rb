@@ -28,6 +28,9 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
+    # Color of the annotation.
+    attr_accessor :color
+
     # Get the annotation content.
     attr_accessor :contents
 
@@ -76,14 +79,12 @@ module AsposePdfCloud
     # Get or set the annotation Rectangle of frame.
     attr_accessor :frame
 
-    # Color of the annotation.
-    attr_accessor :color
-
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
+        :'color' => :'Color',
         :'contents' => :'Contents',
         :'modified' => :'Modified',
         :'id' => :'Id',
@@ -99,8 +100,7 @@ module AsposePdfCloud
         :'title' => :'Title',
         :'rich_text' => :'RichText',
         :'interior_color' => :'InteriorColor',
-        :'frame' => :'Frame',
-        :'color' => :'Color'
+        :'frame' => :'Frame'
       }
     end
 
@@ -108,12 +108,13 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
+        :'color' => :'Color',
         :'contents' => :'String',
         :'modified' => :'String',
         :'id' => :'String',
         :'flags' => :'Array<AnnotationFlags>',
         :'name' => :'String',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'page_index' => :'Integer',
         :'z_index' => :'Integer',
         :'horizontal_alignment' => :'HorizontalAlignment',
@@ -123,8 +124,7 @@ module AsposePdfCloud
         :'title' => :'String',
         :'rich_text' => :'String',
         :'interior_color' => :'Color',
-        :'frame' => :'RectanglePdf',
-        :'color' => :'Color'
+        :'frame' => :'Rectangle'
       }
     end
 
@@ -140,6 +140,10 @@ module AsposePdfCloud
         if (value = attributes[:'Links']).is_a?(Array)
           self.links = value
         end
+      end
+
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
       if attributes.has_key?(:'Contents')
@@ -208,10 +212,6 @@ module AsposePdfCloud
         self.frame = attributes[:'Frame']
       end
 
-      if attributes.has_key?(:'Color')
-        self.color = attributes[:'Color']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -233,6 +233,7 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
+          color == o.color &&
           contents == o.contents &&
           modified == o.modified &&
           id == o.id &&
@@ -248,8 +249,7 @@ module AsposePdfCloud
           title == o.title &&
           rich_text == o.rich_text &&
           interior_color == o.interior_color &&
-          frame == o.frame &&
-          color == o.color
+          frame == o.frame
     end
 
     # @see the `==` method
@@ -261,7 +261,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, interior_color, frame, color].hash
+      [links, color, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, interior_color, frame].hash
     end
 
     # Builds the object from hash

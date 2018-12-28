@@ -23,30 +23,42 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Paragraph DTO for add text functionality.
+  # Represents text paragraphs as multiline text object.
   class Paragraph
+    # Line spacing mode.
     attr_accessor :line_spacing
 
+    # Word wrap mode.
     attr_accessor :wrap_mode
 
+    # Horizontal alignment for the text inside paragrph's rectangle.
     attr_accessor :horizontal_alignment
 
+    # Left margin.
     attr_accessor :left_margin
 
+    # Right margin.
     attr_accessor :right_margin
 
+    # Top margin.
     attr_accessor :top_margin
 
+    # Bottom margin.
     attr_accessor :bottom_margin
 
+    # Rectangle of the paragraph.
     attr_accessor :rectangle
 
+    # Rotation angle in degrees.
     attr_accessor :rotation
 
+    # Subsequent lines indent value.
     attr_accessor :subsequent_lines_indent
 
+    # Vertical alignment for the text inside paragrph's rectangle
     attr_accessor :vertical_alignment
 
+    # An array of text lines.
     attr_accessor :lines
 
 
@@ -78,7 +90,7 @@ module AsposePdfCloud
         :'right_margin' => :'Float',
         :'top_margin' => :'Float',
         :'bottom_margin' => :'Float',
-        :'rectangle' => :'RectanglePdf',
+        :'rectangle' => :'Rectangle',
         :'rotation' => :'Float',
         :'subsequent_lines_indent' => :'Float',
         :'vertical_alignment' => :'VerticalAlignment',

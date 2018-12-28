@@ -63,7 +63,7 @@ module AsposePdfCloud
         :'name' => :'String',
         :'selected_items' => :'Array<Integer>',
         :'type' => :'FieldType',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'values' => :'Array<String>'
       }
     end

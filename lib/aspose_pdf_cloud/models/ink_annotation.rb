@@ -28,6 +28,9 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
+    # Color of the annotation.
+    attr_accessor :color
+
     # Get the annotation content.
     attr_accessor :contents
 
@@ -70,9 +73,6 @@ module AsposePdfCloud
     # Get the annotation RichText.
     attr_accessor :rich_text
 
-    # Color of the annotation.
-    attr_accessor :color
-
     # Gets or sets list of gestures that are independent lines which are represented by Point[] arrays.
     attr_accessor :ink_list
 
@@ -84,6 +84,7 @@ module AsposePdfCloud
     def self.attribute_map
       {
         :'links' => :'Links',
+        :'color' => :'Color',
         :'contents' => :'Contents',
         :'modified' => :'Modified',
         :'id' => :'Id',
@@ -98,7 +99,6 @@ module AsposePdfCloud
         :'subject' => :'Subject',
         :'title' => :'Title',
         :'rich_text' => :'RichText',
-        :'color' => :'Color',
         :'ink_list' => :'InkList',
         :'cap_style' => :'CapStyle'
       }
@@ -108,12 +108,13 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
+        :'color' => :'Color',
         :'contents' => :'String',
         :'modified' => :'String',
         :'id' => :'String',
         :'flags' => :'Array<AnnotationFlags>',
         :'name' => :'String',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'page_index' => :'Integer',
         :'z_index' => :'Integer',
         :'horizontal_alignment' => :'HorizontalAlignment',
@@ -122,7 +123,6 @@ module AsposePdfCloud
         :'subject' => :'String',
         :'title' => :'String',
         :'rich_text' => :'String',
-        :'color' => :'Color',
         :'ink_list' => :'Array<Array<Point>>',
         :'cap_style' => :'CapStyle'
       }
@@ -140,6 +140,10 @@ module AsposePdfCloud
         if (value = attributes[:'Links']).is_a?(Array)
           self.links = value
         end
+      end
+
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
       if attributes.has_key?(:'Contents')
@@ -200,10 +204,6 @@ module AsposePdfCloud
         self.rich_text = attributes[:'RichText']
       end
 
-      if attributes.has_key?(:'Color')
-        self.color = attributes[:'Color']
-      end
-
       if attributes.has_key?(:'InkList')
         if (value = attributes[:'InkList']).is_a?(Array)
           self.ink_list = value
@@ -235,6 +235,7 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
+          color == o.color &&
           contents == o.contents &&
           modified == o.modified &&
           id == o.id &&
@@ -249,7 +250,6 @@ module AsposePdfCloud
           subject == o.subject &&
           title == o.title &&
           rich_text == o.rich_text &&
-          color == o.color &&
           ink_list == o.ink_list &&
           cap_style == o.cap_style
     end
@@ -263,7 +263,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, color, ink_list, cap_style].hash
+      [links, color, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, ink_list, cap_style].hash
     end
 
     # Builds the object from hash

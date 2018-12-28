@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of ink annotations.
   class InkAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of ink annotations.
     attr_accessor :list
 
 

@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # A line of text to be inserted into .
+  # A line of text to be inserted into paragraph.
   class TextLine
     # Line's horizontal alignment
     attr_accessor :horizontal_alignment

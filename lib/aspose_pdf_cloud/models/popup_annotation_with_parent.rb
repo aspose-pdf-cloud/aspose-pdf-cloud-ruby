@@ -28,6 +28,9 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
+    # Color of the annotation.
+    attr_accessor :color
+
     # Get the annotation content.
     attr_accessor :contents
 
@@ -58,9 +61,6 @@ module AsposePdfCloud
     # Gets VerticalAlignment of the annotation.
     attr_accessor :vertical_alignment
 
-    # Color of the annotation.
-    attr_accessor :color
-
     # Gets or sets a flag specifying whether the pop-up annotation should initially be displayed open.
     attr_accessor :open
 
@@ -72,6 +72,7 @@ module AsposePdfCloud
     def self.attribute_map
       {
         :'links' => :'Links',
+        :'color' => :'Color',
         :'contents' => :'Contents',
         :'modified' => :'Modified',
         :'id' => :'Id',
@@ -82,7 +83,6 @@ module AsposePdfCloud
         :'z_index' => :'ZIndex',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'color' => :'Color',
         :'open' => :'Open',
         :'parent' => :'Parent'
       }
@@ -92,17 +92,17 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
+        :'color' => :'Color',
         :'contents' => :'String',
         :'modified' => :'String',
         :'id' => :'String',
         :'flags' => :'Array<AnnotationFlags>',
         :'name' => :'String',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'page_index' => :'Integer',
         :'z_index' => :'Integer',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'color' => :'Color',
         :'open' => :'BOOLEAN',
         :'parent' => :'AnnotationInfo'
       }
@@ -120,6 +120,10 @@ module AsposePdfCloud
         if (value = attributes[:'Links']).is_a?(Array)
           self.links = value
         end
+      end
+
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
       if attributes.has_key?(:'Contents')
@@ -164,10 +168,6 @@ module AsposePdfCloud
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
-      if attributes.has_key?(:'Color')
-        self.color = attributes[:'Color']
-      end
-
       if attributes.has_key?(:'Open')
         self.open = attributes[:'Open']
       end
@@ -197,6 +197,7 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
+          color == o.color &&
           contents == o.contents &&
           modified == o.modified &&
           id == o.id &&
@@ -207,7 +208,6 @@ module AsposePdfCloud
           z_index == o.z_index &&
           horizontal_alignment == o.horizontal_alignment &&
           vertical_alignment == o.vertical_alignment &&
-          color == o.color &&
           open == o.open &&
           parent == o.parent
     end
@@ -221,7 +221,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, color, open, parent].hash
+      [links, color, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, open, parent].hash
     end
 
     # Builds the object from hash

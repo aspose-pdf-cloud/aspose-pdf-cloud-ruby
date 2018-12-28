@@ -62,7 +62,7 @@ module AsposePdfCloud
         :'action' => :'String',
         :'highlighting' => :'LinkHighlightingMode',
         :'color' => :'Color',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'id' => :'String'
       }
     end

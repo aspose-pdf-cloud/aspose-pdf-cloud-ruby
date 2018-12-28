@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of circle annotations.
   class CircleAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of circle annotations.
     attr_accessor :list
 
 

@@ -1,5 +1,5 @@
 ﻿# AsposePdfCloud::SignatureType
-
+The type of signature.
 
 ## Enum
 Name | Type | Value | Description

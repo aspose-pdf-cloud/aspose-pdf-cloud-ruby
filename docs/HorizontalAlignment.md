@@ -1,5 +1,5 @@
 ﻿# AsposePdfCloud::HorizontalAlignment
-
+Describes horizontal alignment.
 
 ## Enum
 Name | Type | Value | Description

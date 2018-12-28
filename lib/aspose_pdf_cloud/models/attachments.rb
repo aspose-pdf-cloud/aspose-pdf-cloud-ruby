@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of attachment.
+  # Represents list of attachment.
   class Attachments
     # Link to the document.
     attr_accessor :links
 
+    # List of annotations.
     attr_accessor :list
 
 

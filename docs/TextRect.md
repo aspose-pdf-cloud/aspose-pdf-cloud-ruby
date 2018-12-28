@@ -1,11 +1,11 @@
 ﻿# AsposePdfCloud::TextRect
-Represents text DTO.
+Represents text occurrence.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | **String** |  | [optional] 
-**page** | **Integer** |  | 
-**rect** | [**RectanglePdf**](RectanglePdf.md) |  | [optional] 
+**text** | **String** | Text of the occurrence. | [optional] 
+**page** | **Integer** | Page on which the occurrence is found. | 
+**rect** | [**Rectangle**](Rectangle.md) | Rectangle of the occurrence. | [optional] 
 
 

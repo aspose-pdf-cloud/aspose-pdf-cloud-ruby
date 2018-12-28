@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Returns also a message.
+  # Represent responce containing signature verification result
   class SignatureVerifyResponse
     # Response status code.
     attr_accessor :code
@@ -31,7 +31,7 @@ module AsposePdfCloud
     # Response status.
     attr_accessor :status
 
-    # Valid sign.
+    # True if signature is valid and false if not
     attr_accessor :valid
 
 

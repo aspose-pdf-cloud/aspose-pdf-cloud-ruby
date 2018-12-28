@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents split result object.
+  # Represents responce containing split result.
   class SplitResultResponse
     # Response status code.
     attr_accessor :code
@@ -31,7 +31,7 @@ module AsposePdfCloud
     # Response status.
     attr_accessor :status
 
-    # Gets or sets the splitting result.
+    # SplitResult object.
     attr_accessor :result
 
 

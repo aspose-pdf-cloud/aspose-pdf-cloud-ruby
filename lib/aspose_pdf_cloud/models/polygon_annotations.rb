@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of polygon annotations.
   class PolygonAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of polygon annotations.
     attr_accessor :list
 
 

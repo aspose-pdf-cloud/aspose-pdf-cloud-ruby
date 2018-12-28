@@ -1,9 +1,9 @@
 ﻿# AsposePdfCloud::TextRects
-Represents text items DTO.
+Represents multiple text occurrences DTO.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;TextRect&gt;**](TextRect.md) |  | [optional] 
+**list** | [**Array&lt;TextRect&gt;**](TextRect.md) | The list of text occurrences. | [optional] 
 
 
