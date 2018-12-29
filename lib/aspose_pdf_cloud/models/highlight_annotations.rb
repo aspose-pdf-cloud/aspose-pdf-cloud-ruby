@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of highlight annotations.
   class HighlightAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of highlight annotations.
     attr_accessor :list
 
 

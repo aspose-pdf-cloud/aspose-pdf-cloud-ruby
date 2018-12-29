@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | Field name. | [optional] 
 **selected_items** | **Array&lt;Integer&gt;** | Selected items. | [optional] 
 **type** | [**FieldType**](FieldType.md) | Field type. | [optional] 
-**rect** | [**RectanglePdf**](RectanglePdf.md) | Field rectangle. | [optional] 
+**rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional] 
 **values** | **Array&lt;String&gt;** | Field values. | [optional] 
 
 

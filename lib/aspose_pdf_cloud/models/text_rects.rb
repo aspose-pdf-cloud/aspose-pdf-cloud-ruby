@@ -23,8 +23,9 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents text items DTO.
+  # Represents multiple text occurrences DTO.
   class TextRects
+    # The list of text occurrences.
     attr_accessor :list
 
 

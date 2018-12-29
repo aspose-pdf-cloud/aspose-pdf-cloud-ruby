@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of LinkAnnotations.
+  # Object representing a list of link annotations.
   class LinkAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of link annotations.
     attr_accessor :list
 
 

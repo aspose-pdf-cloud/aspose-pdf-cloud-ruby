@@ -1,20 +1,20 @@
 ﻿# AsposePdfCloud::Paragraph
-Paragraph DTO for add text functionality.
+Represents text paragraphs as multiline text object.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**line_spacing** | [**LineSpacing**](LineSpacing.md) |  | [optional] 
-**wrap_mode** | [**WrapMode**](WrapMode.md) |  | [optional] 
-**horizontal_alignment** | [**TextHorizontalAlignment**](TextHorizontalAlignment.md) |  | [optional] 
-**left_margin** | **Float** |  | [optional] 
-**right_margin** | **Float** |  | [optional] 
-**top_margin** | **Float** |  | [optional] 
-**bottom_margin** | **Float** |  | [optional] 
-**rectangle** | [**RectanglePdf**](RectanglePdf.md) |  | [optional] 
-**rotation** | **Float** |  | [optional] 
-**subsequent_lines_indent** | **Float** |  | [optional] 
-**vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) |  | [optional] 
-**lines** | [**Array&lt;TextLine&gt;**](TextLine.md) |  | 
+**line_spacing** | [**LineSpacing**](LineSpacing.md) | Line spacing mode. | [optional] 
+**wrap_mode** | [**WrapMode**](WrapMode.md) | Word wrap mode. | [optional] 
+**horizontal_alignment** | [**TextHorizontalAlignment**](TextHorizontalAlignment.md) | Horizontal alignment for the text inside paragrph&#39;s rectangle. | [optional] 
+**left_margin** | **Float** | Left margin. | [optional] 
+**right_margin** | **Float** | Right margin. | [optional] 
+**top_margin** | **Float** | Top margin. | [optional] 
+**bottom_margin** | **Float** | Bottom margin. | [optional] 
+**rectangle** | [**Rectangle**](Rectangle.md) | Rectangle of the paragraph. | [optional] 
+**rotation** | **Float** | Rotation angle in degrees. | [optional] 
+**subsequent_lines_indent** | **Float** | Subsequent lines indent value. | [optional] 
+**vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Vertical alignment for the text inside paragrph&#39;s rectangle | [optional] 
+**lines** | [**Array&lt;TextLine&gt;**](TextLine.md) | An array of text lines. | 
 
 

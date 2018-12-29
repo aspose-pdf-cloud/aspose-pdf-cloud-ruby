@@ -63,7 +63,7 @@ module AsposePdfCloud
         :'width' => :'Integer',
         :'height' => :'Integer',
         :'id' => :'String',
-        :'rectangle' => :'RectanglePdf',
+        :'rectangle' => :'Rectangle',
         :'page_number' => :'Integer'
       }
     end

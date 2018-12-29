@@ -28,6 +28,9 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
+    # Color of the annotation.
+    attr_accessor :color
+
     # Get the annotation content.
     attr_accessor :contents
 
@@ -85,14 +88,12 @@ module AsposePdfCloud
     # Gets or sets an array of points representing the horizontal and vertical coordinates of each vertex.
     attr_accessor :vertices
 
-    # Color of the annotation.
-    attr_accessor :color
-
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
+        :'color' => :'Color',
         :'contents' => :'Contents',
         :'modified' => :'Modified',
         :'id' => :'Id',
@@ -111,8 +112,7 @@ module AsposePdfCloud
         :'starting_style' => :'StartingStyle',
         :'ending_style' => :'EndingStyle',
         :'intent' => :'Intent',
-        :'vertices' => :'Vertices',
-        :'color' => :'Color'
+        :'vertices' => :'Vertices'
       }
     end
 
@@ -120,12 +120,13 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
+        :'color' => :'Color',
         :'contents' => :'String',
         :'modified' => :'String',
         :'id' => :'String',
         :'flags' => :'Array<AnnotationFlags>',
         :'name' => :'String',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'page_index' => :'Integer',
         :'z_index' => :'Integer',
         :'horizontal_alignment' => :'HorizontalAlignment',
@@ -138,8 +139,7 @@ module AsposePdfCloud
         :'starting_style' => :'LineEnding',
         :'ending_style' => :'LineEnding',
         :'intent' => :'PolyIntent',
-        :'vertices' => :'Array<Point>',
-        :'color' => :'Color'
+        :'vertices' => :'Array<Point>'
       }
     end
 
@@ -155,6 +155,10 @@ module AsposePdfCloud
         if (value = attributes[:'Links']).is_a?(Array)
           self.links = value
         end
+      end
+
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
       if attributes.has_key?(:'Contents')
@@ -237,10 +241,6 @@ module AsposePdfCloud
         end
       end
 
-      if attributes.has_key?(:'Color')
-        self.color = attributes[:'Color']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -262,6 +262,7 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
+          color == o.color &&
           contents == o.contents &&
           modified == o.modified &&
           id == o.id &&
@@ -280,8 +281,7 @@ module AsposePdfCloud
           starting_style == o.starting_style &&
           ending_style == o.ending_style &&
           intent == o.intent &&
-          vertices == o.vertices &&
-          color == o.color
+          vertices == o.vertices
     end
 
     # @see the `==` method
@@ -293,7 +293,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, interior_color, starting_style, ending_style, intent, vertices, color].hash
+      [links, color, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, interior_color, starting_style, ending_style, intent, vertices].hash
     end
 
     # Builds the object from hash

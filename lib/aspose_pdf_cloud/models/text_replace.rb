@@ -59,7 +59,7 @@ module AsposePdfCloud
         :'new_value' => :'String',
         :'regex' => :'BOOLEAN',
         :'text_state' => :'TextState',
-        :'rect' => :'RectanglePdf'
+        :'rect' => :'Rectangle'
       }
     end
 

@@ -23,34 +23,32 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents rectangle DTO.
-  class RectanglePdf
-    attr_accessor :llx
 
-    attr_accessor :lly
+  class DiscUsageResponse
+    # Response status code.
+    attr_accessor :code
 
-    attr_accessor :urx
+    # Response status.
+    attr_accessor :status
 
-    attr_accessor :ury
+    attr_accessor :disc_usage
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'llx' => :'LLX',
-        :'lly' => :'LLY',
-        :'urx' => :'URX',
-        :'ury' => :'URY'
+        :'code' => :'Code',
+        :'status' => :'Status',
+        :'disc_usage' => :'DiscUsage'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'llx' => :'Float',
-        :'lly' => :'Float',
-        :'urx' => :'Float',
-        :'ury' => :'Float'
+        :'code' => :'Integer',
+        :'status' => :'String',
+        :'disc_usage' => :'DiscUsage'
       }
     end
 
@@ -62,20 +60,16 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'LLX')
-        self.llx = attributes[:'LLX']
+      if attributes.has_key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.has_key?(:'LLY')
-        self.lly = attributes[:'LLY']
+      if attributes.has_key?(:'Status')
+        self.status = attributes[:'Status']
       end
 
-      if attributes.has_key?(:'URX')
-        self.urx = attributes[:'URX']
-      end
-
-      if attributes.has_key?(:'URY')
-        self.ury = attributes[:'URY']
+      if attributes.has_key?(:'DiscUsage')
+        self.disc_usage = attributes[:'DiscUsage']
       end
 
     end
@@ -84,20 +78,8 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @llx.nil?
-        invalid_properties.push("invalid value for 'llx', llx cannot be nil.")
-      end
-
-      if @lly.nil?
-        invalid_properties.push("invalid value for 'lly', lly cannot be nil.")
-      end
-
-      if @urx.nil?
-        invalid_properties.push("invalid value for 'urx', urx cannot be nil.")
-      end
-
-      if @ury.nil?
-        invalid_properties.push("invalid value for 'ury', ury cannot be nil.")
+      if @code.nil?
+        invalid_properties.push("invalid value for 'code', code cannot be nil.")
       end
 
       return invalid_properties
@@ -106,10 +88,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @llx.nil?
-      return false if @lly.nil?
-      return false if @urx.nil?
-      return false if @ury.nil?
+      return false if @code.nil?
       return true
     end
 
@@ -118,10 +97,9 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          llx == o.llx &&
-          lly == o.lly &&
-          urx == o.urx &&
-          ury == o.ury
+          code == o.code &&
+          status == o.status &&
+          disc_usage == o.disc_usage
     end
 
     # @see the `==` method
@@ -133,7 +111,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [llx, lly, urx, ury].hash
+      [code, status, disc_usage].hash
     end
 
     # Builds the object from hash

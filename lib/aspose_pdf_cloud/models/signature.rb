@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents signature.
   class Signature
     # Gets or sets the signature path.
     attr_accessor :signature_path
@@ -95,7 +95,7 @@ module AsposePdfCloud
         :'contact' => :'String',
         :'location' => :'String',
         :'visible' => :'BOOLEAN',
-        :'rectangle' => :'RectanglePdf',
+        :'rectangle' => :'Rectangle',
         :'form_field_name' => :'String',
         :'authority' => :'String',
         :'date' => :'String',

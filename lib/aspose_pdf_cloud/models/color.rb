@@ -25,12 +25,16 @@ require 'time'
 module AsposePdfCloud
   # Represents color DTO.
   class Color
+    # Alpha component.
     attr_accessor :a
 
+    # Red component.
     attr_accessor :r
 
+    # Green component.
     attr_accessor :g
 
+    # Blue component.
     attr_accessor :b
 
 

@@ -30,8 +30,10 @@ module AsposePdfCloud
 
     attr_accessor :default_font
 
+    # The index of first match to be replaced.
     attr_accessor :start_index
 
+    # The number of matches to be replaced.
     attr_accessor :count_replace
 
 

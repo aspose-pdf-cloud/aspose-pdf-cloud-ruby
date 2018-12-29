@@ -28,6 +28,9 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
+    # Color of the annotation.
+    attr_accessor :color
+
     # Get the annotation content.
     attr_accessor :contents
 
@@ -103,9 +106,6 @@ module AsposePdfCloud
     # Gets or sets annotation caption position.
     attr_accessor :caption_position
 
-    # Color of the annotation.
-    attr_accessor :color
-
     # Gets or sets the intent of the line annotation.
     attr_accessor :intent
 
@@ -114,6 +114,7 @@ module AsposePdfCloud
     def self.attribute_map
       {
         :'links' => :'Links',
+        :'color' => :'Color',
         :'contents' => :'Contents',
         :'modified' => :'Modified',
         :'id' => :'Id',
@@ -139,7 +140,6 @@ module AsposePdfCloud
         :'show_caption' => :'ShowCaption',
         :'caption_offset' => :'CaptionOffset',
         :'caption_position' => :'CaptionPosition',
-        :'color' => :'Color',
         :'intent' => :'Intent'
       }
     end
@@ -148,12 +148,13 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
+        :'color' => :'Color',
         :'contents' => :'String',
         :'modified' => :'String',
         :'id' => :'String',
         :'flags' => :'Array<AnnotationFlags>',
         :'name' => :'String',
-        :'rect' => :'RectanglePdf',
+        :'rect' => :'Rectangle',
         :'page_index' => :'Integer',
         :'z_index' => :'Integer',
         :'horizontal_alignment' => :'HorizontalAlignment',
@@ -173,7 +174,6 @@ module AsposePdfCloud
         :'show_caption' => :'BOOLEAN',
         :'caption_offset' => :'Point',
         :'caption_position' => :'CaptionPosition',
-        :'color' => :'Color',
         :'intent' => :'LineIntent'
       }
     end
@@ -190,6 +190,10 @@ module AsposePdfCloud
         if (value = attributes[:'Links']).is_a?(Array)
           self.links = value
         end
+      end
+
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
       if attributes.has_key?(:'Contents')
@@ -294,10 +298,6 @@ module AsposePdfCloud
         self.caption_position = attributes[:'CaptionPosition']
       end
 
-      if attributes.has_key?(:'Color')
-        self.color = attributes[:'Color']
-      end
-
       if attributes.has_key?(:'Intent')
         self.intent = attributes[:'Intent']
       end
@@ -323,6 +323,7 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
+          color == o.color &&
           contents == o.contents &&
           modified == o.modified &&
           id == o.id &&
@@ -348,7 +349,6 @@ module AsposePdfCloud
           show_caption == o.show_caption &&
           caption_offset == o.caption_offset &&
           caption_position == o.caption_position &&
-          color == o.color &&
           intent == o.intent
     end
 
@@ -361,7 +361,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, starting, starting_style, ending, ending_style, interior_color, leader_line, leader_line_extension, leader_line_offset, show_caption, caption_offset, caption_position, color, intent].hash
+      [links, color, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, starting, starting_style, ending, ending_style, interior_color, leader_line, leader_line_extension, leader_line_offset, show_caption, caption_offset, caption_position, intent].hash
     end
 
     # Builds the object from hash

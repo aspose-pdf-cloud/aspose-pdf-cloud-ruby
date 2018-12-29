@@ -23,12 +23,15 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents text DTO.
+  # Represents text occurrence.
   class TextRect
+    # Text of the occurrence.
     attr_accessor :text
 
+    # Page on which the occurrence is found.
     attr_accessor :page
 
+    # Rectangle of the occurrence.
     attr_accessor :rect
 
 
@@ -46,7 +49,7 @@ module AsposePdfCloud
       {
         :'text' => :'String',
         :'page' => :'Integer',
-        :'rect' => :'RectanglePdf'
+        :'rect' => :'Rectangle'
       }
     end
 

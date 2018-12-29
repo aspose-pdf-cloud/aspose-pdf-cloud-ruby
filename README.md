@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 2.0
-- Package version: 18.11.0
+- Package version: 18.12.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -22,15 +22,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-18.11.0.gem
+gem install ./aspose_pdf_cloud-18.12.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-18.11.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-18.12.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 18.11.0'
+    gem 'aspose_pdf_cloud', '~> 18.12.0'
 
 ### Install from Git
 
@@ -93,6 +93,8 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**delete_document_annotations**](docs/PdfApi.md#delete_document_annotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 *AsposePdfCloud::PdfApi* | [**delete_document_link_annotations**](docs/PdfApi.md#delete_document_link_annotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 *AsposePdfCloud::PdfApi* | [**delete_field**](docs/PdfApi.md#delete_field) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
+*AsposePdfCloud::PdfApi* | [**delete_file**](docs/PdfApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
+*AsposePdfCloud::PdfApi* | [**delete_folder**](docs/PdfApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
 *AsposePdfCloud::PdfApi* | [**delete_image**](docs/PdfApi.md#delete_image) | **DELETE** /pdf/\{name}/images/\{imageId} | Delete image from document page.
 *AsposePdfCloud::PdfApi* | [**delete_link_annotation**](docs/PdfApi.md#delete_link_annotation) | **DELETE** /pdf/\{name}/links/\{linkId} | Delete document page link annotation by ID
 *AsposePdfCloud::PdfApi* | [**delete_page**](docs/PdfApi.md#delete_page) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
@@ -102,6 +104,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**delete_property**](docs/PdfApi.md#delete_property) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
 *AsposePdfCloud::PdfApi* | [**get_caret_annotation**](docs/PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_circle_annotation**](docs/PdfApi.md#get_circle_annotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_disc_usage**](docs/PdfApi.md#get_disc_usage) | **GET** /storage/disc | Check the disk usage of the current account 
 *AsposePdfCloud::PdfApi* | [**get_document**](docs/PdfApi.md#get_document) | **GET** /pdf/\{name} | Read common document info.
 *AsposePdfCloud::PdfApi* | [**get_document_annotations**](docs/PdfApi.md#get_document_annotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *AsposePdfCloud::PdfApi* | [**get_document_attachment_by_index**](docs/PdfApi.md#get_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
@@ -139,9 +142,12 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_image_extract_as_tiff**](docs/PdfApi.md#get_image_extract_as_tiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 *AsposePdfCloud::PdfApi* | [**get_images**](docs/PdfApi.md#get_images) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
 *AsposePdfCloud::PdfApi* | [**get_ink_annotation**](docs/PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_is_exist**](docs/PdfApi.md#get_is_exist) | **GET** /storage/exist | Check if a specific file or folder exists
+*AsposePdfCloud::PdfApi* | [**get_is_storage_exist**](docs/PdfApi.md#get_is_storage_exist) | **GET** /storage/\{name}/exist | Check if storage exists 
 *AsposePdfCloud::PdfApi* | [**get_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_line_annotation**](docs/PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_link_annotation**](docs/PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_list_file_versions**](docs/PdfApi.md#get_list_file_versions) | **GET** /storage/version | Get the file's versions list 
 *AsposePdfCloud::PdfApi* | [**get_list_files**](docs/PdfApi.md#get_list_files) | **GET** /storage/folder | Get the file listing of a specific folder 
 *AsposePdfCloud::PdfApi* | [**get_mht_in_storage_to_pdf**](docs/PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_page**](docs/PdfApi.md#get_page) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -204,7 +210,10 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_append_document**](docs/PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 *AsposePdfCloud::PdfApi* | [**post_create_field**](docs/PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 *AsposePdfCloud::PdfApi* | [**post_document_text_replace**](docs/PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document's replace text method.
+*AsposePdfCloud::PdfApi* | [**post_flatten_document**](docs/PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Removes all fields from the document and place their values instead.
 *AsposePdfCloud::PdfApi* | [**post_insert_image**](docs/PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
+*AsposePdfCloud::PdfApi* | [**post_move_file**](docs/PdfApi.md#post_move_file) | **POST** /storage/file | Move a specific file
+*AsposePdfCloud::PdfApi* | [**post_move_folder**](docs/PdfApi.md#post_move_folder) | **POST** /storage/folder | Move a specific folder 
 *AsposePdfCloud::PdfApi* | [**post_move_page**](docs/PdfApi.md#post_move_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 *AsposePdfCloud::PdfApi* | [**post_optimize_document**](docs/PdfApi.md#post_optimize_document) | **POST** /pdf/\{name}/optimize | Optimize document.
 *AsposePdfCloud::PdfApi* | [**post_page_caret_annotations**](docs/PdfApi.md#post_page_caret_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -232,6 +241,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_circle_annotation**](docs/PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 *AsposePdfCloud::PdfApi* | [**put_create**](docs/PdfApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
 *AsposePdfCloud::PdfApi* | [**put_create_document**](docs/PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
+*AsposePdfCloud::PdfApi* | [**put_create_folder**](docs/PdfApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
 *AsposePdfCloud::PdfApi* | [**put_epub_in_storage_to_pdf**](docs/PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_fields_flatten**](docs/PdfApi.md#put_fields_flatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 *AsposePdfCloud::PdfApi* | [**put_free_text_annotation**](docs/PdfApi.md#put_free_text_annotation) | **PUT** /pdf/\{name}/annotations/freetext/\{annotationId} | Replace document free text annotation
@@ -322,12 +332,14 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::Color](docs/Color.md)
  - [AsposePdfCloud::ColorDepth](docs/ColorDepth.md)
  - [AsposePdfCloud::CompressionType](docs/CompressionType.md)
+ - [AsposePdfCloud::DiscUsage](docs/DiscUsage.md)
  - [AsposePdfCloud::DocFormat](docs/DocFormat.md)
  - [AsposePdfCloud::DocRecognitionMode](docs/DocRecognitionMode.md)
  - [AsposePdfCloud::DocumentPrivilege](docs/DocumentPrivilege.md)
  - [AsposePdfCloud::EpubRecognitionMode](docs/EpubRecognitionMode.md)
  - [AsposePdfCloud::FieldType](docs/FieldType.md)
  - [AsposePdfCloud::File](docs/File.md)
+ - [AsposePdfCloud::FileExist](docs/FileExist.md)
  - [AsposePdfCloud::FontEncodingRules](docs/FontEncodingRules.md)
  - [AsposePdfCloud::FontSavingModes](docs/FontSavingModes.md)
  - [AsposePdfCloud::FontStyles](docs/FontStyles.md)
@@ -357,7 +369,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::Point](docs/Point.md)
  - [AsposePdfCloud::PolyIntent](docs/PolyIntent.md)
  - [AsposePdfCloud::RasterImagesSavingModes](docs/RasterImagesSavingModes.md)
- - [AsposePdfCloud::RectanglePdf](docs/RectanglePdf.md)
+ - [AsposePdfCloud::Rectangle](docs/Rectangle.md)
  - [AsposePdfCloud::Rotation](docs/Rotation.md)
  - [AsposePdfCloud::Segment](docs/Segment.md)
  - [AsposePdfCloud::ShapeType](docs/ShapeType.md)
@@ -391,6 +403,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::CircleAnnotationResponse](docs/CircleAnnotationResponse.md)
  - [AsposePdfCloud::CircleAnnotations](docs/CircleAnnotations.md)
  - [AsposePdfCloud::CircleAnnotationsResponse](docs/CircleAnnotationsResponse.md)
+ - [AsposePdfCloud::DiscUsageResponse](docs/DiscUsageResponse.md)
  - [AsposePdfCloud::Document](docs/Document.md)
  - [AsposePdfCloud::DocumentPageResponse](docs/DocumentPageResponse.md)
  - [AsposePdfCloud::DocumentPagesResponse](docs/DocumentPagesResponse.md)
@@ -403,6 +416,9 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::FieldResponse](docs/FieldResponse.md)
  - [AsposePdfCloud::Fields](docs/Fields.md)
  - [AsposePdfCloud::FieldsResponse](docs/FieldsResponse.md)
+ - [AsposePdfCloud::FileExistResponse](docs/FileExistResponse.md)
+ - [AsposePdfCloud::FileVersion](docs/FileVersion.md)
+ - [AsposePdfCloud::FileVersionsResponse](docs/FileVersionsResponse.md)
  - [AsposePdfCloud::FilesResponse](docs/FilesResponse.md)
  - [AsposePdfCloud::FreeTextAnnotationResponse](docs/FreeTextAnnotationResponse.md)
  - [AsposePdfCloud::FreeTextAnnotations](docs/FreeTextAnnotations.md)
@@ -444,6 +460,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::SquigglyAnnotationResponse](docs/SquigglyAnnotationResponse.md)
  - [AsposePdfCloud::SquigglyAnnotations](docs/SquigglyAnnotations.md)
  - [AsposePdfCloud::SquigglyAnnotationsResponse](docs/SquigglyAnnotationsResponse.md)
+ - [AsposePdfCloud::StorageExistResponse](docs/StorageExistResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotationResponse](docs/StrikeOutAnnotationResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotations](docs/StrikeOutAnnotations.md)
  - [AsposePdfCloud::StrikeOutAnnotationsResponse](docs/StrikeOutAnnotationsResponse.md)

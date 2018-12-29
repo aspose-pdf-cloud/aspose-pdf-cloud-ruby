@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of page images.
+  # Represents list of images.
   class Images
     # Link to the document.
     attr_accessor :links
 
+    # List of images.
     attr_accessor :list
 
 

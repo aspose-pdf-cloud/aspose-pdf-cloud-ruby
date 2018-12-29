@@ -332,6 +332,152 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Remove a specific file 
+    # 
+    # @param path Path of the file including file name and extension e.g. /Folder1/file.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id File&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [AsposeResponse]
+    def delete_file(path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_file_with_http_info(path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_file_with_http_info(path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Remove a specific file 
+    # 
+    # @param path Path of the file including file name and extension e.g. /Folder1/file.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id File&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_file_with_http_info(path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_file ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.delete_file"
+      end
+      # resource path
+      local_var_path = "/storage/file"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Remove a specific folder 
+    # 
+    # @param path Folder path e.g. /Folder1
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s storage name
+    # @option opts [BOOLEAN] :recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. (default to false)
+    # @return [AsposeResponse]
+    def delete_folder(path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_folder_with_http_info(path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_folder_with_http_info(path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Remove a specific folder 
+    # 
+    # @param path Folder path e.g. /Folder1
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s storage name
+    # @option opts [BOOLEAN] :recursive Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_folder_with_http_info(path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_folder ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.delete_folder"
+      end
+      # resource path
+      local_var_path = "/storage/folder"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'recursive'] = opts[:'recursive'] if !opts[:'recursive'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete image from document page.
     # 
     # @param name The document name.
@@ -1024,6 +1170,69 @@ module AsposePdfCloud
         :return_type => 'CircleAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_circle_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Check the disk usage of the current account 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [DiscUsageResponse]
+    def get_disc_usage(opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_disc_usage_with_http_info(opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_disc_usage_with_http_info(opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Check the disk usage of the current account 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(DiscUsageResponse, Fixnum, Hash)>] DiscUsageResponse data, response status code and response headers
+    def get_disc_usage_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_disc_usage ..."
+      end
+      # resource path
+      local_var_path = "/storage/disc"
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DiscUsageResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_disc_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3824,6 +4033,145 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Check if a specific file or folder exists
+    # 
+    # @param path File or folder path e.g. /file.ext or /Folder1
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id File&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [FileExistResponse]
+    def get_is_exist(path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_is_exist_with_http_info(path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_is_exist_with_http_info(path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Check if a specific file or folder exists
+    # 
+    # @param path File or folder path e.g. /file.ext or /Folder1
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id File&#39;s version
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(FileExistResponse, Fixnum, Hash)>] FileExistResponse data, response status code and response headers
+    def get_is_exist_with_http_info(path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_is_exist ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.get_is_exist"
+      end
+      # resource path
+      local_var_path = "/storage/exist"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileExistResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_is_exist\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Check if storage exists 
+    # 
+    # @param name Storage name
+    # @param [Hash] opts the optional parameters
+    # @return [StorageExistResponse]
+    def get_is_storage_exist(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_is_storage_exist_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_is_storage_exist_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Check if storage exists 
+    # 
+    # @param name Storage name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(StorageExistResponse, Fixnum, Hash)>] StorageExistResponse data, response status code and response headers
+    def get_is_storage_exist_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_is_storage_exist ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_is_storage_exist"
+      end
+      # resource path
+      local_var_path = "/storage/{name}/exist".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StorageExistResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_is_storage_exist\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
@@ -4046,6 +4394,76 @@ module AsposePdfCloud
         :return_type => 'LinkAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_link_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the file's versions list 
+    # 
+    # @param path File path e.g. /file.ext or /Folder1/file.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [FileVersionsResponse]
+    def get_list_file_versions(path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_list_file_versions_with_http_info(path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_list_file_versions_with_http_info(path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Get the file&#39;s versions list 
+    # 
+    # @param path File path e.g. /file.ext or /Folder1/file.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s storage name
+    # @return [Array<(FileVersionsResponse, Fixnum, Hash)>] FileVersionsResponse data, response status code and response headers
+    def get_list_file_versions_with_http_info(path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_list_file_versions ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.get_list_file_versions"
+      end
+      # resource path
+      local_var_path = "/storage/version"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileVersionsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_list_file_versions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5948,10 +6366,10 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param page_number Number of page (starting from 1).
-    # @param llx 
-    # @param lly 
-    # @param urx 
-    # @param ury 
+    # @param llx X-coordinate of lower - left corner.
+    # @param lly Y - coordinate of lower-left corner.
+    # @param urx X - coordinate of upper-right corner.
+    # @param ury Y - coordinate of upper-right corner.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
@@ -5976,10 +6394,10 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param page_number Number of page (starting from 1).
-    # @param llx 
-    # @param lly 
-    # @param urx 
-    # @param ury 
+    # @param llx X-coordinate of lower - left corner.
+    # @param lly Y - coordinate of lower-left corner.
+    # @param urx X - coordinate of upper-right corner.
+    # @param ury Y - coordinate of upper-right corner.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
@@ -6457,7 +6875,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Property tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [File]
@@ -6478,7 +6896,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Property tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -8043,10 +8461,10 @@ module AsposePdfCloud
     # Read document text.
     # 
     # @param name The document name.
-    # @param llx 
-    # @param lly 
-    # @param urx 
-    # @param ury 
+    # @param llx X-coordinate of lower - left corner.
+    # @param lly Y - coordinate of lower-left corner.
+    # @param urx X - coordinate of upper-right corner.
+    # @param ury Y - coordinate of upper-right corner.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
@@ -8070,10 +8488,10 @@ module AsposePdfCloud
     # Read document text.
     # 
     # @param name The document name.
-    # @param llx 
-    # @param lly 
-    # @param urx 
-    # @param ury 
+    # @param llx X-coordinate of lower - left corner.
+    # @param lly Y - coordinate of lower-left corner.
+    # @param urx X - coordinate of upper-right corner.
+    # @param ury Y - coordinate of upper-right corner.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :format List of formats for search.
     # @option opts [String] :regex Formats are specified as a regular expression.
@@ -9071,6 +9489,87 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Removes all fields from the document and place their values instead.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :update_appearances If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance..
+    # @option opts [BOOLEAN] :call_events If set, formatting and other JavaScript events will be called.
+    # @option opts [BOOLEAN] :hide_buttons If set, buttons will be removed from flattened document.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_flatten_document(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_flatten_document_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_flatten_document_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Removes all fields from the document and place their values instead.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :update_appearances If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance..
+    # @option opts [BOOLEAN] :call_events If set, formatting and other JavaScript events will be called.
+    # @option opts [BOOLEAN] :hide_buttons If set, buttons will be removed from flattened document.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_flatten_document_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_flatten_document ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_flatten_document"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/flatten".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'updateAppearances'] = opts[:'update_appearances'] if !opts[:'update_appearances'].nil?
+      query_params[:'callEvents'] = opts[:'call_events'] if !opts[:'call_events'].nil?
+      query_params[:'hideButtons'] = opts[:'hide_buttons'] if !opts[:'hide_buttons'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_flatten_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert image to document page.
     # 
     # @param name The document name.
@@ -9180,6 +9679,169 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_insert_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Move a specific file
+    # 
+    # @param src Source file path e.g. /fileSource.ext
+    # @param dest Destination file path e.g. /fileDestination.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id Source file&#39;s version,
+    # @option opts [String] :storage User&#39;s source storage name
+    # @option opts [String] :dest_storage User&#39;s destination storage name
+    # @return [AsposeResponse]
+    def post_move_file(src, dest, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_move_file_with_http_info(src, dest, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_move_file_with_http_info(src, dest, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Move a specific file
+    # 
+    # @param src Source file path e.g. /fileSource.ext
+    # @param dest Destination file path e.g. /fileDestination.ext
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :version_id Source file&#39;s version,
+    # @option opts [String] :storage User&#39;s source storage name
+    # @option opts [String] :dest_storage User&#39;s destination storage name
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_move_file_with_http_info(src, dest, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_move_file ..."
+      end
+      # verify the required parameter 'src' is set
+      if @api_client.config.client_side_validation && src.nil?
+        fail ArgumentError, "Missing the required parameter 'src' when calling PdfApi.post_move_file"
+      end
+      # verify the required parameter 'dest' is set
+      if @api_client.config.client_side_validation && dest.nil?
+        fail ArgumentError, "Missing the required parameter 'dest' when calling PdfApi.post_move_file"
+      end
+      # resource path
+      local_var_path = "/storage/file"
+
+      # query parameters
+      query_params = {}
+      query_params[:'src'] = src
+      query_params[:'dest'] = dest
+      query_params[:'versionId'] = opts[:'version_id'] if !opts[:'version_id'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'destStorage'] = opts[:'dest_storage'] if !opts[:'dest_storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_move_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Move a specific folder 
+    # 
+    # @param src Source folder path e.g. /Folder1
+    # @param dest Destination folder path e.g. /Folder2
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s source storage name
+    # @option opts [String] :dest_storage User&#39;s destination storage name
+    # @return [AsposeResponse]
+    def post_move_folder(src, dest, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_move_folder_with_http_info(src, dest, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_move_folder_with_http_info(src, dest, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Move a specific folder 
+    # 
+    # @param src Source folder path e.g. /Folder1
+    # @param dest Destination folder path e.g. /Folder2
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s source storage name
+    # @option opts [String] :dest_storage User&#39;s destination storage name
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_move_folder_with_http_info(src, dest, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_move_folder ..."
+      end
+      # verify the required parameter 'src' is set
+      if @api_client.config.client_side_validation && src.nil?
+        fail ArgumentError, "Missing the required parameter 'src' when calling PdfApi.post_move_folder"
+      end
+      # verify the required parameter 'dest' is set
+      if @api_client.config.client_side_validation && dest.nil?
+        fail ArgumentError, "Missing the required parameter 'dest' when calling PdfApi.post_move_folder"
+      end
+      # resource path
+      local_var_path = "/storage/folder"
+
+      # query parameters
+      query_params = {}
+      query_params[:'src'] = src
+      query_params[:'dest'] = dest
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'destStorage'] = opts[:'dest_storage'] if !opts[:'dest_storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_move_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -11370,6 +12032,79 @@ module AsposePdfCloud
         :return_type => 'DocumentResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_create_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create the folder 
+    # 
+    # @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s source storage name
+    # @option opts [String] :dest_storage User&#39;s destination storage name
+    # @return [AsposeResponse]
+    def put_create_folder(path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_create_folder_with_http_info(path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_create_folder_with_http_info(path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Create the folder 
+    # 
+    # @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage User&#39;s source storage name
+    # @option opts [String] :dest_storage User&#39;s destination storage name
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_create_folder_with_http_info(path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_create_folder ..."
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling PdfApi.put_create_folder"
+      end
+      # resource path
+      local_var_path = "/storage/folder"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'destStorage'] = opts[:'dest_storage'] if !opts[:'dest_storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_create_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13857,7 +14592,7 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Property tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
@@ -13878,7 +14613,7 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Property tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
@@ -14935,7 +15670,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Property tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [AsposeResponse]
@@ -14957,7 +15692,7 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.epub)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :content_recognition_mode Рroperty tunes conversion for this or that desirable method of recognition of content.
+    # @option opts [String] :content_recognition_mode Property tunes conversion for this or that desirable method of recognition of content.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers

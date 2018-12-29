@@ -23,10 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents segment of Pdf text.
   class Segment
+    # Text that the Segment object represents.
     attr_accessor :value
 
+    # Text state for the text that Segment object represents.
     attr_accessor :text_state
 
 

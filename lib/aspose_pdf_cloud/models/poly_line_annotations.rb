@@ -23,11 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # List of annotations.
+  # Object representing a list of polyline annotations.
   class PolyLineAnnotations
     # Link to the document.
     attr_accessor :links
 
+    # List of polyline annotations.
     attr_accessor :list
 
 
