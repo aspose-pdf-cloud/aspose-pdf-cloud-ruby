@@ -2588,6 +2588,7 @@ class PdfTests < Minitest::Test
   def test_post_flatten_document
 
     name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
 
     opts = {
         :hideButtons => true,
