@@ -19,6 +19,26 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.1.0"
+  class SoundIcon
+    
+    SPEAKER = "Speaker".freeze
+    MIC = "Mic".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = SoundIcon.constants.select{|c| c.to_s == value}
+      constantValues = SoundIcon.constants.select{ |const_name| SoundIcon.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #SoundIcon" if constantValues.empty?
+      value
+    end
+  end
+
 end

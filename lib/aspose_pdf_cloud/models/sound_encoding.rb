@@ -19,6 +19,28 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.1.0"
+  class SoundEncoding
+    
+    RAW = "Raw".freeze
+    SIGNED = "Signed".freeze
+    MU_LAW = "MuLaw".freeze
+    A_LAW = "ALaw".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = SoundEncoding.constants.select{|c| c.to_s == value}
+      constantValues = SoundEncoding.constants.select{ |const_name| SoundEncoding.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #SoundEncoding" if constantValues.empty?
+      value
+    end
+  end
+
 end

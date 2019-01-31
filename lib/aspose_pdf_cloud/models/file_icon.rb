@@ -19,6 +19,28 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.1.0"
+  class FileIcon
+    
+    PUSH_PIN = "PushPin".freeze
+    GRAPH = "Graph".freeze
+    PAPERCLIP = "Paperclip".freeze
+    TAG = "Tag".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = FileIcon.constants.select{|c| c.to_s == value}
+      constantValues = FileIcon.constants.select{ |const_name| FileIcon.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #FileIcon" if constantValues.empty?
+      value
+    end
+  end
+
 end
