@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Aspose.PDF Cloud
+  Copyright (c) 2019 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -223,6 +223,280 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to replace polyline annotation.')
   end
 
+  # File Attachment Annotations Tests
+
+  def test_get_document_file_attachment_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_file_attachment_annotations(file_name, opts)
+    assert(response, 'Failed to read document file attachment annotations.')
+  end
+
+  def test_get_page_file_attachment_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_file_attachment_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page file attachment annotations.')
+  end
+
+  def test_post_page_file_attachment_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = FileAttachmentAnnotation.new
+    annotation.name = 'Test FileAttachment Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+    annotation.file_name = attachment_file
+
+    response = @pdf_api.post_page_file_attachment_annotations(file_name, page_number, [annotation], opts)
+    assert(response, 'Failed to add file attachment annotations into page.')
+  end
+
+  def test_get_file_attachment_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_file_attachment_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document file attachment annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_file_attachment_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page file attachment annotations.')
+  end
+
+  def test_put_file_attachment_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = FileAttachmentAnnotation.new
+    annotation.name = 'Test FileAttachment Annotation Updated'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text Updated'
+    annotation.subject = 'Subj Updated'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '03/04/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+    annotation.file_name = attachment_file
+
+    annotations_response = @pdf_api.get_document_file_attachment_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document file attachment annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_file_attachment_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace file attachment annotation.')
+  end
+
+
+  def test_get_file_attachment_annotation_data
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_file_attachment_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document file attachment annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_file_attachment_annotation_data(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page file attachment annotation data.')
+  end
+
+  def test_put_file_attachment_annotation_data_extract
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_file_attachment_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document file attachment annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_file_attachment_annotation_data_extract(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page file attachment annotation data.')
+  end
+
+  # Sound Annotations Tests
+
+  def test_get_document_sound_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_sound_annotations(file_name, opts)
+    assert(response, 'Failed to read document sound annotations.')
+  end
+
+  def test_get_page_sound_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 2
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_sound_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page sound annotations.')
+  end
+
+  def test_post_page_sound_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = FileAttachmentAnnotation.new
+    annotation.name = 'Test Sound Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+
+    response = @pdf_api.post_page_sound_annotations(file_name, page_number, [annotation], opts)
+    assert(response, 'Failed to add sound annotations into page.')
+  end
+
+  def test_get_sound_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_sound_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document sound annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_sound_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page sound annotations.')
+  end
+
+  def test_put_sound_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = FileAttachmentAnnotation.new
+    annotation.name = 'Test FileAttachment Annotation Updated'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich Text Updated'
+    annotation.subject = 'Subj Updated'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '03/04/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+
+    annotations_response = @pdf_api.get_document_sound_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document sound annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_sound_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace sound annotation.')
+  end
+
+
+  def test_get_sound_annotation_data
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_sound_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document sound annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_sound_annotation_data(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page sound annotation data.')
+  end
+
+  def test_put_sound_annotation_data_extract
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    out_file_path = 'outFile.dat'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_sound_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document sound annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_sound_annotation_data_extract(file_name, annotation_id, out_file_path, opts)
+    assert(response, 'Failed to read page sound annotation data.')
+  end
 
   # Polygon Annotations Tests
 
@@ -600,6 +874,101 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.put_line_annotation(file_name, annotation_id,  annotation, opts)
     assert(response, 'Failed to replace line annotation.')
+  end
+
+  # Movie Annotations Tests
+
+  def test_get_document_movie_annotations
+    file_name = 'PdfWithAnnotations1.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_movie_annotations(file_name, opts)
+    assert(response, 'Failed to read document movie annotations.')
+  end
+
+  def test_post_page_movie_annotations
+    file_name = 'PdfWithAnnotations1.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = MovieAnnotation.new
+    annotation.name = 'Test Movie Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.file_path = attachment_file
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+
+    response = @pdf_api.post_page_movie_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add movie annotations into page.')
+  end
+
+  def test_get_page_movie_annotations
+    file_name = 'PdfWithAnnotations1.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_movie_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page movie annotations.')
+  end
+
+  def test_get_movie_annotation
+    file_name = 'PdfWithAnnotations1.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_movie_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document movie annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_movie_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page movie annotations.')
+  end
+
+  def test_put_movie_annotation
+    file_name = 'PdfWithAnnotations1.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = MovieAnnotation.new
+    annotation.name = 'Test Movie Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.file_path = attachment_file
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_movie_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document movie annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_movie_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace movie annotation.')
   end
 
 
@@ -1008,6 +1377,101 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.put_underline_annotation(file_name, annotation_id,  annotation, opts)
     assert(response, 'Failed to replace underline annotation.')
+  end
+
+  # Redaction Annotations Tests
+
+  def test_get_document_redaction_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_redaction_annotations(file_name, opts)
+    assert(response, 'Failed to read document redaction annotations.')
+  end
+
+  def test_post_page_redaction_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = RedactionAnnotation.new
+    annotation.name = 'Test Redaction Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.quad_point = [
+        Point.new({:X => 11, :Y => 42}),
+        Point.new({:X => 33, :Y => 44})
+    ]
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+
+    response = @pdf_api.post_page_redaction_annotations(file_name, 1,  [annotation], opts)
+    assert(response, 'Failed to add redaction annotations into page.')
+  end
+
+  def test_get_page_redaction_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_redaction_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page redaction annotations.')
+  end
+
+  def test_get_redaction_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_redaction_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document redaction annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_redaction_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page redaction annotations.')
+  end
+
+  def test_put_redaction_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = RedactionAnnotation.new
+    annotation.name = 'Test Redaction Annotation Updated'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.quad_point = [
+        Point.new({:X => 12, :Y => 43}),
+        Point.new({:X => 33, :Y => 44})
+    ]
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+
+    annotations_response = @pdf_api.get_document_redaction_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document redaction annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_redaction_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace redaction annotation.')
   end
 
   # Squiggly Annotations Tests
@@ -2588,6 +3052,7 @@ class PdfTests < Minitest::Test
   def test_post_flatten_document
 
     name = 'PdfWithAcroForm.pdf'
+    upload_file(name)
 
     opts = {
         :hideButtons => true,

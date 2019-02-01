@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Aspose.PDF Cloud
+  Copyright (c) 2019 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -1750,6 +1750,78 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document FileAttachment annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [FileAttachmentAnnotationsResponse]
+    def get_document_file_attachment_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_file_attachment_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_file_attachment_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document FileAttachment annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(FileAttachmentAnnotationsResponse, Fixnum, Hash)>] FileAttachmentAnnotationsResponse data, response status code and response headers
+    def get_document_file_attachment_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_file_attachment_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_file_attachment_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/fileattachment".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileAttachmentAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_file_attachment_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document free text annotations.
     # 
     # @param name The document name.
@@ -2034,6 +2106,78 @@ module AsposePdfCloud
         :return_type => 'LineAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_line_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document movie annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [MovieAnnotationsResponse]
+    def get_document_movie_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_movie_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_movie_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document movie annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(MovieAnnotationsResponse, Fixnum, Hash)>] MovieAnnotationsResponse data, response status code and response headers
+    def get_document_movie_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_movie_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_movie_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/movie".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MovieAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_movie_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2478,6 +2622,150 @@ module AsposePdfCloud
         :return_type => 'DocumentPropertyResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_property\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document redaction annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [RedactionAnnotationsResponse]
+    def get_document_redaction_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_redaction_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_redaction_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document redaction annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(RedactionAnnotationsResponse, Fixnum, Hash)>] RedactionAnnotationsResponse data, response status code and response headers
+    def get_document_redaction_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_redaction_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_redaction_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/redaction".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RedactionAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_redaction_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document sound annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SoundAnnotationsResponse]
+    def get_document_sound_annotations(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_sound_annotations_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_sound_annotations_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document sound annotations.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SoundAnnotationsResponse, Fixnum, Hash)>] SoundAnnotationsResponse data, response status code and response headers
+    def get_document_sound_annotations_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_sound_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_sound_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/sound".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SoundAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_sound_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3209,6 +3497,162 @@ module AsposePdfCloud
         :return_type => 'FieldsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page FileAttachment annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [FileAttachmentAnnotationResponse]
+    def get_file_attachment_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_file_attachment_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_file_attachment_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page FileAttachment annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(FileAttachmentAnnotationResponse, Fixnum, Hash)>] FileAttachmentAnnotationResponse data, response status code and response headers
+    def get_file_attachment_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_file_attachment_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_file_attachment_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_file_attachment_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/fileattachment/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileAttachmentAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_file_attachment_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page FileAttachment annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_file_attachment_annotation_data(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_file_attachment_annotation_data_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_file_attachment_annotation_data_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page FileAttachment annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_file_attachment_annotation_data_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_file_attachment_annotation_data ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_file_attachment_annotation_data"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_file_attachment_annotation_data"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/fileattachment/{annotationId}/data".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_file_attachment_annotation_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4604,6 +5048,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page movie annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [MovieAnnotationResponse]
+    def get_movie_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_movie_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_movie_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page movie annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(MovieAnnotationResponse, Fixnum, Hash)>] MovieAnnotationResponse data, response status code and response headers
+    def get_movie_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_movie_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_movie_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_movie_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/movie/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MovieAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_movie_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page info.
     # 
     # @param name The document name.
@@ -5420,6 +5942,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page FileAttachment annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [FileAttachmentAnnotationsResponse]
+    def get_page_file_attachment_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_file_attachment_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_file_attachment_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page FileAttachment annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(FileAttachmentAnnotationsResponse, Fixnum, Hash)>] FileAttachmentAnnotationsResponse data, response status code and response headers
+    def get_page_file_attachment_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_file_attachment_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_file_attachment_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_file_attachment_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/fileattachment".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileAttachmentAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_file_attachment_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page free text annotations.
     # 
     # @param name The document name.
@@ -5894,6 +6494,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page movie annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [MovieAnnotationsResponse]
+    def get_page_movie_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_movie_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_movie_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page movie annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(MovieAnnotationsResponse, Fixnum, Hash)>] MovieAnnotationsResponse data, response status code and response headers
+    def get_page_movie_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_movie_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_movie_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_movie_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/movie".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MovieAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_movie_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page polyline annotations.
     # 
     # @param name The document name.
@@ -6124,6 +6802,162 @@ module AsposePdfCloud
         :return_type => 'PopupAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page_popup_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page redaction annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [RedactionAnnotationsResponse]
+    def get_page_redaction_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_redaction_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_redaction_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page redaction annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(RedactionAnnotationsResponse, Fixnum, Hash)>] RedactionAnnotationsResponse data, response status code and response headers
+    def get_page_redaction_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_redaction_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_redaction_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_redaction_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/redaction".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RedactionAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_redaction_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page sound annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SoundAnnotationsResponse]
+    def get_page_sound_annotations(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_sound_annotations_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_sound_annotations_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page sound annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SoundAnnotationsResponse, Fixnum, Hash)>] SoundAnnotationsResponse data, response status code and response headers
+    def get_page_sound_annotations_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_sound_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_sound_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_sound_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/sound".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SoundAnnotationsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_sound_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8130,6 +8964,240 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page redaction annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [RedactionAnnotationResponse]
+    def get_redaction_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_redaction_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_redaction_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page redaction annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(RedactionAnnotationResponse, Fixnum, Hash)>] RedactionAnnotationResponse data, response status code and response headers
+    def get_redaction_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_redaction_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_redaction_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_redaction_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/redaction/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RedactionAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_redaction_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page sound annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SoundAnnotationResponse]
+    def get_sound_annotation(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_sound_annotation_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_sound_annotation_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page sound annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SoundAnnotationResponse, Fixnum, Hash)>] SoundAnnotationResponse data, response status code and response headers
+    def get_sound_annotation_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_sound_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_sound_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_sound_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/sound/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SoundAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_sound_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page sound annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_sound_annotation_data(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_sound_annotation_data_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_sound_annotation_data_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page sound annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_sound_annotation_data_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_sound_annotation_data ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_sound_annotation_data"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_sound_annotation_data"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/sound/{annotationId}/data".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_sound_annotation_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page square annotation by ID.
     # 
     # @param name The document name.
@@ -9489,7 +10557,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Removes all fields from the document and place their values instead.
+    # Flatten the document.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -9512,7 +10580,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Removes all fields from the document and place their values instead.
+    # Flatten the document.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -10170,6 +11238,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document page FileAttachment annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_file_attachment_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_file_attachment_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_file_attachment_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page FileAttachment annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_file_attachment_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_file_attachment_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_file_attachment_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_file_attachment_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_file_attachment_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/fileattachment".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_file_attachment_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page free text annotations.
     # 
     # @param name The document name.
@@ -10585,6 +11736,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document page movie annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_movie_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_movie_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_movie_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page movie annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_movie_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_movie_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_movie_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_movie_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_movie_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/movie".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_movie_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page polyline annotations.
     # 
     # @param name The document name.
@@ -10747,6 +11981,172 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_polygon_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page redaction annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_redaction_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_redaction_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_redaction_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page redaction annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_redaction_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_redaction_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_redaction_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_redaction_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_redaction_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/redaction".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_redaction_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page sound annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_sound_annotations(name, page_number, annotations, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_sound_annotations_with_http_info(name, page_number, annotations, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_sound_annotations_with_http_info(name, page_number, annotations, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page sound annotations.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param annotations The array of annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_sound_annotations_with_http_info(name, page_number, annotations, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_sound_annotations ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_sound_annotations"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_sound_annotations"
+      end
+      # verify the required parameter 'annotations' is set
+      if @api_client.config.client_side_validation && annotations.nil?
+        fail ArgumentError, "Missing the required parameter 'annotations' when calling PdfApi.post_page_sound_annotations"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/annotations/sound".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotations)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_sound_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -12256,6 +13656,170 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_fields_flatten\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document FileAttachment annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [FileAttachmentAnnotationResponse]
+    def put_file_attachment_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_file_attachment_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_file_attachment_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document FileAttachment annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(FileAttachmentAnnotationResponse, Fixnum, Hash)>] FileAttachmentAnnotationResponse data, response status code and response headers
+    def put_file_attachment_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_file_attachment_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_file_attachment_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_file_attachment_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_file_attachment_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/fileattachment/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileAttachmentAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_file_attachment_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document FileAttachment annotation content to storage
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :out_folder The output folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_file_attachment_annotation_data_extract(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_file_attachment_annotation_data_extract_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_file_attachment_annotation_data_extract_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document FileAttachment annotation content to storage
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :out_folder The output folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_file_attachment_annotation_data_extract_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_file_attachment_annotation_data_extract ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_file_attachment_annotation_data_extract"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_file_attachment_annotation_data_extract"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/fileattachment/{annotationId}/data/extract".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outFolder'] = opts[:'out_folder'] if !opts[:'out_folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_file_attachment_annotation_data_extract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13778,6 +15342,89 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_mht_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document movie annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [MovieAnnotationResponse]
+    def put_movie_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_movie_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_movie_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document movie annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(MovieAnnotationResponse, Fixnum, Hash)>] MovieAnnotationResponse data, response status code and response headers
+    def put_movie_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_movie_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_movie_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_movie_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_movie_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/movie/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MovieAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_movie_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -17095,6 +18742,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Replace document redaction annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [RedactionAnnotationResponse]
+    def put_redaction_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_redaction_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_redaction_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document redaction annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(RedactionAnnotationResponse, Fixnum, Hash)>] RedactionAnnotationResponse data, response status code and response headers
+    def put_redaction_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_redaction_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_redaction_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_redaction_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_redaction_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/redaction/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RedactionAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_redaction_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Replace document image.
     # 
     # @param name The document name.
@@ -17336,6 +19066,174 @@ module AsposePdfCloud
         :return_type => 'DocumentPropertyResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_set_property\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document sound annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SoundAnnotationResponse]
+    def put_sound_annotation(name, annotation_id, annotation, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_sound_annotation_with_http_info(name, annotation_id, annotation, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_sound_annotation_with_http_info(name, annotation_id, annotation, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document sound annotation
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param annotation Annotation.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SoundAnnotationResponse, Fixnum, Hash)>] SoundAnnotationResponse data, response status code and response headers
+    def put_sound_annotation_with_http_info(name, annotation_id, annotation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_sound_annotation ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_sound_annotation"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_sound_annotation"
+      end
+      # verify the required parameter 'annotation' is set
+      if @api_client.config.client_side_validation && annotation.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation' when calling PdfApi.put_sound_annotation"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/sound/{annotationId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(annotation)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SoundAnnotationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_sound_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document sound annotation content to storage
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param out_file_path The output file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_sound_annotation_data_extract(name, annotation_id, out_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_sound_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_sound_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document sound annotation content to storage
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param out_file_path The output file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_sound_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_sound_annotation_data_extract ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_sound_annotation_data_extract"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_sound_annotation_data_extract"
+      end
+      # verify the required parameter 'out_file_path' is set
+      if @api_client.config.client_side_validation && out_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_file_path' when calling PdfApi.put_sound_annotation_data_extract"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/sound/{annotationId}/data/extract".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outFilePath'] = out_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_sound_annotation_data_extract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
