@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional] 
-**annotations** | [**RedactionAnnotations**](RedactionAnnotations.md) | Ink annotations object | [optional] 
+**annotations** | [**RedactionAnnotations**](RedactionAnnotations.md) | Redaction annotations object | [optional] 
 
 

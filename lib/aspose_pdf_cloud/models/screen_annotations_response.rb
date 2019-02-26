@@ -23,15 +23,15 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents response containing multiple redaction annotation objects
-  class RedactionAnnotationsResponse
+  # Represents response containing multiple screen annotation objects
+  class ScreenAnnotationsResponse
     # Response status code.
     attr_accessor :code
 
     # Response status.
     attr_accessor :status
 
-    # Redaction annotations object
+    # Screen annotations object
     attr_accessor :annotations
 
 
@@ -49,7 +49,7 @@ module AsposePdfCloud
       {
         :'code' => :'Integer',
         :'status' => :'String',
-        :'annotations' => :'RedactionAnnotations'
+        :'annotations' => :'ScreenAnnotations'
       }
     end
 

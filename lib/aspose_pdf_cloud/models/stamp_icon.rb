@@ -19,6 +19,38 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.2.0"
+  class StampIcon
+    
+    DRAFT = "Draft".freeze
+    APPROVED = "Approved".freeze
+    EXPERIMENTAL = "Experimental".freeze
+    NOT_APPROVED = "NotApproved".freeze
+    AS_IS = "AsIs".freeze
+    EXPIRED = "Expired".freeze
+    NOT_FOR_PUBLIC_RELEASE = "NotForPublicRelease".freeze
+    CONFIDENTIAL = "Confidential".freeze
+    FINAL = "Final".freeze
+    SOLD = "Sold".freeze
+    DEPARTMENTAL = "Departmental".freeze
+    FOR_COMMENT = "ForComment".freeze
+    FOR_PUBLIC_RELEASE = "ForPublicRelease".freeze
+    TOP_SECRET = "TopSecret".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = StampIcon.constants.select{|c| c.to_s == value}
+      constantValues = StampIcon.constants.select{ |const_name| StampIcon.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #StampIcon" if constantValues.empty?
+      value
+    end
+  end
+
 end

@@ -23,33 +23,28 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents response containing multiple redaction annotation objects
-  class RedactionAnnotationsResponse
-    # Response status code.
-    attr_accessor :code
+  # Object representing a list of stamp annotations.
+  class StampAnnotations
+    # Link to the document.
+    attr_accessor :links
 
-    # Response status.
-    attr_accessor :status
-
-    # Redaction annotations object
-    attr_accessor :annotations
+    # List of stamp annotations.
+    attr_accessor :list
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status',
-        :'annotations' => :'Annotations'
+        :'links' => :'Links',
+        :'list' => :'List'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'Integer',
-        :'status' => :'String',
-        :'annotations' => :'RedactionAnnotations'
+        :'links' => :'Array<Link>',
+        :'list' => :'Array<StampAnnotation>'
       }
     end
 
@@ -61,16 +56,16 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.has_key?(:'Links')
+        if (value = attributes[:'Links']).is_a?(Array)
+          self.links = value
+        end
       end
 
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
-      end
-
-      if attributes.has_key?(:'Annotations')
-        self.annotations = attributes[:'Annotations']
+      if attributes.has_key?(:'List')
+        if (value = attributes[:'List']).is_a?(Array)
+          self.list = value
+        end
       end
 
     end
@@ -79,17 +74,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
       return true
     end
 
@@ -98,9 +88,8 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          status == o.status &&
-          annotations == o.annotations
+          links == o.links &&
+          list == o.list
     end
 
     # @see the `==` method
@@ -112,7 +101,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, annotations].hash
+      [links, list].hash
     end
 
     # Builds the object from hash
