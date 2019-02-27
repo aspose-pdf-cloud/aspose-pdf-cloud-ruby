@@ -23,16 +23,16 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents response containing multiple redaction annotation objects
-  class RedactionAnnotationsResponse
+  # Represents response containing single screen annotation object
+  class ScreenAnnotationResponse
     # Response status code.
     attr_accessor :code
 
     # Response status.
     attr_accessor :status
 
-    # Redaction annotations object
-    attr_accessor :annotations
+    # Screen annotation object
+    attr_accessor :annotation
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -40,7 +40,7 @@ module AsposePdfCloud
       {
         :'code' => :'Code',
         :'status' => :'Status',
-        :'annotations' => :'Annotations'
+        :'annotation' => :'Annotation'
       }
     end
 
@@ -49,7 +49,7 @@ module AsposePdfCloud
       {
         :'code' => :'Integer',
         :'status' => :'String',
-        :'annotations' => :'RedactionAnnotations'
+        :'annotation' => :'ScreenAnnotation'
       }
     end
 
@@ -69,8 +69,8 @@ module AsposePdfCloud
         self.status = attributes[:'Status']
       end
 
-      if attributes.has_key?(:'Annotations')
-        self.annotations = attributes[:'Annotations']
+      if attributes.has_key?(:'Annotation')
+        self.annotation = attributes[:'Annotation']
       end
 
     end
@@ -100,7 +100,7 @@ module AsposePdfCloud
       self.class == o.class &&
           code == o.code &&
           status == o.status &&
-          annotations == o.annotations
+          annotation == o.annotation
     end
 
     # @see the `==` method
@@ -112,7 +112,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, annotations].hash
+      [code, status, annotation].hash
     end
 
     # Builds the object from hash

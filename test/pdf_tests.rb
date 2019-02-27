@@ -121,6 +121,293 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to delete annotation.')
   end
 
+  def test_put_annotations_flatten
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :endPage => 2,
+        :annotationTypes => [AnnotationType::STAMP],
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_annotations_flatten(file_name, opts)
+    assert(response, 'Failed to make annotations flatten.')
+  end
+
+
+  # Screen Annotations Tests
+
+  def test_get_document_screen_annotations
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_screen_annotations(file_name, opts)
+    assert(response, 'Failed to read document screen annotations.')
+  end
+
+  def test_get_page_screen_annotations
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_screen_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page screen annotations.')
+  end
+
+  def test_post_page_screen_annotations
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = 'ScreenMovie.swf'
+    upload_file(attachment_file)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = ScreenAnnotation.new
+    annotation.name = 'Test Screen Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+
+    response = @pdf_api.post_page_screen_annotations(file_name, page_number, [annotation], opts)
+    assert(response, 'Failed to add screen annotations into page.')
+  end
+
+  def test_get_screen_annotation
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_screen_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document screen annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_screen_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page screen annotations.')
+  end
+
+  def test_put_screen_annotation
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = 'ScreenMovie.swf'
+    upload_file(attachment_file)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = ScreenAnnotation.new
+    annotation.name = 'Test Screen Annotation Updated'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '03/04/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+
+    annotations_response = @pdf_api.get_document_screen_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document screen annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_screen_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace screen annotation.')
+  end
+
+=begin
+  def test_get_screen_annotation_data
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_screen_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document screen annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_screen_annotation_data(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page screen annotation data.')
+  end
+
+  def test_put_screen_annotation_data_extract
+    file_name = 'PdfWithScreenAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_screen_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document screen annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_screen_annotation_data_extract(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page screen annotation data.')
+  end
+=end
+
+
+  # Stamp Annotations Tests
+
+  def test_get_document_stamp_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_stamp_annotations(file_name, opts)
+    assert(response, 'Failed to read document Stamp annotations.')
+  end
+
+  def test_get_page_stamp_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_stamp_annotations(file_name, page_number, opts)
+    assert(response, 'Failed to read page Stamp annotations.')
+  end
+
+  def test_post_page_stamp_annotations
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = StampAnnotation.new
+    annotation.name = 'Test Stamp Annotation'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.rich_text = 'Rich text'
+    annotation.subject = 'Subj'
+    annotation.z_index = 1
+    annotation.title = 'Title'
+    annotation.modified = '02/02/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+
+    response = @pdf_api.post_page_stamp_annotations(file_name, page_number, [annotation], opts)
+    assert(response, 'Failed to add Stamp annotations into page.')
+  end
+
+  def test_get_stamp_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_stamp_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document Stamp annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_stamp_annotation(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page Stamp annotations.')
+  end
+
+  def test_put_stamp_annotation
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    attachment_file = '4pages.pdf'
+    upload_file(attachment_file)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotation = StampAnnotation.new
+    annotation.name = 'Test Stamp Annotation Updated'
+    annotation.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 200, :URY => 200})
+    annotation.flags = [AnnotationFlags::HIDDEN, AnnotationFlags::NO_VIEW]
+    annotation.horizontal_alignment = HorizontalAlignment::CENTER
+    annotation.z_index = 1
+    annotation.rich_text = 'Rich text'
+    annotation.subject = 'Subj'
+    annotation.title = 'Title'
+    annotation.modified = '03/04/2018 12:00:00.000 AM'
+    annotation.file_path = @temp_folder + '/' + attachment_file
+
+    annotations_response = @pdf_api.get_document_stamp_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document Stamp annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_stamp_annotation(file_name, annotation_id,  annotation, opts)
+    assert(response, 'Failed to replace Stamp annotation.')
+  end
+
+
+  def test_get_stamp_annotation_data
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_stamp_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document Stamp annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.get_stamp_annotation_data(file_name, annotation_id, opts)
+    assert(response, 'Failed to read page Stamp annotation data.')
+  end
+
+  def test_put_stamp_annotation_data_extract
+    file_name = 'PdfWithAnnotations.pdf'
+    upload_file(file_name)
+
+    out_file_path = 'stamp.dat'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    annotations_response = @pdf_api.get_document_stamp_annotations(file_name, opts)
+    assert(annotations_response, 'Failed to read document Stamp annotations.')
+    annotation_id = annotations_response[0].annotations.list[0].id
+
+    response = @pdf_api.put_stamp_annotation_data_extract(file_name, annotation_id, out_file_path, opts)
+    assert(response, 'Failed to read page Stamp annotation data.')
+  end
+
+
   # PolyLine Annotations Tests
 
   def test_get_document_poly_line_annotations

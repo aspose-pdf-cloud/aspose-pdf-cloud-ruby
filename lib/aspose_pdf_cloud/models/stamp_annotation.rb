@@ -23,33 +23,113 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents response containing multiple redaction annotation objects
-  class RedactionAnnotationsResponse
-    # Response status code.
-    attr_accessor :code
+  # Provides StampAnnotation.
+  class StampAnnotation
+    # Link to the document.
+    attr_accessor :links
 
-    # Response status.
-    attr_accessor :status
+    # Color of the annotation.
+    attr_accessor :color
 
-    # Redaction annotations object
-    attr_accessor :annotations
+    # Get the annotation content.
+    attr_accessor :contents
+
+    # The date and time when the annotation was last modified.
+    attr_accessor :modified
+
+    # Gets ID of the annotation.
+    attr_accessor :id
+
+    # Gets Flags of the annotation.
+    attr_accessor :flags
+
+    # Gets Name of the annotation.
+    attr_accessor :name
+
+    # Gets Rect of the annotation.
+    attr_accessor :rect
+
+    # Gets PageIndex of the annotation.
+    attr_accessor :page_index
+
+    # Gets ZIndex of the annotation.
+    attr_accessor :z_index
+
+    # Gets HorizontalAlignment of the annotation.
+    attr_accessor :horizontal_alignment
+
+    # Gets VerticalAlignment of the annotation.
+    attr_accessor :vertical_alignment
+
+    # The date and time when the annotation was created.
+    attr_accessor :creation_date
+
+    # Get the annotation subject.
+    attr_accessor :subject
+
+    # Get the annotation title.
+    attr_accessor :title
+
+    # Get the annotation RichText.
+    attr_accessor :rich_text
+
+    # Gets or sets icon for rubber stamp.
+    attr_accessor :icon
+
+    # Sets content file path. 
+    attr_accessor :file_path
+
+    # Gets is image exist. 
+    attr_accessor :has_image
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status',
-        :'annotations' => :'Annotations'
+        :'links' => :'Links',
+        :'color' => :'Color',
+        :'contents' => :'Contents',
+        :'modified' => :'Modified',
+        :'id' => :'Id',
+        :'flags' => :'Flags',
+        :'name' => :'Name',
+        :'rect' => :'Rect',
+        :'page_index' => :'PageIndex',
+        :'z_index' => :'ZIndex',
+        :'horizontal_alignment' => :'HorizontalAlignment',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'creation_date' => :'CreationDate',
+        :'subject' => :'Subject',
+        :'title' => :'Title',
+        :'rich_text' => :'RichText',
+        :'icon' => :'Icon',
+        :'file_path' => :'FilePath',
+        :'has_image' => :'HasImage'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'Integer',
-        :'status' => :'String',
-        :'annotations' => :'RedactionAnnotations'
+        :'links' => :'Array<Link>',
+        :'color' => :'Color',
+        :'contents' => :'String',
+        :'modified' => :'String',
+        :'id' => :'String',
+        :'flags' => :'Array<AnnotationFlags>',
+        :'name' => :'String',
+        :'rect' => :'Rectangle',
+        :'page_index' => :'Integer',
+        :'z_index' => :'Integer',
+        :'horizontal_alignment' => :'HorizontalAlignment',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'creation_date' => :'String',
+        :'subject' => :'String',
+        :'title' => :'String',
+        :'rich_text' => :'String',
+        :'icon' => :'StampIcon',
+        :'file_path' => :'String',
+        :'has_image' => :'BOOLEAN'
       }
     end
 
@@ -61,16 +141,84 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.has_key?(:'Links')
+        if (value = attributes[:'Links']).is_a?(Array)
+          self.links = value
+        end
       end
 
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
-      if attributes.has_key?(:'Annotations')
-        self.annotations = attributes[:'Annotations']
+      if attributes.has_key?(:'Contents')
+        self.contents = attributes[:'Contents']
+      end
+
+      if attributes.has_key?(:'Modified')
+        self.modified = attributes[:'Modified']
+      end
+
+      if attributes.has_key?(:'Id')
+        self.id = attributes[:'Id']
+      end
+
+      if attributes.has_key?(:'Flags')
+        if (value = attributes[:'Flags']).is_a?(Array)
+          self.flags = value
+        end
+      end
+
+      if attributes.has_key?(:'Name')
+        self.name = attributes[:'Name']
+      end
+
+      if attributes.has_key?(:'Rect')
+        self.rect = attributes[:'Rect']
+      end
+
+      if attributes.has_key?(:'PageIndex')
+        self.page_index = attributes[:'PageIndex']
+      end
+
+      if attributes.has_key?(:'ZIndex')
+        self.z_index = attributes[:'ZIndex']
+      end
+
+      if attributes.has_key?(:'HorizontalAlignment')
+        self.horizontal_alignment = attributes[:'HorizontalAlignment']
+      end
+
+      if attributes.has_key?(:'VerticalAlignment')
+        self.vertical_alignment = attributes[:'VerticalAlignment']
+      end
+
+      if attributes.has_key?(:'CreationDate')
+        self.creation_date = attributes[:'CreationDate']
+      end
+
+      if attributes.has_key?(:'Subject')
+        self.subject = attributes[:'Subject']
+      end
+
+      if attributes.has_key?(:'Title')
+        self.title = attributes[:'Title']
+      end
+
+      if attributes.has_key?(:'RichText')
+        self.rich_text = attributes[:'RichText']
+      end
+
+      if attributes.has_key?(:'Icon')
+        self.icon = attributes[:'Icon']
+      end
+
+      if attributes.has_key?(:'FilePath')
+        self.file_path = attributes[:'FilePath']
+      end
+
+      if attributes.has_key?(:'HasImage')
+        self.has_image = attributes[:'HasImage']
       end
 
     end
@@ -79,17 +227,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
       return true
     end
 
@@ -98,9 +241,25 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          status == o.status &&
-          annotations == o.annotations
+          links == o.links &&
+          color == o.color &&
+          contents == o.contents &&
+          modified == o.modified &&
+          id == o.id &&
+          flags == o.flags &&
+          name == o.name &&
+          rect == o.rect &&
+          page_index == o.page_index &&
+          z_index == o.z_index &&
+          horizontal_alignment == o.horizontal_alignment &&
+          vertical_alignment == o.vertical_alignment &&
+          creation_date == o.creation_date &&
+          subject == o.subject &&
+          title == o.title &&
+          rich_text == o.rich_text &&
+          icon == o.icon &&
+          file_path == o.file_path &&
+          has_image == o.has_image
     end
 
     # @see the `==` method
@@ -112,7 +271,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, annotations].hash
+      [links, color, contents, modified, id, flags, name, rect, page_index, z_index, horizontal_alignment, vertical_alignment, creation_date, subject, title, rich_text, icon, file_path, has_image].hash
     end
 
     # Builds the object from hash

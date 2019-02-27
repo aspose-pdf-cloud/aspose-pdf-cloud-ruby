@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 2.0
-- Package version: 19.1.0
+- Package version: 19.2.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -22,15 +22,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-19.1.0.gem
+gem install ./aspose_pdf_cloud-19.2.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-19.1.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-19.2.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 19.1.0'
+    gem 'aspose_pdf_cloud', '~> 19.2.0'
 
 ### Install from Git
 
@@ -125,9 +125,11 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_properties**](docs/PdfApi.md#get_document_properties) | **GET** /pdf/\{name}/documentproperties | Read document properties.
 *AsposePdfCloud::PdfApi* | [**get_document_property**](docs/PdfApi.md#get_document_property) | **GET** /pdf/\{name}/documentproperties/\{propertyName} | Read document property by name.
 *AsposePdfCloud::PdfApi* | [**get_document_redaction_annotations**](docs/PdfApi.md#get_document_redaction_annotations) | **GET** /pdf/\{name}/annotations/redaction | Read document redaction annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_screen_annotations**](docs/PdfApi.md#get_document_screen_annotations) | **GET** /pdf/\{name}/annotations/screen | Read document screen annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_sound_annotations**](docs/PdfApi.md#get_document_sound_annotations) | **GET** /pdf/\{name}/annotations/sound | Read document sound annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_square_annotations**](docs/PdfApi.md#get_document_square_annotations) | **GET** /pdf/\{name}/annotations/square | Read document square annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_squiggly_annotations**](docs/PdfApi.md#get_document_squiggly_annotations) | **GET** /pdf/\{name}/annotations/squiggly | Read document squiggly annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_stamp_annotations**](docs/PdfApi.md#get_document_stamp_annotations) | **GET** /pdf/\{name}/annotations/stamp | Read document stamp annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_strike_out_annotations**](docs/PdfApi.md#get_document_strike_out_annotations) | **GET** /pdf/\{name}/annotations/strikeout | Read document StrikeOut annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_text_annotations**](docs/PdfApi.md#get_document_text_annotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_underline_annotations**](docs/PdfApi.md#get_document_underline_annotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
@@ -179,9 +181,11 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_page_polygon_annotations**](docs/PdfApi.md#get_page_polygon_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Read document page polygon annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_popup_annotations**](docs/PdfApi.md#get_page_popup_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/popup | Read document page popup annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_redaction_annotations**](docs/PdfApi.md#get_page_redaction_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/redaction | Read document page redaction annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_screen_annotations**](docs/PdfApi.md#get_page_screen_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/screen | Read document page screen annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_sound_annotations**](docs/PdfApi.md#get_page_sound_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/sound | Read document page sound annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_square_annotations**](docs/PdfApi.md#get_page_square_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/square | Read document page square annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_squiggly_annotations**](docs/PdfApi.md#get_page_squiggly_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Read document page squiggly annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_stamp_annotations**](docs/PdfApi.md#get_page_stamp_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Read document page stamp annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_strike_out_annotations**](docs/PdfApi.md#get_page_strike_out_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Read document page StrikeOut annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_text**](docs/PdfApi.md#get_page_text) | **GET** /pdf/\{name}/pages/\{pageNumber}/text | Read page text items.
 *AsposePdfCloud::PdfApi* | [**get_page_text_annotations**](docs/PdfApi.md#get_page_text_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Read document page text annotations.
@@ -205,10 +209,13 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_popup_annotation**](docs/PdfApi.md#get_popup_annotation) | **GET** /pdf/\{name}/annotations/popup/\{annotationId} | Read document page popup annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_ps_in_storage_to_pdf**](docs/PdfApi.md#get_ps_in_storage_to_pdf) | **GET** /pdf/create/ps | Convert PS file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_redaction_annotation**](docs/PdfApi.md#get_redaction_annotation) | **GET** /pdf/\{name}/annotations/redaction/\{annotationId} | Read document page redaction annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_screen_annotation**](docs/PdfApi.md#get_screen_annotation) | **GET** /pdf/\{name}/annotations/screen/\{annotationId} | Read document page screen annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_sound_annotation**](docs/PdfApi.md#get_sound_annotation) | **GET** /pdf/\{name}/annotations/sound/\{annotationId} | Read document page sound annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_sound_annotation_data**](docs/PdfApi.md#get_sound_annotation_data) | **GET** /pdf/\{name}/annotations/sound/\{annotationId}/data | Read document page sound annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_square_annotation**](docs/PdfApi.md#get_square_annotation) | **GET** /pdf/\{name}/annotations/square/\{annotationId} | Read document page square annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_squiggly_annotation**](docs/PdfApi.md#get_squiggly_annotation) | **GET** /pdf/\{name}/annotations/squiggly/\{annotationId} | Read document page squiggly annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_stamp_annotation**](docs/PdfApi.md#get_stamp_annotation) | **GET** /pdf/\{name}/annotations/stamp/\{annotationId} | Read document page stamp annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_stamp_annotation_data**](docs/PdfApi.md#get_stamp_annotation_data) | **GET** /pdf/\{name}/annotations/stamp/\{annotationId}/data | Read document page stamp annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_strike_out_annotation**](docs/PdfApi.md#get_strike_out_annotation) | **GET** /pdf/\{name}/annotations/strikeout/\{annotationId} | Read document page StrikeOut annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_svg_in_storage_to_pdf**](docs/PdfApi.md#get_svg_in_storage_to_pdf) | **GET** /pdf/create/svg | Convert SVG file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_text**](docs/PdfApi.md#get_text) | **GET** /pdf/\{name}/text | Read document text.
@@ -242,9 +249,11 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_page_poly_line_annotations**](docs/PdfApi.md#post_page_poly_line_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/polyline | Add document page polyline annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_polygon_annotations**](docs/PdfApi.md#post_page_polygon_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Add document page polygon annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_redaction_annotations**](docs/PdfApi.md#post_page_redaction_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/redaction | Add document page redaction annotations.
+*AsposePdfCloud::PdfApi* | [**post_page_screen_annotations**](docs/PdfApi.md#post_page_screen_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/screen | Add document page screen annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_sound_annotations**](docs/PdfApi.md#post_page_sound_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/sound | Add document page sound annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_square_annotations**](docs/PdfApi.md#post_page_square_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/square | Add document page square annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_squiggly_annotations**](docs/PdfApi.md#post_page_squiggly_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Add document page squiggly annotations.
+*AsposePdfCloud::PdfApi* | [**post_page_stamp_annotations**](docs/PdfApi.md#post_page_stamp_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Add document page stamp annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_strike_out_annotations**](docs/PdfApi.md#post_page_strike_out_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_text_annotations**](docs/PdfApi.md#post_page_text_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_text_replace**](docs/PdfApi.md#post_page_text_replace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page's replace text method.
@@ -255,6 +264,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_split_document**](docs/PdfApi.md#post_split_document) | **POST** /pdf/\{name}/split | Split document to parts.
 *AsposePdfCloud::PdfApi* | [**put_add_new_page**](docs/PdfApi.md#put_add_new_page) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 *AsposePdfCloud::PdfApi* | [**put_add_text**](docs/PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
+*AsposePdfCloud::PdfApi* | [**put_annotations_flatten**](docs/PdfApi.md#put_annotations_flatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
 *AsposePdfCloud::PdfApi* | [**put_caret_annotation**](docs/PdfApi.md#put_caret_annotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
 *AsposePdfCloud::PdfApi* | [**put_circle_annotation**](docs/PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 *AsposePdfCloud::PdfApi* | [**put_create**](docs/PdfApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
@@ -322,12 +332,15 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_ps_in_storage_to_pdf**](docs/PdfApi.md#put_ps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/ps | Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_redaction_annotation**](docs/PdfApi.md#put_redaction_annotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 *AsposePdfCloud::PdfApi* | [**put_replace_image**](docs/PdfApi.md#put_replace_image) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
+*AsposePdfCloud::PdfApi* | [**put_screen_annotation**](docs/PdfApi.md#put_screen_annotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
 *AsposePdfCloud::PdfApi* | [**put_searchable_document**](docs/PdfApi.md#put_searchable_document) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
 *AsposePdfCloud::PdfApi* | [**put_set_property**](docs/PdfApi.md#put_set_property) | **PUT** /pdf/\{name}/documentproperties/\{propertyName} | Add/update document property.
 *AsposePdfCloud::PdfApi* | [**put_sound_annotation**](docs/PdfApi.md#put_sound_annotation) | **PUT** /pdf/\{name}/annotations/sound/\{annotationId} | Replace document sound annotation
 *AsposePdfCloud::PdfApi* | [**put_sound_annotation_data_extract**](docs/PdfApi.md#put_sound_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/sound/\{annotationId}/data/extract | Extract document sound annotation content to storage
 *AsposePdfCloud::PdfApi* | [**put_square_annotation**](docs/PdfApi.md#put_square_annotation) | **PUT** /pdf/\{name}/annotations/square/\{annotationId} | Replace document square annotation
 *AsposePdfCloud::PdfApi* | [**put_squiggly_annotation**](docs/PdfApi.md#put_squiggly_annotation) | **PUT** /pdf/\{name}/annotations/squiggly/\{annotationId} | Replace document squiggly annotation
+*AsposePdfCloud::PdfApi* | [**put_stamp_annotation**](docs/PdfApi.md#put_stamp_annotation) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId} | Replace document stamp annotation
+*AsposePdfCloud::PdfApi* | [**put_stamp_annotation_data_extract**](docs/PdfApi.md#put_stamp_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId}/data/extract | Extract document stamp annotation content to storage
 *AsposePdfCloud::PdfApi* | [**put_strike_out_annotation**](docs/PdfApi.md#put_strike_out_annotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
 *AsposePdfCloud::PdfApi* | [**put_svg_in_storage_to_pdf**](docs/PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_text_annotation**](docs/PdfApi.md#put_text_annotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
@@ -404,6 +417,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::SoundIcon](docs/SoundIcon.md)
  - [AsposePdfCloud::SplitResult](docs/SplitResult.md)
  - [AsposePdfCloud::Stamp](docs/Stamp.md)
+ - [AsposePdfCloud::StampIcon](docs/StampIcon.md)
  - [AsposePdfCloud::StampType](docs/StampType.md)
  - [AsposePdfCloud::TextHorizontalAlignment](docs/TextHorizontalAlignment.md)
  - [AsposePdfCloud::TextIcon](docs/TextIcon.md)
@@ -487,6 +501,9 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::RedactionAnnotationResponse](docs/RedactionAnnotationResponse.md)
  - [AsposePdfCloud::RedactionAnnotations](docs/RedactionAnnotations.md)
  - [AsposePdfCloud::RedactionAnnotationsResponse](docs/RedactionAnnotationsResponse.md)
+ - [AsposePdfCloud::ScreenAnnotationResponse](docs/ScreenAnnotationResponse.md)
+ - [AsposePdfCloud::ScreenAnnotations](docs/ScreenAnnotations.md)
+ - [AsposePdfCloud::ScreenAnnotationsResponse](docs/ScreenAnnotationsResponse.md)
  - [AsposePdfCloud::SignatureVerifyResponse](docs/SignatureVerifyResponse.md)
  - [AsposePdfCloud::SoundAnnotationResponse](docs/SoundAnnotationResponse.md)
  - [AsposePdfCloud::SoundAnnotations](docs/SoundAnnotations.md)
@@ -499,6 +516,9 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::SquigglyAnnotationResponse](docs/SquigglyAnnotationResponse.md)
  - [AsposePdfCloud::SquigglyAnnotations](docs/SquigglyAnnotations.md)
  - [AsposePdfCloud::SquigglyAnnotationsResponse](docs/SquigglyAnnotationsResponse.md)
+ - [AsposePdfCloud::StampAnnotationResponse](docs/StampAnnotationResponse.md)
+ - [AsposePdfCloud::StampAnnotations](docs/StampAnnotations.md)
+ - [AsposePdfCloud::StampAnnotationsResponse](docs/StampAnnotationsResponse.md)
  - [AsposePdfCloud::StorageExistResponse](docs/StorageExistResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotationResponse](docs/StrikeOutAnnotationResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotations](docs/StrikeOutAnnotations.md)
@@ -517,6 +537,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::MovieAnnotation](docs/MovieAnnotation.md)
  - [AsposePdfCloud::PopupAnnotation](docs/PopupAnnotation.md)
  - [AsposePdfCloud::RedactionAnnotation](docs/RedactionAnnotation.md)
+ - [AsposePdfCloud::ScreenAnnotation](docs/ScreenAnnotation.md)
  - [AsposePdfCloud::CaretAnnotation](docs/CaretAnnotation.md)
  - [AsposePdfCloud::CommonFigureAnnotation](docs/CommonFigureAnnotation.md)
  - [AsposePdfCloud::FileAttachmentAnnotation](docs/FileAttachmentAnnotation.md)
@@ -528,6 +549,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::PopupAnnotationWithParent](docs/PopupAnnotationWithParent.md)
  - [AsposePdfCloud::SoundAnnotation](docs/SoundAnnotation.md)
  - [AsposePdfCloud::SquigglyAnnotation](docs/SquigglyAnnotation.md)
+ - [AsposePdfCloud::StampAnnotation](docs/StampAnnotation.md)
  - [AsposePdfCloud::StrikeOutAnnotation](docs/StrikeOutAnnotation.md)
  - [AsposePdfCloud::TextAnnotation](docs/TextAnnotation.md)
  - [AsposePdfCloud::UnderlineAnnotation](docs/UnderlineAnnotation.md)
