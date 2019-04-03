@@ -235,7 +235,7 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to replace screen annotation.')
   end
 
-=begin
+
   def test_get_screen_annotation_data
     file_name = 'PdfWithScreenAnnotations.pdf'
     upload_file(file_name)
@@ -256,6 +256,8 @@ class PdfTests < Minitest::Test
     file_name = 'PdfWithScreenAnnotations.pdf'
     upload_file(file_name)
 
+    out_file_path = @temp_folder + '/screen.dat'
+
     opts = {
         :folder => @temp_folder
     }
@@ -264,11 +266,93 @@ class PdfTests < Minitest::Test
     assert(annotations_response, 'Failed to read document screen annotations.')
     annotation_id = annotations_response[0].annotations.list[0].id
 
-    response = @pdf_api.put_screen_annotation_data_extract(file_name, annotation_id, opts)
+    response = @pdf_api.put_screen_annotation_data_extract(file_name, annotation_id, out_file_path, opts)
     assert(response, 'Failed to read page screen annotation data.')
   end
-=end
 
+  # Tables Tests
+
+  def test_delete_document_tables
+    file_name = 'PdfWithTable.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_document_tables(file_name, opts)
+    assert(response, 'Failed to delete document tables.')
+  end
+
+  def test_get_document_tables
+    file_name = 'PdfWithTable.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_tables(file_name, opts)
+    assert(response, 'Failed to read document tables.')
+  end
+
+  def test_get_page_tables
+    file_name = 'PdfWithTable.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_tables(file_name, page_number, opts)
+    assert(response, 'Failed to read page tables.')
+  end
+
+  def test_delete_page_tables
+    file_name = 'PdfWithTable.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_page_tables(file_name, page_number, opts)
+    assert(response, 'Failed to delete page tables.')
+  end
+
+  def test_get_table
+    file_name = 'PdfWithTable.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    tables_response = @pdf_api.get_document_tables(file_name, opts)
+    assert(tables_response, 'Failed to read document tables.')
+    table_id = tables_response[0].tables.list[0].id
+
+    response = @pdf_api.get_table(file_name, table_id, opts)
+    assert(response, 'Failed to read table.')
+  end
+
+  def test_delete_table
+    file_name = 'PdfWithTable.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    tables_response = @pdf_api.get_document_tables(file_name, opts)
+    assert(tables_response, 'Failed to read document tables.')
+    table_id = tables_response[0].tables.list[0].id
+
+    response = @pdf_api.delete_table(file_name, table_id, opts)
+    assert(response, 'Failed to delete table.')
+  end
 
   # Stamp Annotations Tests
 
@@ -3349,6 +3433,179 @@ class PdfTests < Minitest::Test
     response = @pdf_api.post_flatten_document(name, opts)
     assert(response, 'Failed flatten document.')
   end
+
+  # Stamp Tests
+
+  def test_get_document_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_stamps(file_name, opts)
+    assert(response, 'Failed to read document Stamps.')
+  end
+
+  def test_delete_document_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_document_stamps(file_name, opts)
+    assert(response, 'Failed to delete document Stamps.')
+  end
+
+
+  def test_get_page_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_stamps(file_name, page_number, opts)
+    assert(response, 'Failed to read page Stamps.')
+  end
+
+  def test_delete_page_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_page_stamps(file_name, page_number, opts)
+    assert(response, 'Failed to delete page Stamps.')
+  end
+
+
+  def test_post_page_text_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    text_state = TextState.new
+    text_state.font_size = 14
+
+    stamp = TextStamp.new
+    stamp.background = true
+    stamp.left_margin = 1
+    stamp.right_margin = 2
+    stamp.top_margin = 3
+    stamp.bottom_margin = 4
+    stamp.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp.vertical_alignment = VerticalAlignment::CENTER
+    stamp.opacity = 1
+    stamp.rotate = Rotation::NONE
+    stamp.rotate_angle = 0
+    stamp.x_indent = 0
+    stamp.y_indent = 0
+    stamp.zoom = 1
+    stamp.text_alignment = HorizontalAlignment::CENTER
+    stamp.value = 'Text Stamp'
+    stamp.text_state = text_state
+
+    response = @pdf_api.post_page_text_stamps(file_name, page_number, [stamp], opts)
+    assert(response, 'Failed to add Text Stamp into page.')
+  end
+
+  def test_post_page_image_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    image_name = 'Koala.jpg'
+    upload_file(image_name)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    stamp = ImageStamp.new
+    stamp.background = true
+    stamp.left_margin = 1
+    stamp.right_margin = 2
+    stamp.top_margin = 3
+    stamp.bottom_margin = 4
+    stamp.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp.vertical_alignment = VerticalAlignment::CENTER
+    stamp.opacity = 1
+    stamp.rotate = Rotation::NONE
+    stamp.rotate_angle = 0
+    stamp.x_indent = 0
+    stamp.y_indent = 0
+    stamp.zoom = 1
+    stamp.file_name = @temp_folder + '/' + image_name
+
+    response = @pdf_api.post_page_image_stamps(file_name, page_number, [stamp], opts)
+    assert(response, 'Failed to add Image Stamp into page.')
+  end
+
+  def test_post_page_pdf_page_stamps
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    pdf_name = '4pages.pdf'
+    upload_file(pdf_name)
+
+    page_number = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    stamp = PdfPageStamp.new
+    stamp.background = true
+    stamp.left_margin = 1
+    stamp.right_margin = 2
+    stamp.top_margin = 3
+    stamp.bottom_margin = 4
+    stamp.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp.vertical_alignment = VerticalAlignment::CENTER
+    stamp.opacity = 1
+    stamp.rotate = Rotation::NONE
+    stamp.rotate_angle = 0
+    stamp.x_indent = 0
+    stamp.y_indent = 0
+    stamp.zoom = 1
+    stamp.file_name = @temp_folder + '/' + pdf_name
+    stamp.page_index = 2
+
+    response = @pdf_api.post_page_pdf_page_stamps(file_name, page_number, [stamp], opts)
+    assert(response, 'Failed to add PdfPage Stamp into page.')
+  end
+
+  def test_delete_stamp
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    stamps_response = @pdf_api.get_document_stamps(file_name, opts)
+    assert(stamps_response, 'Failed to read document Stamps.')
+    stamp_id = stamps_response[0].stamps.list[0].id
+
+    response = @pdf_api.delete_stamp(file_name, stamp_id, opts)
+    assert(response, 'Failed to delete Stamp.')
+  end
+
 
   # Images Tests
 

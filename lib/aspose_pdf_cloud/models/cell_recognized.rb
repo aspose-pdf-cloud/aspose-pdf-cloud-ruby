@@ -23,58 +23,28 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents text occurrence.
-  class TextRect
-    # Text of the occurrence.
-    attr_accessor :text
 
-    # Page on which the occurrence is found.
-    attr_accessor :page
+  class CellRecognized
+    # Gets collection of  objects that describes text containing in the cell
+    attr_accessor :text_rects
 
-    # Rectangle of the occurrence.
-    attr_accessor :rect
-
-    # Gets or sets a horizontal alignment of text fragment. 
-    attr_accessor :horizontal_alignment
-
-    # Gets or sets a vertical alignment of text fragment. 
-    attr_accessor :vertical_alignment
-
-    # Gets or sets text position for text, represented with  object.
-    attr_accessor :position
-
-    # Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
-    attr_accessor :baseline_position
-
-    # Gets or sets text state for the text that  object represents.
-    attr_accessor :text_state
+    # Gets rectangle that describes position of the cell on page
+    attr_accessor :rectangle
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'Text',
-        :'page' => :'Page',
-        :'rect' => :'Rect',
-        :'horizontal_alignment' => :'HorizontalAlignment',
-        :'vertical_alignment' => :'VerticalAlignment',
-        :'position' => :'Position',
-        :'baseline_position' => :'BaselinePosition',
-        :'text_state' => :'TextState'
+        :'text_rects' => :'TextRects',
+        :'rectangle' => :'Rectangle'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String',
-        :'page' => :'Integer',
-        :'rect' => :'Rectangle',
-        :'horizontal_alignment' => :'HorizontalAlignment',
-        :'vertical_alignment' => :'VerticalAlignment',
-        :'position' => :'Position',
-        :'baseline_position' => :'Position',
-        :'text_state' => :'TextState'
+        :'text_rects' => :'TextRects',
+        :'rectangle' => :'Rectangle'
       }
     end
 
@@ -86,36 +56,12 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Text')
-        self.text = attributes[:'Text']
+      if attributes.has_key?(:'TextRects')
+        self.text_rects = attributes[:'TextRects']
       end
 
-      if attributes.has_key?(:'Page')
-        self.page = attributes[:'Page']
-      end
-
-      if attributes.has_key?(:'Rect')
-        self.rect = attributes[:'Rect']
-      end
-
-      if attributes.has_key?(:'HorizontalAlignment')
-        self.horizontal_alignment = attributes[:'HorizontalAlignment']
-      end
-
-      if attributes.has_key?(:'VerticalAlignment')
-        self.vertical_alignment = attributes[:'VerticalAlignment']
-      end
-
-      if attributes.has_key?(:'Position')
-        self.position = attributes[:'Position']
-      end
-
-      if attributes.has_key?(:'BaselinePosition')
-        self.baseline_position = attributes[:'BaselinePosition']
-      end
-
-      if attributes.has_key?(:'TextState')
-        self.text_state = attributes[:'TextState']
+      if attributes.has_key?(:'Rectangle')
+        self.rectangle = attributes[:'Rectangle']
       end
 
     end
@@ -138,14 +84,8 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text &&
-          page == o.page &&
-          rect == o.rect &&
-          horizontal_alignment == o.horizontal_alignment &&
-          vertical_alignment == o.vertical_alignment &&
-          position == o.position &&
-          baseline_position == o.baseline_position &&
-          text_state == o.text_state
+          text_rects == o.text_rects &&
+          rectangle == o.rectangle
     end
 
     # @see the `==` method
@@ -157,7 +97,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text, page, rect, horizontal_alignment, vertical_alignment, position, baseline_position, text_state].hash
+      [text_rects, rectangle].hash
     end
 
     # Builds the object from hash
