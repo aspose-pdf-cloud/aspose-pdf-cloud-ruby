@@ -23,58 +23,98 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents text occurrence.
-  class TextRect
-    # Text of the occurrence.
-    attr_accessor :text
+  # Represents Pdf stamps.
+  class PdfPageStamp
+    # Link to the document.
+    attr_accessor :links
 
-    # Page on which the occurrence is found.
-    attr_accessor :page
+    # Sets or gets a bool value that indicates the content is stamped as background. If the value is true, the stamp content is layed at the bottom. By defalt, the value is false, the stamp content is layed at the top.
+    attr_accessor :background
 
-    # Rectangle of the occurrence.
-    attr_accessor :rect
+    # Gets or sets bottom margin of stamp.
+    attr_accessor :bottom_margin
 
-    # Gets or sets a horizontal alignment of text fragment. 
+    # Gets or sets Horizontal alignment of stamp on the page. 
     attr_accessor :horizontal_alignment
 
-    # Gets or sets a vertical alignment of text fragment. 
+    # Gets or sets left margin of stamp.
+    attr_accessor :left_margin
+
+    # Gets or sets a value to indicate the stamp opacity. The value is from 0.0 to 1.0. By default the value is 1.0.
+    attr_accessor :opacity
+
+    # Gets or sets right margin of stamp.
+    attr_accessor :right_margin
+
+    # Sets or gets the rotation of stamp content according  values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
+    attr_accessor :rotate
+
+    # Gets or sets rotate angle of stamp in degrees. This property allows to set arbitrary rotate angle. 
+    attr_accessor :rotate_angle
+
+    # Gets or sets top margin of stamp.
+    attr_accessor :top_margin
+
+    # Gets or sets vertical alignment of stamp on page.
     attr_accessor :vertical_alignment
 
-    # Gets or sets text position for text, represented with  object.
-    attr_accessor :position
+    # Horizontal stamp coordinate, starting from the left.
+    attr_accessor :x_indent
 
-    # Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
-    attr_accessor :baseline_position
+    # Vertical stamp coordinate, starting from the bottom.
+    attr_accessor :y_indent
 
-    # Gets or sets text state for the text that  object represents.
-    attr_accessor :text_state
+    # Zooming factor of the stamp. Allows to scale stamp.
+    attr_accessor :zoom
+
+    # Gets or sets the file name.
+    attr_accessor :file_name
+
+    # Gets or sets the index of the page.
+    attr_accessor :page_index
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'Text',
-        :'page' => :'Page',
-        :'rect' => :'Rect',
+        :'links' => :'Links',
+        :'background' => :'Background',
+        :'bottom_margin' => :'BottomMargin',
         :'horizontal_alignment' => :'HorizontalAlignment',
+        :'left_margin' => :'LeftMargin',
+        :'opacity' => :'Opacity',
+        :'right_margin' => :'RightMargin',
+        :'rotate' => :'Rotate',
+        :'rotate_angle' => :'RotateAngle',
+        :'top_margin' => :'TopMargin',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'position' => :'Position',
-        :'baseline_position' => :'BaselinePosition',
-        :'text_state' => :'TextState'
+        :'x_indent' => :'XIndent',
+        :'y_indent' => :'YIndent',
+        :'zoom' => :'Zoom',
+        :'file_name' => :'FileName',
+        :'page_index' => :'PageIndex'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String',
-        :'page' => :'Integer',
-        :'rect' => :'Rectangle',
+        :'links' => :'Array<Link>',
+        :'background' => :'BOOLEAN',
+        :'bottom_margin' => :'Float',
         :'horizontal_alignment' => :'HorizontalAlignment',
+        :'left_margin' => :'Float',
+        :'opacity' => :'Float',
+        :'right_margin' => :'Float',
+        :'rotate' => :'Rotation',
+        :'rotate_angle' => :'Float',
+        :'top_margin' => :'Float',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'position' => :'Position',
-        :'baseline_position' => :'Position',
-        :'text_state' => :'TextState'
+        :'x_indent' => :'Float',
+        :'y_indent' => :'Float',
+        :'zoom' => :'Float',
+        :'file_name' => :'String',
+        :'page_index' => :'Integer'
       }
     end
 
@@ -86,36 +126,70 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Text')
-        self.text = attributes[:'Text']
+      if attributes.has_key?(:'Links')
+        if (value = attributes[:'Links']).is_a?(Array)
+          self.links = value
+        end
       end
 
-      if attributes.has_key?(:'Page')
-        self.page = attributes[:'Page']
+      if attributes.has_key?(:'Background')
+        self.background = attributes[:'Background']
       end
 
-      if attributes.has_key?(:'Rect')
-        self.rect = attributes[:'Rect']
+      if attributes.has_key?(:'BottomMargin')
+        self.bottom_margin = attributes[:'BottomMargin']
       end
 
       if attributes.has_key?(:'HorizontalAlignment')
         self.horizontal_alignment = attributes[:'HorizontalAlignment']
       end
 
+      if attributes.has_key?(:'LeftMargin')
+        self.left_margin = attributes[:'LeftMargin']
+      end
+
+      if attributes.has_key?(:'Opacity')
+        self.opacity = attributes[:'Opacity']
+      end
+
+      if attributes.has_key?(:'RightMargin')
+        self.right_margin = attributes[:'RightMargin']
+      end
+
+      if attributes.has_key?(:'Rotate')
+        self.rotate = attributes[:'Rotate']
+      end
+
+      if attributes.has_key?(:'RotateAngle')
+        self.rotate_angle = attributes[:'RotateAngle']
+      end
+
+      if attributes.has_key?(:'TopMargin')
+        self.top_margin = attributes[:'TopMargin']
+      end
+
       if attributes.has_key?(:'VerticalAlignment')
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
-      if attributes.has_key?(:'Position')
-        self.position = attributes[:'Position']
+      if attributes.has_key?(:'XIndent')
+        self.x_indent = attributes[:'XIndent']
       end
 
-      if attributes.has_key?(:'BaselinePosition')
-        self.baseline_position = attributes[:'BaselinePosition']
+      if attributes.has_key?(:'YIndent')
+        self.y_indent = attributes[:'YIndent']
       end
 
-      if attributes.has_key?(:'TextState')
-        self.text_state = attributes[:'TextState']
+      if attributes.has_key?(:'Zoom')
+        self.zoom = attributes[:'Zoom']
+      end
+
+      if attributes.has_key?(:'FileName')
+        self.file_name = attributes[:'FileName']
+      end
+
+      if attributes.has_key?(:'PageIndex')
+        self.page_index = attributes[:'PageIndex']
       end
 
     end
@@ -138,14 +212,22 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text &&
-          page == o.page &&
-          rect == o.rect &&
+          links == o.links &&
+          background == o.background &&
+          bottom_margin == o.bottom_margin &&
           horizontal_alignment == o.horizontal_alignment &&
+          left_margin == o.left_margin &&
+          opacity == o.opacity &&
+          right_margin == o.right_margin &&
+          rotate == o.rotate &&
+          rotate_angle == o.rotate_angle &&
+          top_margin == o.top_margin &&
           vertical_alignment == o.vertical_alignment &&
-          position == o.position &&
-          baseline_position == o.baseline_position &&
-          text_state == o.text_state
+          x_indent == o.x_indent &&
+          y_indent == o.y_indent &&
+          zoom == o.zoom &&
+          file_name == o.file_name &&
+          page_index == o.page_index
     end
 
     # @see the `==` method
@@ -157,7 +239,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text, page, rect, horizontal_alignment, vertical_alignment, position, baseline_position, text_state].hash
+      [links, background, bottom_margin, horizontal_alignment, left_margin, opacity, right_margin, rotate, rotate_angle, top_margin, vertical_alignment, x_indent, y_indent, zoom, file_name, page_index].hash
     end
 
     # Builds the object from hash

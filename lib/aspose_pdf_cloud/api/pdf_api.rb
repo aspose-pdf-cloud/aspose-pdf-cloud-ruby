@@ -254,6 +254,150 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Delete all stamps from the document
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_document_stamps(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_document_stamps_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_document_stamps_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete all stamps from the document
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_document_stamps_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_document_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_document_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/stamps".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_document_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete all tables from the document
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_document_tables(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_document_tables_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_document_tables_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete all tables from the document
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_document_tables_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_document_tables ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_document_tables"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/tables".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_document_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete document field by name.
     # 
     # @param name The document name.
@@ -868,6 +1012,162 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Delete all stamps from the page
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_page_stamps(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_page_stamps_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_page_stamps_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete all stamps from the page
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_page_stamps_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_page_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_page_stamps"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.delete_page_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/stamps".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_page_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete all tables from the page
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_page_tables(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_page_tables_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_page_tables_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete all tables from the page
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_page_tables_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_page_tables ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_page_tables"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.delete_page_tables"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/tables".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_page_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete custom document properties.
     # 
     # @param name 
@@ -1014,6 +1314,162 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#delete_property\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete document stamp by ID
+    # 
+    # @param name The document name.
+    # @param stamp_id The stamp ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_stamp(name, stamp_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_stamp_with_http_info(name, stamp_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_stamp_with_http_info(name, stamp_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete document stamp by ID
+    # 
+    # @param name The document name.
+    # @param stamp_id The stamp ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_stamp_with_http_info(name, stamp_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_stamp ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_stamp"
+      end
+      # verify the required parameter 'stamp_id' is set
+      if @api_client.config.client_side_validation && stamp_id.nil?
+        fail ArgumentError, "Missing the required parameter 'stamp_id' when calling PdfApi.delete_stamp"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/stamps/{stampId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'stampId' + '}', stamp_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_stamp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete document table by ID
+    # 
+    # @param name The document name.
+    # @param table_id The table ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def delete_table(name, table_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_table_with_http_info(name, table_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = delete_table_with_http_info(name, table_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Delete document table by ID
+    # 
+    # @param name The document name.
+    # @param table_id The table ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_table_with_http_info(name, table_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_table ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_table"
+      end
+      # verify the required parameter 'table_id' is set
+      if @api_client.config.client_side_validation && table_id.nil?
+        fail ArgumentError, "Missing the required parameter 'table_id' when calling PdfApi.delete_table"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/tables/{tableId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'tableId' + '}', table_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_table\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3058,6 +3514,78 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document stamps.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [StampsInfoResponse]
+    def get_document_stamps(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_stamps_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_stamps_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document stamps.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(StampsInfoResponse, Fixnum, Hash)>] StampsInfoResponse data, response status code and response headers
+    def get_document_stamps_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/stamps".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StampsInfoResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document StrikeOut annotations.
     # 
     # @param name The document name.
@@ -3126,6 +3654,78 @@ module AsposePdfCloud
         :return_type => 'StrikeOutAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_strike_out_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document tables.
+    # 
+    # @param name 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [TablesRecognizedResponse]
+    def get_document_tables(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_tables_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_document_tables_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document tables.
+    # 
+    # @param name 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [Array<(TablesRecognizedResponse, Fixnum, Hash)>] TablesRecognizedResponse data, response status code and response headers
+    def get_document_tables_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_tables ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_tables"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/tables".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TablesRecognizedResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5348,7 +5948,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+    # Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -5369,7 +5969,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+    # Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
     # 
     # @param name The document name.
     # @param page_number The page number.
@@ -7418,6 +8018,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read page document stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [StampsInfoResponse]
+    def get_page_stamps(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_stamps_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_stamps_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read page document stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(StampsInfoResponse, Fixnum, Hash)>] StampsInfoResponse data, response status code and response headers
+    def get_page_stamps_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_stamps"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/stamps".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StampsInfoResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page StrikeOut annotations.
     # 
     # @param name The document name.
@@ -7492,6 +8170,84 @@ module AsposePdfCloud
         :return_type => 'StrikeOutAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page_strike_out_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page tables.
+    # 
+    # @param name 
+    # @param page_number 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [TablesRecognizedResponse]
+    def get_page_tables(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_tables_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_page_tables_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page tables.
+    # 
+    # @param name 
+    # @param page_number 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [Array<(TablesRecognizedResponse, Fixnum, Hash)>] TablesRecognizedResponse data, response status code and response headers
+    def get_page_tables_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_tables ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_tables"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_tables"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/tables".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TablesRecognizedResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9394,7 +10150,7 @@ module AsposePdfCloud
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -9416,6 +10172,84 @@ module AsposePdfCloud
         :return_type => 'ScreenAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_screen_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page screen annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_screen_annotation_data(name, annotation_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_screen_annotation_data_with_http_info(name, annotation_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_screen_annotation_data_with_http_info(name, annotation_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page screen annotation by ID.
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_screen_annotation_data_with_http_info(name, annotation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_screen_annotation_data ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_screen_annotation_data"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.get_screen_annotation_data"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/screen/{annotationId}/data".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_screen_annotation_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -10056,6 +10890,84 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_svg_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page table by ID.
+    # 
+    # @param name The document name.
+    # @param table_id The table ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [TableRecognizedResponse]
+    def get_table(name, table_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_table_with_http_info(name, table_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_table_with_http_info(name, table_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page table by ID.
+    # 
+    # @param name The document name.
+    # @param table_id The table ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(TableRecognizedResponse, Fixnum, Hash)>] TableRecognizedResponse data, response status code and response headers
+    def get_table_with_http_info(name, table_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_table ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_table"
+      end
+      # verify the required parameter 'table_id' is set
+      if @api_client.config.client_side_validation && table_id.nil?
+        fail ArgumentError, "Missing the required parameter 'table_id' when calling PdfApi.get_table"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/tables/{tableId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'tableId' + '}', table_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TableRecognizedResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_table\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -12021,6 +12933,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document page image stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param stamps The array of stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_image_stamps(name, page_number, stamps, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_image_stamps_with_http_info(name, page_number, stamps, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_image_stamps_with_http_info(name, page_number, stamps, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page image stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param stamps The array of stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_image_stamps_with_http_info(name, page_number, stamps, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_image_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_image_stamps"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_image_stamps"
+      end
+      # verify the required parameter 'stamps' is set
+      if @api_client.config.client_side_validation && stamps.nil?
+        fail ArgumentError, "Missing the required parameter 'stamps' when calling PdfApi.post_page_image_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/stamps/image".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(stamps)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_image_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page ink annotations.
     # 
     # @param name The document name.
@@ -12349,6 +13344,89 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_movie_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document pdf page stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param stamps The array of stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_pdf_page_stamps(name, page_number, stamps, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document pdf page stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param stamps The array of stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_pdf_page_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_pdf_page_stamps"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_pdf_page_stamps"
+      end
+      # verify the required parameter 'stamps' is set
+      if @api_client.config.client_side_validation && stamps.nil?
+        fail ArgumentError, "Missing the required parameter 'stamps' when calling PdfApi.post_page_pdf_page_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/stamps/pdfpage".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(stamps)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_pdf_page_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13262,6 +14340,89 @@ module AsposePdfCloud
         :return_type => 'TextReplaceResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_text_replace\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page text stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param stamps The array of stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_text_stamps(name, page_number, stamps, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_text_stamps_with_http_info(name, page_number, stamps, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_text_stamps_with_http_info(name, page_number, stamps, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page text stamps.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param stamps The array of stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_text_stamps_with_http_info(name, page_number, stamps, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_text_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_text_stamps"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_text_stamps"
+      end
+      # verify the required parameter 'stamps' is set
+      if @api_client.config.client_side_validation && stamps.nil?
+        fail ArgumentError, "Missing the required parameter 'stamps' when calling PdfApi.post_page_text_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/stamps/text".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(stamps)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_text_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -19770,6 +20931,91 @@ module AsposePdfCloud
         :return_type => 'ScreenAnnotationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_screen_annotation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract document screen annotation content to storage
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param out_file_path The output file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_screen_annotation_data_extract(name, annotation_id, out_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract document screen annotation content to storage
+    # 
+    # @param name The document name.
+    # @param annotation_id The annotation ID.
+    # @param out_file_path The output file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_screen_annotation_data_extract ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_screen_annotation_data_extract"
+      end
+      # verify the required parameter 'annotation_id' is set
+      if @api_client.config.client_side_validation && annotation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'annotation_id' when calling PdfApi.put_screen_annotation_data_extract"
+      end
+      # verify the required parameter 'out_file_path' is set
+      if @api_client.config.client_side_validation && out_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_file_path' when calling PdfApi.put_screen_annotation_data_extract"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/annotations/screen/{annotationId}/data/extract".sub('{' + 'name' + '}', name.to_s).sub('{' + 'annotationId' + '}', annotation_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outFilePath'] = out_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_screen_annotation_data_extract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

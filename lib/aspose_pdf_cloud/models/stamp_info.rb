@@ -23,58 +23,58 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents text occurrence.
-  class TextRect
-    # Text of the occurrence.
-    attr_accessor :text
+  # Provides stamp info.
+  class StampInfo
+    # Link to the document.
+    attr_accessor :links
 
-    # Page on which the occurrence is found.
-    attr_accessor :page
+    # Gets ID of the stamp.
+    attr_accessor :id
 
-    # Rectangle of the occurrence.
+    # Gets index on page of the stamp.
+    attr_accessor :index_on_page
+
+    # Gets PageIndex of the annotation.
+    attr_accessor :page_index
+
+    # Gets Rect of the annotation.
     attr_accessor :rect
 
-    # Gets or sets a horizontal alignment of text fragment. 
-    attr_accessor :horizontal_alignment
+    # Get the text content.
+    attr_accessor :text
 
-    # Gets or sets a vertical alignment of text fragment. 
-    attr_accessor :vertical_alignment
+    # Gets the stamp is visible.
+    attr_accessor :visible
 
-    # Gets or sets text position for text, represented with  object.
-    attr_accessor :position
-
-    # Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
-    attr_accessor :baseline_position
-
-    # Gets or sets text state for the text that  object represents.
-    attr_accessor :text_state
+    # Gets stamp type.
+    attr_accessor :stamp_type
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'Text',
-        :'page' => :'Page',
+        :'links' => :'Links',
+        :'id' => :'Id',
+        :'index_on_page' => :'IndexOnPage',
+        :'page_index' => :'PageIndex',
         :'rect' => :'Rect',
-        :'horizontal_alignment' => :'HorizontalAlignment',
-        :'vertical_alignment' => :'VerticalAlignment',
-        :'position' => :'Position',
-        :'baseline_position' => :'BaselinePosition',
-        :'text_state' => :'TextState'
+        :'text' => :'Text',
+        :'visible' => :'Visible',
+        :'stamp_type' => :'StampType'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'text' => :'String',
-        :'page' => :'Integer',
+        :'links' => :'Array<Link>',
+        :'id' => :'String',
+        :'index_on_page' => :'Integer',
+        :'page_index' => :'Integer',
         :'rect' => :'Rectangle',
-        :'horizontal_alignment' => :'HorizontalAlignment',
-        :'vertical_alignment' => :'VerticalAlignment',
-        :'position' => :'Position',
-        :'baseline_position' => :'Position',
-        :'text_state' => :'TextState'
+        :'text' => :'String',
+        :'visible' => :'BOOLEAN',
+        :'stamp_type' => :'StampType'
       }
     end
 
@@ -86,36 +86,38 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Text')
-        self.text = attributes[:'Text']
+      if attributes.has_key?(:'Links')
+        if (value = attributes[:'Links']).is_a?(Array)
+          self.links = value
+        end
       end
 
-      if attributes.has_key?(:'Page')
-        self.page = attributes[:'Page']
+      if attributes.has_key?(:'Id')
+        self.id = attributes[:'Id']
+      end
+
+      if attributes.has_key?(:'IndexOnPage')
+        self.index_on_page = attributes[:'IndexOnPage']
+      end
+
+      if attributes.has_key?(:'PageIndex')
+        self.page_index = attributes[:'PageIndex']
       end
 
       if attributes.has_key?(:'Rect')
         self.rect = attributes[:'Rect']
       end
 
-      if attributes.has_key?(:'HorizontalAlignment')
-        self.horizontal_alignment = attributes[:'HorizontalAlignment']
+      if attributes.has_key?(:'Text')
+        self.text = attributes[:'Text']
       end
 
-      if attributes.has_key?(:'VerticalAlignment')
-        self.vertical_alignment = attributes[:'VerticalAlignment']
+      if attributes.has_key?(:'Visible')
+        self.visible = attributes[:'Visible']
       end
 
-      if attributes.has_key?(:'Position')
-        self.position = attributes[:'Position']
-      end
-
-      if attributes.has_key?(:'BaselinePosition')
-        self.baseline_position = attributes[:'BaselinePosition']
-      end
-
-      if attributes.has_key?(:'TextState')
-        self.text_state = attributes[:'TextState']
+      if attributes.has_key?(:'StampType')
+        self.stamp_type = attributes[:'StampType']
       end
 
     end
@@ -138,14 +140,14 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text &&
-          page == o.page &&
+          links == o.links &&
+          id == o.id &&
+          index_on_page == o.index_on_page &&
+          page_index == o.page_index &&
           rect == o.rect &&
-          horizontal_alignment == o.horizontal_alignment &&
-          vertical_alignment == o.vertical_alignment &&
-          position == o.position &&
-          baseline_position == o.baseline_position &&
-          text_state == o.text_state
+          text == o.text &&
+          visible == o.visible &&
+          stamp_type == o.stamp_type
     end
 
     # @see the `==` method
@@ -157,7 +159,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text, page, rect, horizontal_alignment, vertical_alignment, position, baseline_position, text_state].hash
+      [links, id, index_on_page, page_index, rect, text, visible, stamp_type].hash
     end
 
     # Builds the object from hash

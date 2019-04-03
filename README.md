@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 2.0
-- Package version: 19.2.0
+- Package version: 19.3.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -22,15 +22,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-19.2.0.gem
+gem install ./aspose_pdf_cloud-19.3.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-19.2.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-19.3.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 19.2.0'
+    gem 'aspose_pdf_cloud', '~> 19.3.0'
 
 ### Install from Git
 
@@ -92,6 +92,8 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**delete_annotation**](docs/PdfApi.md#delete_annotation) | **DELETE** /pdf/\{name}/annotations/\{annotationId} | Delete document annotation by ID
 *AsposePdfCloud::PdfApi* | [**delete_document_annotations**](docs/PdfApi.md#delete_document_annotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 *AsposePdfCloud::PdfApi* | [**delete_document_link_annotations**](docs/PdfApi.md#delete_document_link_annotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
+*AsposePdfCloud::PdfApi* | [**delete_document_stamps**](docs/PdfApi.md#delete_document_stamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
+*AsposePdfCloud::PdfApi* | [**delete_document_tables**](docs/PdfApi.md#delete_document_tables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
 *AsposePdfCloud::PdfApi* | [**delete_field**](docs/PdfApi.md#delete_field) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
 *AsposePdfCloud::PdfApi* | [**delete_file**](docs/PdfApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
 *AsposePdfCloud::PdfApi* | [**delete_folder**](docs/PdfApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
@@ -100,8 +102,12 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**delete_page**](docs/PdfApi.md#delete_page) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
 *AsposePdfCloud::PdfApi* | [**delete_page_annotations**](docs/PdfApi.md#delete_page_annotations) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/annotations | Delete all annotations from the page
 *AsposePdfCloud::PdfApi* | [**delete_page_link_annotations**](docs/PdfApi.md#delete_page_link_annotations) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/links | Delete all link annotations from the page
+*AsposePdfCloud::PdfApi* | [**delete_page_stamps**](docs/PdfApi.md#delete_page_stamps) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/stamps | Delete all stamps from the page
+*AsposePdfCloud::PdfApi* | [**delete_page_tables**](docs/PdfApi.md#delete_page_tables) | **DELETE** /pdf/\{name}/pages/\{pageNumber}/tables | Delete all tables from the page
 *AsposePdfCloud::PdfApi* | [**delete_properties**](docs/PdfApi.md#delete_properties) | **DELETE** /pdf/\{name}/documentproperties | Delete custom document properties.
 *AsposePdfCloud::PdfApi* | [**delete_property**](docs/PdfApi.md#delete_property) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
+*AsposePdfCloud::PdfApi* | [**delete_stamp**](docs/PdfApi.md#delete_stamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
+*AsposePdfCloud::PdfApi* | [**delete_table**](docs/PdfApi.md#delete_table) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
 *AsposePdfCloud::PdfApi* | [**get_caret_annotation**](docs/PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_circle_annotation**](docs/PdfApi.md#get_circle_annotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_disc_usage**](docs/PdfApi.md#get_disc_usage) | **GET** /storage/disc | Check the disk usage of the current account 
@@ -130,7 +136,9 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_square_annotations**](docs/PdfApi.md#get_document_square_annotations) | **GET** /pdf/\{name}/annotations/square | Read document square annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_squiggly_annotations**](docs/PdfApi.md#get_document_squiggly_annotations) | **GET** /pdf/\{name}/annotations/squiggly | Read document squiggly annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_stamp_annotations**](docs/PdfApi.md#get_document_stamp_annotations) | **GET** /pdf/\{name}/annotations/stamp | Read document stamp annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_stamps**](docs/PdfApi.md#get_document_stamps) | **GET** /pdf/\{name}/stamps | Read document stamps.
 *AsposePdfCloud::PdfApi* | [**get_document_strike_out_annotations**](docs/PdfApi.md#get_document_strike_out_annotations) | **GET** /pdf/\{name}/annotations/strikeout | Read document StrikeOut annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_tables**](docs/PdfApi.md#get_document_tables) | **GET** /pdf/\{name}/tables | Read document tables.
 *AsposePdfCloud::PdfApi* | [**get_document_text_annotations**](docs/PdfApi.md#get_document_text_annotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_underline_annotations**](docs/PdfApi.md#get_document_underline_annotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
 *AsposePdfCloud::PdfApi* | [**get_download**](docs/PdfApi.md#get_download) | **GET** /storage/file | Download a specific file 
@@ -160,7 +168,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_mht_in_storage_to_pdf**](docs/PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_movie_annotation**](docs/PdfApi.md#get_movie_annotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_page**](docs/PdfApi.md#get_page) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
-*AsposePdfCloud::PdfApi* | [**get_page_annotations**](docs/PdfApi.md#get_page_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+*AsposePdfCloud::PdfApi* | [**get_page_annotations**](docs/PdfApi.md#get_page_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations | Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *AsposePdfCloud::PdfApi* | [**get_page_caret_annotations**](docs/PdfApi.md#get_page_caret_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Read document page caret annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_circle_annotations**](docs/PdfApi.md#get_page_circle_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/circle | Read document page circle annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_convert_to_bmp**](docs/PdfApi.md#get_page_convert_to_bmp) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/bmp | Convert document page to Bmp image and return resulting file in response.
@@ -186,7 +194,9 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_page_square_annotations**](docs/PdfApi.md#get_page_square_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/square | Read document page square annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_squiggly_annotations**](docs/PdfApi.md#get_page_squiggly_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Read document page squiggly annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_stamp_annotations**](docs/PdfApi.md#get_page_stamp_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Read document page stamp annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_stamps**](docs/PdfApi.md#get_page_stamps) | **GET** /pdf/\{name}/pages/\{pageNumber}/stamps | Read page document stamps.
 *AsposePdfCloud::PdfApi* | [**get_page_strike_out_annotations**](docs/PdfApi.md#get_page_strike_out_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Read document page StrikeOut annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_tables**](docs/PdfApi.md#get_page_tables) | **GET** /pdf/\{name}/pages/\{pageNumber}/tables | Read document page tables.
 *AsposePdfCloud::PdfApi* | [**get_page_text**](docs/PdfApi.md#get_page_text) | **GET** /pdf/\{name}/pages/\{pageNumber}/text | Read page text items.
 *AsposePdfCloud::PdfApi* | [**get_page_text_annotations**](docs/PdfApi.md#get_page_text_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Read document page text annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_underline_annotations**](docs/PdfApi.md#get_page_underline_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
@@ -210,6 +220,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_ps_in_storage_to_pdf**](docs/PdfApi.md#get_ps_in_storage_to_pdf) | **GET** /pdf/create/ps | Convert PS file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_redaction_annotation**](docs/PdfApi.md#get_redaction_annotation) | **GET** /pdf/\{name}/annotations/redaction/\{annotationId} | Read document page redaction annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_screen_annotation**](docs/PdfApi.md#get_screen_annotation) | **GET** /pdf/\{name}/annotations/screen/\{annotationId} | Read document page screen annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_screen_annotation_data**](docs/PdfApi.md#get_screen_annotation_data) | **GET** /pdf/\{name}/annotations/screen/\{annotationId}/data | Read document page screen annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_sound_annotation**](docs/PdfApi.md#get_sound_annotation) | **GET** /pdf/\{name}/annotations/sound/\{annotationId} | Read document page sound annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_sound_annotation_data**](docs/PdfApi.md#get_sound_annotation_data) | **GET** /pdf/\{name}/annotations/sound/\{annotationId}/data | Read document page sound annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_square_annotation**](docs/PdfApi.md#get_square_annotation) | **GET** /pdf/\{name}/annotations/square/\{annotationId} | Read document page square annotation by ID.
@@ -218,6 +229,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_stamp_annotation_data**](docs/PdfApi.md#get_stamp_annotation_data) | **GET** /pdf/\{name}/annotations/stamp/\{annotationId}/data | Read document page stamp annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_strike_out_annotation**](docs/PdfApi.md#get_strike_out_annotation) | **GET** /pdf/\{name}/annotations/strikeout/\{annotationId} | Read document page StrikeOut annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_svg_in_storage_to_pdf**](docs/PdfApi.md#get_svg_in_storage_to_pdf) | **GET** /pdf/create/svg | Convert SVG file (located on storage) to PDF format and return resulting file in response. 
+*AsposePdfCloud::PdfApi* | [**get_table**](docs/PdfApi.md#get_table) | **GET** /pdf/\{name}/tables/\{tableId} | Read document page table by ID.
 *AsposePdfCloud::PdfApi* | [**get_text**](docs/PdfApi.md#get_text) | **GET** /pdf/\{name}/text | Read document text.
 *AsposePdfCloud::PdfApi* | [**get_text_annotation**](docs/PdfApi.md#get_text_annotation) | **GET** /pdf/\{name}/annotations/text/\{annotationId} | Read document page text annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_underline_annotation**](docs/PdfApi.md#get_underline_annotation) | **GET** /pdf/\{name}/annotations/underline/\{annotationId} | Read document page underline annotation by ID.
@@ -242,10 +254,12 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_page_file_attachment_annotations**](docs/PdfApi.md#post_page_file_attachment_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/fileattachment | Add document page FileAttachment annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_free_text_annotations**](docs/PdfApi.md#post_page_free_text_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/freetext | Add document page free text annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_highlight_annotations**](docs/PdfApi.md#post_page_highlight_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/highlight | Add document page highlight annotations.
+*AsposePdfCloud::PdfApi* | [**post_page_image_stamps**](docs/PdfApi.md#post_page_image_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/image | Add document page image stamps.
 *AsposePdfCloud::PdfApi* | [**post_page_ink_annotations**](docs/PdfApi.md#post_page_ink_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/ink | Add document page ink annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_line_annotations**](docs/PdfApi.md#post_page_line_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/line | Add document page line annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_link_annotations**](docs/PdfApi.md#post_page_link_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/links | Add document page link annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_movie_annotations**](docs/PdfApi.md#post_page_movie_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/movie | Add document page movie annotations.
+*AsposePdfCloud::PdfApi* | [**post_page_pdf_page_stamps**](docs/PdfApi.md#post_page_pdf_page_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/pdfpage | Add document pdf page stamps.
 *AsposePdfCloud::PdfApi* | [**post_page_poly_line_annotations**](docs/PdfApi.md#post_page_poly_line_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/polyline | Add document page polyline annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_polygon_annotations**](docs/PdfApi.md#post_page_polygon_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Add document page polygon annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_redaction_annotations**](docs/PdfApi.md#post_page_redaction_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/redaction | Add document page redaction annotations.
@@ -257,6 +271,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_page_strike_out_annotations**](docs/PdfApi.md#post_page_strike_out_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_text_annotations**](docs/PdfApi.md#post_page_text_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_text_replace**](docs/PdfApi.md#post_page_text_replace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page's replace text method.
+*AsposePdfCloud::PdfApi* | [**post_page_text_stamps**](docs/PdfApi.md#post_page_text_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
 *AsposePdfCloud::PdfApi* | [**post_page_underline_annotations**](docs/PdfApi.md#post_page_underline_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Add document page underline annotations.
 *AsposePdfCloud::PdfApi* | [**post_popup_annotation**](docs/PdfApi.md#post_popup_annotation) | **POST** /pdf/\{name}/annotations/\{annotationId}/popup | Add document popup annotations.
 *AsposePdfCloud::PdfApi* | [**post_sign_document**](docs/PdfApi.md#post_sign_document) | **POST** /pdf/\{name}/sign | Sign document.
@@ -333,6 +348,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_redaction_annotation**](docs/PdfApi.md#put_redaction_annotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 *AsposePdfCloud::PdfApi* | [**put_replace_image**](docs/PdfApi.md#put_replace_image) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
 *AsposePdfCloud::PdfApi* | [**put_screen_annotation**](docs/PdfApi.md#put_screen_annotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
+*AsposePdfCloud::PdfApi* | [**put_screen_annotation_data_extract**](docs/PdfApi.md#put_screen_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId}/data/extract | Extract document screen annotation content to storage
 *AsposePdfCloud::PdfApi* | [**put_searchable_document**](docs/PdfApi.md#put_searchable_document) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
 *AsposePdfCloud::PdfApi* | [**put_set_property**](docs/PdfApi.md#put_set_property) | **PUT** /pdf/\{name}/documentproperties/\{propertyName} | Add/update document property.
 *AsposePdfCloud::PdfApi* | [**put_sound_annotation**](docs/PdfApi.md#put_sound_annotation) | **PUT** /pdf/\{name}/annotations/sound/\{annotationId} | Replace document sound annotation
@@ -366,6 +382,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::CapStyle](docs/CapStyle.md)
  - [AsposePdfCloud::CaptionPosition](docs/CaptionPosition.md)
  - [AsposePdfCloud::CaretSymbol](docs/CaretSymbol.md)
+ - [AsposePdfCloud::CellRecognized](docs/CellRecognized.md)
  - [AsposePdfCloud::Color](docs/Color.md)
  - [AsposePdfCloud::ColorDepth](docs/ColorDepth.md)
  - [AsposePdfCloud::CompressionType](docs/CompressionType.md)
@@ -406,9 +423,11 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::PdfAType](docs/PdfAType.md)
  - [AsposePdfCloud::Point](docs/Point.md)
  - [AsposePdfCloud::PolyIntent](docs/PolyIntent.md)
+ - [AsposePdfCloud::Position](docs/Position.md)
  - [AsposePdfCloud::RasterImagesSavingModes](docs/RasterImagesSavingModes.md)
  - [AsposePdfCloud::Rectangle](docs/Rectangle.md)
  - [AsposePdfCloud::Rotation](docs/Rotation.md)
+ - [AsposePdfCloud::RowRecognized](docs/RowRecognized.md)
  - [AsposePdfCloud::Segment](docs/Segment.md)
  - [AsposePdfCloud::ShapeType](docs/ShapeType.md)
  - [AsposePdfCloud::Signature](docs/Signature.md)
@@ -519,10 +538,18 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::StampAnnotationResponse](docs/StampAnnotationResponse.md)
  - [AsposePdfCloud::StampAnnotations](docs/StampAnnotations.md)
  - [AsposePdfCloud::StampAnnotationsResponse](docs/StampAnnotationsResponse.md)
+ - [AsposePdfCloud::StampBase](docs/StampBase.md)
+ - [AsposePdfCloud::StampInfo](docs/StampInfo.md)
+ - [AsposePdfCloud::StampsInfo](docs/StampsInfo.md)
+ - [AsposePdfCloud::StampsInfoResponse](docs/StampsInfoResponse.md)
  - [AsposePdfCloud::StorageExistResponse](docs/StorageExistResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotationResponse](docs/StrikeOutAnnotationResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotations](docs/StrikeOutAnnotations.md)
  - [AsposePdfCloud::StrikeOutAnnotationsResponse](docs/StrikeOutAnnotationsResponse.md)
+ - [AsposePdfCloud::TableRecognized](docs/TableRecognized.md)
+ - [AsposePdfCloud::TableRecognizedResponse](docs/TableRecognizedResponse.md)
+ - [AsposePdfCloud::TablesRecognized](docs/TablesRecognized.md)
+ - [AsposePdfCloud::TablesRecognizedResponse](docs/TablesRecognizedResponse.md)
  - [AsposePdfCloud::TextAnnotationResponse](docs/TextAnnotationResponse.md)
  - [AsposePdfCloud::TextAnnotations](docs/TextAnnotations.md)
  - [AsposePdfCloud::TextAnnotationsResponse](docs/TextAnnotationsResponse.md)
@@ -533,11 +560,14 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::UnderlineAnnotationsResponse](docs/UnderlineAnnotationsResponse.md)
  - [AsposePdfCloud::WordCountResponse](docs/WordCountResponse.md)
  - [AsposePdfCloud::AnnotationInfo](docs/AnnotationInfo.md)
+ - [AsposePdfCloud::ImageStamp](docs/ImageStamp.md)
  - [AsposePdfCloud::MarkupAnnotation](docs/MarkupAnnotation.md)
  - [AsposePdfCloud::MovieAnnotation](docs/MovieAnnotation.md)
+ - [AsposePdfCloud::PdfPageStamp](docs/PdfPageStamp.md)
  - [AsposePdfCloud::PopupAnnotation](docs/PopupAnnotation.md)
  - [AsposePdfCloud::RedactionAnnotation](docs/RedactionAnnotation.md)
  - [AsposePdfCloud::ScreenAnnotation](docs/ScreenAnnotation.md)
+ - [AsposePdfCloud::TextStamp](docs/TextStamp.md)
  - [AsposePdfCloud::CaretAnnotation](docs/CaretAnnotation.md)
  - [AsposePdfCloud::CommonFigureAnnotation](docs/CommonFigureAnnotation.md)
  - [AsposePdfCloud::FileAttachmentAnnotation](docs/FileAttachmentAnnotation.md)
