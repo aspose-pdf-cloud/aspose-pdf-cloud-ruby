@@ -23,19 +23,22 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # This class represents a margin for different objects.
-  class MarginInfo
-    # Gets or sets a float value that indicates the left margin.
+  # This class represents border for graphics elements.
+  class BorderInfo
+    # Gets or sets a object that indicates left of the border.
     attr_accessor :left
 
-    # Gets or sets a float value that indicates the right margin.
+    # Gets or sets a object that indicates right of the border.
     attr_accessor :right
 
-    # Gets or sets a float value that indicates the top margin.
+    # Gets or sets a object that indicates the top border.
     attr_accessor :top
 
-    # Gets or sets a float value that indicates the bottom margin.
+    # Gets or sets a object that indicates bottom of the border.
     attr_accessor :bottom
+
+    # Gets or sets a rouded border radius
+    attr_accessor :rounded_border_radius
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -44,17 +47,19 @@ module AsposePdfCloud
         :'left' => :'Left',
         :'right' => :'Right',
         :'top' => :'Top',
-        :'bottom' => :'Bottom'
+        :'bottom' => :'Bottom',
+        :'rounded_border_radius' => :'RoundedBorderRadius'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'left' => :'Float',
-        :'right' => :'Float',
-        :'top' => :'Float',
-        :'bottom' => :'Float'
+        :'left' => :'GraphInfo',
+        :'right' => :'GraphInfo',
+        :'top' => :'GraphInfo',
+        :'bottom' => :'GraphInfo',
+        :'rounded_border_radius' => :'Float'
       }
     end
 
@@ -82,6 +87,10 @@ module AsposePdfCloud
         self.bottom = attributes[:'Bottom']
       end
 
+      if attributes.has_key?(:'RoundedBorderRadius')
+        self.rounded_border_radius = attributes[:'RoundedBorderRadius']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -105,7 +114,8 @@ module AsposePdfCloud
           left == o.left &&
           right == o.right &&
           top == o.top &&
-          bottom == o.bottom
+          bottom == o.bottom &&
+          rounded_border_radius == o.rounded_border_radius
     end
 
     # @see the `==` method
@@ -117,7 +127,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [left, right, top, bottom].hash
+      [left, right, top, bottom, rounded_border_radius].hash
     end
 
     # Builds the object from hash

@@ -23,38 +23,83 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # This class represents a margin for different objects.
-  class MarginInfo
-    # Gets or sets a float value that indicates the left margin.
-    attr_accessor :left
+  # Represents a cell of the table's row.
+  class Cell
+    # Gets or sets the cell have border.
+    attr_accessor :is_no_border
 
-    # Gets or sets a float value that indicates the right margin.
-    attr_accessor :right
+    # Gets or sets the padding.
+    attr_accessor :margin
 
-    # Gets or sets a float value that indicates the top margin.
-    attr_accessor :top
+    # Gets or sets the border.
+    attr_accessor :border
 
-    # Gets or sets a float value that indicates the bottom margin.
-    attr_accessor :bottom
+    # Gets or sets the background color.
+    attr_accessor :background_color
+
+    # Gets or sets the background image file.
+    attr_accessor :background_image_file
+
+    # Gets or sets the alignment.
+    attr_accessor :alignment
+
+    # Gets or sets the default cell text state.
+    attr_accessor :default_cell_text_state
+
+    # Gets or sets the cell's formatted text.
+    attr_accessor :paragraphs
+
+    # Gets or sets the cell's text word wrapped.
+    attr_accessor :is_word_wrapped
+
+    # Gets or sets the vertical alignment.
+    attr_accessor :vertical_alignment
+
+    # Gets or sets the column span.
+    attr_accessor :col_span
+
+    # Gets or sets the row span.
+    attr_accessor :row_span
+
+    # Gets or sets the column width.
+    attr_accessor :width
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'left' => :'Left',
-        :'right' => :'Right',
-        :'top' => :'Top',
-        :'bottom' => :'Bottom'
+        :'is_no_border' => :'IsNoBorder',
+        :'margin' => :'Margin',
+        :'border' => :'Border',
+        :'background_color' => :'BackgroundColor',
+        :'background_image_file' => :'BackgroundImageFile',
+        :'alignment' => :'Alignment',
+        :'default_cell_text_state' => :'DefaultCellTextState',
+        :'paragraphs' => :'Paragraphs',
+        :'is_word_wrapped' => :'IsWordWrapped',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'col_span' => :'ColSpan',
+        :'row_span' => :'RowSpan',
+        :'width' => :'Width'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'left' => :'Float',
-        :'right' => :'Float',
-        :'top' => :'Float',
-        :'bottom' => :'Float'
+        :'is_no_border' => :'BOOLEAN',
+        :'margin' => :'MarginInfo',
+        :'border' => :'BorderInfo',
+        :'background_color' => :'Color',
+        :'background_image_file' => :'String',
+        :'alignment' => :'HorizontalAlignment',
+        :'default_cell_text_state' => :'TextState',
+        :'paragraphs' => :'Array<TextRect>',
+        :'is_word_wrapped' => :'BOOLEAN',
+        :'vertical_alignment' => :'VerticalAlignment',
+        :'col_span' => :'Integer',
+        :'row_span' => :'Integer',
+        :'width' => :'Float'
       }
     end
 
@@ -66,20 +111,58 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Left')
-        self.left = attributes[:'Left']
+      if attributes.has_key?(:'IsNoBorder')
+        self.is_no_border = attributes[:'IsNoBorder']
       end
 
-      if attributes.has_key?(:'Right')
-        self.right = attributes[:'Right']
+      if attributes.has_key?(:'Margin')
+        self.margin = attributes[:'Margin']
       end
 
-      if attributes.has_key?(:'Top')
-        self.top = attributes[:'Top']
+      if attributes.has_key?(:'Border')
+        self.border = attributes[:'Border']
       end
 
-      if attributes.has_key?(:'Bottom')
-        self.bottom = attributes[:'Bottom']
+      if attributes.has_key?(:'BackgroundColor')
+        self.background_color = attributes[:'BackgroundColor']
+      end
+
+      if attributes.has_key?(:'BackgroundImageFile')
+        self.background_image_file = attributes[:'BackgroundImageFile']
+      end
+
+      if attributes.has_key?(:'Alignment')
+        self.alignment = attributes[:'Alignment']
+      end
+
+      if attributes.has_key?(:'DefaultCellTextState')
+        self.default_cell_text_state = attributes[:'DefaultCellTextState']
+      end
+
+      if attributes.has_key?(:'Paragraphs')
+        if (value = attributes[:'Paragraphs']).is_a?(Array)
+          self.paragraphs = value
+        end
+      end
+
+      if attributes.has_key?(:'IsWordWrapped')
+        self.is_word_wrapped = attributes[:'IsWordWrapped']
+      end
+
+      if attributes.has_key?(:'VerticalAlignment')
+        self.vertical_alignment = attributes[:'VerticalAlignment']
+      end
+
+      if attributes.has_key?(:'ColSpan')
+        self.col_span = attributes[:'ColSpan']
+      end
+
+      if attributes.has_key?(:'RowSpan')
+        self.row_span = attributes[:'RowSpan']
+      end
+
+      if attributes.has_key?(:'Width')
+        self.width = attributes[:'Width']
       end
 
     end
@@ -102,10 +185,19 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          left == o.left &&
-          right == o.right &&
-          top == o.top &&
-          bottom == o.bottom
+          is_no_border == o.is_no_border &&
+          margin == o.margin &&
+          border == o.border &&
+          background_color == o.background_color &&
+          background_image_file == o.background_image_file &&
+          alignment == o.alignment &&
+          default_cell_text_state == o.default_cell_text_state &&
+          paragraphs == o.paragraphs &&
+          is_word_wrapped == o.is_word_wrapped &&
+          vertical_alignment == o.vertical_alignment &&
+          col_span == o.col_span &&
+          row_span == o.row_span &&
+          width == o.width
     end
 
     # @see the `==` method
@@ -117,7 +209,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [left, right, top, bottom].hash
+      [is_no_border, margin, border, background_color, background_image_file, alignment, default_cell_text_state, paragraphs, is_word_wrapped, vertical_alignment, col_span, row_span, width].hash
     end
 
     # Builds the object from hash

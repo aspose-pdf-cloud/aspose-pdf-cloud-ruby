@@ -85,7 +85,7 @@ All Aspose.PDF Cloud SDKs are licensed under [MIT License](LICENSE).
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.aspose.cloud/v2.0*
+All URIs are relative to *https://api-dev.aspose.cloud/v2.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -115,7 +115,6 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_annotations**](docs/PdfApi.md#get_document_annotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *AsposePdfCloud::PdfApi* | [**get_document_attachment_by_index**](docs/PdfApi.md#get_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 *AsposePdfCloud::PdfApi* | [**get_document_attachments**](docs/PdfApi.md#get_document_attachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
-*AsposePdfCloud::PdfApi* | [**get_document_bookmarks**](docs/PdfApi.md#get_document_bookmarks) | **GET** /pdf/\{name}/bookmarks | Read document bookmark/bookmarks (including children).
 *AsposePdfCloud::PdfApi* | [**get_document_caret_annotations**](docs/PdfApi.md#get_document_caret_annotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_circle_annotations**](docs/PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_file_attachment_annotations**](docs/PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -212,6 +211,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_svg**](docs/PdfApi.md#get_pdf_in_storage_to_svg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_tiff**](docs/PdfApi.md#get_pdf_in_storage_to_tiff) | **GET** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_xls**](docs/PdfApi.md#get_pdf_in_storage_to_xls) | **GET** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and returns resulting file in response content
+*AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_xlsx**](docs/PdfApi.md#get_pdf_in_storage_to_xlsx) | **GET** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_xml**](docs/PdfApi.md#get_pdf_in_storage_to_xml) | **GET** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_xps**](docs/PdfApi.md#get_pdf_in_storage_to_xps) | **GET** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_poly_line_annotation**](docs/PdfApi.md#get_poly_line_annotation) | **GET** /pdf/\{name}/annotations/polyline/\{annotationId} | Read document page polyline annotation by ID.
@@ -241,8 +241,16 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_xps_in_storage_to_pdf**](docs/PdfApi.md#get_xps_in_storage_to_pdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_xsl_fo_in_storage_to_pdf**](docs/PdfApi.md#get_xsl_fo_in_storage_to_pdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**post_append_document**](docs/PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+*AsposePdfCloud::PdfApi* | [**post_change_password_document_in_storage**](docs/PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 *AsposePdfCloud::PdfApi* | [**post_create_field**](docs/PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
+*AsposePdfCloud::PdfApi* | [**post_decrypt_document_in_storage**](docs/PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
+*AsposePdfCloud::PdfApi* | [**post_document_image_footer**](docs/PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
+*AsposePdfCloud::PdfApi* | [**post_document_image_header**](docs/PdfApi.md#post_document_image_header) | **POST** /pdf/\{name}/header/image | Add document image header.
+*AsposePdfCloud::PdfApi* | [**post_document_page_number_stamps**](docs/PdfApi.md#post_document_page_number_stamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+*AsposePdfCloud::PdfApi* | [**post_document_text_footer**](docs/PdfApi.md#post_document_text_footer) | **POST** /pdf/\{name}/footer/text | Add document text footer.
+*AsposePdfCloud::PdfApi* | [**post_document_text_header**](docs/PdfApi.md#post_document_text_header) | **POST** /pdf/\{name}/header/text | Add document text header.
 *AsposePdfCloud::PdfApi* | [**post_document_text_replace**](docs/PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document's replace text method.
+*AsposePdfCloud::PdfApi* | [**post_encrypt_document_in_storage**](docs/PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 *AsposePdfCloud::PdfApi* | [**post_flatten_document**](docs/PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
 *AsposePdfCloud::PdfApi* | [**post_insert_image**](docs/PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
 *AsposePdfCloud::PdfApi* | [**post_move_file**](docs/PdfApi.md#post_move_file) | **POST** /storage/file | Move a specific file
@@ -269,6 +277,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_page_squiggly_annotations**](docs/PdfApi.md#post_page_squiggly_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Add document page squiggly annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_stamp_annotations**](docs/PdfApi.md#post_page_stamp_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Add document page stamp annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_strike_out_annotations**](docs/PdfApi.md#post_page_strike_out_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
+*AsposePdfCloud::PdfApi* | [**post_page_tables**](docs/PdfApi.md#post_page_tables) | **POST** /pdf/\{name}/pages/\{pageNumber}/tables | Add document page tables.
 *AsposePdfCloud::PdfApi* | [**post_page_text_annotations**](docs/PdfApi.md#post_page_text_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 *AsposePdfCloud::PdfApi* | [**post_page_text_replace**](docs/PdfApi.md#post_page_text_replace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page's replace text method.
 *AsposePdfCloud::PdfApi* | [**post_page_text_stamps**](docs/PdfApi.md#post_page_text_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
@@ -281,10 +290,13 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_add_text**](docs/PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 *AsposePdfCloud::PdfApi* | [**put_annotations_flatten**](docs/PdfApi.md#put_annotations_flatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
 *AsposePdfCloud::PdfApi* | [**put_caret_annotation**](docs/PdfApi.md#put_caret_annotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
+*AsposePdfCloud::PdfApi* | [**put_change_password_document**](docs/PdfApi.md#put_change_password_document) | **PUT** /pdf/changepassword | Change document password from content.
 *AsposePdfCloud::PdfApi* | [**put_circle_annotation**](docs/PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 *AsposePdfCloud::PdfApi* | [**put_create**](docs/PdfApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
 *AsposePdfCloud::PdfApi* | [**put_create_document**](docs/PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
 *AsposePdfCloud::PdfApi* | [**put_create_folder**](docs/PdfApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
+*AsposePdfCloud::PdfApi* | [**put_decrypt_document**](docs/PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
+*AsposePdfCloud::PdfApi* | [**put_encrypt_document**](docs/PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
 *AsposePdfCloud::PdfApi* | [**put_epub_in_storage_to_pdf**](docs/PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_fields_flatten**](docs/PdfApi.md#put_fields_flatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 *AsposePdfCloud::PdfApi* | [**put_file_attachment_annotation**](docs/PdfApi.md#put_file_attachment_annotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
@@ -326,6 +338,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_svg**](docs/PdfApi.md#put_pdf_in_request_to_svg) | **PUT** /pdf/convert/svg | Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_tiff**](docs/PdfApi.md#put_pdf_in_request_to_tiff) | **PUT** /pdf/convert/tiff | Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_xls**](docs/PdfApi.md#put_pdf_in_request_to_xls) | **PUT** /pdf/convert/xls | Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_xlsx**](docs/PdfApi.md#put_pdf_in_request_to_xlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_xml**](docs/PdfApi.md#put_pdf_in_request_to_xml) | **PUT** /pdf/convert/xml | Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_xps**](docs/PdfApi.md#put_pdf_in_request_to_xps) | **PUT** /pdf/convert/xps | Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_doc**](docs/PdfApi.md#put_pdf_in_storage_to_doc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
@@ -338,6 +351,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_svg**](docs/PdfApi.md#put_pdf_in_storage_to_svg) | **PUT** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_tiff**](docs/PdfApi.md#put_pdf_in_storage_to_tiff) | **PUT** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_xls**](docs/PdfApi.md#put_pdf_in_storage_to_xls) | **PUT** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
+*AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_xlsx**](docs/PdfApi.md#put_pdf_in_storage_to_xlsx) | **PUT** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_xml**](docs/PdfApi.md#put_pdf_in_storage_to_xml) | **PUT** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_xps**](docs/PdfApi.md#put_pdf_in_storage_to_xps) | **PUT** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_poly_line_annotation**](docs/PdfApi.md#put_poly_line_annotation) | **PUT** /pdf/\{name}/annotations/polyline/\{annotationId} | Replace document polyline annotation
@@ -359,6 +373,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_stamp_annotation_data_extract**](docs/PdfApi.md#put_stamp_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId}/data/extract | Extract document stamp annotation content to storage
 *AsposePdfCloud::PdfApi* | [**put_strike_out_annotation**](docs/PdfApi.md#put_strike_out_annotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
 *AsposePdfCloud::PdfApi* | [**put_svg_in_storage_to_pdf**](docs/PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
+*AsposePdfCloud::PdfApi* | [**put_table**](docs/PdfApi.md#put_table) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
 *AsposePdfCloud::PdfApi* | [**put_text_annotation**](docs/PdfApi.md#put_text_annotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
 *AsposePdfCloud::PdfApi* | [**put_underline_annotation**](docs/PdfApi.md#put_underline_annotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
 *AsposePdfCloud::PdfApi* | [**put_update_field**](docs/PdfApi.md#put_update_field) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
@@ -379,13 +394,18 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::AntialiasingProcessingType](docs/AntialiasingProcessingType.md)
  - [AsposePdfCloud::AppendDocument](docs/AppendDocument.md)
  - [AsposePdfCloud::AsposeResponse](docs/AsposeResponse.md)
+ - [AsposePdfCloud::BorderCornerStyle](docs/BorderCornerStyle.md)
+ - [AsposePdfCloud::BorderInfo](docs/BorderInfo.md)
  - [AsposePdfCloud::CapStyle](docs/CapStyle.md)
  - [AsposePdfCloud::CaptionPosition](docs/CaptionPosition.md)
  - [AsposePdfCloud::CaretSymbol](docs/CaretSymbol.md)
+ - [AsposePdfCloud::Cell](docs/Cell.md)
  - [AsposePdfCloud::CellRecognized](docs/CellRecognized.md)
  - [AsposePdfCloud::Color](docs/Color.md)
  - [AsposePdfCloud::ColorDepth](docs/ColorDepth.md)
+ - [AsposePdfCloud::ColumnAdjustment](docs/ColumnAdjustment.md)
  - [AsposePdfCloud::CompressionType](docs/CompressionType.md)
+ - [AsposePdfCloud::CryptoAlgorithm](docs/CryptoAlgorithm.md)
  - [AsposePdfCloud::DiscUsage](docs/DiscUsage.md)
  - [AsposePdfCloud::DocFormat](docs/DocFormat.md)
  - [AsposePdfCloud::DocRecognitionMode](docs/DocRecognitionMode.md)
@@ -399,6 +419,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::FontSavingModes](docs/FontSavingModes.md)
  - [AsposePdfCloud::FontStyles](docs/FontStyles.md)
  - [AsposePdfCloud::FreeTextIntent](docs/FreeTextIntent.md)
+ - [AsposePdfCloud::GraphInfo](docs/GraphInfo.md)
  - [AsposePdfCloud::HorizontalAlignment](docs/HorizontalAlignment.md)
  - [AsposePdfCloud::HtmlDocumentType](docs/HtmlDocumentType.md)
  - [AsposePdfCloud::HtmlMarkupGenerationModes](docs/HtmlMarkupGenerationModes.md)
@@ -415,18 +436,21 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::LinkElement](docs/LinkElement.md)
  - [AsposePdfCloud::LinkHighlightingMode](docs/LinkHighlightingMode.md)
  - [AsposePdfCloud::MarginInfo](docs/MarginInfo.md)
+ - [AsposePdfCloud::MarginInfo2](docs/MarginInfo2.md)
  - [AsposePdfCloud::MergeDocuments](docs/MergeDocuments.md)
  - [AsposePdfCloud::OptimizeOptions](docs/OptimizeOptions.md)
  - [AsposePdfCloud::PageWordCount](docs/PageWordCount.md)
  - [AsposePdfCloud::Paragraph](docs/Paragraph.md)
  - [AsposePdfCloud::PartsEmbeddingModes](docs/PartsEmbeddingModes.md)
  - [AsposePdfCloud::PdfAType](docs/PdfAType.md)
+ - [AsposePdfCloud::PermissionsFlags](docs/PermissionsFlags.md)
  - [AsposePdfCloud::Point](docs/Point.md)
  - [AsposePdfCloud::PolyIntent](docs/PolyIntent.md)
  - [AsposePdfCloud::Position](docs/Position.md)
  - [AsposePdfCloud::RasterImagesSavingModes](docs/RasterImagesSavingModes.md)
  - [AsposePdfCloud::Rectangle](docs/Rectangle.md)
  - [AsposePdfCloud::Rotation](docs/Rotation.md)
+ - [AsposePdfCloud::Row](docs/Row.md)
  - [AsposePdfCloud::RowRecognized](docs/RowRecognized.md)
  - [AsposePdfCloud::Segment](docs/Segment.md)
  - [AsposePdfCloud::ShapeType](docs/ShapeType.md)
@@ -438,6 +462,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::Stamp](docs/Stamp.md)
  - [AsposePdfCloud::StampIcon](docs/StampIcon.md)
  - [AsposePdfCloud::StampType](docs/StampType.md)
+ - [AsposePdfCloud::TableBroken](docs/TableBroken.md)
  - [AsposePdfCloud::TextHorizontalAlignment](docs/TextHorizontalAlignment.md)
  - [AsposePdfCloud::TextIcon](docs/TextIcon.md)
  - [AsposePdfCloud::TextLine](docs/TextLine.md)
@@ -546,6 +571,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::StrikeOutAnnotationResponse](docs/StrikeOutAnnotationResponse.md)
  - [AsposePdfCloud::StrikeOutAnnotations](docs/StrikeOutAnnotations.md)
  - [AsposePdfCloud::StrikeOutAnnotationsResponse](docs/StrikeOutAnnotationsResponse.md)
+ - [AsposePdfCloud::Table](docs/Table.md)
  - [AsposePdfCloud::TableRecognized](docs/TableRecognized.md)
  - [AsposePdfCloud::TableRecognizedResponse](docs/TableRecognizedResponse.md)
  - [AsposePdfCloud::TablesRecognized](docs/TablesRecognized.md)
@@ -560,13 +586,18 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::UnderlineAnnotationsResponse](docs/UnderlineAnnotationsResponse.md)
  - [AsposePdfCloud::WordCountResponse](docs/WordCountResponse.md)
  - [AsposePdfCloud::AnnotationInfo](docs/AnnotationInfo.md)
+ - [AsposePdfCloud::ImageFooter](docs/ImageFooter.md)
+ - [AsposePdfCloud::ImageHeader](docs/ImageHeader.md)
  - [AsposePdfCloud::ImageStamp](docs/ImageStamp.md)
  - [AsposePdfCloud::MarkupAnnotation](docs/MarkupAnnotation.md)
  - [AsposePdfCloud::MovieAnnotation](docs/MovieAnnotation.md)
+ - [AsposePdfCloud::PageNumberStamp](docs/PageNumberStamp.md)
  - [AsposePdfCloud::PdfPageStamp](docs/PdfPageStamp.md)
  - [AsposePdfCloud::PopupAnnotation](docs/PopupAnnotation.md)
  - [AsposePdfCloud::RedactionAnnotation](docs/RedactionAnnotation.md)
  - [AsposePdfCloud::ScreenAnnotation](docs/ScreenAnnotation.md)
+ - [AsposePdfCloud::TextFooter](docs/TextFooter.md)
+ - [AsposePdfCloud::TextHeader](docs/TextHeader.md)
  - [AsposePdfCloud::TextStamp](docs/TextStamp.md)
  - [AsposePdfCloud::CaretAnnotation](docs/CaretAnnotation.md)
  - [AsposePdfCloud::CommonFigureAnnotation](docs/CommonFigureAnnotation.md)

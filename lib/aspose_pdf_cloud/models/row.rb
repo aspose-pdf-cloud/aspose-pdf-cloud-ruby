@@ -23,38 +23,73 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # This class represents a margin for different objects.
-  class MarginInfo
-    # Gets or sets a float value that indicates the left margin.
-    attr_accessor :left
+  # Represents a row of the table.
+  class Row
+    # Gets or sets the background color.
+    attr_accessor :background_color
 
-    # Gets or sets a float value that indicates the right margin.
-    attr_accessor :right
+    # Gets or sets the border.
+    attr_accessor :border
 
-    # Gets or sets a float value that indicates the top margin.
-    attr_accessor :top
+    # Sets the cells of the row.
+    attr_accessor :cells
 
-    # Gets or sets a float value that indicates the bottom margin.
-    attr_accessor :bottom
+    # Gets default cell border;
+    attr_accessor :default_cell_border
+
+    # Gets height for row;
+    attr_accessor :min_row_height
+
+    # Gets fixed row height - row may have fixed height;
+    attr_accessor :fixed_row_height
+
+    # Gets fixed row is in new page - page with this property should be printed to next page Default false;
+    attr_accessor :is_in_new_page
+
+    # Gets is row can be broken between two pages
+    attr_accessor :is_row_broken
+
+    # Gets or sets default text state for row cells
+    attr_accessor :default_cell_text_state
+
+    # Gets or sets default margin for row cells
+    attr_accessor :default_cell_padding
+
+    # Gets or sets the vertical alignment.
+    attr_accessor :vertical_alignment
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'left' => :'Left',
-        :'right' => :'Right',
-        :'top' => :'Top',
-        :'bottom' => :'Bottom'
+        :'background_color' => :'BackgroundColor',
+        :'border' => :'Border',
+        :'cells' => :'Cells',
+        :'default_cell_border' => :'DefaultCellBorder',
+        :'min_row_height' => :'MinRowHeight',
+        :'fixed_row_height' => :'FixedRowHeight',
+        :'is_in_new_page' => :'IsInNewPage',
+        :'is_row_broken' => :'IsRowBroken',
+        :'default_cell_text_state' => :'DefaultCellTextState',
+        :'default_cell_padding' => :'DefaultCellPadding',
+        :'vertical_alignment' => :'VerticalAlignment'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'left' => :'Float',
-        :'right' => :'Float',
-        :'top' => :'Float',
-        :'bottom' => :'Float'
+        :'background_color' => :'Color',
+        :'border' => :'BorderInfo',
+        :'cells' => :'Array<Cell>',
+        :'default_cell_border' => :'BorderInfo',
+        :'min_row_height' => :'Float',
+        :'fixed_row_height' => :'Float',
+        :'is_in_new_page' => :'BOOLEAN',
+        :'is_row_broken' => :'BOOLEAN',
+        :'default_cell_text_state' => :'TextState',
+        :'default_cell_padding' => :'MarginInfo',
+        :'vertical_alignment' => :'VerticalAlignment'
       }
     end
 
@@ -66,20 +101,50 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Left')
-        self.left = attributes[:'Left']
+      if attributes.has_key?(:'BackgroundColor')
+        self.background_color = attributes[:'BackgroundColor']
       end
 
-      if attributes.has_key?(:'Right')
-        self.right = attributes[:'Right']
+      if attributes.has_key?(:'Border')
+        self.border = attributes[:'Border']
       end
 
-      if attributes.has_key?(:'Top')
-        self.top = attributes[:'Top']
+      if attributes.has_key?(:'Cells')
+        if (value = attributes[:'Cells']).is_a?(Array)
+          self.cells = value
+        end
       end
 
-      if attributes.has_key?(:'Bottom')
-        self.bottom = attributes[:'Bottom']
+      if attributes.has_key?(:'DefaultCellBorder')
+        self.default_cell_border = attributes[:'DefaultCellBorder']
+      end
+
+      if attributes.has_key?(:'MinRowHeight')
+        self.min_row_height = attributes[:'MinRowHeight']
+      end
+
+      if attributes.has_key?(:'FixedRowHeight')
+        self.fixed_row_height = attributes[:'FixedRowHeight']
+      end
+
+      if attributes.has_key?(:'IsInNewPage')
+        self.is_in_new_page = attributes[:'IsInNewPage']
+      end
+
+      if attributes.has_key?(:'IsRowBroken')
+        self.is_row_broken = attributes[:'IsRowBroken']
+      end
+
+      if attributes.has_key?(:'DefaultCellTextState')
+        self.default_cell_text_state = attributes[:'DefaultCellTextState']
+      end
+
+      if attributes.has_key?(:'DefaultCellPadding')
+        self.default_cell_padding = attributes[:'DefaultCellPadding']
+      end
+
+      if attributes.has_key?(:'VerticalAlignment')
+        self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
     end
@@ -88,12 +153,17 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @cells.nil?
+        invalid_properties.push("invalid value for 'cells', cells cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @cells.nil?
       return true
     end
 
@@ -102,10 +172,17 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          left == o.left &&
-          right == o.right &&
-          top == o.top &&
-          bottom == o.bottom
+          background_color == o.background_color &&
+          border == o.border &&
+          cells == o.cells &&
+          default_cell_border == o.default_cell_border &&
+          min_row_height == o.min_row_height &&
+          fixed_row_height == o.fixed_row_height &&
+          is_in_new_page == o.is_in_new_page &&
+          is_row_broken == o.is_row_broken &&
+          default_cell_text_state == o.default_cell_text_state &&
+          default_cell_padding == o.default_cell_padding &&
+          vertical_alignment == o.vertical_alignment
     end
 
     # @see the `==` method
@@ -117,7 +194,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [left, right, top, bottom].hash
+      [background_color, border, cells, default_cell_border, min_row_height, fixed_row_height, is_in_new_page, is_row_broken, default_cell_text_state, default_cell_padding, vertical_alignment].hash
     end
 
     # Builds the object from hash

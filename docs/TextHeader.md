@@ -1,5 +1,5 @@
-﻿# AsposePdfCloud::ImageStamp
-Represents Pdf stamps.
+﻿# AsposePdfCloud::TextHeader
+Represents Pdf text header.
 
 ## Properties
 Name | Type | Description | Notes
@@ -13,11 +13,9 @@ Name | Type | Description | Notes
 **x_indent** | **Float** | Horizontal stamp coordinate, starting from the left. | [optional] 
 **y_indent** | **Float** | Vertical stamp coordinate, starting from the bottom. | [optional] 
 **zoom** | **Float** | Zooming factor of the stamp. Allows to scale stamp. | [optional] 
-**file_name** | **String** | Gets or sets the file name. | [optional] 
-**width** | **Float** | Gets or sets image width. Setting this property allos to scal image horizontally. | [optional] 
-**height** | **Float** | Gets or sets image height. Setting this image allows to scale image vertically. | [optional] 
-**vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets or sets vertical alignment of stamp on page. | [optional] 
-**bottom_margin** | **Float** | Gets or sets bottom margin of stamp. | [optional] 
+**text_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Alignment of the text inside the stamp. | [optional] 
+**value** | **String** | Gets or sets string value which is used as stamp on the page. | [optional] 
+**text_state** | [**TextState**](TextState.md) | Gets text properties of the stamp. See  for details. | [optional] 
 **left_margin** | **Float** | Gets or sets left margin of stamp. | [optional] 
 **top_margin** | **Float** | Gets or sets top margin of stamp. | [optional] 
 **right_margin** | **Float** | Gets or sets right margin of stamp. | [optional] 

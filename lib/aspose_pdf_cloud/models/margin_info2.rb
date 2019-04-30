@@ -23,18 +23,14 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # This class represents a margin for different objects.
-  class MarginInfo
-    # Gets or sets a float value that indicates the left margin.
+
+  class MarginInfo2
     attr_accessor :left
 
-    # Gets or sets a float value that indicates the right margin.
     attr_accessor :right
 
-    # Gets or sets a float value that indicates the top margin.
     attr_accessor :top
 
-    # Gets or sets a float value that indicates the bottom margin.
     attr_accessor :bottom
 
 
@@ -88,12 +84,32 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @left.nil?
+        invalid_properties.push("invalid value for 'left', left cannot be nil.")
+      end
+
+      if @right.nil?
+        invalid_properties.push("invalid value for 'right', right cannot be nil.")
+      end
+
+      if @top.nil?
+        invalid_properties.push("invalid value for 'top', top cannot be nil.")
+      end
+
+      if @bottom.nil?
+        invalid_properties.push("invalid value for 'bottom', bottom cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @left.nil?
+      return false if @right.nil?
+      return false if @top.nil?
+      return false if @bottom.nil?
       return true
     end
 

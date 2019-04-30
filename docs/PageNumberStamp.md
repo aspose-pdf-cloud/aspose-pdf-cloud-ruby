@@ -1,4 +1,4 @@
-﻿# AsposePdfCloud::ImageStamp
+﻿# AsposePdfCloud::PageNumberStamp
 Represents Pdf stamps.
 
 ## Properties
@@ -13,9 +13,8 @@ Name | Type | Description | Notes
 **x_indent** | **Float** | Horizontal stamp coordinate, starting from the left. | [optional] 
 **y_indent** | **Float** | Vertical stamp coordinate, starting from the bottom. | [optional] 
 **zoom** | **Float** | Zooming factor of the stamp. Allows to scale stamp. | [optional] 
-**file_name** | **String** | Gets or sets the file name. | [optional] 
-**width** | **Float** | Gets or sets image width. Setting this property allos to scal image horizontally. | [optional] 
-**height** | **Float** | Gets or sets image height. Setting this image allows to scale image vertically. | [optional] 
+**value** | **String** | Gets or sets string value which is used as stamp on the page. | [optional] 
+**starting_number** | **Integer** | Gets or sets value of the number of starting page. Other pages will be numbered starting from this value. | [optional] 
 **vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets or sets vertical alignment of stamp on page. | [optional] 
 **bottom_margin** | **Float** | Gets or sets bottom margin of stamp. | [optional] 
 **left_margin** | **Float** | Gets or sets left margin of stamp. | [optional] 

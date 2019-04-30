@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **bottom_margin** | **Float** |  | [optional] 
 **page_width** | **Float** |  | [optional] 
 **page_height** | **Float** |  | [optional] 
-**margin_info** | [**MarginInfo**](MarginInfo.md) |  | [optional] 
+**margin_info** | [**MarginInfo2**](MarginInfo2.md) |  | [optional] 
 
 

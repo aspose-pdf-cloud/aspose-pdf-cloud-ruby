@@ -23,38 +23,73 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # This class represents a margin for different objects.
-  class MarginInfo
-    # Gets or sets a float value that indicates the left margin.
-    attr_accessor :left
+  # Represents graphics info.
+  class GraphInfo
+    # Gets or sets a float value that indicates the line width of the graph.
+    attr_accessor :line_width
 
-    # Gets or sets a float value that indicates the right margin.
-    attr_accessor :right
+    # Gets or sets a  object that indicates the color of the graph.
+    attr_accessor :color
 
-    # Gets or sets a float value that indicates the top margin.
-    attr_accessor :top
+    # Gets or sets a dash array.
+    attr_accessor :dash_array
 
-    # Gets or sets a float value that indicates the bottom margin.
-    attr_accessor :bottom
+    # Gets or sets a dash phase.
+    attr_accessor :dash_phase
+
+    # Gets or sets a  object that indicates the fill color of the graph.
+    attr_accessor :fill_color
+
+    # Gets or sets is border doubled.
+    attr_accessor :is_doubled
+
+    # Gets or sets a float value that indicates the skew angle of the x-coordinate when transforming a coordinate system.
+    attr_accessor :skew_angle_x
+
+    # Gets or sets a float value that indicates the skew angle of the y-coordinate when transforming a coordinate system.
+    attr_accessor :skew_angle_y
+
+    # Gets or sets a float value that indicates the scaling rate of the x-coordinate when transforming a coordinate system.
+    attr_accessor :scaling_rate_x
+
+    # Gets or sets a float value that indicates the scaling rate of the y-coordinate when transforming a coordinate system.
+    attr_accessor :scaling_rate_y
+
+    # Gets or sets a float value that indicates the rotation angle of the coordinate system  when transforming a coordinate system.
+    attr_accessor :rotation_angle
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'left' => :'Left',
-        :'right' => :'Right',
-        :'top' => :'Top',
-        :'bottom' => :'Bottom'
+        :'line_width' => :'LineWidth',
+        :'color' => :'Color',
+        :'dash_array' => :'DashArray',
+        :'dash_phase' => :'DashPhase',
+        :'fill_color' => :'FillColor',
+        :'is_doubled' => :'IsDoubled',
+        :'skew_angle_x' => :'SkewAngleX',
+        :'skew_angle_y' => :'SkewAngleY',
+        :'scaling_rate_x' => :'ScalingRateX',
+        :'scaling_rate_y' => :'ScalingRateY',
+        :'rotation_angle' => :'RotationAngle'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'left' => :'Float',
-        :'right' => :'Float',
-        :'top' => :'Float',
-        :'bottom' => :'Float'
+        :'line_width' => :'Float',
+        :'color' => :'Color',
+        :'dash_array' => :'Array<Integer>',
+        :'dash_phase' => :'Integer',
+        :'fill_color' => :'Color',
+        :'is_doubled' => :'BOOLEAN',
+        :'skew_angle_x' => :'Float',
+        :'skew_angle_y' => :'Float',
+        :'scaling_rate_x' => :'Float',
+        :'scaling_rate_y' => :'Float',
+        :'rotation_angle' => :'Float'
       }
     end
 
@@ -66,20 +101,50 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Left')
-        self.left = attributes[:'Left']
+      if attributes.has_key?(:'LineWidth')
+        self.line_width = attributes[:'LineWidth']
       end
 
-      if attributes.has_key?(:'Right')
-        self.right = attributes[:'Right']
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
       end
 
-      if attributes.has_key?(:'Top')
-        self.top = attributes[:'Top']
+      if attributes.has_key?(:'DashArray')
+        if (value = attributes[:'DashArray']).is_a?(Array)
+          self.dash_array = value
+        end
       end
 
-      if attributes.has_key?(:'Bottom')
-        self.bottom = attributes[:'Bottom']
+      if attributes.has_key?(:'DashPhase')
+        self.dash_phase = attributes[:'DashPhase']
+      end
+
+      if attributes.has_key?(:'FillColor')
+        self.fill_color = attributes[:'FillColor']
+      end
+
+      if attributes.has_key?(:'IsDoubled')
+        self.is_doubled = attributes[:'IsDoubled']
+      end
+
+      if attributes.has_key?(:'SkewAngleX')
+        self.skew_angle_x = attributes[:'SkewAngleX']
+      end
+
+      if attributes.has_key?(:'SkewAngleY')
+        self.skew_angle_y = attributes[:'SkewAngleY']
+      end
+
+      if attributes.has_key?(:'ScalingRateX')
+        self.scaling_rate_x = attributes[:'ScalingRateX']
+      end
+
+      if attributes.has_key?(:'ScalingRateY')
+        self.scaling_rate_y = attributes[:'ScalingRateY']
+      end
+
+      if attributes.has_key?(:'RotationAngle')
+        self.rotation_angle = attributes[:'RotationAngle']
       end
 
     end
@@ -102,10 +167,17 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          left == o.left &&
-          right == o.right &&
-          top == o.top &&
-          bottom == o.bottom
+          line_width == o.line_width &&
+          color == o.color &&
+          dash_array == o.dash_array &&
+          dash_phase == o.dash_phase &&
+          fill_color == o.fill_color &&
+          is_doubled == o.is_doubled &&
+          skew_angle_x == o.skew_angle_x &&
+          skew_angle_y == o.skew_angle_y &&
+          scaling_rate_x == o.scaling_rate_x &&
+          scaling_rate_y == o.scaling_rate_y &&
+          rotation_angle == o.rotation_angle
     end
 
     # @see the `==` method
@@ -117,7 +189,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [left, right, top, bottom].hash
+      [line_width, color, dash_array, dash_phase, fill_color, is_doubled, skew_angle_x, skew_angle_y, scaling_rate_x, scaling_rate_y, rotation_angle].hash
     end
 
     # Builds the object from hash
