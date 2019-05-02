@@ -6728,7 +6728,6 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
- **file2** | **File**| A file to be converted. | [optional] 
 
 ### Return type
 

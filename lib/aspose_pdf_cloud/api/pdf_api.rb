@@ -19982,7 +19982,6 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @option opts [File] :file2 A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_xls(out_path, opts = {})
       @api_client.request_token_if_needed
@@ -20007,7 +20006,6 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
-    # @option opts [File] :file2 A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_xls_with_http_info(out_path, opts = {})
       if @api_client.config.debugging
@@ -20041,8 +20039,6 @@ module AsposePdfCloud
       # Fix header in file
       post_body = nil
       post_body =  opts[:'file'] if !opts[:'file'].nil?
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
-      post_body =  opts[:'file2'] if !opts[:'file2'].nil?
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
 
       # http body (model)
