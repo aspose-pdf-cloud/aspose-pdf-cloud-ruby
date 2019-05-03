@@ -72,7 +72,7 @@ module AsposePdfCloud
         :'bottom_margin' => :'Float',
         :'page_width' => :'Float',
         :'page_height' => :'Float',
-        :'margin_info' => :'MarginInfo2'
+        :'margin_info' => :'MarginInfo'
       }
     end
 

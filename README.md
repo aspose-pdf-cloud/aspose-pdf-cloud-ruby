@@ -85,7 +85,7 @@ All Aspose.PDF Cloud SDKs are licensed under [MIT License](LICENSE).
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api-dev.aspose.cloud/v2.0*
+All URIs are relative to *https://api.aspose.cloud/v2.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -436,7 +436,6 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::LinkElement](docs/LinkElement.md)
  - [AsposePdfCloud::LinkHighlightingMode](docs/LinkHighlightingMode.md)
  - [AsposePdfCloud::MarginInfo](docs/MarginInfo.md)
- - [AsposePdfCloud::MarginInfo2](docs/MarginInfo2.md)
  - [AsposePdfCloud::MergeDocuments](docs/MergeDocuments.md)
  - [AsposePdfCloud::OptimizeOptions](docs/OptimizeOptions.md)
  - [AsposePdfCloud::PageWordCount](docs/PageWordCount.md)
