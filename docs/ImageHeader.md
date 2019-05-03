@@ -1,5 +1,5 @@
-﻿# AsposePdfCloud::ImageStamp
-Represents Pdf stamps.
+﻿# AsposePdfCloud::ImageHeader
+Represents Pdf image header.
 
 ## Properties
 Name | Type | Description | Notes
@@ -16,8 +16,6 @@ Name | Type | Description | Notes
 **file_name** | **String** | Gets or sets the file name. | [optional] 
 **width** | **Float** | Gets or sets image width. Setting this property allos to scal image horizontally. | [optional] 
 **height** | **Float** | Gets or sets image height. Setting this image allows to scale image vertically. | [optional] 
-**vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets or sets vertical alignment of stamp on page. | [optional] 
-**bottom_margin** | **Float** | Gets or sets bottom margin of stamp. | [optional] 
 **left_margin** | **Float** | Gets or sets left margin of stamp. | [optional] 
 **top_margin** | **Float** | Gets or sets top margin of stamp. | [optional] 
 **right_margin** | **Float** | Gets or sets right margin of stamp. | [optional] 

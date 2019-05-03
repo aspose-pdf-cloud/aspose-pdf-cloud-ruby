@@ -1739,7 +1739,7 @@ module AsposePdfCloud
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -1983,81 +1983,6 @@ module AsposePdfCloud
         :return_type => 'AttachmentsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_attachments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Read document bookmark/bookmarks (including children).
-    # 
-    # @param name The document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :bookmark_path The bookmark path. Leave it empty if you want to get all the bookmarks in the document.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The document folder.
-    # @return [File]
-    def get_document_bookmarks(name, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.refresh_token
-          data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Read document bookmark/bookmarks (including children).
-    # 
-    # @param name The document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :bookmark_path The bookmark path. Leave it empty if you want to get all the bookmarks in the document.
-    # @option opts [String] :storage The document storage.
-    # @option opts [String] :folder The document folder.
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_document_bookmarks_with_http_info(name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_document_bookmarks ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_bookmarks"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/bookmarks".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'bookmarkPath'] = opts[:'bookmark_path'] if !opts[:'bookmark_path'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_document_bookmarks\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9572,6 +9497,90 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @return [File]
+    def get_pdf_in_storage_to_xlsx(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_pdf_in_storage_to_xlsx_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = get_pdf_in_storage_to_xlsx_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_xlsx_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_xlsx ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_xlsx"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xlsx".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_xlsx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (located on storage) to XML format and returns resulting file in response content
     # 
     # @param name The document name.
@@ -11846,6 +11855,99 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Change document password in storage.
+    # 
+    # @param name Document name.
+    # @param owner_password Owner password (encrypted Base64).
+    # @param new_user_password New user password (encrypted Base64).
+    # @param new_owner_password New owner password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_change_password_document_in_storage(name, owner_password, new_user_password, new_owner_password, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_change_password_document_in_storage_with_http_info(name, owner_password, new_user_password, new_owner_password, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_change_password_document_in_storage_with_http_info(name, owner_password, new_user_password, new_owner_password, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Change document password in storage.
+    # 
+    # @param name Document name.
+    # @param owner_password Owner password (encrypted Base64).
+    # @param new_user_password New user password (encrypted Base64).
+    # @param new_owner_password New owner password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_change_password_document_in_storage_with_http_info(name, owner_password, new_user_password, new_owner_password, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_change_password_document_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_change_password_document_in_storage"
+      end
+      # verify the required parameter 'owner_password' is set
+      if @api_client.config.client_side_validation && owner_password.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_password' when calling PdfApi.post_change_password_document_in_storage"
+      end
+      # verify the required parameter 'new_user_password' is set
+      if @api_client.config.client_side_validation && new_user_password.nil?
+        fail ArgumentError, "Missing the required parameter 'new_user_password' when calling PdfApi.post_change_password_document_in_storage"
+      end
+      # verify the required parameter 'new_owner_password' is set
+      if @api_client.config.client_side_validation && new_owner_password.nil?
+        fail ArgumentError, "Missing the required parameter 'new_owner_password' when calling PdfApi.post_change_password_document_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/changepassword".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'ownerPassword'] = owner_password
+      query_params[:'newUserPassword'] = new_user_password
+      query_params[:'newOwnerPassword'] = new_owner_password
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_change_password_document_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create field.
     # 
     # @param name The document name.
@@ -11926,6 +12028,500 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Decrypt document in storage.
+    # 
+    # @param name Document name.
+    # @param password The password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_decrypt_document_in_storage(name, password, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_decrypt_document_in_storage_with_http_info(name, password, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_decrypt_document_in_storage_with_http_info(name, password, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Decrypt document in storage.
+    # 
+    # @param name Document name.
+    # @param password The password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_decrypt_document_in_storage_with_http_info(name, password, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_decrypt_document_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_decrypt_document_in_storage"
+      end
+      # verify the required parameter 'password' is set
+      if @api_client.config.client_side_validation && password.nil?
+        fail ArgumentError, "Missing the required parameter 'password' when calling PdfApi.post_decrypt_document_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/decrypt".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'password'] = password
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_decrypt_document_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document image footer.
+    # 
+    # @param name The document name.
+    # @param image_footer The image footer.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_document_image_footer(name, image_footer, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_document_image_footer_with_http_info(name, image_footer, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_image_footer_with_http_info(name, image_footer, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document image footer.
+    # 
+    # @param name The document name.
+    # @param image_footer The image footer.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_document_image_footer_with_http_info(name, image_footer, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_document_image_footer ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_image_footer"
+      end
+      # verify the required parameter 'image_footer' is set
+      if @api_client.config.client_side_validation && image_footer.nil?
+        fail ArgumentError, "Missing the required parameter 'image_footer' when calling PdfApi.post_document_image_footer"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/footer/image".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'startPageNumber'] = opts[:'start_page_number'] if !opts[:'start_page_number'].nil?
+      query_params[:'endPageNumber'] = opts[:'end_page_number'] if !opts[:'end_page_number'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(image_footer)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_document_image_footer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document image header.
+    # 
+    # @param name The document name.
+    # @param image_header The image header.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_document_image_header(name, image_header, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_document_image_header_with_http_info(name, image_header, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_image_header_with_http_info(name, image_header, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document image header.
+    # 
+    # @param name The document name.
+    # @param image_header The image header.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_document_image_header_with_http_info(name, image_header, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_document_image_header ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_image_header"
+      end
+      # verify the required parameter 'image_header' is set
+      if @api_client.config.client_side_validation && image_header.nil?
+        fail ArgumentError, "Missing the required parameter 'image_header' when calling PdfApi.post_document_image_header"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/header/image".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'startPageNumber'] = opts[:'start_page_number'] if !opts[:'start_page_number'].nil?
+      query_params[:'endPageNumber'] = opts[:'end_page_number'] if !opts[:'end_page_number'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(image_header)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_document_image_header\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document page number stamps.
+    # 
+    # @param name The document name.
+    # @param stamp The stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_document_page_number_stamps(name, stamp, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_document_page_number_stamps_with_http_info(name, stamp, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_page_number_stamps_with_http_info(name, stamp, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page number stamps.
+    # 
+    # @param name The document name.
+    # @param stamp The stamp.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_document_page_number_stamps_with_http_info(name, stamp, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_document_page_number_stamps ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_page_number_stamps"
+      end
+      # verify the required parameter 'stamp' is set
+      if @api_client.config.client_side_validation && stamp.nil?
+        fail ArgumentError, "Missing the required parameter 'stamp' when calling PdfApi.post_document_page_number_stamps"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/stamps/pagenumber".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'startPageNumber'] = opts[:'start_page_number'] if !opts[:'start_page_number'].nil?
+      query_params[:'endPageNumber'] = opts[:'end_page_number'] if !opts[:'end_page_number'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(stamp)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_document_page_number_stamps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document text footer.
+    # 
+    # @param name The document name.
+    # @param text_footer The text footer.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_document_text_footer(name, text_footer, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_document_text_footer_with_http_info(name, text_footer, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_text_footer_with_http_info(name, text_footer, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document text footer.
+    # 
+    # @param name The document name.
+    # @param text_footer The text footer.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_document_text_footer_with_http_info(name, text_footer, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_document_text_footer ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_text_footer"
+      end
+      # verify the required parameter 'text_footer' is set
+      if @api_client.config.client_side_validation && text_footer.nil?
+        fail ArgumentError, "Missing the required parameter 'text_footer' when calling PdfApi.post_document_text_footer"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/footer/text".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'startPageNumber'] = opts[:'start_page_number'] if !opts[:'start_page_number'].nil?
+      query_params[:'endPageNumber'] = opts[:'end_page_number'] if !opts[:'end_page_number'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(text_footer)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_document_text_footer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document text header.
+    # 
+    # @param name The document name.
+    # @param text_header The text header.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_document_text_header(name, text_header, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_document_text_header_with_http_info(name, text_header, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_document_text_header_with_http_info(name, text_header, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document text header.
+    # 
+    # @param name The document name.
+    # @param text_header The text header.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :start_page_number The start page number.
+    # @option opts [Integer] :end_page_number The end page number.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_document_text_header_with_http_info(name, text_header, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_document_text_header ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_text_header"
+      end
+      # verify the required parameter 'text_header' is set
+      if @api_client.config.client_side_validation && text_header.nil?
+        fail ArgumentError, "Missing the required parameter 'text_header' when calling PdfApi.post_document_text_header"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/header/text".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'startPageNumber'] = opts[:'start_page_number'] if !opts[:'start_page_number'].nil?
+      query_params[:'endPageNumber'] = opts[:'end_page_number'] if !opts[:'end_page_number'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(text_header)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_document_text_header\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Document's replace text method.
     # 
     # @param name 
@@ -11999,6 +12595,105 @@ module AsposePdfCloud
         :return_type => 'TextReplaceResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_document_text_replace\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Encrypt document in storage.
+    # 
+    # @param name Document name.
+    # @param user_password User password (encrypted Base64).
+    # @param owner_password Owner password (encrypted Base64).
+    # @param crypto_algorithm Cryptographic algorithm, see  for details.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<PermissionsFlags>] :permissions_flags Array of document permissions, see  for details.
+    # @option opts [BOOLEAN] :use_pdf20 Support for revision 6 (Extension 8).
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_encrypt_document_in_storage(name, user_password, owner_password, crypto_algorithm, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_encrypt_document_in_storage_with_http_info(name, user_password, owner_password, crypto_algorithm, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_encrypt_document_in_storage_with_http_info(name, user_password, owner_password, crypto_algorithm, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Encrypt document in storage.
+    # 
+    # @param name Document name.
+    # @param user_password User password (encrypted Base64).
+    # @param owner_password Owner password (encrypted Base64).
+    # @param crypto_algorithm Cryptographic algorithm, see  for details.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<PermissionsFlags>] :permissions_flags Array of document permissions, see  for details.
+    # @option opts [BOOLEAN] :use_pdf20 Support for revision 6 (Extension 8).
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_encrypt_document_in_storage_with_http_info(name, user_password, owner_password, crypto_algorithm, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_encrypt_document_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_encrypt_document_in_storage"
+      end
+      # verify the required parameter 'user_password' is set
+      if @api_client.config.client_side_validation && user_password.nil?
+        fail ArgumentError, "Missing the required parameter 'user_password' when calling PdfApi.post_encrypt_document_in_storage"
+      end
+      # verify the required parameter 'owner_password' is set
+      if @api_client.config.client_side_validation && owner_password.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_password' when calling PdfApi.post_encrypt_document_in_storage"
+      end
+      # verify the required parameter 'crypto_algorithm' is set
+      if @api_client.config.client_side_validation && crypto_algorithm.nil?
+        fail ArgumentError, "Missing the required parameter 'crypto_algorithm' when calling PdfApi.post_encrypt_document_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/encrypt".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'userPassword'] = user_password
+      query_params[:'ownerPassword'] = owner_password
+      query_params[:'cryptoAlgorithm'] = crypto_algorithm
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
+      query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_encrypt_document_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14178,6 +14873,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document page tables.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param tables The array of table.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_tables(name, page_number, tables, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_tables_with_http_info(name, page_number, tables, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = post_page_tables_with_http_info(name, page_number, tables, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document page tables.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param tables The array of table.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_tables_with_http_info(name, page_number, tables, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_tables ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_tables"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_tables"
+      end
+      # verify the required parameter 'tables' is set
+      if @api_client.config.client_side_validation && tables.nil?
+        fail ArgumentError, "Missing the required parameter 'tables' when calling PdfApi.post_page_tables"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/tables".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(tables)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page text annotations.
     # 
     # @param name The document name.
@@ -15141,6 +15919,101 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Change document password from content.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param owner_password Owner password (encrypted Base64).
+    # @param new_user_password New user password (encrypted Base64).
+    # @param new_owner_password New owner password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be changed password.
+    # @return [AsposeResponse]
+    def put_change_password_document(out_path, owner_password, new_user_password, new_owner_password, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_change_password_document_with_http_info(out_path, owner_password, new_user_password, new_owner_password, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_change_password_document_with_http_info(out_path, owner_password, new_user_password, new_owner_password, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Change document password from content.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param owner_password Owner password (encrypted Base64).
+    # @param new_user_password New user password (encrypted Base64).
+    # @param new_owner_password New owner password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be changed password.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_change_password_document_with_http_info(out_path, owner_password, new_user_password, new_owner_password, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_change_password_document ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_change_password_document"
+      end
+      # verify the required parameter 'owner_password' is set
+      if @api_client.config.client_side_validation && owner_password.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_password' when calling PdfApi.put_change_password_document"
+      end
+      # verify the required parameter 'new_user_password' is set
+      if @api_client.config.client_side_validation && new_user_password.nil?
+        fail ArgumentError, "Missing the required parameter 'new_user_password' when calling PdfApi.put_change_password_document"
+      end
+      # verify the required parameter 'new_owner_password' is set
+      if @api_client.config.client_side_validation && new_owner_password.nil?
+        fail ArgumentError, "Missing the required parameter 'new_owner_password' when calling PdfApi.put_change_password_document"
+      end
+      # resource path
+      local_var_path = "/pdf/changepassword"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'ownerPassword'] = owner_password
+      query_params[:'newUserPassword'] = new_user_password
+      query_params[:'newOwnerPassword'] = new_owner_password
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_change_password_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Replace document circle annotation
     # 
     # @param name The document name.
@@ -15447,6 +16320,188 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_create_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Decrypt document from content.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param password The password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be derypted.
+    # @return [AsposeResponse]
+    def put_decrypt_document(out_path, password, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_decrypt_document_with_http_info(out_path, password, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_decrypt_document_with_http_info(out_path, password, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Decrypt document from content.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param password The password (encrypted Base64).
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be derypted.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_decrypt_document_with_http_info(out_path, password, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_decrypt_document ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_decrypt_document"
+      end
+      # verify the required parameter 'password' is set
+      if @api_client.config.client_side_validation && password.nil?
+        fail ArgumentError, "Missing the required parameter 'password' when calling PdfApi.put_decrypt_document"
+      end
+      # resource path
+      local_var_path = "/pdf/decrypt"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'password'] = password
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_decrypt_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Encrypt document from content.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param user_password User password (encrypted Base64).
+    # @param owner_password Owner password (encrypted Base64).
+    # @param crypto_algorithm Cryptographic algorithm, see  for details.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<PermissionsFlags>] :permissions_flags Array of document permissions, see  for details.
+    # @option opts [BOOLEAN] :use_pdf20 Support for revision 6 (Extension 8).
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be encrypted.
+    # @return [AsposeResponse]
+    def put_encrypt_document(out_path, user_password, owner_password, crypto_algorithm, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_encrypt_document_with_http_info(out_path, user_password, owner_password, crypto_algorithm, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_encrypt_document_with_http_info(out_path, user_password, owner_password, crypto_algorithm, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Encrypt document from content.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
+    # @param user_password User password (encrypted Base64).
+    # @param owner_password Owner password (encrypted Base64).
+    # @param crypto_algorithm Cryptographic algorithm, see  for details.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<PermissionsFlags>] :permissions_flags Array of document permissions, see  for details.
+    # @option opts [BOOLEAN] :use_pdf20 Support for revision 6 (Extension 8).
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be encrypted.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_encrypt_document_with_http_info(out_path, user_password, owner_password, crypto_algorithm, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_encrypt_document ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_encrypt_document"
+      end
+      # verify the required parameter 'user_password' is set
+      if @api_client.config.client_side_validation && user_password.nil?
+        fail ArgumentError, "Missing the required parameter 'user_password' when calling PdfApi.put_encrypt_document"
+      end
+      # verify the required parameter 'owner_password' is set
+      if @api_client.config.client_side_validation && owner_password.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_password' when calling PdfApi.put_encrypt_document"
+      end
+      # verify the required parameter 'crypto_algorithm' is set
+      if @api_client.config.client_side_validation && crypto_algorithm.nil?
+        fail ArgumentError, "Missing the required parameter 'crypto_algorithm' when calling PdfApi.put_encrypt_document"
+      end
+      # resource path
+      local_var_path = "/pdf/encrypt"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'userPassword'] = user_password
+      query_params[:'ownerPassword'] = owner_password
+      query_params[:'cryptoAlgorithm'] = crypto_algorithm
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
+      query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_encrypt_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -19003,6 +20058,92 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xlsx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be converted.
+    # @return [AsposeResponse]
+    def put_pdf_in_request_to_xlsx(out_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_pdf_in_request_to_xlsx_with_http_info(out_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_request_to_xlsx_with_http_info(out_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
+    # 
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xlsx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :storage The document storage.
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_pdf_in_request_to_xlsx_with_http_info(out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_xlsx ..."
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_xlsx"
+      end
+      # resource path
+      local_var_path = "/pdf/convert/xlsx"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_xlsx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (in request content) to XML format and uploads resulting file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.xml)
@@ -20121,6 +21262,97 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xlsx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
+    def put_pdf_in_storage_to_xlsx(name, out_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_pdf_in_storage_to_xlsx_with_http_info(name, out_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_pdf_in_storage_to_xlsx_with_http_info(name, out_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
+    # 
+    # @param name The document name.
+    # @param out_path Full resulting filename (ex. /folder1/folder2/result.xlsx)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_pdf_in_storage_to_xlsx_with_http_info(name, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_xlsx ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_xlsx"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_xlsx"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/xlsx".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_xlsx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -21864,6 +23096,89 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_svg_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document page table.
+    # 
+    # @param name The document name.
+    # @param table_id The table ID.
+    # @param table The table.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_table(name, table_id, table, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_table_with_http_info(name, table_id, table, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.refresh_token
+          data, _status_code, _headers = put_table_with_http_info(name, table_id, table, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document page table.
+    # 
+    # @param name The document name.
+    # @param table_id The table ID.
+    # @param table The table.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_table_with_http_info(name, table_id, table, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_table ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_table"
+      end
+      # verify the required parameter 'table_id' is set
+      if @api_client.config.client_side_validation && table_id.nil?
+        fail ArgumentError, "Missing the required parameter 'table_id' when calling PdfApi.put_table"
+      end
+      # verify the required parameter 'table' is set
+      if @api_client.config.client_side_validation && table.nil?
+        fail ArgumentError, "Missing the required parameter 'table' when calling PdfApi.put_table"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/tables/{tableId}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'tableId' + '}', table_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(table)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_table\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

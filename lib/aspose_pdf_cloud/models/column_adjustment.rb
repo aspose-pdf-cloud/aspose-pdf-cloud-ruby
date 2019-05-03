@@ -19,6 +19,27 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.4.0"
+  class ColumnAdjustment
+    
+    CUSTOMIZED = "Customized".freeze
+    AUTO_FIT_TO_CONTENT = "AutoFitToContent".freeze
+    AUTO_FIT_TO_WINDOW = "AutoFitToWindow".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = ColumnAdjustment.constants.select{|c| c.to_s == value}
+      constantValues = ColumnAdjustment.constants.select{ |const_name| ColumnAdjustment.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #ColumnAdjustment" if constantValues.empty?
+      value
+    end
+  end
+
 end

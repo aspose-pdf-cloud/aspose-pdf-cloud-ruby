@@ -19,6 +19,28 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.4.0"
+  class CryptoAlgorithm
+    
+    RC4X40 = "RC4x40".freeze
+    RC4X128 = "RC4x128".freeze
+    AE_SX128 = "AESx128".freeze
+    AE_SX256 = "AESx256".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = CryptoAlgorithm.constants.select{|c| c.to_s == value}
+      constantValues = CryptoAlgorithm.constants.select{ |const_name| CryptoAlgorithm.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #CryptoAlgorithm" if constantValues.empty?
+      value
+    end
+  end
+
 end

@@ -19,6 +19,32 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.4.0"
+  class PermissionsFlags
+    
+    PRINT_DOCUMENT = "PrintDocument".freeze
+    MODIFY_CONTENT = "ModifyContent".freeze
+    EXTRACT_CONTENT = "ExtractContent".freeze
+    MODIFY_TEXT_ANNOTATIONS = "ModifyTextAnnotations".freeze
+    FILL_FORM = "FillForm".freeze
+    EXTRACT_CONTENT_WITH_DISABILITIES = "ExtractContentWithDisabilities".freeze
+    ASSEMBLE_DOCUMENT = "AssembleDocument".freeze
+    PRINTING_QUALITY = "PrintingQuality".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = PermissionsFlags.constants.select{|c| c.to_s == value}
+      constantValues = PermissionsFlags.constants.select{ |const_name| PermissionsFlags.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #PermissionsFlags" if constantValues.empty?
+      value
+    end
+  end
+
 end

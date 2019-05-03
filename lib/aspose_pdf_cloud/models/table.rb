@@ -23,76 +23,104 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents Pdf stamps.
-  class PdfPageStamp
+  # Represents a table that can be added to the page.
+  class Table
     # Link to the document.
     attr_accessor :links
 
-    # Sets or gets a bool value that indicates the content is stamped as background. If the value is true, the stamp content is layed at the bottom. By defalt, the value is false, the stamp content is layed at the top.
-    attr_accessor :background
+    # Gets HorizontalAlignment of the table alignment.
+    attr_accessor :alignment
 
-    # Gets or sets Horizontal alignment of stamp on the page. 
+    # Gets HorizontalAlignment of the table alignment.
     attr_accessor :horizontal_alignment
 
-    # Gets or sets a value to indicate the stamp opacity. The value is from 0.0 to 1.0. By default the value is 1.0.
-    attr_accessor :opacity
-
-    # Sets or gets the rotation of stamp content according  values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
-    attr_accessor :rotate
-
-    # Gets or sets rotate angle of stamp in degrees. This property allows to set arbitrary rotate angle. 
-    attr_accessor :rotate_angle
-
-    # Horizontal stamp coordinate, starting from the left.
-    attr_accessor :x_indent
-
-    # Vertical stamp coordinate, starting from the bottom.
-    attr_accessor :y_indent
-
-    # Zooming factor of the stamp. Allows to scale stamp.
-    attr_accessor :zoom
-
-    # Gets or sets the file name.
-    attr_accessor :file_name
-
-    # Gets or sets the index of the page.
-    attr_accessor :page_index
-
-    # Gets or sets vertical alignment of stamp on page.
+    # Gets VerticalAlignment of the annotation.
     attr_accessor :vertical_alignment
 
-    # Gets or sets bottom margin of stamp.
-    attr_accessor :bottom_margin
+    # Gets or sets the table top coordinate.
+    attr_accessor :top
 
-    # Gets or sets left margin of stamp.
-    attr_accessor :left_margin
+    # Gets or sets the table left coordinate.
+    attr_accessor :left
 
-    # Gets or sets top margin of stamp.
-    attr_accessor :top_margin
+    # Gets or sets the default cell text state.
+    attr_accessor :default_cell_text_state
 
-    # Gets or sets right margin of stamp.
-    attr_accessor :right_margin
+    # Gets or sets the default cell padding.
+    attr_accessor :default_cell_padding
+
+    # Gets or sets the border.
+    attr_accessor :border
+
+    # Sets the rows of the table.
+    attr_accessor :rows
+
+    # Gets default cell border;
+    attr_accessor :default_column_width
+
+    # Gets default cell border;
+    attr_accessor :default_cell_border
+
+    # Gets or sets table vertial broken;
+    attr_accessor :broken
+
+    # Gets the column widths of the table.
+    attr_accessor :column_widths
+
+    # Gets the first rows count repeated for several pages
+    attr_accessor :repeating_rows_count
+
+    # Gets or sets the maximum columns count for table
+    attr_accessor :repeating_columns_count
+
+    # Gets the style for repeating rows
+    attr_accessor :repeating_rows_style
+
+    # Gets or sets the styles of the border corners
+    attr_accessor :corner_style
+
+    # Gets or sets break text for table
+    attr_accessor :break_text
+
+    # Gets or sets table background color
+    attr_accessor :background_color
+
+    # Gets or sets border included in column widhts.
+    attr_accessor :is_borders_included
+
+    # Gets or sets the table column adjustment.
+    attr_accessor :column_adjustment
+
+    # Gets ZIndex of the annotation.
+    attr_accessor :z_index
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'links' => :'Links',
-        :'background' => :'Background',
+        :'alignment' => :'Alignment',
         :'horizontal_alignment' => :'HorizontalAlignment',
-        :'opacity' => :'Opacity',
-        :'rotate' => :'Rotate',
-        :'rotate_angle' => :'RotateAngle',
-        :'x_indent' => :'XIndent',
-        :'y_indent' => :'YIndent',
-        :'zoom' => :'Zoom',
-        :'file_name' => :'FileName',
-        :'page_index' => :'PageIndex',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'bottom_margin' => :'BottomMargin',
-        :'left_margin' => :'LeftMargin',
-        :'top_margin' => :'TopMargin',
-        :'right_margin' => :'RightMargin'
+        :'top' => :'Top',
+        :'left' => :'Left',
+        :'default_cell_text_state' => :'DefaultCellTextState',
+        :'default_cell_padding' => :'DefaultCellPadding',
+        :'border' => :'Border',
+        :'rows' => :'Rows',
+        :'default_column_width' => :'DefaultColumnWidth',
+        :'default_cell_border' => :'DefaultCellBorder',
+        :'broken' => :'Broken',
+        :'column_widths' => :'ColumnWidths',
+        :'repeating_rows_count' => :'RepeatingRowsCount',
+        :'repeating_columns_count' => :'RepeatingColumnsCount',
+        :'repeating_rows_style' => :'RepeatingRowsStyle',
+        :'corner_style' => :'CornerStyle',
+        :'break_text' => :'BreakText',
+        :'background_color' => :'BackgroundColor',
+        :'is_borders_included' => :'IsBordersIncluded',
+        :'column_adjustment' => :'ColumnAdjustment',
+        :'z_index' => :'ZIndex'
       }
     end
 
@@ -100,21 +128,28 @@ module AsposePdfCloud
     def self.swagger_types
       {
         :'links' => :'Array<Link>',
-        :'background' => :'BOOLEAN',
+        :'alignment' => :'HorizontalAlignment',
         :'horizontal_alignment' => :'HorizontalAlignment',
-        :'opacity' => :'Float',
-        :'rotate' => :'Rotation',
-        :'rotate_angle' => :'Float',
-        :'x_indent' => :'Float',
-        :'y_indent' => :'Float',
-        :'zoom' => :'Float',
-        :'file_name' => :'String',
-        :'page_index' => :'Integer',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'bottom_margin' => :'Float',
-        :'left_margin' => :'Float',
-        :'top_margin' => :'Float',
-        :'right_margin' => :'Float'
+        :'top' => :'Float',
+        :'left' => :'Float',
+        :'default_cell_text_state' => :'TextState',
+        :'default_cell_padding' => :'MarginInfo',
+        :'border' => :'BorderInfo',
+        :'rows' => :'Array<Row>',
+        :'default_column_width' => :'String',
+        :'default_cell_border' => :'BorderInfo',
+        :'broken' => :'TableBroken',
+        :'column_widths' => :'String',
+        :'repeating_rows_count' => :'Integer',
+        :'repeating_columns_count' => :'Integer',
+        :'repeating_rows_style' => :'TextState',
+        :'corner_style' => :'BorderCornerStyle',
+        :'break_text' => :'TextRect',
+        :'background_color' => :'Color',
+        :'is_borders_included' => :'BOOLEAN',
+        :'column_adjustment' => :'ColumnAdjustment',
+        :'z_index' => :'Integer'
       }
     end
 
@@ -132,64 +167,94 @@ module AsposePdfCloud
         end
       end
 
-      if attributes.has_key?(:'Background')
-        self.background = attributes[:'Background']
+      if attributes.has_key?(:'Alignment')
+        self.alignment = attributes[:'Alignment']
       end
 
       if attributes.has_key?(:'HorizontalAlignment')
         self.horizontal_alignment = attributes[:'HorizontalAlignment']
       end
 
-      if attributes.has_key?(:'Opacity')
-        self.opacity = attributes[:'Opacity']
-      end
-
-      if attributes.has_key?(:'Rotate')
-        self.rotate = attributes[:'Rotate']
-      end
-
-      if attributes.has_key?(:'RotateAngle')
-        self.rotate_angle = attributes[:'RotateAngle']
-      end
-
-      if attributes.has_key?(:'XIndent')
-        self.x_indent = attributes[:'XIndent']
-      end
-
-      if attributes.has_key?(:'YIndent')
-        self.y_indent = attributes[:'YIndent']
-      end
-
-      if attributes.has_key?(:'Zoom')
-        self.zoom = attributes[:'Zoom']
-      end
-
-      if attributes.has_key?(:'FileName')
-        self.file_name = attributes[:'FileName']
-      end
-
-      if attributes.has_key?(:'PageIndex')
-        self.page_index = attributes[:'PageIndex']
-      end
-
       if attributes.has_key?(:'VerticalAlignment')
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
-      if attributes.has_key?(:'BottomMargin')
-        self.bottom_margin = attributes[:'BottomMargin']
+      if attributes.has_key?(:'Top')
+        self.top = attributes[:'Top']
       end
 
-      if attributes.has_key?(:'LeftMargin')
-        self.left_margin = attributes[:'LeftMargin']
+      if attributes.has_key?(:'Left')
+        self.left = attributes[:'Left']
       end
 
-      if attributes.has_key?(:'TopMargin')
-        self.top_margin = attributes[:'TopMargin']
+      if attributes.has_key?(:'DefaultCellTextState')
+        self.default_cell_text_state = attributes[:'DefaultCellTextState']
       end
 
-      if attributes.has_key?(:'RightMargin')
-        self.right_margin = attributes[:'RightMargin']
+      if attributes.has_key?(:'DefaultCellPadding')
+        self.default_cell_padding = attributes[:'DefaultCellPadding']
+      end
+
+      if attributes.has_key?(:'Border')
+        self.border = attributes[:'Border']
+      end
+
+      if attributes.has_key?(:'Rows')
+        if (value = attributes[:'Rows']).is_a?(Array)
+          self.rows = value
+        end
+      end
+
+      if attributes.has_key?(:'DefaultColumnWidth')
+        self.default_column_width = attributes[:'DefaultColumnWidth']
+      end
+
+      if attributes.has_key?(:'DefaultCellBorder')
+        self.default_cell_border = attributes[:'DefaultCellBorder']
+      end
+
+      if attributes.has_key?(:'Broken')
+        self.broken = attributes[:'Broken']
+      end
+
+      if attributes.has_key?(:'ColumnWidths')
+        self.column_widths = attributes[:'ColumnWidths']
+      end
+
+      if attributes.has_key?(:'RepeatingRowsCount')
+        self.repeating_rows_count = attributes[:'RepeatingRowsCount']
+      end
+
+      if attributes.has_key?(:'RepeatingColumnsCount')
+        self.repeating_columns_count = attributes[:'RepeatingColumnsCount']
+      end
+
+      if attributes.has_key?(:'RepeatingRowsStyle')
+        self.repeating_rows_style = attributes[:'RepeatingRowsStyle']
+      end
+
+      if attributes.has_key?(:'CornerStyle')
+        self.corner_style = attributes[:'CornerStyle']
+      end
+
+      if attributes.has_key?(:'BreakText')
+        self.break_text = attributes[:'BreakText']
+      end
+
+      if attributes.has_key?(:'BackgroundColor')
+        self.background_color = attributes[:'BackgroundColor']
+      end
+
+      if attributes.has_key?(:'IsBordersIncluded')
+        self.is_borders_included = attributes[:'IsBordersIncluded']
+      end
+
+      if attributes.has_key?(:'ColumnAdjustment')
+        self.column_adjustment = attributes[:'ColumnAdjustment']
+      end
+
+      if attributes.has_key?(:'ZIndex')
+        self.z_index = attributes[:'ZIndex']
       end
 
     end
@@ -213,21 +278,28 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           links == o.links &&
-          background == o.background &&
+          alignment == o.alignment &&
           horizontal_alignment == o.horizontal_alignment &&
-          opacity == o.opacity &&
-          rotate == o.rotate &&
-          rotate_angle == o.rotate_angle &&
-          x_indent == o.x_indent &&
-          y_indent == o.y_indent &&
-          zoom == o.zoom &&
-          file_name == o.file_name &&
-          page_index == o.page_index &&
           vertical_alignment == o.vertical_alignment &&
-          bottom_margin == o.bottom_margin &&
-          left_margin == o.left_margin &&
-          top_margin == o.top_margin &&
-          right_margin == o.right_margin
+          top == o.top &&
+          left == o.left &&
+          default_cell_text_state == o.default_cell_text_state &&
+          default_cell_padding == o.default_cell_padding &&
+          border == o.border &&
+          rows == o.rows &&
+          default_column_width == o.default_column_width &&
+          default_cell_border == o.default_cell_border &&
+          broken == o.broken &&
+          column_widths == o.column_widths &&
+          repeating_rows_count == o.repeating_rows_count &&
+          repeating_columns_count == o.repeating_columns_count &&
+          repeating_rows_style == o.repeating_rows_style &&
+          corner_style == o.corner_style &&
+          break_text == o.break_text &&
+          background_color == o.background_color &&
+          is_borders_included == o.is_borders_included &&
+          column_adjustment == o.column_adjustment &&
+          z_index == o.z_index
     end
 
     # @see the `==` method
@@ -239,7 +311,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, background, horizontal_alignment, opacity, rotate, rotate_angle, x_indent, y_indent, zoom, file_name, page_index, vertical_alignment, bottom_margin, left_margin, top_margin, right_margin].hash
+      [links, alignment, horizontal_alignment, vertical_alignment, top, left, default_cell_text_state, default_cell_padding, border, rows, default_column_width, default_cell_border, broken, column_widths, repeating_rows_count, repeating_columns_count, repeating_rows_style, corner_style, break_text, background_color, is_borders_included, column_adjustment, z_index].hash
     end
 
     # Builds the object from hash
