@@ -39,9 +39,6 @@ module AsposePdfCloud
     # Defines the access token (Bearer) used with OAuth2.
     attr_accessor :access_token
 
-    # Defines the refresh token (Bearer) used with OAuth2.
-    attr_accessor :refresh_token
-
     # Set this to enable/disable debugging. When enabled (set to true), HTTP request/response
     # details will be logged with `logger.debug` (see the `logger` attribute).
     # Default to false.
@@ -155,14 +152,14 @@ module AsposePdfCloud
     end
 
     def base_url
-      url = "#{scheme}://#{[host, '/v2.0'].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
+      url = "#{scheme}://#{[host, '/v3.0'].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
       URI.encode(url)
     end
 
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'oauth' =>
+        'JWT' =>
           {
             type: 'oauth2',
             in: 'header',

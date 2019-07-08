@@ -38,7 +38,7 @@ class PdfTests < Minitest::Test
     @test_data_folder = '../test_data/'
 
     config = @pdf_api.api_client.config
-    config.host = 'billing.cloud.saltov.dynabic.com'
+    config.host = 'api-qa.aspose.cloud'
     config.scheme = 'https'
   end
 
@@ -48,7 +48,7 @@ class PdfTests < Minitest::Test
 
 
   def upload_file(file_name)
-    response = @pdf_api.put_create(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
+    response = @pdf_api.upload_file(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
     assert(response, "Failed to upload #{file_name} file.")
   end
 
@@ -2619,40 +2619,18 @@ class PdfTests < Minitest::Test
   def test_post_append_document_using_query_params
     file_name = 'PdfWithImages2.pdf'
     append_file_name = '4pages.pdf'
+    append_file = @temp_folder + '/' + append_file_name
 
-    upload_file(file_name)
+        upload_file(file_name)
     upload_file(append_file_name)
 
     opts = {
-      :append_file => @temp_folder + '/' + append_file_name,
       :startPage => 2,
       :endPage => 4,
       :folder => @temp_folder
     }
 
-    response = @pdf_api.post_append_document(file_name, opts)
-    assert(response, 'Failed to append document to existing one.')
-  end
-
-
-  def test_post_append_document_using_body_params
-    file_name = 'PdfWithImages2.pdf'
-    append_file_name = '4pages.pdf'
-
-    upload_file(file_name)
-    upload_file(append_file_name)
-
-    append_document = AppendDocument.new
-    append_document.document = @temp_folder + '/' + append_file_name
-    append_document.start_page = 2
-    append_document.end_page = 4
-
-    opts = {
-      :append_document => append_document,
-      :folder => @temp_folder
-    }
-
-    response = @pdf_api.post_append_document(file_name, opts)
+    response = @pdf_api.post_append_document(file_name, append_file, opts)
     assert(response, 'Failed to append document to existing one.')
   end
 
@@ -3358,7 +3336,7 @@ class PdfTests < Minitest::Test
 
 
   def test_get_la_te_x_in_storage_to_pdf
-    file_name = 'TexExample.tex'
+    file_name = 'sample.tex'
     upload_file(file_name)
 
     src_path = @temp_folder + '/' + file_name
@@ -3367,7 +3345,7 @@ class PdfTests < Minitest::Test
   end
 
   def test_put_la_te_x_in_storage_to_pdf
-    file_name = 'TexExample.tex'
+    file_name = 'sample.tex'
     upload_file(file_name)
     result_name = 'fromTex.pdf'
 
@@ -3630,11 +3608,10 @@ class PdfTests < Minitest::Test
     optimize_options.unembed_fonts = true
 
     opts = {
-      :options => optimize_options,
-      :folder => @temp_folder
+        :folder => @temp_folder
     }
 
-    response = @pdf_api.post_optimize_document(file_name, opts)
+    response = @pdf_api.post_optimize_document(file_name, optimize_options, opts)
     assert(response, 'Failed to optimize document.')
   end
 
@@ -3710,11 +3687,10 @@ class PdfTests < Minitest::Test
     page_number = 1
 
     opts = {
-        :field => field,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.post_create_field(file_name, page_number, opts)
+    response = @pdf_api.post_create_field(file_name, page_number, field, opts)
     assert(response, 'Failed to create field.')
   end
 
@@ -3731,11 +3707,10 @@ class PdfTests < Minitest::Test
     field.type = FieldType::TEXT
 
     opts = {
-        :field => field,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.put_update_field(file_name, field_name, opts)
+    response = @pdf_api.put_update_field(file_name, field_name, field, opts)
     assert(response, 'Failed to update fields.')
   end
 
@@ -3744,8 +3719,6 @@ class PdfTests < Minitest::Test
     upload_file(file_name)
 
     field_name = 'textField'
-
-
 
     field = Field.new
     field.name = field_name
@@ -3756,11 +3729,10 @@ class PdfTests < Minitest::Test
     fields.list = [field]
 
     opts = {
-        :fields => fields,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.put_update_fields(file_name, opts)
+    response = @pdf_api.put_update_fields(file_name, fields, opts)
     assert(response, 'Failed to update fields.')
   end
 
@@ -4465,11 +4437,10 @@ class PdfTests < Minitest::Test
     merge_documents.list = file_name_list
 
     opts = {
-        :merge_documents => merge_documents,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.put_merge_documents(result_name, opts)
+    response = @pdf_api.put_merge_documents(result_name, merge_documents, opts)
     assert(response, 'Failed to merge a list of documents')
   end
 
@@ -4779,10 +4750,9 @@ class PdfTests < Minitest::Test
     privileges.allow_print = false
 
     opts = {
-        :privileges => privileges,
         :folder => @temp_folder
     }
-    response = @pdf_api.put_privileges(file_name, opts)
+    response = @pdf_api.put_privileges(file_name, privileges,opts)
     assert(response, 'Failed to set pdf privileges.')
   end
 
@@ -4918,13 +4888,13 @@ class PdfTests < Minitest::Test
     signature.signature_path = @temp_folder + '/' + signature_file_name
     signature.signature_type = SignatureType::PKCS7
     signature.visible = true
+    signature.show_properties = false
 
     opts = {
-        :signature => signature,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.post_sign_document(file_name, opts)
+    response = @pdf_api.post_sign_document(file_name, signature, opts)
     assert(response, 'Failed to sign document.')
   end
 
@@ -4956,11 +4926,10 @@ class PdfTests < Minitest::Test
     signature.visible = true
 
     opts = {
-        :signature => signature,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.post_sign_page(file_name, page_number, opts)
+    response = @pdf_api.post_sign_page(file_name, page_number, signature, opts)
     assert(response, 'Failed to sign page.')
   end
 
@@ -4991,11 +4960,10 @@ class PdfTests < Minitest::Test
     signature.visible = true
 
     opts = {
-        :signature => signature,
         :folder => @temp_folder
     }
 
-    response_sign = @pdf_api.post_sign_document(file_name, opts)
+    response_sign = @pdf_api.post_sign_document(file_name, signature, opts)
     assert(response_sign, 'Failed to sign document.')
 
     opts = {
@@ -5004,6 +4972,7 @@ class PdfTests < Minitest::Test
     response = @pdf_api.get_verify_signature(file_name, signature.form_field_name, opts)
     assert(response, 'Failed to verify signature.')
   end
+
 
 
   # Text Replace Tests
@@ -5161,21 +5130,20 @@ class PdfTests < Minitest::Test
     paragraph.lines = [text_line]
 
     opts = {
-        :paragraph => paragraph,
         :folder => @temp_folder
     }
 
-    response = @pdf_api.put_add_text(file_name, page_number, opts)
+    response = @pdf_api.put_add_text(file_name, page_number, paragraph, opts)
     assert(response, 'Failed to add text to the page.')
   end
 
 
   # Storage Tests
 
-  def test_put_create
+  def test_upload_file
     file_name = '4pages.pdf'
 
-    response = @pdf_api.put_create(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
+    response = @pdf_api.upload_file(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
     assert(response, "Failed to upload #{file_name} file.")
   end
 
@@ -5184,27 +5152,27 @@ class PdfTests < Minitest::Test
     upload_file(file_name)
 
 
-    response = @pdf_api.get_download(@temp_folder + '/' + file_name)
+    response = @pdf_api.download_file(@temp_folder + '/' + file_name)
     assert(response, "Failed to download #{file_name} file.")
   end
 
-  def test_get_list_files
+  def test_get_files_list
 
     opts = {
         :path => @temp_folder
     }
 
-    response = @pdf_api.get_list_files(opts)
+    response = @pdf_api.get_files_list(opts)
     assert(response, 'Failed get file list.')
   end
 
-  def test_post_move_file
+  def test_move_file
     file_name = '4pages.pdf'
     upload_file(file_name)
     src = @temp_folder + '/' + file_name
     dest = @temp_folder + '/4pages_renamed.pdf'
 
-    response = @pdf_api.post_move_file(src, dest, {})
+    response = @pdf_api.move_file(src, dest, {})
     assert(response, "Failed to rename #{file_name} file.")
   end
 
@@ -5217,46 +5185,46 @@ class PdfTests < Minitest::Test
     assert(response, "Failed to delete #{file_name} file.")
   end
 
-  def test_put_create_folder
+  def test_create_folder
     path = @temp_folder + '/testFolder'
 
-    response = @pdf_api.put_create_folder(path, {})
+    response = @pdf_api.create_folder(path, {})
     assert(response, 'Failed to create folder.')
   end
 
-  def test_post_move_folder
+  def test_move_folder
     src = @temp_folder + '/testFolder'
-    responseFolder = @pdf_api.put_create_folder(src, {})
+    responseFolder = @pdf_api.create_folder(src, {})
     assert(responseFolder, 'Failed to create folder.')
 
     dest = @temp_folder + '/testFolderRednamed'
 
-    response = @pdf_api.post_move_folder(src, dest,{})
+    response = @pdf_api.move_folder(src, dest,{})
     assert(response, 'Failed to move folder.')
   end
 
   def test_delete_folder
     path = @temp_folder + '/testFolder'
-    responseFolder = @pdf_api.put_create_folder(path, {})
+    responseFolder = @pdf_api.create_folder(path, {})
     assert(responseFolder, 'Failed to create folder.')
 
     response = @pdf_api.delete_folder(path, {})
     assert(response, 'Failed to delete folder.')
   end
 
-  def test_get_is_storage_exist
+  def test_storage_exists
     name = 'PDF-CI'
 
-    response = @pdf_api.get_is_storage_exist(name, {})
+    response = @pdf_api.storage_exists(name, {})
     assert(response, 'Failed to check storage.')
   end
 
-  def test_get_is_exist
+  def test_object_exists
     file_name = '4pages.pdf'
     upload_file(file_name)
     path = @temp_folder + '/' + file_name
 
-    response = @pdf_api.get_is_exist(path, {})
+    response = @pdf_api.object_exists(path, {})
     assert(response, 'Failed to check file.')
   end
 
@@ -5266,12 +5234,148 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to check disk usage.')
   end
 
-  def test_get_list_file_versions
+  def test_get_file_versions
     file_name = '4pages.pdf'
     upload_file(file_name)
     path = @temp_folder + '/' + file_name
 
-    response = @pdf_api.get_list_file_versions(path, {})
+    response = @pdf_api.get_file_versions(path, {})
     assert(response, 'Failed to get file versions.')
+  end
+
+  # Bookmarks Tests
+
+  def test_get_document_bookmarks
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_bookmarks(file_name, opts)
+    assert(response, 'Filed to get all document bookmarks.')
+  end
+
+  def test_get_bookmarks
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    path = '1'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_bookmarks(file_name, path, opts)
+    assert(response, 'Filed to get all node bookmarks.')
+  end
+
+  def test_get_bookmark
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    path = '1'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_bookmark(file_name, path, opts)
+    assert(response, 'Filed to get bookmark by path.')
+  end
+
+  def test_delete_document_bookmarks
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_document_bookmarks(file_name, opts)
+    assert(response, 'Filed to delete all document bookmarks.')
+  end
+
+  def test_delete_bookmark
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    path = '1'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_bookmark(file_name, path, opts)
+    assert(response, 'Filed to delete bookmark by path.')
+  end
+
+  def test_post_bookmarks
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    path = '1/1'
+
+    color = Color.new
+    color.a = 0xFF
+    color.r = 0x00
+    color.g = 0xFF
+    color.b = 0x00
+
+    bookmark = Bookmark.new
+    bookmark.action = 'GoTo'
+    bookmark.bold = true
+    bookmark.italic = false
+    bookmark.title = 'New Bookmark XYZ'
+    bookmark.page_display = 'XYZ'
+    bookmark.page_display_bottom = 10
+    bookmark.page_display_left = 10
+    bookmark.page_display_right = 10
+    bookmark.page_display_top = 10
+    bookmark.page_display_zoom = 2
+    bookmark.page_number = 2
+    bookmark.color = color
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_bookmark(file_name, path, [bookmark], opts)
+    assert(response, 'Filed to post bookmark.')
+  end
+
+  def test_put_bookmark
+    file_name = 'PdfWithBookmarks.pdf'
+    upload_file(file_name)
+
+    path = '1/1'
+
+    color = Color.new
+    color.a = 0xFF
+    color.r = 0x00
+    color.g = 0xFF
+    color.b = 0x00
+
+    bookmark = Bookmark.new
+    bookmark.action = 'GoTo'
+    bookmark.bold = true
+    bookmark.italic = false
+    bookmark.title = 'New Bookmark XYZ'
+    bookmark.page_display = 'XYZ'
+    bookmark.page_display_bottom = 10
+    bookmark.page_display_left = 10
+    bookmark.page_display_right = 10
+    bookmark.page_display_top = 10
+    bookmark.page_display_zoom = 2
+    bookmark.page_number = 2
+    bookmark.color = color
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_bookmark(file_name, path, bookmark, opts)
+    assert(response, 'Filed to update bookmark.')
   end
 end

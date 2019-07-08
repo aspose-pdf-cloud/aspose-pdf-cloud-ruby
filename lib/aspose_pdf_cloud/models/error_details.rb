@@ -23,26 +23,28 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
+  # The error details
+  class ErrorDetails
+    # The request id
+    attr_accessor :request_id
 
-  class FileExist
-    attr_accessor :is_exist
-
-    attr_accessor :is_folder
+    # Date
+    attr_accessor :date
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'is_exist' => :'IsExist',
-        :'is_folder' => :'IsFolder'
+        :'request_id' => :'RequestId',
+        :'date' => :'Date'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'is_exist' => :'BOOLEAN',
-        :'is_folder' => :'BOOLEAN'
+        :'request_id' => :'String',
+        :'date' => :'DateTime'
       }
     end
 
@@ -54,12 +56,12 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'IsExist')
-        self.is_exist = attributes[:'IsExist']
+      if attributes.has_key?(:'RequestId')
+        self.request_id = attributes[:'RequestId']
       end
 
-      if attributes.has_key?(:'IsFolder')
-        self.is_folder = attributes[:'IsFolder']
+      if attributes.has_key?(:'Date')
+        self.date = attributes[:'Date']
       end
 
     end
@@ -68,12 +70,8 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @is_exist.nil?
-        invalid_properties.push("invalid value for 'is_exist', is_exist cannot be nil.")
-      end
-
-      if @is_folder.nil?
-        invalid_properties.push("invalid value for 'is_folder', is_folder cannot be nil.")
+      if @date.nil?
+        invalid_properties.push("invalid value for 'date', date cannot be nil.")
       end
 
       return invalid_properties
@@ -82,8 +80,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @is_exist.nil?
-      return false if @is_folder.nil?
+      return false if @date.nil?
       return true
     end
 
@@ -92,8 +89,8 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          is_exist == o.is_exist &&
-          is_folder == o.is_folder
+          request_id == o.request_id &&
+          date == o.date
     end
 
     # @see the `==` method
@@ -105,7 +102,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [is_exist, is_folder].hash
+      [request_id, date].hash
     end
 
     # Builds the object from hash
@@ -135,11 +132,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

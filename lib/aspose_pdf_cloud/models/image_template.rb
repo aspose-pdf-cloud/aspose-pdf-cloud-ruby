@@ -130,6 +130,10 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'image_path', image_path cannot be nil.")
       end
 
+      if @image_path.to_s.length < 1
+        invalid_properties.push("invalid value for 'image_path', the character length must be great than or equal to 1.")
+      end
+
       if @image_src_type.nil?
         invalid_properties.push("invalid value for 'image_src_type', image_src_type cannot be nil.")
       end
@@ -141,8 +145,23 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @image_path.nil?
+      return false if @image_path.to_s.length < 1
       return false if @image_src_type.nil?
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] image_path Value to be assigned
+    def image_path=(image_path)
+      if image_path.nil?
+        fail ArgumentError, "image_path cannot be nil"
+      end
+
+      if image_path.to_s.length < 1
+        fail ArgumentError, "invalid value for 'image_path', the character length must be great than or equal to 1."
+      end
+
+      @image_path = image_path
     end
 
     # Checks equality by comparing each attribute.
@@ -200,11 +219,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

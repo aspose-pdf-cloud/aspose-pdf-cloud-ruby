@@ -111,13 +111,52 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @action_type.nil?
+        invalid_properties.push("invalid value for 'action_type', action_type cannot be nil.")
+      end
+
+      if @action.nil?
+        invalid_properties.push("invalid value for 'action', action cannot be nil.")
+      end
+
+      if @action.to_s.length < 1
+        invalid_properties.push("invalid value for 'action', the character length must be great than or equal to 1.")
+      end
+
+      if @highlighting.nil?
+        invalid_properties.push("invalid value for 'highlighting', highlighting cannot be nil.")
+      end
+
+      if @rect.nil?
+        invalid_properties.push("invalid value for 'rect', rect cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @action_type.nil?
+      return false if @action.nil?
+      return false if @action.to_s.length < 1
+      return false if @highlighting.nil?
+      return false if @rect.nil?
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] action Value to be assigned
+    def action=(action)
+      if action.nil?
+        fail ArgumentError, "action cannot be nil"
+      end
+
+      if action.to_s.length < 1
+        fail ArgumentError, "invalid value for 'action', the character length must be great than or equal to 1."
+      end
+
+      @action = action
     end
 
     # Checks equality by comparing each attribute.
@@ -173,11 +212,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

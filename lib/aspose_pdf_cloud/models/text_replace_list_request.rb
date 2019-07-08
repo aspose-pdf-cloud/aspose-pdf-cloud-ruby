@@ -28,6 +28,7 @@ module AsposePdfCloud
     # A list of text replacement settings.
     attr_accessor :text_replaces
 
+    # Name of font to use if requested font is not embedded into document.
     attr_accessor :default_font
 
     # The index of first match to be replaced.
@@ -153,11 +154,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

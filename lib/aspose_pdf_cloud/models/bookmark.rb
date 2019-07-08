@@ -23,32 +23,103 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
+  # Provides link to bookmark.
+  class Bookmark
+    # Link to the document.
+    attr_accessor :links
 
-  class DiscUsageResponse
-    # Response status code.
-    attr_accessor :code
+    # Get the Title;
+    attr_accessor :title
 
-    # Response status.
-    attr_accessor :status
+    # Is bookmark italic.
+    attr_accessor :italic
 
-    attr_accessor :disc_usage
+    # Is bookmark bold.
+    attr_accessor :bold
+
+    # Get the color
+    attr_accessor :color
+
+    # Gets or sets the action bound with the bookmark. If PageNumber is presented the action can not be specified. The action type includes: \"GoTo\", \"GoToR\", \"Launch\", \"Named\".
+    attr_accessor :action
+
+    # Gets or sets bookmark's hierarchy level.
+    attr_accessor :level
+
+    # Gets or sets bookmark's destination page. Required if action is set as string.Empty.
+    attr_accessor :destination
+
+    # Gets or sets the type of display bookmark's destination page.
+    attr_accessor :page_display
+
+    # Gets or sets the bottom coordinate of page display.
+    attr_accessor :page_display_bottom
+
+    # Gets or sets the left coordinate of page display.
+    attr_accessor :page_display_left
+
+    # Gets or sets the right coordinate of page display.
+    attr_accessor :page_display_right
+
+    # Gets or sets the top coordinate of page display.
+    attr_accessor :page_display_top
+
+    # Gets or sets the zoom factor of page display.
+    attr_accessor :page_display_zoom
+
+    # Gets or sets the number of bookmark's destination page. 
+    attr_accessor :page_number
+
+    # Gets or sets the file (path) which is required for \"GoToR\" action of bookmark.
+    attr_accessor :remote_file
+
+    # The children bookmarks.
+    attr_accessor :bookmarks
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status',
-        :'disc_usage' => :'DiscUsage'
+        :'links' => :'Links',
+        :'title' => :'Title',
+        :'italic' => :'Italic',
+        :'bold' => :'Bold',
+        :'color' => :'Color',
+        :'action' => :'Action',
+        :'level' => :'Level',
+        :'destination' => :'Destination',
+        :'page_display' => :'PageDisplay',
+        :'page_display_bottom' => :'PageDisplay_Bottom',
+        :'page_display_left' => :'PageDisplay_Left',
+        :'page_display_right' => :'PageDisplay_Right',
+        :'page_display_top' => :'PageDisplay_Top',
+        :'page_display_zoom' => :'PageDisplay_Zoom',
+        :'page_number' => :'PageNumber',
+        :'remote_file' => :'RemoteFile',
+        :'bookmarks' => :'Bookmarks'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'Integer',
-        :'status' => :'String',
-        :'disc_usage' => :'DiscUsage'
+        :'links' => :'Array<Link>',
+        :'title' => :'String',
+        :'italic' => :'BOOLEAN',
+        :'bold' => :'BOOLEAN',
+        :'color' => :'Color',
+        :'action' => :'String',
+        :'level' => :'Integer',
+        :'destination' => :'String',
+        :'page_display' => :'String',
+        :'page_display_bottom' => :'Integer',
+        :'page_display_left' => :'Integer',
+        :'page_display_right' => :'Integer',
+        :'page_display_top' => :'Integer',
+        :'page_display_zoom' => :'Integer',
+        :'page_number' => :'Integer',
+        :'remote_file' => :'String',
+        :'bookmarks' => :'Bookmarks'
       }
     end
 
@@ -60,16 +131,74 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.has_key?(:'Links')
+        if (value = attributes[:'Links']).is_a?(Array)
+          self.links = value
+        end
       end
 
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.has_key?(:'Title')
+        self.title = attributes[:'Title']
       end
 
-      if attributes.has_key?(:'DiscUsage')
-        self.disc_usage = attributes[:'DiscUsage']
+      if attributes.has_key?(:'Italic')
+        self.italic = attributes[:'Italic']
+      end
+
+      if attributes.has_key?(:'Bold')
+        self.bold = attributes[:'Bold']
+      end
+
+      if attributes.has_key?(:'Color')
+        self.color = attributes[:'Color']
+      end
+
+      if attributes.has_key?(:'Action')
+        self.action = attributes[:'Action']
+      end
+
+      if attributes.has_key?(:'Level')
+        self.level = attributes[:'Level']
+      end
+
+      if attributes.has_key?(:'Destination')
+        self.destination = attributes[:'Destination']
+      end
+
+      if attributes.has_key?(:'PageDisplay')
+        self.page_display = attributes[:'PageDisplay']
+      end
+
+      if attributes.has_key?(:'PageDisplay_Bottom')
+        self.page_display_bottom = attributes[:'PageDisplay_Bottom']
+      end
+
+      if attributes.has_key?(:'PageDisplay_Left')
+        self.page_display_left = attributes[:'PageDisplay_Left']
+      end
+
+      if attributes.has_key?(:'PageDisplay_Right')
+        self.page_display_right = attributes[:'PageDisplay_Right']
+      end
+
+      if attributes.has_key?(:'PageDisplay_Top')
+        self.page_display_top = attributes[:'PageDisplay_Top']
+      end
+
+      if attributes.has_key?(:'PageDisplay_Zoom')
+        self.page_display_zoom = attributes[:'PageDisplay_Zoom']
+      end
+
+      if attributes.has_key?(:'PageNumber')
+        self.page_number = attributes[:'PageNumber']
+      end
+
+      if attributes.has_key?(:'RemoteFile')
+        self.remote_file = attributes[:'RemoteFile']
+      end
+
+      if attributes.has_key?(:'Bookmarks')
+        self.bookmarks = attributes[:'Bookmarks']
       end
 
     end
@@ -78,17 +207,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
       return true
     end
 
@@ -97,9 +221,23 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          status == o.status &&
-          disc_usage == o.disc_usage
+          links == o.links &&
+          title == o.title &&
+          italic == o.italic &&
+          bold == o.bold &&
+          color == o.color &&
+          action == o.action &&
+          level == o.level &&
+          destination == o.destination &&
+          page_display == o.page_display &&
+          page_display_bottom == o.page_display_bottom &&
+          page_display_left == o.page_display_left &&
+          page_display_right == o.page_display_right &&
+          page_display_top == o.page_display_top &&
+          page_display_zoom == o.page_display_zoom &&
+          page_number == o.page_number &&
+          remote_file == o.remote_file &&
+          bookmarks == o.bookmarks
     end
 
     # @see the `==` method
@@ -111,7 +249,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, disc_usage].hash
+      [links, title, italic, bold, color, action, level, destination, page_display, page_display_bottom, page_display_left, page_display_right, page_display_top, page_display_zoom, page_number, remote_file, bookmarks].hash
     end
 
     # Builds the object from hash
@@ -141,11 +279,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

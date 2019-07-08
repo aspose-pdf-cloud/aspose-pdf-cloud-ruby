@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional] 
-**words_per_page** | [**WordCount**](WordCount.md) | with words per page info.             | [optional] 
+**words_per_page** | [**WordCount**](WordCount.md) | WordCount with words per page info. | [optional] 
 
 

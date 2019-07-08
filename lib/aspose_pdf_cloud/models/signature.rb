@@ -46,7 +46,7 @@ module AsposePdfCloud
     # Gets or sets the location of the signature.
     attr_accessor :location
 
-    # Gets or sets a value indicating whether this  is visible. Supports only when signing particular page.
+    # Gets or sets a value indicating whether this Signature is visible. Supports only when signing particular page.
     attr_accessor :visible
 
     # Gets or sets the visible rectangle of the signature. Supports only when signing particular page.
@@ -173,6 +173,10 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'signature_path', signature_path cannot be nil.")
       end
 
+      if @signature_path.to_s.length < 1
+        invalid_properties.push("invalid value for 'signature_path', the character length must be great than or equal to 1.")
+      end
+
       if @signature_type.nil?
         invalid_properties.push("invalid value for 'signature_type', signature_type cannot be nil.")
       end
@@ -192,10 +196,25 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @signature_path.nil?
+      return false if @signature_path.to_s.length < 1
       return false if @signature_type.nil?
       return false if @visible.nil?
       return false if @show_properties.nil?
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] signature_path Value to be assigned
+    def signature_path=(signature_path)
+      if signature_path.nil?
+        fail ArgumentError, "signature_path cannot be nil"
+      end
+
+      if signature_path.to_s.length < 1
+        fail ArgumentError, "invalid value for 'signature_path', the character length must be great than or equal to 1."
+      end
+
+      @signature_path = signature_path
     end
 
     # Checks equality by comparing each attribute.
@@ -257,11 +276,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

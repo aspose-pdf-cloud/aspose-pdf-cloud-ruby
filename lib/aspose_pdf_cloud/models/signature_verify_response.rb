@@ -83,6 +83,10 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'code', code cannot be nil.")
       end
 
+      if @valid.nil?
+        invalid_properties.push("invalid value for 'valid', valid cannot be nil.")
+      end
+
       return invalid_properties
     end
 
@@ -90,6 +94,7 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @code.nil?
+      return false if @valid.nil?
       return true
     end
 
@@ -142,11 +147,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

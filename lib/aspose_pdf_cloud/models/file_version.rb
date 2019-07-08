@@ -23,20 +23,27 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # File Version
   class FileVersion
+    # File or folder name.
     attr_accessor :name
 
+    # True if it is a folder.
     attr_accessor :is_folder
 
+    # File or folder last modified DateTime.
     attr_accessor :modified_date
 
+    # File or folder size.
     attr_accessor :size
 
+    # File or folder path.
     attr_accessor :path
 
+    # File Version ID.
     attr_accessor :version_id
 
+    # Specifies whether the file is (true) or is not (false) the latest version of an file.
     attr_accessor :is_latest
 
 
@@ -116,6 +123,10 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'size', size cannot be nil.")
       end
 
+      if @is_latest.nil?
+        invalid_properties.push("invalid value for 'is_latest', is_latest cannot be nil.")
+      end
+
       return invalid_properties
     end
 
@@ -124,6 +135,7 @@ module AsposePdfCloud
     def valid?
       return false if @is_folder.nil?
       return false if @size.nil?
+      return false if @is_latest.nil?
       return true
     end
 
@@ -180,11 +192,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

@@ -23,10 +23,12 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Class for disc space information.
   class DiscUsage
+    # Application used disc space.
     attr_accessor :used_size
 
+    # Total disc space.
     attr_accessor :total_size
 
 
@@ -135,11 +137,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

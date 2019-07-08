@@ -23,38 +23,23 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents file DTO.
-  class File
-    attr_accessor :name
-
-    attr_accessor :is_folder
-
-    attr_accessor :modified_date
-
-    attr_accessor :size
-
-    attr_accessor :path
+  # Files list
+  class FilesList
+    # Files and folders contained by folder StorageFile.
+    attr_accessor :value
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'Name',
-        :'is_folder' => :'IsFolder',
-        :'modified_date' => :'ModifiedDate',
-        :'size' => :'Size',
-        :'path' => :'Path'
+        :'value' => :'Value'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'is_folder' => :'BOOLEAN',
-        :'modified_date' => :'DateTime',
-        :'size' => :'Integer',
-        :'path' => :'String'
+        :'value' => :'Array<StorageFile>'
       }
     end
 
@@ -66,24 +51,10 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Name')
-        self.name = attributes[:'Name']
-      end
-
-      if attributes.has_key?(:'IsFolder')
-        self.is_folder = attributes[:'IsFolder']
-      end
-
-      if attributes.has_key?(:'ModifiedDate')
-        self.modified_date = attributes[:'ModifiedDate']
-      end
-
-      if attributes.has_key?(:'Size')
-        self.size = attributes[:'Size']
-      end
-
-      if attributes.has_key?(:'Path')
-        self.path = attributes[:'Path']
+      if attributes.has_key?(:'Value')
+        if (value = attributes[:'Value']).is_a?(Array)
+          self.value = value
+        end
       end
 
     end
@@ -92,22 +63,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @is_folder.nil?
-        invalid_properties.push("invalid value for 'is_folder', is_folder cannot be nil.")
-      end
-
-      if @size.nil?
-        invalid_properties.push("invalid value for 'size', size cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @is_folder.nil?
-      return false if @size.nil?
       return true
     end
 
@@ -116,11 +77,7 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          is_folder == o.is_folder &&
-          modified_date == o.modified_date &&
-          size == o.size &&
-          path == o.path
+          value == o.value
     end
 
     # @see the `==` method
@@ -132,7 +89,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, is_folder, modified_date, size, path].hash
+      [value].hash
     end
 
     # Builds the object from hash
@@ -162,11 +119,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

@@ -23,32 +23,38 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
-  class FileExistResponse
-    # Response status code.
+  # Error
+  class Error
+    # Code             
     attr_accessor :code
 
-    # Response status.
-    attr_accessor :status
+    # Message             
+    attr_accessor :message
 
-    attr_accessor :file_exist
+    # Description             
+    attr_accessor :description
+
+    # Inner Error             
+    attr_accessor :inner_error
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'code' => :'Code',
-        :'status' => :'Status',
-        :'file_exist' => :'FileExist'
+        :'message' => :'Message',
+        :'description' => :'Description',
+        :'inner_error' => :'InnerError'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'Integer',
-        :'status' => :'String',
-        :'file_exist' => :'FileExist'
+        :'code' => :'String',
+        :'message' => :'String',
+        :'description' => :'String',
+        :'inner_error' => :'ErrorDetails'
       }
     end
 
@@ -64,12 +70,16 @@ module AsposePdfCloud
         self.code = attributes[:'Code']
       end
 
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.has_key?(:'Message')
+        self.message = attributes[:'Message']
       end
 
-      if attributes.has_key?(:'FileExist')
-        self.file_exist = attributes[:'FileExist']
+      if attributes.has_key?(:'Description')
+        self.description = attributes[:'Description']
+      end
+
+      if attributes.has_key?(:'InnerError')
+        self.inner_error = attributes[:'InnerError']
       end
 
     end
@@ -78,17 +88,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
       return true
     end
 
@@ -98,8 +103,9 @@ module AsposePdfCloud
       return true if self.equal?(o)
       self.class == o.class &&
           code == o.code &&
-          status == o.status &&
-          file_exist == o.file_exist
+          message == o.message &&
+          description == o.description &&
+          inner_error == o.inner_error
     end
 
     # @see the `==` method
@@ -111,7 +117,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, file_exist].hash
+      [code, message, description, inner_error].hash
     end
 
     # Builds the object from hash
@@ -141,11 +147,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer
