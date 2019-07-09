@@ -46,7 +46,7 @@ module AsposePdfCloud
       copy_file_with_http_info(src_path, dest_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           copy_file_with_http_info(src_path, dest_path, opts)
         else
           raise
@@ -126,7 +126,7 @@ module AsposePdfCloud
       copy_folder_with_http_info(src_path, dest_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           copy_folder_with_http_info(src_path, dest_path, opts)
         else
           raise
@@ -202,7 +202,7 @@ module AsposePdfCloud
       create_folder_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           create_folder_with_http_info(path, opts)
         else
           raise
@@ -272,7 +272,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -350,7 +350,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_bookmark_with_http_info(name, bookmark_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_bookmark_with_http_info(name, bookmark_path, opts)
         else
           raise
@@ -427,7 +427,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_document_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_document_annotations_with_http_info(name, opts)
         else
           raise
@@ -499,7 +499,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_document_bookmarks_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_document_bookmarks_with_http_info(name, opts)
         else
           raise
@@ -571,7 +571,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_document_link_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_document_link_annotations_with_http_info(name, opts)
         else
           raise
@@ -643,7 +643,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_document_stamps_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_document_stamps_with_http_info(name, opts)
         else
           raise
@@ -715,7 +715,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_document_tables_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_document_tables_with_http_info(name, opts)
         else
           raise
@@ -788,7 +788,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_field_with_http_info(name, field_name, opts)
         else
           raise
@@ -865,7 +865,7 @@ module AsposePdfCloud
       delete_file_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           delete_file_with_http_info(path, opts)
         else
           raise
@@ -936,7 +936,7 @@ module AsposePdfCloud
       delete_folder_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           delete_folder_with_http_info(path, opts)
         else
           raise
@@ -1008,7 +1008,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_image_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_image_with_http_info(name, image_id, opts)
         else
           raise
@@ -1086,7 +1086,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_link_annotation_with_http_info(name, link_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_link_annotation_with_http_info(name, link_id, opts)
         else
           raise
@@ -1164,7 +1164,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_page_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_page_with_http_info(name, page_number, opts)
         else
           raise
@@ -1242,7 +1242,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_page_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_page_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -1320,7 +1320,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_page_link_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_page_link_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -1398,7 +1398,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_page_stamps_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_page_stamps_with_http_info(name, page_number, opts)
         else
           raise
@@ -1476,7 +1476,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_page_tables_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_page_tables_with_http_info(name, page_number, opts)
         else
           raise
@@ -1553,7 +1553,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_properties_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_properties_with_http_info(name, opts)
         else
           raise
@@ -1626,7 +1626,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_property_with_http_info(name, property_name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_property_with_http_info(name, property_name, opts)
         else
           raise
@@ -1704,7 +1704,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_stamp_with_http_info(name, stamp_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_stamp_with_http_info(name, stamp_id, opts)
         else
           raise
@@ -1782,7 +1782,7 @@ module AsposePdfCloud
       data, _status_code, _headers = delete_table_with_http_info(name, table_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = delete_table_with_http_info(name, table_id, opts)
         else
           raise
@@ -1859,7 +1859,7 @@ module AsposePdfCloud
       data, _status_code, _headers = download_file_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = download_file_with_http_info(path, opts)
         else
           raise
@@ -1932,7 +1932,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_bookmark_with_http_info(name, bookmark_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_bookmark_with_http_info(name, bookmark_path, opts)
         else
           raise
@@ -2010,7 +2010,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_bookmarks_with_http_info(name, bookmark_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_bookmarks_with_http_info(name, bookmark_path, opts)
         else
           raise
@@ -2088,7 +2088,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_caret_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_caret_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -2166,7 +2166,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_circle_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_circle_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -2241,7 +2241,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_disc_usage_with_http_info(opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_disc_usage_with_http_info(opts)
         else
           raise
@@ -2306,7 +2306,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_with_http_info(name, opts)
         else
           raise
@@ -2378,7 +2378,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_annotations_with_http_info(name, opts)
         else
           raise
@@ -2451,7 +2451,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_attachment_by_index_with_http_info(name, attachment_index, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_attachment_by_index_with_http_info(name, attachment_index, opts)
         else
           raise
@@ -2528,7 +2528,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_attachments_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_attachments_with_http_info(name, opts)
         else
           raise
@@ -2600,7 +2600,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_bookmarks_with_http_info(name, opts)
         else
           raise
@@ -2672,7 +2672,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_caret_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_caret_annotations_with_http_info(name, opts)
         else
           raise
@@ -2744,7 +2744,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_circle_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_circle_annotations_with_http_info(name, opts)
         else
           raise
@@ -2816,7 +2816,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_file_attachment_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_file_attachment_annotations_with_http_info(name, opts)
         else
           raise
@@ -2888,7 +2888,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_free_text_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_free_text_annotations_with_http_info(name, opts)
         else
           raise
@@ -2960,7 +2960,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_highlight_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_highlight_annotations_with_http_info(name, opts)
         else
           raise
@@ -3032,7 +3032,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_ink_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_ink_annotations_with_http_info(name, opts)
         else
           raise
@@ -3104,7 +3104,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_line_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_line_annotations_with_http_info(name, opts)
         else
           raise
@@ -3176,7 +3176,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_movie_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_movie_annotations_with_http_info(name, opts)
         else
           raise
@@ -3248,7 +3248,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_poly_line_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_poly_line_annotations_with_http_info(name, opts)
         else
           raise
@@ -3320,7 +3320,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_polygon_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_polygon_annotations_with_http_info(name, opts)
         else
           raise
@@ -3392,7 +3392,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_popup_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_popup_annotations_with_http_info(name, opts)
         else
           raise
@@ -3465,7 +3465,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -3542,7 +3542,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_properties_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_properties_with_http_info(name, opts)
         else
           raise
@@ -3615,7 +3615,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_property_with_http_info(name, property_name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_property_with_http_info(name, property_name, opts)
         else
           raise
@@ -3692,7 +3692,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_redaction_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_redaction_annotations_with_http_info(name, opts)
         else
           raise
@@ -3764,7 +3764,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_screen_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_screen_annotations_with_http_info(name, opts)
         else
           raise
@@ -3836,7 +3836,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_sound_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_sound_annotations_with_http_info(name, opts)
         else
           raise
@@ -3908,7 +3908,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_square_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_square_annotations_with_http_info(name, opts)
         else
           raise
@@ -3980,7 +3980,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_squiggly_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_squiggly_annotations_with_http_info(name, opts)
         else
           raise
@@ -4052,7 +4052,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_stamp_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_stamp_annotations_with_http_info(name, opts)
         else
           raise
@@ -4124,7 +4124,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_stamps_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_stamps_with_http_info(name, opts)
         else
           raise
@@ -4196,7 +4196,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_strike_out_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_strike_out_annotations_with_http_info(name, opts)
         else
           raise
@@ -4268,7 +4268,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_tables_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_tables_with_http_info(name, opts)
         else
           raise
@@ -4340,7 +4340,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_text_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_text_annotations_with_http_info(name, opts)
         else
           raise
@@ -4412,7 +4412,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_document_underline_annotations_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_document_underline_annotations_with_http_info(name, opts)
         else
           raise
@@ -4485,7 +4485,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_download_document_attachment_by_index_with_http_info(name, attachment_index, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_download_document_attachment_by_index_with_http_info(name, attachment_index, opts)
         else
           raise
@@ -4561,7 +4561,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_epub_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_epub_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -4633,7 +4633,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_field_with_http_info(name, field_name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_field_with_http_info(name, field_name, opts)
         else
           raise
@@ -4710,7 +4710,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_fields_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_fields_with_http_info(name, opts)
         else
           raise
@@ -4783,7 +4783,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_file_attachment_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_file_attachment_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -4861,7 +4861,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_file_attachment_annotation_data_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_file_attachment_annotation_data_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -4937,7 +4937,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_file_versions_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_file_versions_with_http_info(path, opts)
         else
           raise
@@ -5006,7 +5006,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_files_list_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_files_list_with_http_info(path, opts)
         else
           raise
@@ -5077,7 +5077,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_free_text_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_free_text_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -5155,7 +5155,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_highlight_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_highlight_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -5239,7 +5239,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_html_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -5327,7 +5327,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_image_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_image_with_http_info(name, image_id, opts)
         else
           raise
@@ -5407,7 +5407,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_image_extract_as_gif_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_image_extract_as_gif_with_http_info(name, image_id, opts)
         else
           raise
@@ -5491,7 +5491,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_image_extract_as_jpeg_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_image_extract_as_jpeg_with_http_info(name, image_id, opts)
         else
           raise
@@ -5575,7 +5575,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_image_extract_as_png_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_image_extract_as_png_with_http_info(name, image_id, opts)
         else
           raise
@@ -5659,7 +5659,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_image_extract_as_tiff_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_image_extract_as_tiff_with_http_info(name, image_id, opts)
         else
           raise
@@ -5741,7 +5741,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_images_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_images_with_http_info(name, page_number, opts)
         else
           raise
@@ -5819,7 +5819,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_ink_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_ink_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -5895,7 +5895,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -5967,7 +5967,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_line_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_line_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -6045,7 +6045,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_link_annotation_with_http_info(name, link_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_link_annotation_with_http_info(name, link_id, opts)
         else
           raise
@@ -6121,7 +6121,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -6193,7 +6193,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_movie_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_movie_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -6271,7 +6271,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_with_http_info(name, page_number, opts)
         else
           raise
@@ -6349,7 +6349,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -6427,7 +6427,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_caret_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_caret_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -6505,7 +6505,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_circle_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_circle_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -6585,7 +6585,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_convert_to_bmp_with_http_info(name, page_number, opts)
         else
           raise
@@ -6669,7 +6669,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_convert_to_emf_with_http_info(name, page_number, opts)
         else
           raise
@@ -6753,7 +6753,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_convert_to_gif_with_http_info(name, page_number, opts)
         else
           raise
@@ -6837,7 +6837,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_convert_to_jpeg_with_http_info(name, page_number, opts)
         else
           raise
@@ -6921,7 +6921,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_convert_to_png_with_http_info(name, page_number, opts)
         else
           raise
@@ -7005,7 +7005,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_convert_to_tiff_with_http_info(name, page_number, opts)
         else
           raise
@@ -7087,7 +7087,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_file_attachment_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_file_attachment_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7165,7 +7165,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_free_text_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_free_text_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7243,7 +7243,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_highlight_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_highlight_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7321,7 +7321,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_ink_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_ink_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7399,7 +7399,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_line_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_line_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7478,7 +7478,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_link_annotation_with_http_info(name, page_number, link_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_link_annotation_with_http_info(name, page_number, link_id, opts)
         else
           raise
@@ -7561,7 +7561,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_link_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_link_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7639,7 +7639,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_movie_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_movie_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7717,7 +7717,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_poly_line_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_poly_line_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7795,7 +7795,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_polygon_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_polygon_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7873,7 +7873,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_popup_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_popup_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -7951,7 +7951,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_redaction_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_redaction_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8029,7 +8029,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_screen_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_screen_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8107,7 +8107,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_sound_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_sound_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8185,7 +8185,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_square_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_square_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8263,7 +8263,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_squiggly_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_squiggly_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8341,7 +8341,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_stamp_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_stamp_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8419,7 +8419,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_stamps_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_stamps_with_http_info(name, page_number, opts)
         else
           raise
@@ -8497,7 +8497,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_strike_out_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_strike_out_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8575,7 +8575,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_tables_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_tables_with_http_info(name, page_number, opts)
         else
           raise
@@ -8660,7 +8660,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, opts)
         else
           raise
@@ -8768,7 +8768,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_text_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_text_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8846,7 +8846,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_page_underline_annotations_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_page_underline_annotations_with_http_info(name, page_number, opts)
         else
           raise
@@ -8923,7 +8923,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pages_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pages_with_http_info(name, opts)
         else
           raise
@@ -8994,7 +8994,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pcl_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pcl_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -9073,7 +9073,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_doc_with_http_info(name, opts)
         else
           raise
@@ -9168,7 +9168,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_epub_with_http_info(name, opts)
         else
           raise
@@ -9273,7 +9273,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_html_with_http_info(name, opts)
         else
           raise
@@ -9426,7 +9426,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
         else
           raise
@@ -9500,7 +9500,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_mobi_xml_with_http_info(name, opts)
         else
           raise
@@ -9573,7 +9573,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts)
         else
           raise
@@ -9657,7 +9657,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_pptx_with_http_info(name, opts)
         else
           raise
@@ -9734,7 +9734,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_svg_with_http_info(name, opts)
         else
           raise
@@ -9823,7 +9823,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_tiff_with_http_info(name, opts)
         else
           raise
@@ -9938,7 +9938,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_xls_with_http_info(name, opts)
         else
           raise
@@ -10022,7 +10022,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_xlsx_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_xlsx_with_http_info(name, opts)
         else
           raise
@@ -10102,7 +10102,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_xml_with_http_info(name, opts)
         else
           raise
@@ -10174,7 +10174,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_pdf_in_storage_to_xps_with_http_info(name, opts)
         else
           raise
@@ -10247,7 +10247,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_poly_line_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_poly_line_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10325,7 +10325,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_polygon_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_polygon_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10403,7 +10403,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_popup_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_popup_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10479,7 +10479,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_ps_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -10551,7 +10551,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_redaction_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_redaction_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10629,7 +10629,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_screen_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_screen_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10707,7 +10707,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_screen_annotation_data_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_screen_annotation_data_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10785,7 +10785,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_sound_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_sound_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10863,7 +10863,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_sound_annotation_data_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_sound_annotation_data_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -10941,7 +10941,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_square_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_square_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11019,7 +11019,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_squiggly_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_squiggly_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11097,7 +11097,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_stamp_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_stamp_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11175,7 +11175,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_stamp_annotation_data_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_stamp_annotation_data_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11253,7 +11253,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_strike_out_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_strike_out_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11337,7 +11337,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_svg_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_svg_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -11425,7 +11425,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_table_with_http_info(name, table_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_table_with_http_info(name, table_id, opts)
         else
           raise
@@ -11509,7 +11509,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_text_with_http_info(name, llx, lly, urx, ury, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_text_with_http_info(name, llx, lly, urx, ury, opts)
         else
           raise
@@ -11612,7 +11612,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_text_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_text_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11690,7 +11690,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_underline_annotation_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_underline_annotation_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -11768,7 +11768,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_verify_signature_with_http_info(name, sign_name, opts)
         else
           raise
@@ -11852,7 +11852,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_web_in_storage_to_pdf_with_http_info(url, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_web_in_storage_to_pdf_with_http_info(url, opts)
         else
           raise
@@ -11937,7 +11937,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_words_per_page_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_words_per_page_with_http_info(name, opts)
         else
           raise
@@ -12009,7 +12009,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, opts)
         else
           raise
@@ -12081,7 +12081,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_xml_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_xml_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -12153,7 +12153,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_xps_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_xps_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -12223,7 +12223,7 @@ module AsposePdfCloud
       data, _status_code, _headers = get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
@@ -12296,7 +12296,7 @@ module AsposePdfCloud
       move_file_with_http_info(src_path, dest_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           move_file_with_http_info(src_path, dest_path, opts)
         else
           raise
@@ -12376,7 +12376,7 @@ module AsposePdfCloud
       move_folder_with_http_info(src_path, dest_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           move_folder_with_http_info(src_path, dest_path, opts)
         else
           raise
@@ -12453,7 +12453,7 @@ module AsposePdfCloud
       data, _status_code, _headers = object_exists_with_http_info(path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = object_exists_with_http_info(path, opts)
         else
           raise
@@ -12528,7 +12528,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_append_document_with_http_info(name, append_file, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_append_document_with_http_info(name, append_file, opts)
         else
           raise
@@ -12612,7 +12612,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_bookmark_with_http_info(name, bookmark_path, bookmarks, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_bookmark_with_http_info(name, bookmark_path, bookmarks, opts)
         else
           raise
@@ -12696,7 +12696,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_change_password_document_in_storage_with_http_info(name, owner_password, new_user_password, new_owner_password, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_change_password_document_in_storage_with_http_info(name, owner_password, new_user_password, new_owner_password, opts)
         else
           raise
@@ -12788,7 +12788,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_create_field_with_http_info(name, page, field, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_create_field_with_http_info(name, page, field, opts)
         else
           raise
@@ -12871,7 +12871,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_decrypt_document_in_storage_with_http_info(name, password, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_decrypt_document_in_storage_with_http_info(name, password, opts)
         else
           raise
@@ -12952,7 +12952,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_document_image_footer_with_http_info(name, image_footer, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_document_image_footer_with_http_info(name, image_footer, opts)
         else
           raise
@@ -13035,7 +13035,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_document_image_header_with_http_info(name, image_header, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_document_image_header_with_http_info(name, image_header, opts)
         else
           raise
@@ -13118,7 +13118,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_document_page_number_stamps_with_http_info(name, stamp, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_document_page_number_stamps_with_http_info(name, stamp, opts)
         else
           raise
@@ -13201,7 +13201,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_document_text_footer_with_http_info(name, text_footer, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_document_text_footer_with_http_info(name, text_footer, opts)
         else
           raise
@@ -13284,7 +13284,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_document_text_header_with_http_info(name, text_header, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_document_text_header_with_http_info(name, text_header, opts)
         else
           raise
@@ -13365,7 +13365,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_document_text_replace_with_http_info(name, text_replace, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_document_text_replace_with_http_info(name, text_replace, opts)
         else
           raise
@@ -13446,7 +13446,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_encrypt_document_in_storage_with_http_info(name, user_password, owner_password, crypto_algorithm, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_encrypt_document_in_storage_with_http_info(name, user_password, owner_password, crypto_algorithm, opts)
         else
           raise
@@ -13547,7 +13547,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_flatten_document_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_flatten_document_with_http_info(name, opts)
         else
           raise
@@ -13632,7 +13632,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, opts)
         else
           raise
@@ -13740,7 +13740,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_move_page_with_http_info(name, page_number, new_index, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_move_page_with_http_info(name, page_number, new_index, opts)
         else
           raise
@@ -13824,7 +13824,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_optimize_document_with_http_info(name, options, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_optimize_document_with_http_info(name, options, opts)
         else
           raise
@@ -13902,7 +13902,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_caret_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_caret_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -13985,7 +13985,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_circle_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_circle_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14068,7 +14068,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_file_attachment_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_file_attachment_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14151,7 +14151,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_free_text_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_free_text_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14234,7 +14234,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_highlight_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_highlight_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14317,7 +14317,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_image_stamps_with_http_info(name, page_number, stamps, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_image_stamps_with_http_info(name, page_number, stamps, opts)
         else
           raise
@@ -14400,7 +14400,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_ink_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_ink_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14483,7 +14483,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_line_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_line_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14566,7 +14566,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_link_annotations_with_http_info(name, page_number, links, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_link_annotations_with_http_info(name, page_number, links, opts)
         else
           raise
@@ -14649,7 +14649,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_movie_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_movie_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14732,7 +14732,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, opts)
         else
           raise
@@ -14815,7 +14815,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_poly_line_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_poly_line_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14898,7 +14898,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_polygon_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_polygon_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -14981,7 +14981,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_redaction_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_redaction_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15064,7 +15064,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_screen_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_screen_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15147,7 +15147,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_sound_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_sound_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15230,7 +15230,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_square_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_square_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15313,7 +15313,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_squiggly_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_squiggly_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15396,7 +15396,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_stamp_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_stamp_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15479,7 +15479,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_strike_out_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_strike_out_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15562,7 +15562,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_tables_with_http_info(name, page_number, tables, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_tables_with_http_info(name, page_number, tables, opts)
         else
           raise
@@ -15645,7 +15645,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_text_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_text_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15728,7 +15728,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_text_replace_with_http_info(name, page_number, text_replace_list_request, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_text_replace_with_http_info(name, page_number, text_replace_list_request, opts)
         else
           raise
@@ -15811,7 +15811,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_text_stamps_with_http_info(name, page_number, stamps, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_text_stamps_with_http_info(name, page_number, stamps, opts)
         else
           raise
@@ -15894,7 +15894,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_page_underline_annotations_with_http_info(name, page_number, annotations, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_page_underline_annotations_with_http_info(name, page_number, annotations, opts)
         else
           raise
@@ -15977,7 +15977,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -16059,7 +16059,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_sign_document_with_http_info(name, sign, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_sign_document_with_http_info(name, sign, opts)
         else
           raise
@@ -16137,7 +16137,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_sign_page_with_http_info(name, page_number, sign, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_sign_page_with_http_info(name, page_number, sign, opts)
         else
           raise
@@ -16221,7 +16221,7 @@ module AsposePdfCloud
       data, _status_code, _headers = post_split_document_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = post_split_document_with_http_info(name, opts)
         else
           raise
@@ -16299,7 +16299,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_add_new_page_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_add_new_page_with_http_info(name, opts)
         else
           raise
@@ -16373,7 +16373,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_add_text_with_http_info(name, page_number, paragraph, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_add_text_with_http_info(name, page_number, paragraph, opts)
         else
           raise
@@ -16457,7 +16457,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_annotations_flatten_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_annotations_flatten_with_http_info(name, opts)
         else
           raise
@@ -16537,7 +16537,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_bookmark_with_http_info(name, bookmark_path, bookmark, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_bookmark_with_http_info(name, bookmark_path, bookmark, opts)
         else
           raise
@@ -16620,7 +16620,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_caret_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_caret_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -16704,7 +16704,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_change_password_document_with_http_info(out_path, owner_password, new_user_password, new_owner_password, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_change_password_document_with_http_info(out_path, owner_password, new_user_password, new_owner_password, opts)
         else
           raise
@@ -16798,7 +16798,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_circle_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_circle_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -16879,7 +16879,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_create_document_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_create_document_with_http_info(name, opts)
         else
           raise
@@ -16952,7 +16952,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_decrypt_document_with_http_info(out_path, password, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_decrypt_document_with_http_info(out_path, password, opts)
         else
           raise
@@ -17037,7 +17037,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_encrypt_document_with_http_info(out_path, user_password, owner_password, crypto_algorithm, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_encrypt_document_with_http_info(out_path, user_password, owner_password, crypto_algorithm, opts)
         else
           raise
@@ -17138,7 +17138,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_epub_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -17216,7 +17216,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_fields_flatten_with_http_info(name, opts)
         else
           raise
@@ -17290,7 +17290,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_file_attachment_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_file_attachment_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -17373,7 +17373,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_file_attachment_annotation_data_extract_with_http_info(name, annotation_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_file_attachment_annotation_data_extract_with_http_info(name, annotation_id, opts)
         else
           raise
@@ -17454,7 +17454,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_free_text_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_free_text_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -17537,7 +17537,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_highlight_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_highlight_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -17627,7 +17627,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_html_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -17725,7 +17725,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_image_extract_as_gif_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_image_extract_as_gif_with_http_info(name, image_id, opts)
         else
           raise
@@ -17812,7 +17812,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_image_extract_as_jpeg_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_image_extract_as_jpeg_with_http_info(name, image_id, opts)
         else
           raise
@@ -17899,7 +17899,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_image_extract_as_png_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_image_extract_as_png_with_http_info(name, image_id, opts)
         else
           raise
@@ -17986,7 +17986,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_image_extract_as_tiff_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_image_extract_as_tiff_with_http_info(name, image_id, opts)
         else
           raise
@@ -18070,7 +18070,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_image_in_storage_to_pdf_with_http_info(name, image_templates, opts)
         else
           raise
@@ -18150,7 +18150,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_images_extract_as_gif_with_http_info(name, page_number, opts)
         else
           raise
@@ -18237,7 +18237,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_images_extract_as_jpeg_with_http_info(name, page_number, opts)
         else
           raise
@@ -18324,7 +18324,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_images_extract_as_png_with_http_info(name, page_number, opts)
         else
           raise
@@ -18411,7 +18411,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_images_extract_as_tiff_with_http_info(name, page_number, opts)
         else
           raise
@@ -18496,7 +18496,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_ink_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_ink_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -18578,7 +18578,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -18658,7 +18658,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_line_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_line_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -18741,7 +18741,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_link_annotation_with_http_info(name, link_id, link, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_link_annotation_with_http_info(name, link_id, link, opts)
         else
           raise
@@ -18823,7 +18823,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_merge_documents_with_http_info(name, merge_documents, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_merge_documents_with_http_info(name, merge_documents, opts)
         else
           raise
@@ -18900,7 +18900,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -18980,7 +18980,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_movie_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_movie_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -19063,7 +19063,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_add_stamp_with_http_info(name, page_number, stamp, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_add_stamp_with_http_info(name, page_number, stamp, opts)
         else
           raise
@@ -19148,7 +19148,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts)
         else
           raise
@@ -19239,7 +19239,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts)
         else
           raise
@@ -19330,7 +19330,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts)
         else
           raise
@@ -19421,7 +19421,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts)
         else
           raise
@@ -19512,7 +19512,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_convert_to_png_with_http_info(name, page_number, out_path, opts)
         else
           raise
@@ -19603,7 +19603,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts)
         else
           raise
@@ -19691,7 +19691,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pcl_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -19777,7 +19777,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_doc_with_http_info(out_path, opts)
         else
           raise
@@ -19874,7 +19874,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_epub_with_http_info(out_path, opts)
         else
           raise
@@ -19981,7 +19981,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_html_with_http_info(out_path, opts)
         else
           raise
@@ -20136,7 +20136,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
         else
           raise
@@ -20212,7 +20212,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_mobi_xml_with_http_info(out_path, opts)
         else
           raise
@@ -20287,7 +20287,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts)
         else
           raise
@@ -20373,7 +20373,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_pptx_with_http_info(out_path, opts)
         else
           raise
@@ -20451,7 +20451,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_svg_with_http_info(out_path, opts)
         else
           raise
@@ -20540,7 +20540,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_tiff_with_http_info(out_path, opts)
         else
           raise
@@ -20657,7 +20657,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_xls_with_http_info(out_path, opts)
         else
           raise
@@ -20743,7 +20743,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_xlsx_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_xlsx_with_http_info(out_path, opts)
         else
           raise
@@ -20825,7 +20825,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_xml_with_http_info(out_path, opts)
         else
           raise
@@ -20899,7 +20899,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_request_to_xps_with_http_info(out_path, opts)
         else
           raise
@@ -20982,7 +20982,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts)
         else
           raise
@@ -21084,7 +21084,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_epub_with_http_info(name, out_path, opts)
         else
           raise
@@ -21196,7 +21196,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_html_with_http_info(name, out_path, opts)
         else
           raise
@@ -21356,7 +21356,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
         else
           raise
@@ -21437,7 +21437,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, opts)
         else
           raise
@@ -21517,7 +21517,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts)
         else
           raise
@@ -21608,7 +21608,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts)
         else
           raise
@@ -21691,7 +21691,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts)
         else
           raise
@@ -21785,7 +21785,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_tiff_with_http_info(name, out_path, opts)
         else
           raise
@@ -21907,7 +21907,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts)
         else
           raise
@@ -21998,7 +21998,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_xlsx_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_xlsx_with_http_info(name, out_path, opts)
         else
           raise
@@ -22085,7 +22085,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_xml_with_http_info(name, out_path, opts)
         else
           raise
@@ -22164,7 +22164,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_pdf_in_storage_to_xps_with_http_info(name, out_path, opts)
         else
           raise
@@ -22244,7 +22244,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_poly_line_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_poly_line_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -22327,7 +22327,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_polygon_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_polygon_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -22410,7 +22410,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_popup_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -22492,7 +22492,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_privileges_with_http_info(name, privileges, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_privileges_with_http_info(name, privileges, opts)
         else
           raise
@@ -22569,7 +22569,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_ps_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -22649,7 +22649,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_redaction_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_redaction_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -22733,7 +22733,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_replace_image_with_http_info(name, image_id, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_replace_image_with_http_info(name, image_id, opts)
         else
           raise
@@ -22817,7 +22817,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_screen_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_screen_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -22900,7 +22900,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
         else
           raise
@@ -22984,7 +22984,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_searchable_document_with_http_info(name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_searchable_document_with_http_info(name, opts)
         else
           raise
@@ -23060,7 +23060,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_set_property_with_http_info(name, property_name, value, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_set_property_with_http_info(name, property_name, value, opts)
         else
           raise
@@ -23145,7 +23145,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_sound_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_sound_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -23228,7 +23228,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_sound_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_sound_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
         else
           raise
@@ -23313,7 +23313,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_square_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_square_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -23396,7 +23396,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_squiggly_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_squiggly_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -23479,7 +23479,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_stamp_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_stamp_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -23562,7 +23562,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_stamp_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_stamp_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, opts)
         else
           raise
@@ -23647,7 +23647,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_strike_out_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_strike_out_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -23737,7 +23737,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_svg_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -23833,7 +23833,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_table_with_http_info(name, table_id, table, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_table_with_http_info(name, table_id, table, opts)
         else
           raise
@@ -23916,7 +23916,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_text_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_text_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -23999,7 +23999,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_underline_annotation_with_http_info(name, annotation_id, annotation, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_underline_annotation_with_http_info(name, annotation_id, annotation, opts)
         else
           raise
@@ -24082,7 +24082,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_update_field_with_http_info(name, field_name, field, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_update_field_with_http_info(name, field_name, field, opts)
         else
           raise
@@ -24164,7 +24164,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_update_fields_with_http_info(name, fields, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_update_fields_with_http_info(name, fields, opts)
         else
           raise
@@ -24248,7 +24248,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_web_in_storage_to_pdf_with_http_info(name, url, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_web_in_storage_to_pdf_with_http_info(name, url, opts)
         else
           raise
@@ -24340,7 +24340,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, opts)
         else
           raise
@@ -24415,7 +24415,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, opts)
         else
           raise
@@ -24495,7 +24495,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_xml_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -24576,7 +24576,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_xps_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -24655,7 +24655,7 @@ module AsposePdfCloud
       data, _status_code, _headers = put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
@@ -24731,7 +24731,7 @@ module AsposePdfCloud
       data, _status_code, _headers = storage_exists_with_http_info(storage_name, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = storage_exists_with_http_info(storage_name, opts)
         else
           raise
@@ -24799,7 +24799,7 @@ module AsposePdfCloud
       data, _status_code, _headers = upload_file_with_http_info(path, file, opts)
       rescue ApiError => error
         if error.code == 401
-          @api_client.refresh_token
+          @api_client.request_token_if_needed
           data, _status_code, _headers = upload_file_with_http_info(path, file, opts)
         else
           raise
