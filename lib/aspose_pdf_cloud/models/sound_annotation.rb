@@ -254,13 +254,42 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @rect.nil?
+        invalid_properties.push("invalid value for 'rect', rect cannot be nil.")
+      end
+
+      if @file_path.nil?
+        invalid_properties.push("invalid value for 'file_path', file_path cannot be nil.")
+      end
+
+      if @file_path.to_s.length < 1
+        invalid_properties.push("invalid value for 'file_path', the character length must be great than or equal to 1.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @rect.nil?
+      return false if @file_path.nil?
+      return false if @file_path.to_s.length < 1
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] file_path Value to be assigned
+    def file_path=(file_path)
+      if file_path.nil?
+        fail ArgumentError, "file_path cannot be nil"
+      end
+
+      if file_path.to_s.length < 1
+        fail ArgumentError, "invalid value for 'file_path', the character length must be great than or equal to 1."
+      end
+
+      @file_path = file_path
     end
 
     # Checks equality by comparing each attribute.
@@ -331,11 +360,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

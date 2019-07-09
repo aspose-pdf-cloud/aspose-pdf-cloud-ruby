@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | [optional] 
 **text** | **String** | Get the text content. | [optional] 
 **visible** | **BOOLEAN** | Gets the stamp is visible. | [optional] 
-**stamp_type** | [**StampType**](StampType.md) | Gets stamp type. | [optional] 
+**stamp_type** | [**StampType**](StampType.md) | Gets stamp type. | 
 
 

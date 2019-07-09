@@ -108,12 +108,27 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @width.nil?
+        invalid_properties.push("invalid value for 'width', width cannot be nil.")
+      end
+
+      if @height.nil?
+        invalid_properties.push("invalid value for 'height', height cannot be nil.")
+      end
+
+      if @page_number.nil?
+        invalid_properties.push("invalid value for 'page_number', page_number cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @width.nil?
+      return false if @height.nil?
+      return false if @page_number.nil?
       return true
     end
 
@@ -169,11 +184,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

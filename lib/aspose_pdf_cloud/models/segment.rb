@@ -74,6 +74,10 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'value', value cannot be nil.")
       end
 
+      if @value.to_s.length < 1
+        invalid_properties.push("invalid value for 'value', the character length must be great than or equal to 1.")
+      end
+
       return invalid_properties
     end
 
@@ -81,7 +85,22 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @value.nil?
+      return false if @value.to_s.length < 1
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] value Value to be assigned
+    def value=(value)
+      if value.nil?
+        fail ArgumentError, "value cannot be nil"
+      end
+
+      if value.to_s.length < 1
+        fail ArgumentError, "invalid value for 'value', the character length must be great than or equal to 1."
+      end
+
+      @value = value
     end
 
     # Checks equality by comparing each attribute.
@@ -132,11 +151,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

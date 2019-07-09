@@ -28,7 +28,7 @@ module AsposePdfCloud
     # Gets or sets a float value that indicates the line width of the graph.
     attr_accessor :line_width
 
-    # Gets or sets a  object that indicates the color of the graph.
+    # Gets or sets a Color object that indicates the color of the graph.
     attr_accessor :color
 
     # Gets or sets a dash array.
@@ -37,7 +37,7 @@ module AsposePdfCloud
     # Gets or sets a dash phase.
     attr_accessor :dash_phase
 
-    # Gets or sets a  object that indicates the fill color of the graph.
+    # Gets or sets a Color object that indicates the fill color of the graph.
     attr_accessor :fill_color
 
     # Gets or sets is border doubled.
@@ -219,11 +219,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

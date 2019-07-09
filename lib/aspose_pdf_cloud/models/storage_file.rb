@@ -23,32 +23,43 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
+  # File or folder information
+  class StorageFile
+    # File or folder name.
+    attr_accessor :name
 
-  class StorageExistResponse
-    # Response status code.
-    attr_accessor :code
+    # True if it is a folder.
+    attr_accessor :is_folder
 
-    # Response status.
-    attr_accessor :status
+    # File or folder last modified DateTime.
+    attr_accessor :modified_date
 
-    attr_accessor :is_exist
+    # File or folder size.
+    attr_accessor :size
+
+    # File or folder path.
+    attr_accessor :path
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status',
-        :'is_exist' => :'IsExist'
+        :'name' => :'Name',
+        :'is_folder' => :'IsFolder',
+        :'modified_date' => :'ModifiedDate',
+        :'size' => :'Size',
+        :'path' => :'Path'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'Integer',
-        :'status' => :'String',
-        :'is_exist' => :'BOOLEAN'
+        :'name' => :'String',
+        :'is_folder' => :'BOOLEAN',
+        :'modified_date' => :'DateTime',
+        :'size' => :'Integer',
+        :'path' => :'String'
       }
     end
 
@@ -60,16 +71,24 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.has_key?(:'Name')
+        self.name = attributes[:'Name']
       end
 
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.has_key?(:'IsFolder')
+        self.is_folder = attributes[:'IsFolder']
       end
 
-      if attributes.has_key?(:'IsExist')
-        self.is_exist = attributes[:'IsExist']
+      if attributes.has_key?(:'ModifiedDate')
+        self.modified_date = attributes[:'ModifiedDate']
+      end
+
+      if attributes.has_key?(:'Size')
+        self.size = attributes[:'Size']
+      end
+
+      if attributes.has_key?(:'Path')
+        self.path = attributes[:'Path']
       end
 
     end
@@ -78,8 +97,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
+      if @is_folder.nil?
+        invalid_properties.push("invalid value for 'is_folder', is_folder cannot be nil.")
+      end
+
+      if @size.nil?
+        invalid_properties.push("invalid value for 'size', size cannot be nil.")
       end
 
       return invalid_properties
@@ -88,7 +111,8 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
+      return false if @is_folder.nil?
+      return false if @size.nil?
       return true
     end
 
@@ -97,9 +121,11 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          status == o.status &&
-          is_exist == o.is_exist
+          name == o.name &&
+          is_folder == o.is_folder &&
+          modified_date == o.modified_date &&
+          size == o.size &&
+          path == o.path
     end
 
     # @see the `==` method
@@ -111,7 +137,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status, is_exist].hash
+      [name, is_folder, modified_date, size, path].hash
     end
 
     # Builds the object from hash
@@ -141,11 +167,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

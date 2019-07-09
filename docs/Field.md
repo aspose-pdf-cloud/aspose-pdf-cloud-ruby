@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **selected_items** | **Array&lt;Integer&gt;** | Selected items. | [optional] 
 **type** | [**FieldType**](FieldType.md) | Field type. | [optional] 
 **rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional] 
-**values** | **Array&lt;String&gt;** | Field values. | [optional] 
+**values** | **Array&lt;String&gt;** | Field values. | 
 
 

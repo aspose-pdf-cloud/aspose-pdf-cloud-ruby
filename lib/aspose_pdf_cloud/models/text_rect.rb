@@ -40,13 +40,13 @@ module AsposePdfCloud
     # Gets or sets a vertical alignment of text fragment. 
     attr_accessor :vertical_alignment
 
-    # Gets or sets text position for text, represented with  object.
+    # Gets or sets text position for text, represented with TextRect object.
     attr_accessor :position
 
-    # Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
+    # Gets text position for text, represented with TextRect object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
     attr_accessor :baseline_position
 
-    # Gets or sets text state for the text that  object represents.
+    # Gets or sets text state for the text that TextRect object represents.
     attr_accessor :text_state
 
 
@@ -187,11 +187,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer

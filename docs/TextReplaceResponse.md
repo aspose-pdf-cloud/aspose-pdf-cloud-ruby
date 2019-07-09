@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Integer** | Response status code. | 
 **status** | **String** | Response status. | [optional] 
-**matches** | **Integer** | Number of matches | [optional] 
+**matches** | **Integer** | Number of matches | 
 
 

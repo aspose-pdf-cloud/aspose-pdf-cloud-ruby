@@ -23,33 +23,33 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Class for appendDocument service request building.
-  class AppendDocument
-    # Document to append (server path).
-    attr_accessor :document
+  # Represents response containing single bookmark info
+  class BookmarkResponse
+    # Response status code.
+    attr_accessor :code
 
-    # Appending start page.
-    attr_accessor :start_page
+    # Response status.
+    attr_accessor :status
 
-    # Appending end page.
-    attr_accessor :end_page
+    # Bookmark object
+    attr_accessor :bookmark
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'document' => :'Document',
-        :'start_page' => :'StartPage',
-        :'end_page' => :'EndPage'
+        :'code' => :'Code',
+        :'status' => :'Status',
+        :'bookmark' => :'Bookmark'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'document' => :'String',
-        :'start_page' => :'Integer',
-        :'end_page' => :'Integer'
+        :'code' => :'Integer',
+        :'status' => :'String',
+        :'bookmark' => :'Bookmark'
       }
     end
 
@@ -61,16 +61,16 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Document')
-        self.document = attributes[:'Document']
+      if attributes.has_key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.has_key?(:'StartPage')
-        self.start_page = attributes[:'StartPage']
+      if attributes.has_key?(:'Status')
+        self.status = attributes[:'Status']
       end
 
-      if attributes.has_key?(:'EndPage')
-        self.end_page = attributes[:'EndPage']
+      if attributes.has_key?(:'Bookmark')
+        self.bookmark = attributes[:'Bookmark']
       end
 
     end
@@ -79,16 +79,8 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @document.nil?
-        invalid_properties.push("invalid value for 'document', document cannot be nil.")
-      end
-
-      if @start_page.nil?
-        invalid_properties.push("invalid value for 'start_page', start_page cannot be nil.")
-      end
-
-      if @end_page.nil?
-        invalid_properties.push("invalid value for 'end_page', end_page cannot be nil.")
+      if @code.nil?
+        invalid_properties.push("invalid value for 'code', code cannot be nil.")
       end
 
       return invalid_properties
@@ -97,9 +89,7 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @document.nil?
-      return false if @start_page.nil?
-      return false if @end_page.nil?
+      return false if @code.nil?
       return true
     end
 
@@ -108,9 +98,9 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          document == o.document &&
-          start_page == o.start_page &&
-          end_page == o.end_page
+          code == o.code &&
+          status == o.status &&
+          bookmark == o.bookmark
     end
 
     # @see the `==` method
@@ -122,7 +112,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [document, start_page, end_page].hash
+      [code, status, bookmark].hash
     end
 
     # Builds the object from hash
@@ -152,11 +142,9 @@ module AsposePdfCloud
     def _deserialize(type, value)
       case type.to_sym
       when :DateTime
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime
+        DateTime.parse(value)
       when :Date
-        format = (value.include? '+') ? '/Date(%Q%z)/' : '/Date(%Q)/'
-        Time.strptime(value, format).utc.to_datetime.to_date
+        Date.parse(value)
       when :String
         value.to_s
       when :Integer
