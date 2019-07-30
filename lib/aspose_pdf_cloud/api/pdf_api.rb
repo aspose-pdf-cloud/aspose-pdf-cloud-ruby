@@ -4620,10 +4620,226 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Export fields from from PDF in storage to FDF file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_export_fields_from_pdf_to_fdf_in_storage(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Export fields from from PDF in storage to FDF file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_export_fields_from_pdf_to_fdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_export_fields_from_pdf_to_fdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/export/fdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_export_fields_from_pdf_to_fdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Export fields from from PDF in storage to XFDF file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_export_fields_from_pdf_to_xfdf_in_storage(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Export fields from from PDF in storage to XFDF file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_export_fields_from_pdf_to_xfdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_export_fields_from_pdf_to_xfdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/export/xfdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_export_fields_from_pdf_to_xfdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Export fields from from PDF in storage to XML file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_export_fields_from_pdf_to_xml_in_storage(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Export fields from from PDF in storage to XML file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_export_fields_from_pdf_to_xml_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_export_fields_from_pdf_to_xml_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/export/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_export_fields_from_pdf_to_xml_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get document field by name.
     # 
     # @param name The document name.
-    # @param field_name The field name/
+    # @param field_name The field name (name should be encoded).
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
@@ -4644,7 +4860,7 @@ module AsposePdfCloud
     # Get document field by name.
     # 
     # @param name The document name.
-    # @param field_name The field name/
+    # @param field_name The field name (name should be encoded).
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
@@ -5802,6 +6018,243 @@ module AsposePdfCloud
         :return_type => 'ImagesResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_images\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from FDF file in storage.
+    # 
+    # @param name The document name.
+    # @param fdf_file_path The Fdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_import_fields_from_fdf_in_storage(name, fdf_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from FDF file in storage.
+    # 
+    # @param name The document name.
+    # @param fdf_file_path The Fdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_import_fields_from_fdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_import_fields_from_fdf_in_storage"
+      end
+      # verify the required parameter 'fdf_file_path' is set
+      if @api_client.config.client_side_validation && fdf_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'fdf_file_path' when calling PdfApi.get_import_fields_from_fdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/fdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'fdfFilePath'] = fdf_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_import_fields_from_fdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from XFDF file in storage.
+    # 
+    # @param name The document name.
+    # @param xfdf_file_path The XFDF file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_import_fields_from_xfdf_in_storage(name, xfdf_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from XFDF file in storage.
+    # 
+    # @param name The document name.
+    # @param xfdf_file_path The XFDF file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_import_fields_from_xfdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_import_fields_from_xfdf_in_storage"
+      end
+      # verify the required parameter 'xfdf_file_path' is set
+      if @api_client.config.client_side_validation && xfdf_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'xfdf_file_path' when calling PdfApi.get_import_fields_from_xfdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/xfdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'xfdfFilePath'] = xfdf_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_import_fields_from_xfdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Import from XML file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param name The document name.
+    # @param xml_file_path Full source filename (ex. /folder1/folder2/template.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [File]
+    def get_import_fields_from_xml_in_storage(name, xml_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Import from XML file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param name The document name.
+    # @param xml_file_path Full source filename (ex. /folder1/folder2/template.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_import_fields_from_xml_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_import_fields_from_xml_in_storage"
+      end
+      # verify the required parameter 'xml_file_path' is set
+      if @api_client.config.client_side_validation && xml_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'xml_file_path' when calling PdfApi.get_import_fields_from_xml_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'xmlFilePath'] = xml_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_import_fields_from_xml_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13613,6 +14066,234 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Update fields from FDF file in request.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :fdf_data Fdf file.
+    # @return [AsposeResponse]
+    def post_import_fields_from_fdf(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_import_fields_from_fdf_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_import_fields_from_fdf_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from FDF file in request.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :fdf_data Fdf file.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_import_fields_from_fdf_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_import_fields_from_fdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_import_fields_from_fdf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/fdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'fdf_data'] if !opts[:'fdf_data'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_import_fields_from_fdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from XFDF file in request.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :xfdf_data Xfdf file.
+    # @return [AsposeResponse]
+    def post_import_fields_from_xfdf(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_import_fields_from_xfdf_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_import_fields_from_xfdf_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from XFDF file in request.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :xfdf_data Xfdf file.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_import_fields_from_xfdf_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_import_fields_from_xfdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_import_fields_from_xfdf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/xfdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'xfdf_data'] if !opts[:'xfdf_data'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_import_fields_from_xfdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from XML file in request.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :xml_data Xml file.
+    # @return [AsposeResponse]
+    def post_import_fields_from_xml(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_import_fields_from_xml_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_import_fields_from_xml_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from XML file in request.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :xml_data Xml file.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_import_fields_from_xml_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_import_fields_from_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_import_fields_from_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'xml_data'] if !opts[:'xml_data'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_import_fields_from_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert image to document page.
     # 
     # @param name The document name.
@@ -17204,6 +17885,243 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Export fields from from PDF in storage to FDF file in storage.
+    # 
+    # @param name The document name.
+    # @param fdf_output_file_path The output Fdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_export_fields_from_pdf_to_fdf_in_storage(name, fdf_output_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, fdf_output_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, fdf_output_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Export fields from from PDF in storage to FDF file in storage.
+    # 
+    # @param name The document name.
+    # @param fdf_output_file_path The output Fdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, fdf_output_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_export_fields_from_pdf_to_fdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_export_fields_from_pdf_to_fdf_in_storage"
+      end
+      # verify the required parameter 'fdf_output_file_path' is set
+      if @api_client.config.client_side_validation && fdf_output_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'fdf_output_file_path' when calling PdfApi.put_export_fields_from_pdf_to_fdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/export/fdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'fdfOutputFilePath'] = fdf_output_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_export_fields_from_pdf_to_fdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Export fields from from PDF in storage to XFDF file in storage.
+    # 
+    # @param name The document name.
+    # @param xfdf_output_file_path The output xfdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_export_fields_from_pdf_to_xfdf_in_storage(name, xfdf_output_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, xfdf_output_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, xfdf_output_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Export fields from from PDF in storage to XFDF file in storage.
+    # 
+    # @param name The document name.
+    # @param xfdf_output_file_path The output xfdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, xfdf_output_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_export_fields_from_pdf_to_xfdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_export_fields_from_pdf_to_xfdf_in_storage"
+      end
+      # verify the required parameter 'xfdf_output_file_path' is set
+      if @api_client.config.client_side_validation && xfdf_output_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'xfdf_output_file_path' when calling PdfApi.put_export_fields_from_pdf_to_xfdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/export/xfdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'xfdfOutputFilePath'] = xfdf_output_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_export_fields_from_pdf_to_xfdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Export fields from from PDF in storage to XML file in storage.
+    # 
+    # @param name The document name.
+    # @param xml_output_file_path The output xml file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_export_fields_from_pdf_to_xml_in_storage(name, xml_output_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, xml_output_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, xml_output_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Export fields from from PDF in storage to XML file in storage.
+    # 
+    # @param name The document name.
+    # @param xml_output_file_path The output xml file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, xml_output_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_export_fields_from_pdf_to_xml_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_export_fields_from_pdf_to_xml_in_storage"
+      end
+      # verify the required parameter 'xml_output_file_path' is set
+      if @api_client.config.client_side_validation && xml_output_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'xml_output_file_path' when calling PdfApi.put_export_fields_from_pdf_to_xml_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/export/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'xmlOutputFilePath'] = xml_output_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_export_fields_from_pdf_to_xml_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Flatten form fields in document.
     # 
     # @param name The document name.
@@ -18478,6 +19396,243 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_images_extract_as_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from FDF file in storage.
+    # 
+    # @param name The document name.
+    # @param fdf_file_path The Fdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_import_fields_from_fdf_in_storage(name, fdf_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from FDF file in storage.
+    # 
+    # @param name The document name.
+    # @param fdf_file_path The Fdf file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_import_fields_from_fdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_import_fields_from_fdf_in_storage"
+      end
+      # verify the required parameter 'fdf_file_path' is set
+      if @api_client.config.client_side_validation && fdf_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'fdf_file_path' when calling PdfApi.put_import_fields_from_fdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/fdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'fdfFilePath'] = fdf_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_import_fields_from_fdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from XFDF file in storage.
+    # 
+    # @param name The document name.
+    # @param xfdf_file_path The XFDF file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_import_fields_from_xfdf_in_storage(name, xfdf_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from XFDF file in storage.
+    # 
+    # @param name The document name.
+    # @param xfdf_file_path The XFDF file path.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_import_fields_from_xfdf_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_import_fields_from_xfdf_in_storage"
+      end
+      # verify the required parameter 'xfdf_file_path' is set
+      if @api_client.config.client_side_validation && xfdf_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'xfdf_file_path' when calling PdfApi.put_import_fields_from_xfdf_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/xfdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'xfdfFilePath'] = xfdf_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_import_fields_from_xfdf_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update fields from XML file in storage.
+    # 
+    # @param name The document name.
+    # @param xml_file_path Full source filename (ex. /folder1/folder2/template.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def put_import_fields_from_xml_in_storage(name, xml_file_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update fields from XML file in storage.
+    # 
+    # @param name The document name.
+    # @param xml_file_path Full source filename (ex. /folder1/folder2/template.xml)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_import_fields_from_xml_in_storage ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_import_fields_from_xml_in_storage"
+      end
+      # verify the required parameter 'xml_file_path' is set
+      if @api_client.config.client_side_validation && xml_file_path.nil?
+        fail ArgumentError, "Missing the required parameter 'xml_file_path' when calling PdfApi.put_import_fields_from_xml_in_storage"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/import/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'xmlFilePath'] = xml_file_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_import_fields_from_xml_in_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

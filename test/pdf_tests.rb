@@ -127,8 +127,8 @@ class PdfTests < Minitest::Test
     upload_file(file_name)
 
     opts = {
-        :endPage => 2,
-        :annotationTypes => [AnnotationType::STAMP],
+        :end_page => 2,
+        :annotation_types => [AnnotationType::STAMP],
         :folder => @temp_folder
     }
 
@@ -5377,5 +5377,233 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.put_bookmark(file_name, path, bookmark, opts)
     assert(response, 'Filed to update bookmark.')
+  end
+
+  # Import Export Tests
+
+  def test_get_export_fields_from_pdf_to_xml_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_export_fields_from_pdf_to_xml_in_storage(file_name, opts)
+    assert(response, 'Filed to export fields to xml.')
+  end
+
+  def test_get_export_fields_from_pdf_to_fdf_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_export_fields_from_pdf_to_fdf_in_storage(file_name, opts)
+    assert(response, 'Filed to export fields to fdf.')
+  end
+
+  def test_get_export_fields_from_pdf_to_xfdf_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_export_fields_from_pdf_to_xfdf_in_storage(file_name, opts)
+    assert(response, 'Filed to export fields to xfdf.')
+  end
+
+  def test_put_export_fields_from_pdf_to_xml_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    out_path = @temp_folder + '/exportData.xml'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_export_fields_from_pdf_to_xml_in_storage(file_name, out_path, opts)
+    assert(response, 'Filed to export fields to xml.')
+  end
+
+  def test_put_export_fields_from_pdf_to_fdf_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    out_path = @temp_folder + '/exportData.fdf'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_export_fields_from_pdf_to_fdf_in_storage(file_name, out_path, opts)
+    assert(response, 'Filed to export fields to fdf.')
+  end
+
+  def test_put_export_fields_from_pdf_to_xfdf_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    out_path = @temp_folder + '/exportData.xfdf'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_export_fields_from_pdf_to_xfdf_in_storage(file_name, out_path, opts)
+    assert(response, 'Filed to export fields to xfdf.')
+  end
+
+
+  def test_get_import_fields_from_fdf_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormData.fdf'
+    upload_file(data_file)
+
+    data_file_path = @temp_folder + '/' + data_file
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_import_fields_from_fdf_in_storage(file_name, data_file_path, opts)
+    assert(response, 'Filed to import fields from fdf.')
+  end
+
+  def test_get_import_fields_from_xfdf_in_storage
+    file_name = 'FormDataXfdf_in.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormDataXfdf_in.xfdf'
+    upload_file(data_file)
+
+    data_file_path = @temp_folder + '/' + data_file
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_import_fields_from_xfdf_in_storage(file_name, data_file_path, opts)
+    assert(response, 'Filed to import fields from xfdf.')
+  end
+
+  def test_get_import_fields_from_xml_in_storage
+    file_name = 'FormDataXfa_in.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormDataXfa_in.xml'
+    upload_file(data_file)
+
+    data_file_path = @temp_folder + '/' + data_file
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_import_fields_from_xml_in_storage(file_name, data_file_path, opts)
+    assert(response, 'Filed to import fields from xml.')
+  end
+
+  def test_put_import_fields_from_fdf_in_storage
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormData.fdf'
+    upload_file(data_file)
+
+    data_file_path = @temp_folder + '/' + data_file
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_import_fields_from_fdf_in_storage(file_name, data_file_path, opts)
+    assert(response, 'Filed to import fields from fdf.')
+  end
+
+  def test_put_import_fields_from_xfdf_in_storage
+    file_name = 'FormDataXfdf_in.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormDataXfdf_in.xfdf'
+    upload_file(data_file)
+
+    data_file_path = @temp_folder + '/' + data_file
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_import_fields_from_xfdf_in_storage(file_name, data_file_path, opts)
+    assert(response, 'Filed to import fields from xfdf.')
+  end
+
+  def test_put_import_fields_from_xml_in_storage
+    file_name = 'FormDataXfa_in.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormDataXfa_in.xml'
+    upload_file(data_file)
+
+    data_file_path = @temp_folder + '/' + data_file
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_import_fields_from_xml_in_storage(file_name, data_file_path, opts)
+    assert(response, 'Filed to import fields from xml.')
+  end
+
+  def test_post_import_fields_from_fdf
+    file_name = 'FormData.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormData.fdf'
+
+    opts = {
+        :folder => @temp_folder,
+        :fdf_data => ::File.open(@test_data_folder + data_file, 'r') { |io| io.read(io.size) }
+    }
+
+    response = @pdf_api.post_import_fields_from_fdf(file_name, opts)
+    assert(response, 'Filed to import fields from fdf.')
+  end
+
+  def test_post_import_fields_from_xfdf
+    file_name = 'FormDataXfdf_in.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormDataXfdf_in.xfdf'
+
+    opts = {
+        :folder => @temp_folder,
+        :xfdf_data => ::File.open(@test_data_folder + data_file, 'r') { |io| io.read(io.size) }
+    }
+
+    response = @pdf_api.post_import_fields_from_xfdf(file_name, opts)
+    assert(response, 'Filed to import fields from xfdf.')
+  end
+
+  def test_post_import_fields_from_xml
+    file_name = 'FormDataXfa_in.pdf'
+    upload_file(file_name)
+
+    data_file = 'FormDataXfa_in.xml'
+
+    opts = {
+        :folder => @temp_folder,
+        :xml_data => ::File.open(@test_data_folder + data_file, 'r') { |io| io.read(io.size) }
+    }
+
+    response = @pdf_api.post_import_fields_from_xml(file_name, opts)
+    assert(response, 'Filed to import fields from xml.')
   end
 end
