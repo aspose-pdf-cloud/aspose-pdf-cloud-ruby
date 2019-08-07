@@ -66,6 +66,9 @@ Method | HTTP request | Description
 [**get_document_underline_annotations**](PdfApi.md#get_document_underline_annotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
 [**get_download_document_attachment_by_index**](PdfApi.md#get_download_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex}/download | Download document attachment content by its index.
 [**get_epub_in_storage_to_pdf**](PdfApi.md#get_epub_in_storage_to_pdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
+[**get_export_fields_from_pdf_to_fdf_in_storage**](PdfApi.md#get_export_fields_from_pdf_to_fdf_in_storage) | **GET** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file.
+[**get_export_fields_from_pdf_to_xfdf_in_storage**](PdfApi.md#get_export_fields_from_pdf_to_xfdf_in_storage) | **GET** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file.
+[**get_export_fields_from_pdf_to_xml_in_storage**](PdfApi.md#get_export_fields_from_pdf_to_xml_in_storage) | **GET** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file.
 [**get_field**](PdfApi.md#get_field) | **GET** /pdf/\{name}/fields/\{fieldName} | Get document field by name.
 [**get_fields**](PdfApi.md#get_fields) | **GET** /pdf/\{name}/fields | Get document fields.
 [**get_file_attachment_annotation**](PdfApi.md#get_file_attachment_annotation) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Read document page FileAttachment annotation by ID.
@@ -81,6 +84,9 @@ Method | HTTP request | Description
 [**get_image_extract_as_png**](PdfApi.md#get_image_extract_as_png) | **GET** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format
 [**get_image_extract_as_tiff**](PdfApi.md#get_image_extract_as_tiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**get_images**](PdfApi.md#get_images) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
+[**get_import_fields_from_fdf_in_storage**](PdfApi.md#get_import_fields_from_fdf_in_storage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+[**get_import_fields_from_xfdf_in_storage**](PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+[**get_import_fields_from_xml_in_storage**](PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 [**get_ink_annotation**](PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
 [**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_line_annotation**](PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
@@ -177,6 +183,9 @@ Method | HTTP request | Description
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
 [**post_encrypt_document_in_storage**](PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
+[**post_import_fields_from_fdf**](PdfApi.md#post_import_fields_from_fdf) | **POST** /pdf/\{name}/import/fdf | Update fields from FDF file in request.
+[**post_import_fields_from_xfdf**](PdfApi.md#post_import_fields_from_xfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
+[**post_import_fields_from_xml**](PdfApi.md#post_import_fields_from_xml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
 [**post_insert_image**](PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
 [**post_move_page**](PdfApi.md#post_move_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**post_optimize_document**](PdfApi.md#post_optimize_document) | **POST** /pdf/\{name}/optimize | Optimize document.
@@ -220,6 +229,9 @@ Method | HTTP request | Description
 [**put_decrypt_document**](PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
 [**put_encrypt_document**](PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
 [**put_epub_in_storage_to_pdf**](PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
+[**put_export_fields_from_pdf_to_fdf_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_fdf_in_storage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
+[**put_export_fields_from_pdf_to_xfdf_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_xfdf_in_storage) | **PUT** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file in storage.
+[**put_export_fields_from_pdf_to_xml_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_xml_in_storage) | **PUT** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file in storage.
 [**put_fields_flatten**](PdfApi.md#put_fields_flatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**put_file_attachment_annotation**](PdfApi.md#put_file_attachment_annotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
 [**put_file_attachment_annotation_data_extract**](PdfApi.md#put_file_attachment_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data/extract | Extract document FileAttachment annotation content to storage
@@ -235,6 +247,9 @@ Method | HTTP request | Description
 [**put_images_extract_as_jpeg**](PdfApi.md#put_images_extract_as_jpeg) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/jpeg | Extract document images in JPEG format to folder.
 [**put_images_extract_as_png**](PdfApi.md#put_images_extract_as_png) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/png | Extract document images in PNG format to folder.
 [**put_images_extract_as_tiff**](PdfApi.md#put_images_extract_as_tiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/tiff | Extract document images in TIFF format to folder.
+[**put_import_fields_from_fdf_in_storage**](PdfApi.md#put_import_fields_from_fdf_in_storage) | **PUT** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+[**put_import_fields_from_xfdf_in_storage**](PdfApi.md#put_import_fields_from_xfdf_in_storage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+[**put_import_fields_from_xml_in_storage**](PdfApi.md#put_import_fields_from_xml_in_storage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 [**put_ink_annotation**](PdfApi.md#put_ink_annotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
 [**put_la_te_x_in_storage_to_pdf**](PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_line_annotation**](PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
@@ -1818,6 +1833,78 @@ Name | Type | Description  | Notes
 
 
 
+# **get_export_fields_from_pdf_to_fdf_in_storage**
+> File get_export_fields_from_pdf_to_fdf_in_storage(name, opts)
+
+Export fields from from PDF in storage to FDF file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
+# **get_export_fields_from_pdf_to_xfdf_in_storage**
+> File get_export_fields_from_pdf_to_xfdf_in_storage(name, opts)
+
+Export fields from from PDF in storage to XFDF file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
+# **get_export_fields_from_pdf_to_xml_in_storage**
+> File get_export_fields_from_pdf_to_xml_in_storage(name, opts)
+
+Export fields from from PDF in storage to XML file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
 # **get_field**
 > FieldResponse get_field(name, field_name, opts)
 
@@ -1828,7 +1915,7 @@ Get document field by name.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
- **field_name** | **String**| The field name/ | 
+ **field_name** | **String**| The field name (name should be encoded). | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
 
@@ -2199,6 +2286,81 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+
+
+# **get_import_fields_from_fdf_in_storage**
+> File get_import_fields_from_fdf_in_storage(name, fdf_file_path, opts)
+
+Update fields from FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **fdf_file_path** | **String**| The Fdf file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
+# **get_import_fields_from_xfdf_in_storage**
+> File get_import_fields_from_xfdf_in_storage(name, xfdf_file_path, opts)
+
+Update fields from XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **xfdf_file_path** | **String**| The XFDF file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
+# **get_import_fields_from_xml_in_storage**
+> File get_import_fields_from_xml_in_storage(name, xml_file_path, opts)
+
+Import from XML file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **xml_file_path** | **String**| Full source filename (ex. /folder1/folder2/template.xml) | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
 
 
 
@@ -4697,6 +4859,81 @@ Name | Type | Description  | Notes
 
 
 
+# **post_import_fields_from_fdf**
+> AsposeResponse post_import_fields_from_fdf(name, opts)
+
+Update fields from FDF file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **fdf_data** | **File**| Fdf file. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **post_import_fields_from_xfdf**
+> AsposeResponse post_import_fields_from_xfdf(name, opts)
+
+Update fields from XFDF file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **xfdf_data** | **File**| Xfdf file. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **post_import_fields_from_xml**
+> AsposeResponse post_import_fields_from_xml(name, opts)
+
+Update fields from XML file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **xml_data** | **File**| Xml file. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
 # **post_insert_image**
 > AsposeResponse post_insert_image(name, page_number, llx, lly, urx, ury, opts)
 
@@ -5818,6 +6055,81 @@ Name | Type | Description  | Notes
 
 
 
+# **put_export_fields_from_pdf_to_fdf_in_storage**
+> AsposeResponse put_export_fields_from_pdf_to_fdf_in_storage(name, fdf_output_file_path, opts)
+
+Export fields from from PDF in storage to FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **fdf_output_file_path** | **String**| The output Fdf file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_export_fields_from_pdf_to_xfdf_in_storage**
+> AsposeResponse put_export_fields_from_pdf_to_xfdf_in_storage(name, xfdf_output_file_path, opts)
+
+Export fields from from PDF in storage to XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **xfdf_output_file_path** | **String**| The output xfdf file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_export_fields_from_pdf_to_xml_in_storage**
+> AsposeResponse put_export_fields_from_pdf_to_xml_in_storage(name, xml_output_file_path, opts)
+
+Export fields from from PDF in storage to XML file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **xml_output_file_path** | **String**| The output xml file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **put_fields_flatten**
 > AsposeResponse put_fields_flatten(name, opts)
 
@@ -6216,6 +6528,81 @@ Name | Type | Description  | Notes
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **dest_folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_import_fields_from_fdf_in_storage**
+> AsposeResponse put_import_fields_from_fdf_in_storage(name, fdf_file_path, opts)
+
+Update fields from FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **fdf_file_path** | **String**| The Fdf file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_import_fields_from_xfdf_in_storage**
+> AsposeResponse put_import_fields_from_xfdf_in_storage(name, xfdf_file_path, opts)
+
+Update fields from XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **xfdf_file_path** | **String**| The XFDF file path. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_import_fields_from_xml_in_storage**
+> AsposeResponse put_import_fields_from_xml_in_storage(name, xml_file_path, opts)
+
+Update fields from XML file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **xml_file_path** | **String**| Full source filename (ex. /folder1/folder2/template.xml) | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
 
 ### Return type
 

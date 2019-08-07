@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents the privileges for accessing Pdf file./&gt;.
+  # Represents the privileges for accessing Pdf file.
   class DocumentPrivilege
     # Sets the permission which allow print or not.  true is allow and false or not set is forbidden.
     attr_accessor :allow_print
