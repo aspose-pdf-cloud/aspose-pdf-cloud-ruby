@@ -3578,6 +3578,27 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to convert images to pdf.')
   end
 
+  def test_get_markdown_in_storage_to_pdf
+    file_name = 'mixed.md'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_markdown_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert markdown to pdf.')
+  end
+
+  def test_put_markdow_in_storage_to_pdf
+    file_name = 'mixed.md'
+    upload_file(file_name)
+    result_name = 'fromMd.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_markdown_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert markdown to pdf.')
+  end
 
   # Document Tests
 
@@ -3775,6 +3796,44 @@ class PdfTests < Minitest::Test
 
     response = @pdf_api.post_flatten_document(name, opts)
     assert(response, 'Failed flatten document.')
+  end
+
+  def test_get_document_gignature_fields
+    file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_signature_fields(file_name,  opts)
+    assert(response, 'Failed to read document signature fields.')
+  end
+
+  def test_get_page_gignature_fields
+    file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_signature_fields(file_name, page_number, opts)
+    assert(response, 'Failed to read page signature fields.')
+  end
+
+  def test_get_gignature_field
+    file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+    upload_file(file_name)
+
+    field_name = 'Signature1'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_signature_field(file_name, field_name, opts)
+    assert(response, 'Failed to read signature field.')
   end
 
   # Stamp Tests
@@ -4973,6 +5032,43 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to verify signature.')
   end
 
+  def test_post_page_certify
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    signature_file_name = '33226.p12'
+    upload_file(signature_file_name)
+
+    page_number = 1
+
+    permission_type = DocMDPAccessPermissionType::NO_CHANGES
+
+    rectangle = Rectangle.new
+    rectangle.llx = 100
+    rectangle.lly = 100
+    rectangle.urx = 500
+    rectangle.ury = 200
+
+    signature = Signature.new
+    signature.authority = 'Sergey Smal'
+    signature.contact = 'test@mail.ru'
+    signature.date = '08/01/2012 12:15:00.000 PM'
+    signature.form_field_name = 'Signature1'
+    signature.location = 'Ukraine'
+    signature.password = 'sIikZSmz'
+    signature.rectangle = rectangle
+    signature.signature_path = @temp_folder + '/' + signature_file_name
+    signature.signature_type = SignatureType::PKCS7
+    signature.visible = true
+    signature.show_properties = false
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_page_certify(file_name, page_number, signature, permission_type, opts)
+    assert(response, 'Failed to certify page.')
+  end
 
 
   # Text Replace Tests

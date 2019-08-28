@@ -3824,6 +3824,78 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document signature fields.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SignatureFieldsResponse]
+    def get_document_signature_fields(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_signature_fields_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_document_signature_fields_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document signature fields.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SignatureFieldsResponse, Fixnum, Hash)>] SignatureFieldsResponse data, response status code and response headers
+    def get_document_signature_fields_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_signature_fields ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_signature_fields"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/signature".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SignatureFieldsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_signature_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document sound annotations.
     # 
     # @param name The document name.
@@ -6563,6 +6635,76 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Convert MD file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param src_path Full source filename (ex. /folder1/folder2/template.md)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @return [File]
+    def get_markdown_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_markdown_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_markdown_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Convert MD file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param src_path Full source filename (ex. /folder1/folder2/template.md)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_markdown_in_storage_to_pdf_with_http_info(src_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_markdown_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'src_path' is set
+      if @api_client.config.client_side_validation && src_path.nil?
+        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.get_markdown_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/create/markdown"
+
+      # query parameters
+      query_params = {}
+      query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_markdown_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert MHT file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
@@ -8547,6 +8689,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document page signature fields.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SignatureFieldsResponse]
+    def get_page_signature_fields(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_signature_fields_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_page_signature_fields_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page signature fields.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SignatureFieldsResponse, Fixnum, Hash)>] SignatureFieldsResponse data, response status code and response headers
+    def get_page_signature_fields_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_signature_fields ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_signature_fields"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_signature_fields"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/page/{pageNumber}/fields/signature".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SignatureFieldsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_signature_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page sound annotations.
     # 
     # @param name The document name.
@@ -9173,7 +9393,7 @@ module AsposePdfCloud
       query_params[:'LLY'] = lly
       query_params[:'URX'] = urx
       query_params[:'URY'] = ury
-      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
+      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :csv) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -9820,7 +10040,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -11225,6 +11445,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document signature field by name.
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SignatureFieldResponse]
+    def get_signature_field(name, field_name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_signature_field_with_http_info(name, field_name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_signature_field_with_http_info(name, field_name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document signature field by name.
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SignatureFieldResponse, Fixnum, Hash)>] SignatureFieldResponse data, response status code and response headers
+    def get_signature_field_with_http_info(name, field_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_signature_field ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_signature_field"
+      end
+      # verify the required parameter 'field_name' is set
+      if @api_client.config.client_side_validation && field_name.nil?
+        fail ArgumentError, "Missing the required parameter 'field_name' when calling PdfApi.get_signature_field"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/signature/{fieldName}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'fieldName' + '}', field_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SignatureFieldResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_signature_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document page sound annotation by ID.
     # 
     # @param name The document name.
@@ -12017,7 +12315,7 @@ module AsposePdfCloud
       query_params[:'LLY'] = lly
       query_params[:'URX'] = urx
       query_params[:'URY'] = ury
-      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
+      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :csv) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -13951,7 +14249,7 @@ module AsposePdfCloud
       query_params[:'userPassword'] = user_password
       query_params[:'ownerPassword'] = owner_password
       query_params[:'cryptoAlgorithm'] = crypto_algorithm
-      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :csv) if !opts[:'permissions_flags'].nil?
       query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -14648,6 +14946,100 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_caret_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Certify document page.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param sign Signature object containing signature data.
+    # @param doc_mdp_access_permission_type The access permissions granted for this document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_page_certify(name, page_number, sign, doc_mdp_access_permission_type, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_page_certify_with_http_info(name, page_number, sign, doc_mdp_access_permission_type, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_page_certify_with_http_info(name, page_number, sign, doc_mdp_access_permission_type, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Certify document page.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param sign Signature object containing signature data.
+    # @param doc_mdp_access_permission_type The access permissions granted for this document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_page_certify_with_http_info(name, page_number, sign, doc_mdp_access_permission_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_page_certify ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_page_certify"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.post_page_certify"
+      end
+      # verify the required parameter 'sign' is set
+      if @api_client.config.client_side_validation && sign.nil?
+        fail ArgumentError, "Missing the required parameter 'sign' when calling PdfApi.post_page_certify"
+      end
+      # verify the required parameter 'doc_mdp_access_permission_type' is set
+      if @api_client.config.client_side_validation && doc_mdp_access_permission_type.nil?
+        fail ArgumentError, "Missing the required parameter 'doc_mdp_access_permission_type' when calling PdfApi.post_page_certify"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['NoChanges', 'FillingInForms', 'AnnotationModification'].include?(doc_mdp_access_permission_type)
+        fail ArgumentError, "invalid value for 'doc_mdp_access_permission_type', must be one of NoChanges, FillingInForms, AnnotationModification"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/certify".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'docMdpAccessPermissionType'] = doc_mdp_access_permission_type
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(sign)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_page_certify\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -17171,7 +17563,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'startPage'] = opts[:'start_page'] if !opts[:'start_page'].nil?
       query_params[:'endPage'] = opts[:'end_page'] if !opts[:'end_page'].nil?
-      query_params[:'annotationTypes'] = @api_client.build_collection_param(opts[:'annotation_types'], :multi) if !opts[:'annotation_types'].nil?
+      query_params[:'annotationTypes'] = @api_client.build_collection_param(opts[:'annotation_types'], :csv) if !opts[:'annotation_types'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -17771,7 +18163,7 @@ module AsposePdfCloud
       query_params[:'userPassword'] = user_password
       query_params[:'ownerPassword'] = owner_password
       query_params[:'cryptoAlgorithm'] = crypto_algorithm
-      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :csv) if !opts[:'permissions_flags'].nil?
       query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
@@ -19965,6 +20357,85 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param src_path Full source filename (ex. /folder1/folder2/template.md)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :dst_folder The destination document folder.
+    # @return [AsposeResponse]
+    def put_markdown_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_markdown_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_markdown_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param src_path Full source filename (ex. /folder1/folder2/template.md)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :dst_folder The destination document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_markdown_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_markdown_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_markdown_in_storage_to_pdf"
+      end
+      # verify the required parameter 'src_path' is set
+      if @api_client.config.client_side_validation && src_path.nil?
+        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.put_markdown_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/create/markdown".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'srcPath'] = src_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_markdown_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Merge a list of documents.
     # 
     # @param name Resulting documen name.
@@ -21231,7 +21702,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -22451,7 +22922,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?

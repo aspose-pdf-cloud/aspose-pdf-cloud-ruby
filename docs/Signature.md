@@ -17,5 +17,8 @@ Name | Type | Description | Notes
 **authority** | **String** | Gets or sets the name of the person or authority signing the document.. | [optional] 
 **date** | **String** | Gets or sets the time of signing. | [optional] 
 **show_properties** | **BOOLEAN** | Gets or sets the showproperties in signature field | 
+**timestamp_settings** | [**TimestampSettings**](TimestampSettings.md) | Gets/sets timestamp settings. | [optional] 
+**is_valid** | **BOOLEAN** | Verify the document regarding this signature and return true if document is valid or otherwise false. | [optional] 
+**custom_appearance** | [**SignatureCustomAppearance**](SignatureCustomAppearance.md) | Gets/sets the custom appearance. | [optional] 
 
 
