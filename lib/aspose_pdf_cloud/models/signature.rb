@@ -64,6 +64,15 @@ module AsposePdfCloud
     # Gets or sets the showproperties in signature field
     attr_accessor :show_properties
 
+    # Gets/sets timestamp settings.
+    attr_accessor :timestamp_settings
+
+    # Verify the document regarding this signature and return true if document is valid or otherwise false.
+    attr_accessor :is_valid
+
+    # Gets/sets the custom appearance.
+    attr_accessor :custom_appearance
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -80,7 +89,10 @@ module AsposePdfCloud
         :'form_field_name' => :'FormFieldName',
         :'authority' => :'Authority',
         :'date' => :'Date',
-        :'show_properties' => :'ShowProperties'
+        :'show_properties' => :'ShowProperties',
+        :'timestamp_settings' => :'TimestampSettings',
+        :'is_valid' => :'IsValid',
+        :'custom_appearance' => :'CustomAppearance'
       }
     end
 
@@ -99,7 +111,10 @@ module AsposePdfCloud
         :'form_field_name' => :'String',
         :'authority' => :'String',
         :'date' => :'String',
-        :'show_properties' => :'BOOLEAN'
+        :'show_properties' => :'BOOLEAN',
+        :'timestamp_settings' => :'TimestampSettings',
+        :'is_valid' => :'BOOLEAN',
+        :'custom_appearance' => :'SignatureCustomAppearance'
       }
     end
 
@@ -161,6 +176,18 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'ShowProperties')
         self.show_properties = attributes[:'ShowProperties']
+      end
+
+      if attributes.has_key?(:'TimestampSettings')
+        self.timestamp_settings = attributes[:'TimestampSettings']
+      end
+
+      if attributes.has_key?(:'IsValid')
+        self.is_valid = attributes[:'IsValid']
+      end
+
+      if attributes.has_key?(:'CustomAppearance')
+        self.custom_appearance = attributes[:'CustomAppearance']
       end
 
     end
@@ -234,7 +261,10 @@ module AsposePdfCloud
           form_field_name == o.form_field_name &&
           authority == o.authority &&
           date == o.date &&
-          show_properties == o.show_properties
+          show_properties == o.show_properties &&
+          timestamp_settings == o.timestamp_settings &&
+          is_valid == o.is_valid &&
+          custom_appearance == o.custom_appearance
     end
 
     # @see the `==` method
@@ -246,7 +276,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [signature_path, signature_type, password, appearance, reason, contact, location, visible, rectangle, form_field_name, authority, date, show_properties].hash
+      [signature_path, signature_type, password, appearance, reason, contact, location, visible, rectangle, form_field_name, authority, date, show_properties, timestamp_settings, is_valid, custom_appearance].hash
     end
 
     # Builds the object from hash

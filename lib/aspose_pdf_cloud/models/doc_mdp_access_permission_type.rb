@@ -19,6 +19,27 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.8.0"
+  class DocMDPAccessPermissionType
+    
+    NO_CHANGES = "NoChanges".freeze
+    FILLING_IN_FORMS = "FillingInForms".freeze
+    ANNOTATION_MODIFICATION = "AnnotationModification".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = DocMDPAccessPermissionType.constants.select{|c| c.to_s == value}
+      constantValues = DocMDPAccessPermissionType.constants.select{ |const_name| DocMDPAccessPermissionType.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #DocMDPAccessPermissionType" if constantValues.empty?
+      value
+    end
+  end
+
 end
