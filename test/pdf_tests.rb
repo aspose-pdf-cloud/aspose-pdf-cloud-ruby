@@ -3836,6 +3836,90 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read signature field.')
   end
 
+  def test_get_document_text_box_fields
+    file_name = 'FormDataTextBox.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_text_box_fields(file_name, opts)
+    assert(response, 'Failed to read document text box fields.')
+  end
+
+  def test_get_page_text_box_fields
+    file_name = 'FormDataTextBox.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_text_box_fields(file_name, page_number, opts)
+    assert(response, 'Failed to read page text box fields.')
+  end
+
+  def test_get_text_box_field
+    file_name = 'FormDataTextBox.pdf'
+    upload_file(file_name)
+
+    field_name = 'Petitioner'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_text_box_field(file_name, field_name, opts)
+    assert(response, 'Failed to read text box field.')
+  end
+
+  def test_post_text_box_fields
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    text_box_field = TextBoxField.new
+    text_box_field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    text_box_field.multiline = true
+    text_box_field.max_len = 100
+    text_box_field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    text_box_field.value = 'Text value'
+    text_box_field.partial_name = 'testField'
+    text_box_field.page_index = 1
+    text_box_field.is_group = false
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_text_box_fields(file_name, [text_box_field], opts)
+    assert(response, 'Failed to insert text box fields.')
+  end
+
+  def test_put_text_box_field
+    file_name = 'FormDataTextBox.pdf'
+    upload_file(file_name)
+
+    field_name = 'Petitioner'
+
+    text_box_field = TextBoxField.new
+    text_box_field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    text_box_field.multiline = true
+    text_box_field.max_len = 100
+    text_box_field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    text_box_field.value = 'Text value'
+    text_box_field.partial_name = 'testField'
+    text_box_field.page_index = 1
+    text_box_field.is_group = false
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_text_box_field(file_name, field_name,text_box_field, opts)
+    assert(response, 'Failed to update text box field.')
+  end
+
   # Stamp Tests
 
   def test_get_document_stamps
