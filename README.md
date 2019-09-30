@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 3.0
-- Package version: 19.8.0
+- Package version: 19.9.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -22,15 +22,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-19.8.0.gem
+gem install ./aspose_pdf_cloud-19.9.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-19.8.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-19.9.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 19.8.0'
+    gem 'aspose_pdf_cloud', '~> 19.9.0'
 
 ### Install from Git
 
@@ -149,6 +149,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_strike_out_annotations**](docs/PdfApi.md#get_document_strike_out_annotations) | **GET** /pdf/\{name}/annotations/strikeout | Read document StrikeOut annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_tables**](docs/PdfApi.md#get_document_tables) | **GET** /pdf/\{name}/tables | Read document tables.
 *AsposePdfCloud::PdfApi* | [**get_document_text_annotations**](docs/PdfApi.md#get_document_text_annotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_text_box_fields**](docs/PdfApi.md#get_document_text_box_fields) | **GET** /pdf/\{name}/fields/textbox | Read document text box fields.
 *AsposePdfCloud::PdfApi* | [**get_document_underline_annotations**](docs/PdfApi.md#get_document_underline_annotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
 *AsposePdfCloud::PdfApi* | [**get_download_document_attachment_by_index**](docs/PdfApi.md#get_download_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex}/download | Download document attachment content by its index.
 *AsposePdfCloud::PdfApi* | [**get_epub_in_storage_to_pdf**](docs/PdfApi.md#get_epub_in_storage_to_pdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
@@ -213,6 +214,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_page_tables**](docs/PdfApi.md#get_page_tables) | **GET** /pdf/\{name}/pages/\{pageNumber}/tables | Read document page tables.
 *AsposePdfCloud::PdfApi* | [**get_page_text**](docs/PdfApi.md#get_page_text) | **GET** /pdf/\{name}/pages/\{pageNumber}/text | Read page text items.
 *AsposePdfCloud::PdfApi* | [**get_page_text_annotations**](docs/PdfApi.md#get_page_text_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Read document page text annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_text_box_fields**](docs/PdfApi.md#get_page_text_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/textbox | Read document page text box fields.
 *AsposePdfCloud::PdfApi* | [**get_page_underline_annotations**](docs/PdfApi.md#get_page_underline_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
 *AsposePdfCloud::PdfApi* | [**get_pages**](docs/PdfApi.md#get_pages) | **GET** /pdf/\{name}/pages | Read document pages info.
 *AsposePdfCloud::PdfApi* | [**get_pcl_in_storage_to_pdf**](docs/PdfApi.md#get_pcl_in_storage_to_pdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
@@ -248,6 +250,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_table**](docs/PdfApi.md#get_table) | **GET** /pdf/\{name}/tables/\{tableId} | Read document page table by ID.
 *AsposePdfCloud::PdfApi* | [**get_text**](docs/PdfApi.md#get_text) | **GET** /pdf/\{name}/text | Read document text.
 *AsposePdfCloud::PdfApi* | [**get_text_annotation**](docs/PdfApi.md#get_text_annotation) | **GET** /pdf/\{name}/annotations/text/\{annotationId} | Read document page text annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_text_box_field**](docs/PdfApi.md#get_text_box_field) | **GET** /pdf/\{name}/fields/textbox/\{fieldName} | Read document text box field by name.
 *AsposePdfCloud::PdfApi* | [**get_underline_annotation**](docs/PdfApi.md#get_underline_annotation) | **GET** /pdf/\{name}/annotations/underline/\{annotationId} | Read document page underline annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_verify_signature**](docs/PdfApi.md#get_verify_signature) | **GET** /pdf/\{name}/verifySignature | Verify signature document.
 *AsposePdfCloud::PdfApi* | [**get_web_in_storage_to_pdf**](docs/PdfApi.md#get_web_in_storage_to_pdf) | **GET** /pdf/create/web | Convert web page to PDF format and return resulting file in response. 
@@ -308,6 +311,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_sign_document**](docs/PdfApi.md#post_sign_document) | **POST** /pdf/\{name}/sign | Sign document.
 *AsposePdfCloud::PdfApi* | [**post_sign_page**](docs/PdfApi.md#post_sign_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/sign | Sign page.
 *AsposePdfCloud::PdfApi* | [**post_split_document**](docs/PdfApi.md#post_split_document) | **POST** /pdf/\{name}/split | Split document to parts.
+*AsposePdfCloud::PdfApi* | [**post_text_box_fields**](docs/PdfApi.md#post_text_box_fields) | **POST** /pdf/\{name}/fields/textbox | Add document text box fields.
 *AsposePdfCloud::PdfApi* | [**put_add_new_page**](docs/PdfApi.md#put_add_new_page) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 *AsposePdfCloud::PdfApi* | [**put_add_text**](docs/PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 *AsposePdfCloud::PdfApi* | [**put_annotations_flatten**](docs/PdfApi.md#put_annotations_flatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
@@ -403,6 +407,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_svg_in_storage_to_pdf**](docs/PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_table**](docs/PdfApi.md#put_table) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
 *AsposePdfCloud::PdfApi* | [**put_text_annotation**](docs/PdfApi.md#put_text_annotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
+*AsposePdfCloud::PdfApi* | [**put_text_box_field**](docs/PdfApi.md#put_text_box_field) | **PUT** /pdf/\{name}/fields/textbox/\{fieldName} | Replace document text box field
 *AsposePdfCloud::PdfApi* | [**put_underline_annotation**](docs/PdfApi.md#put_underline_annotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
 *AsposePdfCloud::PdfApi* | [**put_update_field**](docs/PdfApi.md#put_update_field) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
 *AsposePdfCloud::PdfApi* | [**put_update_fields**](docs/PdfApi.md#put_update_fields) | **PUT** /pdf/\{name}/fields | Update fields.
@@ -619,6 +624,9 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::TextAnnotationResponse](docs/TextAnnotationResponse.md)
  - [AsposePdfCloud::TextAnnotations](docs/TextAnnotations.md)
  - [AsposePdfCloud::TextAnnotationsResponse](docs/TextAnnotationsResponse.md)
+ - [AsposePdfCloud::TextBoxFieldResponse](docs/TextBoxFieldResponse.md)
+ - [AsposePdfCloud::TextBoxFields](docs/TextBoxFields.md)
+ - [AsposePdfCloud::TextBoxFieldsResponse](docs/TextBoxFieldsResponse.md)
  - [AsposePdfCloud::TextRectsResponse](docs/TextRectsResponse.md)
  - [AsposePdfCloud::TextReplaceResponse](docs/TextReplaceResponse.md)
  - [AsposePdfCloud::UnderlineAnnotationResponse](docs/UnderlineAnnotationResponse.md)
@@ -637,6 +645,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::RedactionAnnotation](docs/RedactionAnnotation.md)
  - [AsposePdfCloud::ScreenAnnotation](docs/ScreenAnnotation.md)
  - [AsposePdfCloud::SignatureField](docs/SignatureField.md)
+ - [AsposePdfCloud::TextBoxField](docs/TextBoxField.md)
  - [AsposePdfCloud::TextFooter](docs/TextFooter.md)
  - [AsposePdfCloud::TextHeader](docs/TextHeader.md)
  - [AsposePdfCloud::TextStamp](docs/TextStamp.md)
