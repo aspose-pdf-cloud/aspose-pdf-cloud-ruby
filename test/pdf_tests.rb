@@ -3920,6 +3920,206 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to update text box field.')
   end
 
+  def test_get_document_check_box_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_check_box_fields(file_name, opts)
+    assert(response, 'Failed to read document check box fields.')
+  end
+
+  def test_get_page_check_box_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_check_box_fields(file_name, page_number, opts)
+    assert(response, 'Failed to read page check box fields.')
+  end
+
+  def test_get_check_box_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'checkboxField'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_check_box_field(file_name, field_name, opts)
+    assert(response, 'Failed to read check box field.')
+  end
+
+  def test_post_text_box_fields
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    field = CheckBoxField.new
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    field.export_value = 'true'
+    field.partial_name = 'testField'
+    field.page_index = 1
+    field.is_group = false
+    field.checked = true
+    field.style = BoxStyle::CROSS
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_check_box_fields(file_name, [field], opts)
+    assert(response, 'Failed to insert check box fields.')
+  end
+
+  def test_put_check_box_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'checkboxField'
+
+    field = CheckBoxField.new
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    field.export_value = 'true'
+    field.partial_name = 'testField'
+    field.page_index = 1
+    field.is_group = false
+    field.checked = true
+    field.style = BoxStyle::CROSS
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_text_box_field(file_name, field_name, field, opts)
+    assert(response, 'Failed to update check box field.')
+  end
+
+  def test_get_document_radio_button_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_radio_button_fields(file_name, opts)
+    assert(response, 'Failed to read document radio button fields.')
+  end
+
+  def test_get_page_radio_button_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_radio_button_fields(file_name, page_number, opts)
+    assert(response, 'Failed to read page radio button fields.')
+  end
+
+  def test_get_radio_button_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'radiobuttonField'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_radio_button_field(file_name, field_name, opts)
+    assert(response, 'Failed to read radio button field.')
+  end
+
+  def test_post_radio_button_fields
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    field = RadioButtonField.new
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 160, :URY => 140})
+    field.partial_name = 'testField'
+    field.page_index = 1
+    field.is_group = false
+    field.selected = 1
+    field.style = BoxStyle::CROSS
+    field.margin = MarginInfo.new({:Bottom => 0, :Left => 0, :Right => 0, :Top => 0})
+    field.radio_button_options_field = [
+        RadioButtonOptionField.new({
+                                       :PageIndex => 1,
+                                       :IsGroup => false,
+                                       :OptionName => '1',
+                                       :Rect => Rectangle.new({:LLX => 100, :LLY => 130, :URX => 160, :URY => 140}),
+                                       :Style => BoxStyle::SQUARE
+                                   }),
+        RadioButtonOptionField.new({
+                                       :PageIndex => 1,
+                                       :IsGroup => false,
+                                       :OptionName => '2',
+                                       :Rect => Rectangle.new({:LLX => 150, :LLY => 120, :URX => 160, :URY => 130}),
+                                       :Style => BoxStyle::SQUARE
+                                   })
+    ]
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_radio_button_fields(file_name, [field], opts)
+    assert(response, 'Failed to insert radio button fields.')
+  end
+
+  def test_put_radio_button_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'radiobuttonField'
+
+    field = RadioButtonField.new
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 160, :URY => 140})
+    field.partial_name = 'testField'
+    field.page_index = 1
+    field.is_group = false
+    field.selected = 1
+    field.style = BoxStyle::CROSS
+    field.margin = MarginInfo.new({:Bottom => 0, :Left => 0, :Right => 0, :Top => 0})
+    field.radio_button_options_field = [
+        RadioButtonOptionField.new({
+                                       :PageIndex => 1,
+                                       :IsGroup => false,
+                                       :OptionName => '1',
+                                       :Rect => Rectangle.new({:LLX => 100, :LLY => 130, :URX => 160, :URY => 140}),
+                                       :Style => BoxStyle::SQUARE
+                                   }),
+        RadioButtonOptionField.new({
+                                       :PageIndex => 1,
+                                       :IsGroup => false,
+                                       :OptionName => '2',
+                                       :Rect => Rectangle.new({:LLX => 150, :LLY => 120, :URX => 160, :URY => 130}),
+                                       :Style => BoxStyle::SQUARE
+                                   })
+    ]
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_radio_button_field(file_name, field_name, field, opts)
+    assert(response, 'Failed to update radio button field.')
+  end
+
   # Stamp Tests
 
   def test_get_document_stamps
