@@ -3958,7 +3958,7 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read check box field.')
   end
 
-  def test_post_text_box_fields
+  def test_post_check_box_fields
     file_name = '4pages.pdf'
     upload_file(file_name)
 
