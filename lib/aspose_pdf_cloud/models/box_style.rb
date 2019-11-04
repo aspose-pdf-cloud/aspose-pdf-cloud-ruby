@@ -19,6 +19,30 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "19.10.0"
+  class BoxStyle
+    
+    CIRCLE = "Circle".freeze
+    CHECK = "Check".freeze
+    CROSS = "Cross".freeze
+    DIAMOND = "Diamond".freeze
+    SQUARE = "Square".freeze
+    STAR = "Star".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = BoxStyle.constants.select{|c| c.to_s == value}
+      constantValues = BoxStyle.constants.select{ |const_name| BoxStyle.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #BoxStyle" if constantValues.empty?
+      value
+    end
+  end
+
 end
