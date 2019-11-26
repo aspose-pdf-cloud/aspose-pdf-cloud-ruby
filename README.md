@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 3.0
-- Package version: 19.10.0
+- Package version: 19.11.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -22,15 +22,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-19.10.0.gem
+gem install ./aspose_pdf_cloud-19.11.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-19.10.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-19.11.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 19.10.0'
+    gem 'aspose_pdf_cloud', '~> 19.11.0'
 
 ### Install from Git
 
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_caret_annotation**](docs/PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_check_box_field**](docs/PdfApi.md#get_check_box_field) | **GET** /pdf/\{name}/fields/checkbox/\{fieldName} | Read document checkbox field by name.
 *AsposePdfCloud::PdfApi* | [**get_circle_annotation**](docs/PdfApi.md#get_circle_annotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_combo_box_field**](docs/PdfApi.md#get_combo_box_field) | **GET** /pdf/\{name}/fields/combobox/\{fieldName} | Read document combobox field by name.
 *AsposePdfCloud::PdfApi* | [**get_disc_usage**](docs/PdfApi.md#get_disc_usage) | **GET** /pdf/storage/disc | Get disc usage
 *AsposePdfCloud::PdfApi* | [**get_document**](docs/PdfApi.md#get_document) | **GET** /pdf/\{name} | Read common document info.
 *AsposePdfCloud::PdfApi* | [**get_document_annotations**](docs/PdfApi.md#get_document_annotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
@@ -128,6 +129,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_caret_annotations**](docs/PdfApi.md#get_document_caret_annotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_check_box_fields**](docs/PdfApi.md#get_document_check_box_fields) | **GET** /pdf/\{name}/fields/checkbox | Read document checkbox fields.
 *AsposePdfCloud::PdfApi* | [**get_document_circle_annotations**](docs/PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_combo_box_fields**](docs/PdfApi.md#get_document_combo_box_fields) | **GET** /pdf/\{name}/fields/combobox | Read document combobox fields.
 *AsposePdfCloud::PdfApi* | [**get_document_file_attachment_annotations**](docs/PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_free_text_annotations**](docs/PdfApi.md#get_document_free_text_annotations) | **GET** /pdf/\{name}/annotations/freetext | Read document free text annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_highlight_annotations**](docs/PdfApi.md#get_document_highlight_annotations) | **GET** /pdf/\{name}/annotations/highlight | Read document highlight annotations.
@@ -189,6 +191,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_page_caret_annotations**](docs/PdfApi.md#get_page_caret_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Read document page caret annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_check_box_fields**](docs/PdfApi.md#get_page_check_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/checkbox | Read document page checkbox fields.
 *AsposePdfCloud::PdfApi* | [**get_page_circle_annotations**](docs/PdfApi.md#get_page_circle_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/circle | Read document page circle annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_combo_box_fields**](docs/PdfApi.md#get_page_combo_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/combobox | Read document page combobox fields.
 *AsposePdfCloud::PdfApi* | [**get_page_convert_to_bmp**](docs/PdfApi.md#get_page_convert_to_bmp) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/bmp | Convert document page to Bmp image and return resulting file in response.
 *AsposePdfCloud::PdfApi* | [**get_page_convert_to_emf**](docs/PdfApi.md#get_page_convert_to_emf) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/emf | Convert document page to Emf image and return resulting file in response.
 *AsposePdfCloud::PdfApi* | [**get_page_convert_to_gif**](docs/PdfApi.md#get_page_convert_to_gif) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/gif | Convert document page to Gif image and return resulting file in response.
@@ -272,6 +275,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_bookmark**](docs/PdfApi.md#post_bookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 *AsposePdfCloud::PdfApi* | [**post_change_password_document_in_storage**](docs/PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 *AsposePdfCloud::PdfApi* | [**post_check_box_fields**](docs/PdfApi.md#post_check_box_fields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
+*AsposePdfCloud::PdfApi* | [**post_combo_box_fields**](docs/PdfApi.md#post_combo_box_fields) | **POST** /pdf/\{name}/fields/combobox | Add document combobox fields.
 *AsposePdfCloud::PdfApi* | [**post_create_field**](docs/PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 *AsposePdfCloud::PdfApi* | [**post_decrypt_document_in_storage**](docs/PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
 *AsposePdfCloud::PdfApi* | [**post_document_image_footer**](docs/PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
@@ -328,6 +332,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_change_password_document**](docs/PdfApi.md#put_change_password_document) | **PUT** /pdf/changepassword | Change document password from content.
 *AsposePdfCloud::PdfApi* | [**put_check_box_field**](docs/PdfApi.md#put_check_box_field) | **PUT** /pdf/\{name}/fields/checkbox/\{fieldName} | Replace document checkbox field
 *AsposePdfCloud::PdfApi* | [**put_circle_annotation**](docs/PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
+*AsposePdfCloud::PdfApi* | [**put_combo_box_field**](docs/PdfApi.md#put_combo_box_field) | **PUT** /pdf/\{name}/fields/combobox/\{fieldName} | Replace document combobox field
 *AsposePdfCloud::PdfApi* | [**put_create_document**](docs/PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
 *AsposePdfCloud::PdfApi* | [**put_decrypt_document**](docs/PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
 *AsposePdfCloud::PdfApi* | [**put_encrypt_document**](docs/PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
@@ -549,6 +554,9 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::CircleAnnotationResponse](docs/CircleAnnotationResponse.md)
  - [AsposePdfCloud::CircleAnnotations](docs/CircleAnnotations.md)
  - [AsposePdfCloud::CircleAnnotationsResponse](docs/CircleAnnotationsResponse.md)
+ - [AsposePdfCloud::ComboBoxFieldResponse](docs/ComboBoxFieldResponse.md)
+ - [AsposePdfCloud::ComboBoxFields](docs/ComboBoxFields.md)
+ - [AsposePdfCloud::ComboBoxFieldsResponse](docs/ComboBoxFieldsResponse.md)
  - [AsposePdfCloud::Document](docs/Document.md)
  - [AsposePdfCloud::DocumentPageResponse](docs/DocumentPageResponse.md)
  - [AsposePdfCloud::DocumentPagesResponse](docs/DocumentPagesResponse.md)
@@ -671,6 +679,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::TextHeader](docs/TextHeader.md)
  - [AsposePdfCloud::TextStamp](docs/TextStamp.md)
  - [AsposePdfCloud::CaretAnnotation](docs/CaretAnnotation.md)
+ - [AsposePdfCloud::ComboBoxField](docs/ComboBoxField.md)
  - [AsposePdfCloud::CommonFigureAnnotation](docs/CommonFigureAnnotation.md)
  - [AsposePdfCloud::FileAttachmentAnnotation](docs/FileAttachmentAnnotation.md)
  - [AsposePdfCloud::FreeTextAnnotation](docs/FreeTextAnnotation.md)

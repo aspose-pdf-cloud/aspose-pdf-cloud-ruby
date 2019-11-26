@@ -38,7 +38,6 @@ class PdfTests < Minitest::Test
     @test_data_folder = '../test_data/'
 
     config = @pdf_api.api_client.config
-    config.host = 'api-qa.aspose.cloud'
     config.scheme = 'https'
   end
 
@@ -4119,6 +4118,109 @@ class PdfTests < Minitest::Test
     response = @pdf_api.put_radio_button_field(file_name, field_name, field, opts)
     assert(response, 'Failed to update radio button field.')
   end
+
+  def test_get_document_combo_box_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_combo_box_fields(file_name, opts)
+    assert(response, 'Failed to read document combobox fields.')
+  end
+
+  def test_get_page_combo_box_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_combo_box_fields(file_name, page_number, opts)
+    assert(response, 'Failed to read page combo box fields.')
+  end
+
+  def test_get_combo_box_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'comboboxField'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_combo_box_field(file_name, field_name, opts)
+    assert(response, 'Failed to read combo box field.')
+  end
+
+  def test_post_combo_box_fields
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    field = ComboBoxField.new
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 160, :URY => 140})
+    field.partial_name = 'testField'
+    field.page_index = 1
+    field.is_group = false
+    field.selected = 2
+    field.margin = MarginInfo.new({:Bottom => 0, :Left => 0, :Right => 0, :Top => 0})
+    field.options = [
+        Option.new({
+                       :Name => 'one',
+                       :Value => 'one',
+                   }),
+        Option.new({
+                       :Name => 'two',
+                       :Value => 'two',
+                   }),
+    ]
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_combo_box_fields(file_name, [field], opts)
+    assert(response, 'Failed to insert combo box fields.')
+  end
+
+  def test_put_combo_box_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'comboboxField'
+
+    field = ComboBoxField.new
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 160, :URY => 140})
+    field.partial_name = 'testField'
+    field.page_index = 1
+    field.is_group = false
+    field.selected = 2
+    field.margin = MarginInfo.new({:Bottom => 0, :Left => 0, :Right => 0, :Top => 0})
+    field.options = [
+        Option.new({
+                       :Name => 'one',
+                       :Value => 'one',
+                   }),
+        Option.new({
+                       :Name => 'two',
+                       :Value => 'two',
+                   }),
+    ]
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_combo_box_field(file_name, field_name, field, opts)
+    assert(response, 'Failed to update combo box field.')
+  end
+
 
   # Stamp Tests
 
