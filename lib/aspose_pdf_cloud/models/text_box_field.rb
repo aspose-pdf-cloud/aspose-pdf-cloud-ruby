@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -79,6 +79,9 @@ module AsposePdfCloud
     # Gets VerticalAlignment of the field.
     attr_accessor :vertical_alignment
 
+    # Gets or sets annotation border characteristics.
+    attr_accessor :border
+
     # Gets or sets multiline flag of the field. If Multiline is true field can contain multiple lines of text.
     attr_accessor :multiline
 
@@ -119,6 +122,7 @@ module AsposePdfCloud
         :'highlighting' => :'Highlighting',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'border' => :'Border',
         :'multiline' => :'Multiline',
         :'spell_check' => :'SpellCheck',
         :'scrollable' => :'Scrollable',
@@ -149,6 +153,7 @@ module AsposePdfCloud
         :'highlighting' => :'LinkHighlightingMode',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'border' => :'Border',
         :'multiline' => :'BOOLEAN',
         :'spell_check' => :'BOOLEAN',
         :'scrollable' => :'BOOLEAN',
@@ -242,6 +247,10 @@ module AsposePdfCloud
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
+      if attributes.has_key?(:'Border')
+        self.border = attributes[:'Border']
+      end
+
       if attributes.has_key?(:'Multiline')
         self.multiline = attributes[:'Multiline']
       end
@@ -276,10 +285,6 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'page_index', page_index cannot be nil.")
       end
 
-      if @is_group.nil?
-        invalid_properties.push("invalid value for 'is_group', is_group cannot be nil.")
-      end
-
       return invalid_properties
     end
 
@@ -287,7 +292,6 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @page_index.nil?
-      return false if @is_group.nil?
       return true
     end
 
@@ -314,6 +318,7 @@ module AsposePdfCloud
           highlighting == o.highlighting &&
           horizontal_alignment == o.horizontal_alignment &&
           vertical_alignment == o.vertical_alignment &&
+          border == o.border &&
           multiline == o.multiline &&
           spell_check == o.spell_check &&
           scrollable == o.scrollable &&
@@ -331,7 +336,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, multiline, spell_check, scrollable, force_combs, max_len, barcode].hash
+      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, border, multiline, spell_check, scrollable, force_combs, max_len, barcode].hash
     end
 
     # Builds the object from hash

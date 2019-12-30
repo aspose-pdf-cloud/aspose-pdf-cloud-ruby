@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -3658,6 +3658,71 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to create new document')
   end
 
+  def test_post_create_document
+    file_name = 'empty_post.pdf'
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    prop = DocumentProperty.new
+    prop.name = 'prop1'
+    prop.value = 'val1'
+
+    props = DocumentProperties.new
+    props.list = [prop]
+
+    display_props = DisplayProperties.new
+    display_props.center_window = true
+    display_props.hide_menu_bar = true
+
+    page_config = DefaultPageConfig.new
+    page_config.height = 100
+    page_config.width = 100
+
+    config = DocumentConfig.new
+    config.document_properties = props
+    config.display_properties = display_props
+    config.default_page_config = page_config
+
+    response = @pdf_api.post_create_document(file_name, config, opts)
+    assert(response, 'Failed to create new document')
+  end
+
+  def test_get_document_display_properties
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_display_properties(file_name, opts)
+    assert(response, 'Failed to read document display properties.')
+  end
+
+  def test_put_document_display_properties
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    properties = DisplayProperties.new
+    properties.center_window = true
+    properties.direction = Direction::L2_R
+    properties.display_doc_title = true
+    properties.hide_menu_bar = true
+    properties.hide_tool_bar = true
+    properties.hide_window_ui = true
+    properties.non_full_screen_page_mode = PageMode::USE_NONE
+    properties.page_layout = PageLayout::TWO_PAGE_LEFT
+    properties.page_mode = PageMode::USE_OC
+
+    response = @pdf_api.put_document_display_properties(file_name, properties, opts)
+    assert(response, 'Failed to update document display properties.')
+  end
 
   # Fields Tests
 
@@ -4221,6 +4286,123 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to update combo box field.')
   end
 
+  def test_get_document_list_box_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_list_box_fields(file_name, opts)
+    assert(response, 'Failed to read document listbox fields.')
+  end
+
+  def test_get_page_list_box_fields
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    page_number = 1
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_page_list_box_fields(file_name, page_number, opts)
+    assert(response, 'Failed to read page list box fields.')
+  end
+
+  def test_get_list_box_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'listboxField'
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_list_box_field(file_name, field_name, opts)
+    assert(response, 'Failed to read list box field.')
+  end
+
+  def test_post_list_box_fields
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    field = ListBoxField.new
+    field.page_index = 1
+    field.selected_items = [1, 4]
+    field.multi_select = true
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 160, :URY => 140})
+    field.partial_name = 'testField'
+    field.margin = MarginInfo.new({:Bottom => 0, :Left => 0, :Right => 0, :Top => 0})
+    field.options = [
+        Option.new({
+                       :Name => 'one',
+                       :Value => 'one',
+                   }),
+        Option.new({
+                       :Name => 'two',
+                       :Value => 'two',
+                   }),
+        Option.new({
+                       :Name => 'three',
+                       :Value => 'three',
+                   }),
+        Option.new({
+                       :Name => 'four',
+                       :Value => 'four',
+                   }),
+    ]
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_list_box_fields(file_name, [field], opts)
+    assert(response, 'Failed to insert list box fields.')
+  end
+
+  def test_put_list_box_field
+    file_name = 'PdfWithAcroForm.pdf'
+    upload_file(file_name)
+
+    field_name = 'listboxField'
+
+    field = ListBoxField.new
+    field.page_index = 1
+    field.selected_items = [1, 4]
+    field.multi_select = true
+    field.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 160, :URY => 140})
+    field.partial_name = 'testField'
+    field.margin = MarginInfo.new({:Bottom => 0, :Left => 0, :Right => 0, :Top => 0})
+    field.options = [
+        Option.new({
+                       :Name => 'one',
+                       :Value => 'one',
+                   }),
+        Option.new({
+                       :Name => 'two',
+                       :Value => 'two',
+                   }),
+        Option.new({
+                       :Name => 'three',
+                       :Value => 'three',
+                   }),
+        Option.new({
+                       :Name => 'four',
+                       :Value => 'four',
+                   }),
+    ]
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_list_box_field(file_name, field_name, field, opts)
+    assert(response, 'Failed to update list box field.')
+  end
 
   # Stamp Tests
 

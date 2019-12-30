@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 3.0
-- Package version: 19.11.0
+- Package version: 19.12.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -22,15 +22,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-19.11.0.gem
+gem install ./aspose_pdf_cloud-19.12.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-19.11.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-19.12.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 19.11.0'
+    gem 'aspose_pdf_cloud', '~> 19.12.0'
 
 ### Install from Git
 
@@ -130,11 +130,13 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_check_box_fields**](docs/PdfApi.md#get_document_check_box_fields) | **GET** /pdf/\{name}/fields/checkbox | Read document checkbox fields.
 *AsposePdfCloud::PdfApi* | [**get_document_circle_annotations**](docs/PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_combo_box_fields**](docs/PdfApi.md#get_document_combo_box_fields) | **GET** /pdf/\{name}/fields/combobox | Read document combobox fields.
+*AsposePdfCloud::PdfApi* | [**get_document_display_properties**](docs/PdfApi.md#get_document_display_properties) | **GET** /pdf/\{name}/displayproperties | Read document display properties.
 *AsposePdfCloud::PdfApi* | [**get_document_file_attachment_annotations**](docs/PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_free_text_annotations**](docs/PdfApi.md#get_document_free_text_annotations) | **GET** /pdf/\{name}/annotations/freetext | Read document free text annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_highlight_annotations**](docs/PdfApi.md#get_document_highlight_annotations) | **GET** /pdf/\{name}/annotations/highlight | Read document highlight annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_ink_annotations**](docs/PdfApi.md#get_document_ink_annotations) | **GET** /pdf/\{name}/annotations/ink | Read document ink annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_line_annotations**](docs/PdfApi.md#get_document_line_annotations) | **GET** /pdf/\{name}/annotations/line | Read document line annotations.
+*AsposePdfCloud::PdfApi* | [**get_document_list_box_fields**](docs/PdfApi.md#get_document_list_box_fields) | **GET** /pdf/\{name}/fields/listbox | Read document listbox fields.
 *AsposePdfCloud::PdfApi* | [**get_document_movie_annotations**](docs/PdfApi.md#get_document_movie_annotations) | **GET** /pdf/\{name}/annotations/movie | Read document movie annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_poly_line_annotations**](docs/PdfApi.md#get_document_poly_line_annotations) | **GET** /pdf/\{name}/annotations/polyline | Read document polyline annotations.
 *AsposePdfCloud::PdfApi* | [**get_document_polygon_annotations**](docs/PdfApi.md#get_document_polygon_annotations) | **GET** /pdf/\{name}/annotations/polygon | Read document polygon annotations.
@@ -183,6 +185,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_line_annotation**](docs/PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_link_annotation**](docs/PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
+*AsposePdfCloud::PdfApi* | [**get_list_box_field**](docs/PdfApi.md#get_list_box_field) | **GET** /pdf/\{name}/fields/listbox/\{fieldName} | Read document listbox field by name.
 *AsposePdfCloud::PdfApi* | [**get_markdown_in_storage_to_pdf**](docs/PdfApi.md#get_markdown_in_storage_to_pdf) | **GET** /pdf/create/markdown | Convert MD file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_mht_in_storage_to_pdf**](docs/PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_movie_annotation**](docs/PdfApi.md#get_movie_annotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
@@ -205,6 +208,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_page_line_annotations**](docs/PdfApi.md#get_page_line_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/line | Read document page line annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_link_annotation**](docs/PdfApi.md#get_page_link_annotation) | **GET** /pdf/\{name}/pages/\{pageNumber}/links/\{linkId} | Read document page link annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_page_link_annotations**](docs/PdfApi.md#get_page_link_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/links | Read document page link annotations.
+*AsposePdfCloud::PdfApi* | [**get_page_list_box_fields**](docs/PdfApi.md#get_page_list_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/listbox | Read document page listbox fields.
 *AsposePdfCloud::PdfApi* | [**get_page_movie_annotations**](docs/PdfApi.md#get_page_movie_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/movie | Read document page movie annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_poly_line_annotations**](docs/PdfApi.md#get_page_poly_line_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polyline | Read document page polyline annotations.
 *AsposePdfCloud::PdfApi* | [**get_page_polygon_annotations**](docs/PdfApi.md#get_page_polygon_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Read document page polygon annotations.
@@ -276,6 +280,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_change_password_document_in_storage**](docs/PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 *AsposePdfCloud::PdfApi* | [**post_check_box_fields**](docs/PdfApi.md#post_check_box_fields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
 *AsposePdfCloud::PdfApi* | [**post_combo_box_fields**](docs/PdfApi.md#post_combo_box_fields) | **POST** /pdf/\{name}/fields/combobox | Add document combobox fields.
+*AsposePdfCloud::PdfApi* | [**post_create_document**](docs/PdfApi.md#post_create_document) | **POST** /pdf/\{name} | Create empty document.
 *AsposePdfCloud::PdfApi* | [**post_create_field**](docs/PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 *AsposePdfCloud::PdfApi* | [**post_decrypt_document_in_storage**](docs/PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
 *AsposePdfCloud::PdfApi* | [**post_document_image_footer**](docs/PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
@@ -290,6 +295,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**post_import_fields_from_xfdf**](docs/PdfApi.md#post_import_fields_from_xfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
 *AsposePdfCloud::PdfApi* | [**post_import_fields_from_xml**](docs/PdfApi.md#post_import_fields_from_xml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
 *AsposePdfCloud::PdfApi* | [**post_insert_image**](docs/PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
+*AsposePdfCloud::PdfApi* | [**post_list_box_fields**](docs/PdfApi.md#post_list_box_fields) | **POST** /pdf/\{name}/fields/listbox | Add document listbox fields.
 *AsposePdfCloud::PdfApi* | [**post_move_page**](docs/PdfApi.md#post_move_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 *AsposePdfCloud::PdfApi* | [**post_optimize_document**](docs/PdfApi.md#post_optimize_document) | **POST** /pdf/\{name}/optimize | Optimize document.
 *AsposePdfCloud::PdfApi* | [**post_page_caret_annotations**](docs/PdfApi.md#post_page_caret_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -335,6 +341,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_combo_box_field**](docs/PdfApi.md#put_combo_box_field) | **PUT** /pdf/\{name}/fields/combobox/\{fieldName} | Replace document combobox field
 *AsposePdfCloud::PdfApi* | [**put_create_document**](docs/PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
 *AsposePdfCloud::PdfApi* | [**put_decrypt_document**](docs/PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
+*AsposePdfCloud::PdfApi* | [**put_document_display_properties**](docs/PdfApi.md#put_document_display_properties) | **PUT** /pdf/\{name}/displayproperties | Update document display properties.
 *AsposePdfCloud::PdfApi* | [**put_encrypt_document**](docs/PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
 *AsposePdfCloud::PdfApi* | [**put_epub_in_storage_to_pdf**](docs/PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_export_fields_from_pdf_to_fdf_in_storage**](docs/PdfApi.md#put_export_fields_from_pdf_to_fdf_in_storage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
@@ -362,6 +369,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_line_annotation**](docs/PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 *AsposePdfCloud::PdfApi* | [**put_link_annotation**](docs/PdfApi.md#put_link_annotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
+*AsposePdfCloud::PdfApi* | [**put_list_box_field**](docs/PdfApi.md#put_list_box_field) | **PUT** /pdf/\{name}/fields/listbox/\{fieldName} | Replace document listbox field
 *AsposePdfCloud::PdfApi* | [**put_markdown_in_storage_to_pdf**](docs/PdfApi.md#put_markdown_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/markdown | Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_merge_documents**](docs/PdfApi.md#put_merge_documents) | **PUT** /pdf/\{name}/merge | Merge a list of documents.
 *AsposePdfCloud::PdfApi* | [**put_mht_in_storage_to_pdf**](docs/PdfApi.md#put_mht_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/mht | Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
@@ -443,8 +451,11 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::AnnotationType](docs/AnnotationType.md)
  - [AsposePdfCloud::AntialiasingProcessingType](docs/AntialiasingProcessingType.md)
  - [AsposePdfCloud::AsposeResponse](docs/AsposeResponse.md)
+ - [AsposePdfCloud::Border](docs/Border.md)
  - [AsposePdfCloud::BorderCornerStyle](docs/BorderCornerStyle.md)
+ - [AsposePdfCloud::BorderEffect](docs/BorderEffect.md)
  - [AsposePdfCloud::BorderInfo](docs/BorderInfo.md)
+ - [AsposePdfCloud::BorderStyle](docs/BorderStyle.md)
  - [AsposePdfCloud::BoxStyle](docs/BoxStyle.md)
  - [AsposePdfCloud::CapStyle](docs/CapStyle.md)
  - [AsposePdfCloud::CaptionPosition](docs/CaptionPosition.md)
@@ -456,10 +467,14 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::ColumnAdjustment](docs/ColumnAdjustment.md)
  - [AsposePdfCloud::CompressionType](docs/CompressionType.md)
  - [AsposePdfCloud::CryptoAlgorithm](docs/CryptoAlgorithm.md)
+ - [AsposePdfCloud::Dash](docs/Dash.md)
+ - [AsposePdfCloud::DefaultPageConfig](docs/DefaultPageConfig.md)
+ - [AsposePdfCloud::Direction](docs/Direction.md)
  - [AsposePdfCloud::DiscUsage](docs/DiscUsage.md)
  - [AsposePdfCloud::DocFormat](docs/DocFormat.md)
  - [AsposePdfCloud::DocMDPAccessPermissionType](docs/DocMDPAccessPermissionType.md)
  - [AsposePdfCloud::DocRecognitionMode](docs/DocRecognitionMode.md)
+ - [AsposePdfCloud::DocumentConfig](docs/DocumentConfig.md)
  - [AsposePdfCloud::DocumentPrivilege](docs/DocumentPrivilege.md)
  - [AsposePdfCloud::EpubRecognitionMode](docs/EpubRecognitionMode.md)
  - [AsposePdfCloud::Error](docs/Error.md)
@@ -494,6 +509,8 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::ObjectExist](docs/ObjectExist.md)
  - [AsposePdfCloud::OptimizeOptions](docs/OptimizeOptions.md)
  - [AsposePdfCloud::Option](docs/Option.md)
+ - [AsposePdfCloud::PageLayout](docs/PageLayout.md)
+ - [AsposePdfCloud::PageMode](docs/PageMode.md)
  - [AsposePdfCloud::PageWordCount](docs/PageWordCount.md)
  - [AsposePdfCloud::Paragraph](docs/Paragraph.md)
  - [AsposePdfCloud::PartsEmbeddingModes](docs/PartsEmbeddingModes.md)
@@ -557,6 +574,8 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::ComboBoxFieldResponse](docs/ComboBoxFieldResponse.md)
  - [AsposePdfCloud::ComboBoxFields](docs/ComboBoxFields.md)
  - [AsposePdfCloud::ComboBoxFieldsResponse](docs/ComboBoxFieldsResponse.md)
+ - [AsposePdfCloud::DisplayProperties](docs/DisplayProperties.md)
+ - [AsposePdfCloud::DisplayPropertiesResponse](docs/DisplayPropertiesResponse.md)
  - [AsposePdfCloud::Document](docs/Document.md)
  - [AsposePdfCloud::DocumentPageResponse](docs/DocumentPageResponse.md)
  - [AsposePdfCloud::DocumentPagesResponse](docs/DocumentPagesResponse.md)
@@ -594,6 +613,9 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::LinkAnnotationResponse](docs/LinkAnnotationResponse.md)
  - [AsposePdfCloud::LinkAnnotations](docs/LinkAnnotations.md)
  - [AsposePdfCloud::LinkAnnotationsResponse](docs/LinkAnnotationsResponse.md)
+ - [AsposePdfCloud::ListBoxFieldResponse](docs/ListBoxFieldResponse.md)
+ - [AsposePdfCloud::ListBoxFields](docs/ListBoxFields.md)
+ - [AsposePdfCloud::ListBoxFieldsResponse](docs/ListBoxFieldsResponse.md)
  - [AsposePdfCloud::MovieAnnotationResponse](docs/MovieAnnotationResponse.md)
  - [AsposePdfCloud::MovieAnnotations](docs/MovieAnnotations.md)
  - [AsposePdfCloud::MovieAnnotationsResponse](docs/MovieAnnotationsResponse.md)
@@ -686,6 +708,7 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::HighlightAnnotation](docs/HighlightAnnotation.md)
  - [AsposePdfCloud::InkAnnotation](docs/InkAnnotation.md)
  - [AsposePdfCloud::LineAnnotation](docs/LineAnnotation.md)
+ - [AsposePdfCloud::ListBoxField](docs/ListBoxField.md)
  - [AsposePdfCloud::PolyAnnotation](docs/PolyAnnotation.md)
  - [AsposePdfCloud::PopupAnnotationWithParent](docs/PopupAnnotationWithParent.md)
  - [AsposePdfCloud::RadioButtonField](docs/RadioButtonField.md)

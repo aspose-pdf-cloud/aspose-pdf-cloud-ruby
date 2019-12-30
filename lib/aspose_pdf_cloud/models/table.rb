@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -51,6 +51,9 @@ module AsposePdfCloud
 
     # Gets or sets the border.
     attr_accessor :border
+
+    # Gets or sets a outer margin for paragraph (for pdf generation)
+    attr_accessor :margin
 
     # Sets the rows of the table.
     attr_accessor :rows
@@ -107,6 +110,7 @@ module AsposePdfCloud
         :'default_cell_text_state' => :'DefaultCellTextState',
         :'default_cell_padding' => :'DefaultCellPadding',
         :'border' => :'Border',
+        :'margin' => :'Margin',
         :'rows' => :'Rows',
         :'default_column_width' => :'DefaultColumnWidth',
         :'default_cell_border' => :'DefaultCellBorder',
@@ -136,6 +140,7 @@ module AsposePdfCloud
         :'default_cell_text_state' => :'TextState',
         :'default_cell_padding' => :'MarginInfo',
         :'border' => :'BorderInfo',
+        :'margin' => :'MarginInfo',
         :'rows' => :'Array<Row>',
         :'default_column_width' => :'String',
         :'default_cell_border' => :'BorderInfo',
@@ -197,6 +202,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'Border')
         self.border = attributes[:'Border']
+      end
+
+      if attributes.has_key?(:'Margin')
+        self.margin = attributes[:'Margin']
       end
 
       if attributes.has_key?(:'Rows')
@@ -291,6 +300,7 @@ module AsposePdfCloud
           default_cell_text_state == o.default_cell_text_state &&
           default_cell_padding == o.default_cell_padding &&
           border == o.border &&
+          margin == o.margin &&
           rows == o.rows &&
           default_column_width == o.default_column_width &&
           default_cell_border == o.default_cell_border &&
@@ -316,7 +326,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, alignment, horizontal_alignment, vertical_alignment, top, left, default_cell_text_state, default_cell_padding, border, rows, default_column_width, default_cell_border, broken, column_widths, repeating_rows_count, repeating_columns_count, repeating_rows_style, corner_style, break_text, background_color, is_borders_included, column_adjustment, z_index].hash
+      [links, alignment, horizontal_alignment, vertical_alignment, top, left, default_cell_text_state, default_cell_padding, border, margin, rows, default_column_width, default_cell_border, broken, column_widths, repeating_rows_count, repeating_columns_count, repeating_rows_style, corner_style, break_text, background_color, is_borders_included, column_adjustment, z_index].hash
     end
 
     # Builds the object from hash
