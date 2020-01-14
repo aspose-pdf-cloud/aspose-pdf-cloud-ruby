@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -3104,6 +3104,78 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document display properties.
+    # 
+    # @param name 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [DisplayPropertiesResponse]
+    def get_document_display_properties(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_display_properties_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_document_display_properties_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document display properties.
+    # 
+    # @param name 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [Array<(DisplayPropertiesResponse, Fixnum, Hash)>] DisplayPropertiesResponse data, response status code and response headers
+    def get_document_display_properties_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_display_properties ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_display_properties"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/displayproperties".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DisplayPropertiesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_display_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document FileAttachment annotations.
     # 
     # @param name The document name.
@@ -3460,6 +3532,78 @@ module AsposePdfCloud
         :return_type => 'LineAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_line_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document listbox fields.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [ListBoxFieldsResponse]
+    def get_document_list_box_fields(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_list_box_fields_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_document_list_box_fields_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document listbox fields.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(ListBoxFieldsResponse, Fixnum, Hash)>] ListBoxFieldsResponse data, response status code and response headers
+    def get_document_list_box_fields_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_list_box_fields ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_list_box_fields"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/listbox".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ListBoxFieldsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_list_box_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7079,6 +7223,84 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Read document listbox field by name.
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [ListBoxFieldResponse]
+    def get_list_box_field(name, field_name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_list_box_field_with_http_info(name, field_name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_list_box_field_with_http_info(name, field_name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document listbox field by name.
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(ListBoxFieldResponse, Fixnum, Hash)>] ListBoxFieldResponse data, response status code and response headers
+    def get_list_box_field_with_http_info(name, field_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_list_box_field ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_list_box_field"
+      end
+      # verify the required parameter 'field_name' is set
+      if @api_client.config.client_side_validation && field_name.nil?
+        fail ArgumentError, "Missing the required parameter 'field_name' when calling PdfApi.get_list_box_field"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/listbox/{fieldName}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'fieldName' + '}', field_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ListBoxFieldResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_list_box_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert MD file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.md)
@@ -8817,6 +9039,84 @@ module AsposePdfCloud
         :return_type => 'LinkAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_page_link_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read document page listbox fields.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [ListBoxFieldsResponse]
+    def get_page_list_box_fields(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_page_list_box_fields_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_page_list_box_fields_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Read document page listbox fields.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(ListBoxFieldsResponse, Fixnum, Hash)>] ListBoxFieldsResponse data, response status code and response headers
+    def get_page_list_box_fields_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_page_list_box_fields ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_page_list_box_fields"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_page_list_box_fields"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/page/{pageNumber}/fields/listbox".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ListBoxFieldsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_page_list_box_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -10696,6 +10996,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
     # @return [File]
     def get_pdf_in_storage_to_html(name, opts = {})
       @api_client.request_token_if_needed
@@ -10744,6 +11045,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_html_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -10812,6 +11114,7 @@ module AsposePdfCloud
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'flowLayoutParagraphFullWidth'] = opts[:'flow_layout_paragraph_full_width'] if !opts[:'flow_layout_paragraph_full_width'].nil?
 
       # header parameters
       header_params = {}
@@ -14591,6 +14894,83 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Create empty document.
+    # 
+    # @param name The new document name.
+    # @param document_config The document config for new document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The new document folder.
+    # @return [DocumentResponse]
+    def post_create_document(name, document_config, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_create_document_with_http_info(name, document_config, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_create_document_with_http_info(name, document_config, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Create empty document.
+    # 
+    # @param name The new document name.
+    # @param document_config The document config for new document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The new document folder.
+    # @return [Array<(DocumentResponse, Fixnum, Hash)>] DocumentResponse data, response status code and response headers
+    def post_create_document_with_http_info(name, document_config, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_create_document ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_create_document"
+      end
+      # verify the required parameter 'document_config' is set
+      if @api_client.config.client_side_validation && document_config.nil?
+        fail ArgumentError, "Missing the required parameter 'document_config' when calling PdfApi.post_create_document"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(document_config)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DocumentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_create_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create field.
     # 
     # @param name The document name.
@@ -15767,6 +16147,83 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_insert_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add document listbox fields.
+    # 
+    # @param name The document name.
+    # @param fields The array of field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_list_box_fields(name, fields, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_list_box_fields_with_http_info(name, fields, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_list_box_fields_with_http_info(name, fields, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document listbox fields.
+    # 
+    # @param name The document name.
+    # @param fields The array of field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_list_box_fields_with_http_info(name, fields, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_list_box_fields ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_list_box_fields"
+      end
+      # verify the required parameter 'fields' is set
+      if @api_client.config.client_side_validation && fields.nil?
+        fail ArgumentError, "Missing the required parameter 'fields' when calling PdfApi.post_list_box_fields"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/listbox".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(fields)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_list_box_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -19479,6 +19936,83 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Update document display properties.
+    # 
+    # @param name The document name.
+    # @param display_properties The display properties.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [DisplayPropertiesResponse]
+    def put_document_display_properties(name, display_properties, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_document_display_properties_with_http_info(name, display_properties, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_document_display_properties_with_http_info(name, display_properties, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Update document display properties.
+    # 
+    # @param name The document name.
+    # @param display_properties The display properties.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(DisplayPropertiesResponse, Fixnum, Hash)>] DisplayPropertiesResponse data, response status code and response headers
+    def put_document_display_properties_with_http_info(name, display_properties, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_document_display_properties ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_document_display_properties"
+      end
+      # verify the required parameter 'display_properties' is set
+      if @api_client.config.client_side_validation && display_properties.nil?
+        fail ArgumentError, "Missing the required parameter 'display_properties' when calling PdfApi.put_document_display_properties"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/displayproperties".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(display_properties)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DisplayPropertiesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_document_display_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Encrypt document from content.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
@@ -21743,6 +22277,89 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Replace document listbox field
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param field The field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [ListBoxFieldResponse]
+    def put_list_box_field(name, field_name, field, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_list_box_field_with_http_info(name, field_name, field, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_list_box_field_with_http_info(name, field_name, field, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document listbox field
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param field The field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(ListBoxFieldResponse, Fixnum, Hash)>] ListBoxFieldResponse data, response status code and response headers
+    def put_list_box_field_with_http_info(name, field_name, field, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_list_box_field ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_list_box_field"
+      end
+      # verify the required parameter 'field_name' is set
+      if @api_client.config.client_side_validation && field_name.nil?
+        fail ArgumentError, "Missing the required parameter 'field_name' when calling PdfApi.put_list_box_field"
+      end
+      # verify the required parameter 'field' is set
+      if @api_client.config.client_side_validation && field.nil?
+        fail ArgumentError, "Missing the required parameter 'field' when calling PdfApi.put_list_box_field"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/listbox/{fieldName}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'fieldName' + '}', field_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(field)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ListBoxFieldResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_list_box_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
     # 
     # @param name The document name.
@@ -22986,6 +23603,7 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :storage The document storage.
+    # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_html(out_path, opts = {})
@@ -23034,6 +23652,7 @@ module AsposePdfCloud
     # @option opts [String] :special_folder_for_svg_images The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :storage The document storage.
+    # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_html_with_http_info(out_path, opts = {})
@@ -23103,6 +23722,7 @@ module AsposePdfCloud
       query_params[:'specialFolderForSvgImages'] = opts[:'special_folder_for_svg_images'] if !opts[:'special_folder_for_svg_images'].nil?
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'flowLayoutParagraphFullWidth'] = opts[:'flow_layout_paragraph_full_width'] if !opts[:'flow_layout_paragraph_full_width'].nil?
 
       # header parameters
       header_params = {}
@@ -24202,6 +24822,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_html(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -24251,6 +24872,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_html_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -24324,6 +24946,7 @@ module AsposePdfCloud
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'flowLayoutParagraphFullWidth'] = opts[:'flow_layout_paragraph_full_width'] if !opts[:'flow_layout_paragraph_full_width'].nil?
 
       # header parameters
       header_params = {}

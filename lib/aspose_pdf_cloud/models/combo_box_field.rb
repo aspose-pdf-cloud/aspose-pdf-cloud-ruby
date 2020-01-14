@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -79,8 +79,14 @@ module AsposePdfCloud
     # Gets VerticalAlignment of the field.
     attr_accessor :vertical_alignment
 
+    # Gets or sets annotation border characteristics.
+    attr_accessor :border
+
     # Gets or sets multiselection flag.
     attr_accessor :multi_select
+
+    # Gets or sets index of selected item. Numbering of items is started from 1.
+    attr_accessor :selected
 
     # Gets collection of options of the combobox.
     attr_accessor :options
@@ -93,9 +99,6 @@ module AsposePdfCloud
 
     # Gets or sets spellchaeck activiity status.
     attr_accessor :spell_check
-
-    # Gets or sets index of selected item. Numbering of items is started from 1.
-    attr_accessor :selected
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -119,12 +122,13 @@ module AsposePdfCloud
         :'highlighting' => :'Highlighting',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'border' => :'Border',
         :'multi_select' => :'MultiSelect',
+        :'selected' => :'Selected',
         :'options' => :'Options',
         :'active_state' => :'ActiveState',
         :'editable' => :'Editable',
-        :'spell_check' => :'SpellCheck',
-        :'selected' => :'Selected'
+        :'spell_check' => :'SpellCheck'
       }
     end
 
@@ -149,12 +153,13 @@ module AsposePdfCloud
         :'highlighting' => :'LinkHighlightingMode',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'border' => :'Border',
         :'multi_select' => :'BOOLEAN',
+        :'selected' => :'Integer',
         :'options' => :'Array<Option>',
         :'active_state' => :'String',
         :'editable' => :'BOOLEAN',
-        :'spell_check' => :'BOOLEAN',
-        :'selected' => :'Integer'
+        :'spell_check' => :'BOOLEAN'
       }
     end
 
@@ -242,8 +247,16 @@ module AsposePdfCloud
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
+      if attributes.has_key?(:'Border')
+        self.border = attributes[:'Border']
+      end
+
       if attributes.has_key?(:'MultiSelect')
         self.multi_select = attributes[:'MultiSelect']
+      end
+
+      if attributes.has_key?(:'Selected')
+        self.selected = attributes[:'Selected']
       end
 
       if attributes.has_key?(:'Options')
@@ -264,10 +277,6 @@ module AsposePdfCloud
         self.spell_check = attributes[:'SpellCheck']
       end
 
-      if attributes.has_key?(:'Selected')
-        self.selected = attributes[:'Selected']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -278,14 +287,6 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'page_index', page_index cannot be nil.")
       end
 
-      if @is_group.nil?
-        invalid_properties.push("invalid value for 'is_group', is_group cannot be nil.")
-      end
-
-      if @selected.nil?
-        invalid_properties.push("invalid value for 'selected', selected cannot be nil.")
-      end
-
       return invalid_properties
     end
 
@@ -293,8 +294,6 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @page_index.nil?
-      return false if @is_group.nil?
-      return false if @selected.nil?
       return true
     end
 
@@ -321,12 +320,13 @@ module AsposePdfCloud
           highlighting == o.highlighting &&
           horizontal_alignment == o.horizontal_alignment &&
           vertical_alignment == o.vertical_alignment &&
+          border == o.border &&
           multi_select == o.multi_select &&
+          selected == o.selected &&
           options == o.options &&
           active_state == o.active_state &&
           editable == o.editable &&
-          spell_check == o.spell_check &&
-          selected == o.selected
+          spell_check == o.spell_check
     end
 
     # @see the `==` method
@@ -338,7 +338,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, multi_select, options, active_state, editable, spell_check, selected].hash
+      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, border, multi_select, selected, options, active_state, editable, spell_check].hash
     end
 
     # Builds the object from hash

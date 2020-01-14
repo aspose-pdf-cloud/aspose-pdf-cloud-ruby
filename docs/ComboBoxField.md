@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **height** | **Float** | Gets or sets height of the field. | [optional] 
 **width** | **Float** | Gets or sets width of the field. | [optional] 
 **z_index** | **Integer** | Z index. | [optional] 
-**is_group** | **BOOLEAN** | Is group. | 
+**is_group** | **BOOLEAN** | Is group. | [optional] 
 **parent** | [**FormField**](FormField.md) | Gets field parent. | [optional] 
 **is_shared_field** | **BOOLEAN** | Property for Generator support. Used when field is added to header or footer. If true, this field will created once and it&#39;s appearance will be visible on all pages of the document. If false, separated field will be created for every document page. | [optional] 
 **flags** | [**Array&lt;AnnotationFlags&gt;**](AnnotationFlags.md) | Gets Flags of the field. | [optional] 
@@ -22,11 +22,12 @@ Name | Type | Description | Notes
 **highlighting** | [**LinkHighlightingMode**](LinkHighlightingMode.md) | Field highlighting mode. | [optional] 
 **horizontal_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the field. | [optional] 
 **vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets VerticalAlignment of the field. | [optional] 
+**border** | [**Border**](Border.md) | Gets or sets annotation border characteristics. | [optional] 
 **multi_select** | **BOOLEAN** | Gets or sets multiselection flag. | [optional] 
+**selected** | **Integer** | Gets or sets index of selected item. Numbering of items is started from 1. | [optional] 
 **options** | [**Array&lt;Option&gt;**](Option.md) | Gets collection of options of the combobox. | [optional] 
 **active_state** | **String** | Gets or sets current annotation appearance state. | [optional] 
 **editable** | **BOOLEAN** | Gets or sets editable status of the field. | [optional] 
 **spell_check** | **BOOLEAN** | Gets or sets spellchaeck activiity status. | [optional] 
-**selected** | **Integer** | Gets or sets index of selected item. Numbering of items is started from 1. | 
 
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **height** | **Float** | Gets or sets height of the field. | [optional] 
 **width** | **Float** | Gets or sets width of the field. | [optional] 
 **z_index** | **Integer** | Z index. | [optional] 
-**is_group** | **BOOLEAN** | Is group. | 
+**is_group** | **BOOLEAN** | Is group. | [optional] 
 **parent** | [**FormField**](FormField.md) | Gets field parent. | [optional] 
 **is_shared_field** | **BOOLEAN** | Property for Generator support. Used when field is added to header or footer. If true, this field will created once and it&#39;s appearance will be visible on all pages of the document. If false, separated field will be created for every document page. | [optional] 
 **flags** | [**Array&lt;AnnotationFlags&gt;**](AnnotationFlags.md) | Gets Flags of the field. | [optional] 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **highlighting** | [**LinkHighlightingMode**](LinkHighlightingMode.md) | Field highlighting mode. | [optional] 
 **horizontal_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the field. | [optional] 
 **vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets VerticalAlignment of the field. | [optional] 
+**border** | [**Border**](Border.md) | Gets or sets annotation border characteristics. | [optional] 
 **multiline** | **BOOLEAN** | Gets or sets multiline flag of the field. If Multiline is true field can contain multiple lines of text. | [optional] 
 **spell_check** | **BOOLEAN** | Gets or sets spellcheck flag for field. If true field shall be spell checked. | [optional] 
 **scrollable** | **BOOLEAN** | Gets or sets scrollable flag of field. If true field can be scrolled. | [optional] 

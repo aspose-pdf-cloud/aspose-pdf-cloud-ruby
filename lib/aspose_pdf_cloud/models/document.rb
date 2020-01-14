@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -31,6 +31,9 @@ module AsposePdfCloud
     # Document properties.
     attr_accessor :document_properties
 
+    # Document display properties.
+    attr_accessor :display_properties
+
     # Document pages.
     attr_accessor :pages
 
@@ -40,6 +43,7 @@ module AsposePdfCloud
       {
         :'links' => :'Links',
         :'document_properties' => :'DocumentProperties',
+        :'display_properties' => :'DisplayProperties',
         :'pages' => :'Pages'
       }
     end
@@ -49,6 +53,7 @@ module AsposePdfCloud
       {
         :'links' => :'Array<Link>',
         :'document_properties' => :'DocumentProperties',
+        :'display_properties' => :'DisplayProperties',
         :'pages' => :'Pages'
       }
     end
@@ -69,6 +74,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'DocumentProperties')
         self.document_properties = attributes[:'DocumentProperties']
+      end
+
+      if attributes.has_key?(:'DisplayProperties')
+        self.display_properties = attributes[:'DisplayProperties']
       end
 
       if attributes.has_key?(:'Pages')
@@ -97,6 +106,7 @@ module AsposePdfCloud
       self.class == o.class &&
           links == o.links &&
           document_properties == o.document_properties &&
+          display_properties == o.display_properties &&
           pages == o.pages
     end
 
@@ -109,7 +119,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, document_properties, pages].hash
+      [links, document_properties, display_properties, pages].hash
     end
 
     # Builds the object from hash

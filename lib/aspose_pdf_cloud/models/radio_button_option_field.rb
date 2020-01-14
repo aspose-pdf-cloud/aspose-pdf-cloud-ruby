@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Aspose.PDF Cloud
+  Copyright (c) 2020 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -79,6 +79,9 @@ module AsposePdfCloud
     # Gets VerticalAlignment of the field.
     attr_accessor :vertical_alignment
 
+    # Gets or sets annotation border characteristics.
+    attr_accessor :border
+
     # Gets or sets name of the option.
     attr_accessor :option_name
 
@@ -107,6 +110,7 @@ module AsposePdfCloud
         :'highlighting' => :'Highlighting',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'border' => :'Border',
         :'option_name' => :'OptionName',
         :'style' => :'Style'
       }
@@ -133,6 +137,7 @@ module AsposePdfCloud
         :'highlighting' => :'LinkHighlightingMode',
         :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
+        :'border' => :'Border',
         :'option_name' => :'String',
         :'style' => :'BoxStyle'
       }
@@ -222,6 +227,10 @@ module AsposePdfCloud
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
+      if attributes.has_key?(:'Border')
+        self.border = attributes[:'Border']
+      end
+
       if attributes.has_key?(:'OptionName')
         self.option_name = attributes[:'OptionName']
       end
@@ -240,10 +249,6 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'page_index', page_index cannot be nil.")
       end
 
-      if @is_group.nil?
-        invalid_properties.push("invalid value for 'is_group', is_group cannot be nil.")
-      end
-
       return invalid_properties
     end
 
@@ -251,7 +256,6 @@ module AsposePdfCloud
     # @return true if the model is valid
     def valid?
       return false if @page_index.nil?
-      return false if @is_group.nil?
       return true
     end
 
@@ -278,6 +282,7 @@ module AsposePdfCloud
           highlighting == o.highlighting &&
           horizontal_alignment == o.horizontal_alignment &&
           vertical_alignment == o.vertical_alignment &&
+          border == o.border &&
           option_name == o.option_name &&
           style == o.style
     end
@@ -291,7 +296,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, option_name, style].hash
+      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, border, option_name, style].hash
     end
 
     # Builds the object from hash
