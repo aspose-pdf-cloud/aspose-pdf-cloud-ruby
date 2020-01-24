@@ -18879,6 +18879,83 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add document signature field.
+    # 
+    # @param name The document name.
+    # @param field The field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AsposeResponse]
+    def post_signature_field(name, field, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_signature_field_with_http_info(name, field, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_signature_field_with_http_info(name, field, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add document signature field.
+    # 
+    # @param name The document name.
+    # @param field The field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_signature_field_with_http_info(name, field, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_signature_field ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_signature_field"
+      end
+      # verify the required parameter 'field' is set
+      if @api_client.config.client_side_validation && field.nil?
+        fail ArgumentError, "Missing the required parameter 'field' when calling PdfApi.post_signature_field"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/signature".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(field)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_signature_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Split document to parts.
     # 
     # @param name Document name.
@@ -26845,6 +26922,89 @@ module AsposePdfCloud
         :return_type => 'DocumentPropertyResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_set_property\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document signature field.
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param field The field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [SignatureFieldResponse]
+    def put_signature_field(name, field_name, field, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_signature_field_with_http_info(name, field_name, field, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_signature_field_with_http_info(name, field_name, field, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document signature field.
+    # 
+    # @param name The document name.
+    # @param field_name The field name.
+    # @param field The field.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(SignatureFieldResponse, Fixnum, Hash)>] SignatureFieldResponse data, response status code and response headers
+    def put_signature_field_with_http_info(name, field_name, field, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_signature_field ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_signature_field"
+      end
+      # verify the required parameter 'field_name' is set
+      if @api_client.config.client_side_validation && field_name.nil?
+        fail ArgumentError, "Missing the required parameter 'field_name' when calling PdfApi.put_signature_field"
+      end
+      # verify the required parameter 'field' is set
+      if @api_client.config.client_side_validation && field.nil?
+        fail ArgumentError, "Missing the required parameter 'field' when calling PdfApi.put_signature_field"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/fields/signature/{fieldName}".sub('{' + 'name' + '}', name.to_s).sub('{' + 'fieldName' + '}', field_name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(field)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SignatureFieldResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_signature_field\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
