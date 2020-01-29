@@ -3862,7 +3862,7 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed flatten document.')
   end
 
-  def test_get_document_gignature_fields
+  def test_get_document_sigignature_fields
     file_name = 'adbe.x509.rsa_sha1.valid.pdf'
     upload_file(file_name)
 
@@ -3874,7 +3874,7 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read document signature fields.')
   end
 
-  def test_get_page_gignature_fields
+  def test_get_page_sigignature_fields
     file_name = 'adbe.x509.rsa_sha1.valid.pdf'
     upload_file(file_name)
 
@@ -3887,7 +3887,75 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read page signature fields.')
   end
 
-  def test_get_gignature_field
+  def test_post_sigignature_field
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    signature_name = '33226.p12'
+    upload_file(signature_name)
+
+    signature = Signature.new
+    signature.authority = 'Sergey Smal'
+    signature.contact = 'test@mail.ru'
+    signature.date = '08/01/2012 12:15:00.000 PM'
+    signature.form_field_name = 'Signature1'
+    signature.location = 'Ukraine'
+    signature.password = 'sIikZSmz'
+    signature.rectangle = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    signature.signature_path = @temp_folder + '/' + signature_name
+    signature.signature_type = SignatureType::PKCS7
+    signature.visible = true
+    signature.show_properties = false
+
+    field = SignatureField.new
+    field.partial_name = 'sign1'
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    field.signature = signature
+    field.page_index = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.post_signature_field(file_name, field, opts)
+    assert(response, 'Failed to create signature field.')
+  end
+
+  def test_put_sigignature_field
+    file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+    upload_file(file_name)
+
+    signature_name = '33226.p12'
+    upload_file(signature_name)
+
+    signature = Signature.new
+    signature.authority = 'Sergey Smal'
+    signature.contact = 'test@mail.ru'
+    signature.date = '08/01/2012 12:15:00.000 PM'
+    signature.form_field_name = 'Signature1'
+    signature.location = 'Ukraine'
+    signature.password = 'sIikZSmz'
+    signature.rectangle = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    signature.signature_path = @temp_folder + '/' + signature_name
+    signature.signature_type = SignatureType::PKCS7
+    signature.visible = true
+    signature.show_properties = false
+
+    field = SignatureField.new
+    field.partial_name = 'sign1'
+    field.rect = Rectangle.new({:LLX => 100, :LLY => 100, :URX => 500, :URY => 200})
+    field.signature = signature
+    field.page_index = 1
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_signature_field(file_name, 'Signature1', field, opts)
+    assert(response, 'Failed to update signature field.')
+  end
+
+  def test_get_sigignature_field
     file_name = 'adbe.x509.rsa_sha1.valid.pdf'
     upload_file(file_name)
 
@@ -3899,6 +3967,9 @@ class PdfTests < Minitest::Test
     response = @pdf_api.get_signature_field(file_name, field_name, opts)
     assert(response, 'Failed to read signature field.')
   end
+
+
+
 
   def test_get_document_text_box_fields
     file_name = 'FormDataTextBox.pdf'
