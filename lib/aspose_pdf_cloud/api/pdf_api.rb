@@ -10782,6 +10782,79 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param src_path Full source filename (ex. /folder1/folder2/template.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :dont_optimize If set, document resources will not be optimized.
+    # @option opts [String] :storage The document storage.
+    # @return [File]
+    def get_pdf_a_in_storage_to_pdf(src_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_pdf_a_in_storage_to_pdf_with_http_info(src_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_pdf_a_in_storage_to_pdf_with_http_info(src_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
+    # 
+    # @param src_path Full source filename (ex. /folder1/folder2/template.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :dont_optimize If set, document resources will not be optimized.
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_a_in_storage_to_pdf_with_http_info(src_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_a_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'src_path' is set
+      if @api_client.config.client_side_validation && src_path.nil?
+        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.get_pdf_a_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/create/pdfa"
+
+      # query parameters
+      query_params = {}
+      query_params[:'srcPath'] = src_path
+      query_params[:'dontOptimize'] = opts[:'dont_optimize'] if !opts[:'dont_optimize'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_a_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (located on storage) to DOC format and returns resulting file in response content
     # 
     # @param name The document name.
@@ -14567,7 +14640,7 @@ module AsposePdfCloud
     # Add document bookmarks.
     # 
     # @param name The document name.
-    # @param bookmark_path The bookmark path.
+    # @param bookmark_path The parent bookmark path. Specify an empty string when adding a bookmark to the root.
     # @param bookmarks The array of bookmark.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
@@ -14589,7 +14662,7 @@ module AsposePdfCloud
     # Add document bookmarks.
     # 
     # @param name The document name.
-    # @param bookmark_path The bookmark path.
+    # @param bookmark_path The parent bookmark path. Specify an empty string when adding a bookmark to the root.
     # @param bookmarks The array of bookmark.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
@@ -23459,6 +23532,88 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_pcl_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param src_path Full source filename (ex. /folder1/folder2/template.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :dst_folder The destination document folder.
+    # @option opts [BOOLEAN] :dont_optimize If set, document resources will not be optimized.
+    # @option opts [String] :storage The document storage.
+    # @return [AsposeResponse]
+    def put_pdf_a_in_storage_to_pdf(name, src_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_pdf_a_in_storage_to_pdf_with_http_info(name, src_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_pdf_a_in_storage_to_pdf_with_http_info(name, src_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
+    # 
+    # @param name The document name.
+    # @param src_path Full source filename (ex. /folder1/folder2/template.pdf)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :dst_folder The destination document folder.
+    # @option opts [BOOLEAN] :dont_optimize If set, document resources will not be optimized.
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_pdf_a_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_a_in_storage_to_pdf ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_a_in_storage_to_pdf"
+      end
+      # verify the required parameter 'src_path' is set
+      if @api_client.config.client_side_validation && src_path.nil?
+        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.put_pdf_a_in_storage_to_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/create/pdfa".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'srcPath'] = src_path
+      query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
+      query_params[:'dontOptimize'] = opts[:'dont_optimize'] if !opts[:'dont_optimize'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_pdf_a_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -3599,6 +3599,28 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to convert markdown to pdf.')
   end
 
+  def test_get_pdf_a_in_storage_to_pdf
+    file_name = '4pagesPdfA.pdf'
+    upload_file(file_name)
+
+    src_path = @temp_folder + '/' + file_name
+    response = @pdf_api.get_pdf_a_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert pdfa to pdf.')
+  end
+
+  def test_put_pdf_a_in_storage_to_pdf
+    file_name = '4pagesPdfA.pdf'
+    upload_file(file_name)
+    result_name = 'fromPdfA.pdf'
+
+    src_path = @temp_folder + '/' + file_name
+    opts = {
+        :dst_folder => @temp_folder
+    }
+    response = @pdf_api.put_pdf_a_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert pdfa to pdf.')
+  end
+
   # Document Tests
 
   def test_get_document

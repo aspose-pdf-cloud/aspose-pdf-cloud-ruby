@@ -145,6 +145,7 @@ Method | HTTP request | Description
 [**get_page_underline_annotations**](PdfApi.md#get_page_underline_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
 [**get_pages**](PdfApi.md#get_pages) | **GET** /pdf/\{name}/pages | Read document pages info.
 [**get_pcl_in_storage_to_pdf**](PdfApi.md#get_pcl_in_storage_to_pdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
+[**get_pdf_a_in_storage_to_pdf**](PdfApi.md#get_pdf_a_in_storage_to_pdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
 [**get_pdf_in_storage_to_doc**](PdfApi.md#get_pdf_in_storage_to_doc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
 [**get_pdf_in_storage_to_epub**](PdfApi.md#get_pdf_in_storage_to_epub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 [**get_pdf_in_storage_to_html**](PdfApi.md#get_pdf_in_storage_to_html) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
@@ -298,6 +299,7 @@ Method | HTTP request | Description
 [**put_page_convert_to_png**](PdfApi.md#put_page_convert_to_png) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/png | Convert document page to png image and upload resulting file to storage.
 [**put_page_convert_to_tiff**](PdfApi.md#put_page_convert_to_tiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/tiff | Convert document page to Tiff image and upload resulting file to storage.
 [**put_pcl_in_storage_to_pdf**](PdfApi.md#put_pcl_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/pcl | Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
+[**put_pdf_a_in_storage_to_pdf**](PdfApi.md#put_pdf_a_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/pdfa | Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_pdf_in_request_to_doc**](PdfApi.md#put_pdf_in_request_to_doc) | **PUT** /pdf/convert/doc | Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
 [**put_pdf_in_request_to_epub**](PdfApi.md#put_pdf_in_request_to_epub) | **PUT** /pdf/convert/epub | Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
 [**put_pdf_in_request_to_html**](PdfApi.md#put_pdf_in_request_to_html) | **PUT** /pdf/convert/html | Converts PDF document (in request content) to Html format and uploads resulting file to storage.
@@ -3854,6 +3856,30 @@ Name | Type | Description  | Notes
 
 
 
+# **get_pdf_a_in_storage_to_pdf**
+> File get_pdf_a_in_storage_to_pdf(src_path, opts)
+
+Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.pdf) | 
+ **dont_optimize** | **BOOLEAN**| If set, document resources will not be optimized. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
 # **get_pdf_in_storage_to_doc**
 > File get_pdf_in_storage_to_doc(name, opts)
 
@@ -5077,7 +5103,7 @@ Add document bookmarks.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
- **bookmark_path** | **String**| The bookmark path. | 
+ **bookmark_path** | **String**| The parent bookmark path. Specify an empty string when adding a bookmark to the root. | 
  **bookmarks** | [**Array&lt;Bookmark&gt;**](Bookmark.md)| The array of bookmark. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
@@ -7858,6 +7884,32 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.pcl) | 
  **dst_folder** | **String**| The destination document folder. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_pdf_a_in_storage_to_pdf**
+> AsposeResponse put_pdf_a_in_storage_to_pdf(name, src_path, opts)
+
+Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.pdf) | 
+ **dst_folder** | **String**| The destination document folder. | [optional] 
+ **dont_optimize** | **BOOLEAN**| If set, document resources will not be optimized. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
 ### Return type
