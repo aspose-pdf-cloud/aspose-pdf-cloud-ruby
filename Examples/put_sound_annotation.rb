@@ -3,8 +3,8 @@ include AsposePdfCloud
 
 
 
-app_key = 'b125f13bf6b76ed81ee990142d841195'
-app_sid = '78946fb4-3bd4-4d3e-b309-f9e2ff9ac6f9'
+app_key = 'XXXXX'
+app_sid = 'XXXXX'
 
 
 
