@@ -23,98 +23,53 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Represents a cell of the table's row.
-  class Cell
-    # Gets or sets the cell have border.
-    attr_accessor :is_no_border
+  # Represents Image Fragment DTO.
+  class ImageFragment
+    # Gets or sets full storage path of image.
+    attr_accessor :image_file
 
-    # Gets or sets the padding.
-    attr_accessor :margin
+    # Gets or sets fix width of the image.
+    attr_accessor :fix_width
 
-    # Gets or sets the border.
-    attr_accessor :border
+    # Gets or sets fix height of the image.
+    attr_accessor :fix_height
 
-    # Gets or sets the background color.
-    attr_accessor :background_color
+    # Gets or sets horizontal alignment of the image.
+    attr_accessor :horizontal_alignment
 
-    # Gets or sets the background image file.
-    attr_accessor :background_image_file
-
-    # Gets or sets path of the background image file from storage.
-    attr_accessor :background_image_storage_file
-
-    # Gets or sets the alignment.
-    attr_accessor :alignment
-
-    # Gets or sets the default cell text state.
-    attr_accessor :default_cell_text_state
-
-    # Gets or sets the cell's formatted text.
-    attr_accessor :paragraphs
-
-    # Gets or sets the cell's text word wrapped.
-    attr_accessor :is_word_wrapped
-
-    # Gets or sets the vertical alignment.
+    # Gets or sets vertical alignment of the image.
     attr_accessor :vertical_alignment
 
-    # Gets or sets the column span.
-    attr_accessor :col_span
+    # Gets or sets ImageScale of the image.
+    attr_accessor :image_scale
 
-    # Gets or sets the row span.
-    attr_accessor :row_span
-
-    # Gets or sets the column width.
-    attr_accessor :width
-
-    # Gets or sets Html fragment.
-    attr_accessor :html_fragment
-
-    # Gets or sets ImageFragment list.
-    attr_accessor :images
+    # Gets or sets Margin of the image.
+    attr_accessor :margin
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'is_no_border' => :'IsNoBorder',
-        :'margin' => :'Margin',
-        :'border' => :'Border',
-        :'background_color' => :'BackgroundColor',
-        :'background_image_file' => :'BackgroundImageFile',
-        :'background_image_storage_file' => :'BackgroundImageStorageFile',
-        :'alignment' => :'Alignment',
-        :'default_cell_text_state' => :'DefaultCellTextState',
-        :'paragraphs' => :'Paragraphs',
-        :'is_word_wrapped' => :'IsWordWrapped',
+        :'image_file' => :'ImageFile',
+        :'fix_width' => :'FixWidth',
+        :'fix_height' => :'FixHeight',
+        :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'col_span' => :'ColSpan',
-        :'row_span' => :'RowSpan',
-        :'width' => :'Width',
-        :'html_fragment' => :'HtmlFragment',
-        :'images' => :'Images'
+        :'image_scale' => :'ImageScale',
+        :'margin' => :'Margin'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'is_no_border' => :'BOOLEAN',
-        :'margin' => :'MarginInfo',
-        :'border' => :'BorderInfo',
-        :'background_color' => :'Color',
-        :'background_image_file' => :'String',
-        :'background_image_storage_file' => :'String',
-        :'alignment' => :'HorizontalAlignment',
-        :'default_cell_text_state' => :'TextState',
-        :'paragraphs' => :'Array<TextRect>',
-        :'is_word_wrapped' => :'BOOLEAN',
+        :'image_file' => :'String',
+        :'fix_width' => :'Float',
+        :'fix_height' => :'Float',
+        :'horizontal_alignment' => :'HorizontalAlignment',
         :'vertical_alignment' => :'VerticalAlignment',
-        :'col_span' => :'Integer',
-        :'row_span' => :'Integer',
-        :'width' => :'Float',
-        :'html_fragment' => :'String',
-        :'images' => :'Array<ImageFragment>'
+        :'image_scale' => :'Float',
+        :'margin' => :'MarginInfo'
       }
     end
 
@@ -126,72 +81,32 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'IsNoBorder')
-        self.is_no_border = attributes[:'IsNoBorder']
+      if attributes.has_key?(:'ImageFile')
+        self.image_file = attributes[:'ImageFile']
       end
 
-      if attributes.has_key?(:'Margin')
-        self.margin = attributes[:'Margin']
+      if attributes.has_key?(:'FixWidth')
+        self.fix_width = attributes[:'FixWidth']
       end
 
-      if attributes.has_key?(:'Border')
-        self.border = attributes[:'Border']
+      if attributes.has_key?(:'FixHeight')
+        self.fix_height = attributes[:'FixHeight']
       end
 
-      if attributes.has_key?(:'BackgroundColor')
-        self.background_color = attributes[:'BackgroundColor']
-      end
-
-      if attributes.has_key?(:'BackgroundImageFile')
-        self.background_image_file = attributes[:'BackgroundImageFile']
-      end
-
-      if attributes.has_key?(:'BackgroundImageStorageFile')
-        self.background_image_storage_file = attributes[:'BackgroundImageStorageFile']
-      end
-
-      if attributes.has_key?(:'Alignment')
-        self.alignment = attributes[:'Alignment']
-      end
-
-      if attributes.has_key?(:'DefaultCellTextState')
-        self.default_cell_text_state = attributes[:'DefaultCellTextState']
-      end
-
-      if attributes.has_key?(:'Paragraphs')
-        if (value = attributes[:'Paragraphs']).is_a?(Array)
-          self.paragraphs = value
-        end
-      end
-
-      if attributes.has_key?(:'IsWordWrapped')
-        self.is_word_wrapped = attributes[:'IsWordWrapped']
+      if attributes.has_key?(:'HorizontalAlignment')
+        self.horizontal_alignment = attributes[:'HorizontalAlignment']
       end
 
       if attributes.has_key?(:'VerticalAlignment')
         self.vertical_alignment = attributes[:'VerticalAlignment']
       end
 
-      if attributes.has_key?(:'ColSpan')
-        self.col_span = attributes[:'ColSpan']
+      if attributes.has_key?(:'ImageScale')
+        self.image_scale = attributes[:'ImageScale']
       end
 
-      if attributes.has_key?(:'RowSpan')
-        self.row_span = attributes[:'RowSpan']
-      end
-
-      if attributes.has_key?(:'Width')
-        self.width = attributes[:'Width']
-      end
-
-      if attributes.has_key?(:'HtmlFragment')
-        self.html_fragment = attributes[:'HtmlFragment']
-      end
-
-      if attributes.has_key?(:'Images')
-        if (value = attributes[:'Images']).is_a?(Array)
-          self.images = value
-        end
+      if attributes.has_key?(:'Margin')
+        self.margin = attributes[:'Margin']
       end
 
     end
@@ -200,13 +115,37 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @image_file.nil?
+        invalid_properties.push("invalid value for 'image_file', image_file cannot be nil.")
+      end
+
+      if @image_file.to_s.length < 1
+        invalid_properties.push("invalid value for 'image_file', the character length must be great than or equal to 1.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @image_file.nil?
+      return false if @image_file.to_s.length < 1
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] image_file Value to be assigned
+    def image_file=(image_file)
+      if image_file.nil?
+        fail ArgumentError, "image_file cannot be nil"
+      end
+
+      if image_file.to_s.length < 1
+        fail ArgumentError, "invalid value for 'image_file', the character length must be great than or equal to 1."
+      end
+
+      @image_file = image_file
     end
 
     # Checks equality by comparing each attribute.
@@ -214,22 +153,13 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          is_no_border == o.is_no_border &&
-          margin == o.margin &&
-          border == o.border &&
-          background_color == o.background_color &&
-          background_image_file == o.background_image_file &&
-          background_image_storage_file == o.background_image_storage_file &&
-          alignment == o.alignment &&
-          default_cell_text_state == o.default_cell_text_state &&
-          paragraphs == o.paragraphs &&
-          is_word_wrapped == o.is_word_wrapped &&
+          image_file == o.image_file &&
+          fix_width == o.fix_width &&
+          fix_height == o.fix_height &&
+          horizontal_alignment == o.horizontal_alignment &&
           vertical_alignment == o.vertical_alignment &&
-          col_span == o.col_span &&
-          row_span == o.row_span &&
-          width == o.width &&
-          html_fragment == o.html_fragment &&
-          images == o.images
+          image_scale == o.image_scale &&
+          margin == o.margin
     end
 
     # @see the `==` method
@@ -241,7 +171,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [is_no_border, margin, border, background_color, background_image_file, background_image_storage_file, alignment, default_cell_text_state, paragraphs, is_word_wrapped, vertical_alignment, col_span, row_span, width, html_fragment, images].hash
+      [image_file, fix_width, fix_height, horizontal_alignment, vertical_alignment, image_scale, margin].hash
     end
 
     # Builds the object from hash
