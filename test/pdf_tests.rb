@@ -389,82 +389,121 @@ class PdfTests < Minitest::Test
   end
 
   def __draw_table
-
-    text_state = TextState.new
-    text_state.font = 'Arial'
-    text_state.font_size = 10
-    text_state.foreground_color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0})
-    text_state.background_color = Color.new({:A => 0xFF, :R => 0xFF, :G => 0, :B => 0})
-    text_state.font_style = FontStyles::BOLD
-
-    num_of_cols = 5
-    num_of_rows = 5
-
-    table = Table.new
-    table.rows = Array.new(num_of_rows)
-
-    col_widths = '';
-    (1..num_of_cols).each do
-      col_widths += ' 30'
-    end
-
-    table.column_widths = col_widths
-
-    table.default_cell_text_state = text_state
-
-    border_table_border = GraphInfo.new
-
-    border_table_border.color = Color.new({:A => 0xFF, :R => 0, :G => 0xFF, :B => 0xFF})
-    border_table_border.line_width = 1
-
-    border_info = BorderInfo.new
-    border_info.top = border_table_border
-    border_info.right = border_table_border
-    border_info.bottom = border_table_border
-    border_info.left = border_table_border
-
-    table.default_cell_border = border_info
-    table.top = 100
-
-
-
-    (0..(num_of_rows - 1)).each do |r|
-      row = Row.new
-      row.cells = Array.new(num_of_cols)
-
-      (0..(num_of_rows - 1)).each do |c|
-        cell = Cell.new
-        cell.background_color = Color.new({:A => 0xFF, :R => 0xFF, :G => 0, :B => 0xFF})
-        cell.default_cell_text_state = text_state
-        cell.paragraphs = Array.new(1)
-        cell.paragraphs[0] = TextRect.new({:Text => 'value'})
-
-        # change properties on cell
-
-        if c == 1
-          cell.default_cell_text_state.foreground_color = Color.new({:A => 0xFF, :R => 0xFF, :G => 0, :B => 0xFF})
-
-          # change properties on cell AFTER first clearing and re-adding paragraphs
-        elsif c == 2
-          cell.paragraphs[0] =  TextRect.new({:Text => 'y'})
-          cell.default_cell_text_state.foreground_color = Color.new({:A => 0xFF, :R => 0, :G => 0, :B => 0xFF})
-
-          #change properties on paragraph
-        elsif c == 3
-          cell.paragraphs[0].text_state = text_state
-          cell.paragraphs[0].text_state.foreground_color = Color.new({:A => 0xFF, :R => 0, :G => 0, :B => 0xFF})
-
-          # change properties on paragraph AFTER first clearing and re-adding paragraphs
-        elsif c == 4
-          cell.paragraphs[0] =  TextRect.new({:Text => 'y'})
-          cell.paragraphs[0].text_state = text_state
-          cell.paragraphs[0].text_state.foreground_color =  Color.new({:A => 0xFF, :R => 0, :G => 0, :B => 0xFF})
-        end
-
-        row.cells[c] = cell
-      end
-      table.rows[r] = row
-    end
+    colorBlack = Color.new({:A => 0xFF, :R => 0, :G => 0, :B => 0})
+    borderGraphInfo = GraphInfo.new({:Color => colorBlack, :LineWidth => 1})
+    image = 'Penguins.jpg'
+    table = Table.new({
+                          :Top => 100,
+                          :ColumnWidths => '150 300',
+                          :IsBordersIncluded => true,
+                          :DefaultCellTextState => TextState.new({:FontSize => 11, :ForegroundColor => Color.new({:A => 255, :R => 0, :G => 255, :B => 0})}),
+                          :Margin => MarginInfo.new({
+                                                        :Bottom => 10,
+                                                        :Left => 10,
+                                                        :Right => 10,
+                                                        :Top => 10
+                                                    }),
+                          :Border => BorderInfo.new({
+                                                        :Top => borderGraphInfo,
+                                                        :Left => borderGraphInfo
+                                                    }),
+                          :DefaultCellBorder => BorderInfo.new({
+                                                                   :Right => borderGraphInfo,
+                                                               }),
+                          :DefaultCellPadding => MarginInfo.new({
+                                                                    :Top => 5,
+                                                                    :Left => 5,
+                                                                    :Right => 5,
+                                                                    :Bottom => 5,
+                                                                }),
+                          :Rows => [
+                              Row.new({
+                                          :MinRowHeight => 100,
+                                          :Border => BorderInfo.new({
+                                                                        :Bottom => borderGraphInfo,
+                                                                    }),
+                                          :Cells => [
+                                              Cell.new({
+                                                           :Paragraphs => [
+                                                               TextRect.new({
+                                                                                :Text => 'BackgroundImageStorageFile field, from storage file',
+                                                                                :HorizontalAlignment => HorizontalAlignment::CENTER,
+                                                                                :TextState => TextState.new({:FontSize => 10, :ForegroundColor => Color.new({:A => 0xff, :R => 0x3d, :G => 0x8e, :B =>0xc4})}),
+                                                                            })
+                                                           ]
+                                                       }),
+                                              Cell.new({
+                                                           :BackgroundColor => colorBlack,
+                                                           :BackgroundImageStorageFile => "#{@temp_folder}/#{image}"
+                                                       })
+                                          ]
+                                      }),
+                              Row.new({
+                                          :MinRowHeight => 100,
+                                          :Border => BorderInfo.new({:Bottom => borderGraphInfo}),
+                                          :Cells => [
+                                              Cell.new({
+                                                           :Paragraphs => [
+                                                               TextRect.new({
+                                                                                :Text => 'HtmlFragment',
+                                                                                :HorizontalAlignment => HorizontalAlignment::CENTER,
+                                                                                :TextState => TextState.new({
+                                                                                                                :FontSize => 10,
+                                                                                                                :ForegroundColor => Color.new({:A => 255, :R => 0x3d, :G => 0x8e, :B => 0xc4}),
+                                                                                                            })
+                                                                            })
+                                                           ]
+                                                       }),
+                                              Cell.new({:HtmlFragment => '<ul><li>First</li><li>Second</li></ul>'}),
+                                          ]
+                                      }),
+                              Row.new({
+                                          :FixedRowHeight => 100,
+                                          :Border => BorderInfo.new({:Bottom => borderGraphInfo}),
+                                          :Cells => [
+                                              Cell.new({
+                                                           :Paragraphs => [
+                                                               TextRect.new({:Text => 'FixedRowHeight = 100'}),
+                                                               TextRect.new({
+                                                                                :Text => 'Images field, from storage file, without Margin and Size',
+                                                                                :HorizontalAlignment => HorizontalAlignment::CENTER,
+                                                                                :TextState => TextState.new({:FontSize => 10, :ForegroundColor => Color.new({:A => 255, :R => 0x3d, :G => 0x8e, :B => 0xc4})}),
+                                                                            })
+                                                           ]
+                                                       }),
+                                              Cell.new({
+                                                           :BackgroundColor => colorBlack,
+                                                           :Images => [ImageFragment.new({ImageFile: "#{@temp_folder}/#{image}"})]
+                                                       })
+                                          ]
+                                      }),
+                              Row.new({
+                                          :FixedRowHeight => 100,
+                                          :Border => BorderInfo.new({:Bottom => borderGraphInfo}),
+                                          :Cells => [
+                                              Cell.new({
+                                                           :Paragraphs => [
+                                                               TextRect.new({:Text => 'FixedRowHeight = 100'}),
+                                                               TextRect.new({
+                                                                                :Text => 'Images field, from storage file, with no Margin and Size = 150x50',
+                                                                                :HorizontalAlignment => HorizontalAlignment::CENTER,
+                                                                                :TextState => TextState.new({:FontSize => 10, :ForegroundColor => Color.new({:A => 255, :R => 0x3d, :G => 0x8e, :B => 0xc4})})
+                                                                            })
+                                                           ]
+                                                       }),
+                                              Cell.new({
+                                                           :BackgroundColor => colorBlack,
+                                                           :Images => [
+                                                               ImageFragment.new({
+                                                                                     :ImageFile => "#{@temp_folder}/#{image}",
+                                                                                     :ImageScale => 0.1
+                                                                                 })
+                                                           ]
+                                                       })
+                                          ]
+                                      })
+                          ]
+                      })
     table
   end
 

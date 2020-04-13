@@ -11222,7 +11222,6 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [File]
@@ -11243,7 +11242,6 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
@@ -11260,7 +11258,6 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
@@ -23991,7 +23988,6 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
@@ -24012,7 +24008,6 @@ module AsposePdfCloud
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
@@ -24030,7 +24025,6 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
-      query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
@@ -25214,7 +25208,6 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [AsposeResponse]
@@ -25236,7 +25229,6 @@ module AsposePdfCloud
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :pages_count Pages count.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
@@ -25258,7 +25250,6 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'outPath'] = out_path
-      query_params[:'pagesCount'] = opts[:'pages_count'] if !opts[:'pages_count'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 

@@ -4000,7 +4000,6 @@ Converts PDF document (located on storage) to LaTeX format and returns resulting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
- **pages_count** | **Integer**| Pages count. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
@@ -8043,7 +8042,6 @@ Converts PDF document (in request content) to LaTeX format and uploads resulting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.tex) | 
- **pages_count** | **Integer**| Pages count. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
 
@@ -8424,7 +8422,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.tex) | 
- **pages_count** | **Integer**| Pages count. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
