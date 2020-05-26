@@ -49,7 +49,7 @@ module AsposePdfCloud
       @default_headers = {
         'Content-Type' => "application/json",
         'x-aspose-client' => "ruby sdk",
-        'x-aspose-version' => "#{ AsposePdfCloud::VERSION }"
+        'x-aspose-client-version' => "#{ AsposePdfCloud::VERSION }"
       }
     end
 

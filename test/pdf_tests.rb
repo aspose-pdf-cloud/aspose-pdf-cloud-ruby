@@ -33,7 +33,6 @@ class PdfTests < Minitest::Test
   def setup
     # Get App key and App SID from https://aspose.cloud
     @pdf_api = PdfApi.new('app_key', 'app_sid')
-
     @temp_folder = 'TempPdfCloud'
     @test_data_folder = '../test_data/'
 
@@ -3145,7 +3144,7 @@ class PdfTests < Minitest::Test
     assert(response, 'Filed to convert PDF to PPTX.')
   end
 
-  def test_get_pdf_in_storage_to_la_te_x
+  def test_get_pdf_in_storage_to_te_x
     file_name = '4pages.pdf'
     upload_file(file_name)
 
@@ -3153,33 +3152,33 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
 
-    response = @pdf_api.get_pdf_in_storage_to_la_te_x(file_name, opts)
-    assert(response, 'Filed to convert PDF to LaTex.')
+    response = @pdf_api.get_pdf_in_storage_to_te_x(file_name, opts)
+    assert(response, 'Filed to convert PDF to Tex.')
   end
 
-  def test_put_pdf_in_storage_to_la_te_x
+  def test_put_pdf_in_storage_to_te_x
     file_name = '4pages.pdf'
     upload_file(file_name)
-    res_file = 'result.latex'
+    res_file = 'result.tex'
 
     opts = {
         :folder => @temp_folder
     }
-    response = @pdf_api.put_pdf_in_storage_to_la_te_x(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to LaTeX.')
+    response = @pdf_api.put_pdf_in_storage_to_te_x(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to TeX.')
   end
 
 
-  def test_put_pdf_in_request_to_la_te_x
+  def test_put_pdf_in_request_to_te_x
     file_name = '4pages.pdf'
 
-    res_file = 'result.latex'
+    res_file = 'result.tex'
 
     opts = {
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
-    response = @pdf_api.put_pdf_in_request_to_la_te_x(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to LaTeX.')
+    response = @pdf_api.put_pdf_in_request_to_te_x(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Filed to convert PDF to TeX.')
   end
 
   def test_get_pdf_in_storage_to_mobi_xml
@@ -3373,16 +3372,16 @@ class PdfTests < Minitest::Test
   end
 
 
-  def test_get_la_te_x_in_storage_to_pdf
+  def test_get_te_x_in_storage_to_pdf
     file_name = 'sample.tex'
     upload_file(file_name)
 
     src_path = @temp_folder + '/' + file_name
-    response = @pdf_api.get_la_te_x_in_storage_to_pdf(src_path)
-    assert(response, 'Failed to convert LaTeX to pdf.')
+    response = @pdf_api.get_te_x_in_storage_to_pdf(src_path)
+    assert(response, 'Failed to convert TeX to pdf.')
   end
 
-  def test_put_la_te_x_in_storage_to_pdf
+  def test_put_te_x_in_storage_to_pdf
     file_name = 'sample.tex'
     upload_file(file_name)
     result_name = 'fromTex.pdf'
@@ -3391,8 +3390,8 @@ class PdfTests < Minitest::Test
     opts = {
         :dst_folder => @temp_folder
     }
-    response = @pdf_api.put_la_te_x_in_storage_to_pdf(result_name, src_path, opts)
-    assert(response, 'Failed to convert LaTeX to pdf.')
+    response = @pdf_api.put_te_x_in_storage_to_pdf(result_name, src_path, opts)
+    assert(response, 'Failed to convert TeX to pdf.')
   end
 
   def test_get_mht_in_storage_to_pdf
