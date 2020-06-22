@@ -23975,6 +23975,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :storage The document storage.
     # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
+    # @option opts [String] :output_format This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \&quot;Zip\&quot; or missed (default). In case of the \&quot;Folder\&quot;, all resulting files and directories will be uploaded to the folder of the resulting HTML file. (default to Zip)
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_html(out_path, opts = {})
@@ -24024,6 +24025,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :try_save_text_underlining_and_strikeouting_in_css PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically.
     # @option opts [String] :storage The document storage.
     # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
+    # @option opts [String] :output_format This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \&quot;Zip\&quot; or missed (default). In case of the \&quot;Folder\&quot;, all resulting files and directories will be uploaded to the folder of the resulting HTML file.
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_html_with_http_info(out_path, opts = {})
@@ -24057,6 +24059,9 @@ module AsposePdfCloud
       end
       if @api_client.config.client_side_validation && opts[:'raster_images_saving_mode'] && !['AsPngImagesEmbeddedIntoSvg', 'AsExternalPngFilesReferencedViaSvg', 'AsEmbeddedPartsOfPngPageBackground'].include?(opts[:'raster_images_saving_mode'])
         fail ArgumentError, 'invalid value for "raster_images_saving_mode", must be one of AsPngImagesEmbeddedIntoSvg, AsExternalPngFilesReferencedViaSvg, AsEmbeddedPartsOfPngPageBackground'
+      end
+      if @api_client.config.client_side_validation && opts[:'output_format'] && !['Zip', 'Folder'].include?(opts[:'output_format'])
+        fail ArgumentError, 'invalid value for "output_format", must be one of Zip, Folder'
       end
       # resource path
       local_var_path = "/pdf/convert/html"
@@ -24094,6 +24099,7 @@ module AsposePdfCloud
       query_params[:'trySaveTextUnderliningAndStrikeoutingInCss'] = opts[:'try_save_text_underlining_and_strikeouting_in_css'] if !opts[:'try_save_text_underlining_and_strikeouting_in_css'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'flowLayoutParagraphFullWidth'] = opts[:'flow_layout_paragraph_full_width'] if !opts[:'flow_layout_paragraph_full_width'].nil?
+      query_params[:'outputFormat'] = opts[:'output_format'] if !opts[:'output_format'].nil?
 
       # header parameters
       header_params = {}
@@ -25265,6 +25271,7 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
+    # @option opts [String] :output_format This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \&quot;Zip\&quot; or missed (default). In case of the \&quot;Folder\&quot;, all resulting files and directories will be uploaded to the folder of the resulting HTML file. (default to Zip)
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_html(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -25315,6 +25322,7 @@ module AsposePdfCloud
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
     # @option opts [BOOLEAN] :flow_layout_paragraph_full_width This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false.
+    # @option opts [String] :output_format This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \&quot;Zip\&quot; or missed (default). In case of the \&quot;Folder\&quot;, all resulting files and directories will be uploaded to the folder of the resulting HTML file.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_html_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -25351,6 +25359,9 @@ module AsposePdfCloud
       end
       if @api_client.config.client_side_validation && opts[:'raster_images_saving_mode'] && !['AsPngImagesEmbeddedIntoSvg', 'AsExternalPngFilesReferencedViaSvg', 'AsEmbeddedPartsOfPngPageBackground'].include?(opts[:'raster_images_saving_mode'])
         fail ArgumentError, 'invalid value for "raster_images_saving_mode", must be one of AsPngImagesEmbeddedIntoSvg, AsExternalPngFilesReferencedViaSvg, AsEmbeddedPartsOfPngPageBackground'
+      end
+      if @api_client.config.client_side_validation && opts[:'output_format'] && !['Zip', 'Folder'].include?(opts[:'output_format'])
+        fail ArgumentError, 'invalid value for "output_format", must be one of Zip, Folder'
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/html".sub('{' + 'name' + '}', name.to_s)
@@ -25389,6 +25400,7 @@ module AsposePdfCloud
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'flowLayoutParagraphFullWidth'] = opts[:'flow_layout_paragraph_full_width'] if !opts[:'flow_layout_paragraph_full_width'].nil?
+      query_params[:'outputFormat'] = opts[:'output_format'] if !opts[:'output_format'].nil?
 
       # header parameters
       header_params = {}
