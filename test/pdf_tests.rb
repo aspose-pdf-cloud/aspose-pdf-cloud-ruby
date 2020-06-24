@@ -3050,10 +3050,11 @@ class PdfTests < Minitest::Test
   def test_put_pdf_in_storage_to_html
     file_name = '4pages.pdf'
     upload_file(file_name)
-    res_file = 'result.zip'
+    res_file = 'result_4pages.html'
 
     opts = {
-        :folder => @temp_folder
+        :folder => @temp_folder,
+        :output_format => OutputFormat::FOLDER
     }
     response = @pdf_api.put_pdf_in_storage_to_html(file_name, @temp_folder + '/' + res_file, opts)
     assert(response, 'Filed to convert PDF to HTML.')

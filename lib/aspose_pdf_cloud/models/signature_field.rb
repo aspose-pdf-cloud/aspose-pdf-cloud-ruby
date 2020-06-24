@@ -31,6 +31,9 @@ module AsposePdfCloud
     # Field name.
     attr_accessor :partial_name
 
+    # Full Field name.
+    attr_accessor :full_name
+
     # Field rectangle.
     attr_accessor :rect
 
@@ -91,6 +94,7 @@ module AsposePdfCloud
       {
         :'links' => :'Links',
         :'partial_name' => :'PartialName',
+        :'full_name' => :'FullName',
         :'rect' => :'Rect',
         :'value' => :'Value',
         :'page_index' => :'PageIndex',
@@ -117,6 +121,7 @@ module AsposePdfCloud
       {
         :'links' => :'Array<Link>',
         :'partial_name' => :'String',
+        :'full_name' => :'String',
         :'rect' => :'Rectangle',
         :'value' => :'String',
         :'page_index' => :'Integer',
@@ -154,6 +159,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'PartialName')
         self.partial_name = attributes[:'PartialName']
+      end
+
+      if attributes.has_key?(:'FullName')
+        self.full_name = attributes[:'FullName']
       end
 
       if attributes.has_key?(:'Rect')
@@ -257,6 +266,7 @@ module AsposePdfCloud
       self.class == o.class &&
           links == o.links &&
           partial_name == o.partial_name &&
+          full_name == o.full_name &&
           rect == o.rect &&
           value == o.value &&
           page_index == o.page_index &&
@@ -286,7 +296,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, partial_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, border, signature].hash
+      [links, partial_name, full_name, rect, value, page_index, height, width, z_index, is_group, parent, is_shared_field, flags, color, contents, margin, highlighting, horizontal_alignment, vertical_alignment, border, signature].hash
     end
 
     # Builds the object from hash
