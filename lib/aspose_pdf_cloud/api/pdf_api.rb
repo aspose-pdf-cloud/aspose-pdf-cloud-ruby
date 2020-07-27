@@ -1919,6 +1919,66 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @return [ApiInfo]
+    def get_api_info(opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_api_info_with_http_info(opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_api_info_with_http_info(opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ApiInfo, Fixnum, Hash)>] ApiInfo data, response status code and response headers
+    def get_api_info_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_api_info ..."
+      end
+      # resource path
+      local_var_path = "/pdf/info"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ApiInfo')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_api_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read document bookmark.
     # 
     # @param name The document name.
@@ -2522,7 +2582,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+    # Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -2542,7 +2602,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+    # Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -11404,8 +11464,8 @@ module AsposePdfCloud
         fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.get_pdf_in_storage_to_pdf_a"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B'].include?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B"
+      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A"
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/pdfa".sub('{' + 'name' + '}', name.to_s)
@@ -14175,7 +14235,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+    # Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -14195,7 +14255,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+    # Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -17364,7 +17424,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param page_number The page number.
-    # @param links Array of link anotation.
+    # @param links Array of link annotation.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
@@ -17386,7 +17446,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param page_number The page number.
-    # @param links Array of link anotation.
+    # @param links Array of link annotation.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
@@ -20150,7 +20210,7 @@ module AsposePdfCloud
     # @param password The password (encrypted Base64).
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
-    # @option opts [File] :file A file to be derypted.
+    # @option opts [File] :file A file to be decrypted.
     # @return [AsposeResponse]
     def put_decrypt_document(out_path, password, opts = {})
       @api_client.request_token_if_needed
@@ -20171,7 +20231,7 @@ module AsposePdfCloud
     # @param password The password (encrypted Base64).
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
-    # @option opts [File] :file A file to be derypted.
+    # @option opts [File] :file A file to be decrypted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_decrypt_document_with_http_info(out_path, password, opts = {})
       if @api_client.config.debugging
@@ -22487,7 +22547,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param link_id The link ID.
-    # @param link Link anotation.
+    # @param link Link annotation.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
@@ -22509,7 +22569,7 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param link_id The link ID.
-    # @param link Link anotation.
+    # @param link Link annotation.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
@@ -22730,7 +22790,7 @@ module AsposePdfCloud
 
     # Merge a list of documents.
     # 
-    # @param name Resulting documen name.
+    # @param name Resulting document name.
     # @param merge_documents MergeDocuments with a list of documents.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage Resulting document storage.
@@ -22751,7 +22811,7 @@ module AsposePdfCloud
 
     # Merge a list of documents.
     # 
-    # @param name Resulting documen name.
+    # @param name Resulting document name.
     # @param merge_documents MergeDocuments with a list of documents.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage Resulting document storage.
@@ -24322,8 +24382,8 @@ module AsposePdfCloud
         fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.put_pdf_in_request_to_pdf_a"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B'].include?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B"
+      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A"
       end
       # resource path
       local_var_path = "/pdf/convert/pdfa"
@@ -25637,8 +25697,8 @@ module AsposePdfCloud
         fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.put_pdf_in_storage_to_pdf_a"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B'].include?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B"
+      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A"
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/pdfa".sub('{' + 'name' + '}', name.to_s)
@@ -28821,7 +28881,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+    # Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param [Hash] opts the optional parameters
@@ -28841,7 +28901,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+    # Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
     # @param [Hash] opts the optional parameters
@@ -28895,7 +28955,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+    # Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
     # 
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)
@@ -28916,7 +28976,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+    # Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
     # 
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.pdf)

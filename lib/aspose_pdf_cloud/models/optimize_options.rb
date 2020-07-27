@@ -28,13 +28,13 @@ module AsposePdfCloud
     # If true page contents will be reused when document is optimized for equal pages.
     attr_accessor :allow_reuse_page_content
 
-    # If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.
+    # If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property.
     attr_accessor :compress_images
 
-    # Specifie slevel of image compression when CompressIamges flag is used.
+    # Specifies level of image compression when CompressImages flag is used.
     attr_accessor :image_quality
 
-    # If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thes streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenedted multiple times).
+    # If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thees streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenated multiple times).
     attr_accessor :link_duplcate_streams
 
     # If this flag is set to true, all document objects will be checked and unused objects (i.e. objects which does not have any reference) are removed from document.
@@ -46,6 +46,24 @@ module AsposePdfCloud
     # Make fonts not embedded if set to true. 
     attr_accessor :unembed_fonts
 
+    # If this flag set to true and CompressImages is true images will be resized if image resolution is greater then specified MaxResolution parameter.
+    attr_accessor :resize_images
+
+    # Specifies maximum resolution of images. If image has higher resolution it will be scaled.
+    attr_accessor :max_resolution
+
+    # Fonts will be converted into subsets if set to true.
+    attr_accessor :subset_fonts
+
+    # Remove private information (page piece info).
+    attr_accessor :remove_private_info
+
+    # Image encode which will be used.
+    attr_accessor :image_encoding
+
+    # Version of compression algorithm. Possible values are: \"Standard\" - standard compression, \"Fast\" - fast (improved compression which is faster then standard but may be applicable not for all images), \"Mixed\" - mixed (standard compression is applied to images which can not be compressed by  faster algorithm, this may give best compression but more slow then \"Fast\" algorithm. Version \"Fast\" is not applicable for resizing images (standard method will be used). Default is \"Standard\".
+    attr_accessor :image_compression_version
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -56,7 +74,13 @@ module AsposePdfCloud
         :'link_duplcate_streams' => :'LinkDuplcateStreams',
         :'remove_unused_objects' => :'RemoveUnusedObjects',
         :'remove_unused_streams' => :'RemoveUnusedStreams',
-        :'unembed_fonts' => :'UnembedFonts'
+        :'unembed_fonts' => :'UnembedFonts',
+        :'resize_images' => :'ResizeImages',
+        :'max_resolution' => :'MaxResolution',
+        :'subset_fonts' => :'SubsetFonts',
+        :'remove_private_info' => :'RemovePrivateInfo',
+        :'image_encoding' => :'ImageEncoding',
+        :'image_compression_version' => :'ImageCompressionVersion'
       }
     end
 
@@ -69,7 +93,13 @@ module AsposePdfCloud
         :'link_duplcate_streams' => :'BOOLEAN',
         :'remove_unused_objects' => :'BOOLEAN',
         :'remove_unused_streams' => :'BOOLEAN',
-        :'unembed_fonts' => :'BOOLEAN'
+        :'unembed_fonts' => :'BOOLEAN',
+        :'resize_images' => :'BOOLEAN',
+        :'max_resolution' => :'Integer',
+        :'subset_fonts' => :'BOOLEAN',
+        :'remove_private_info' => :'BOOLEAN',
+        :'image_encoding' => :'ImageEncoding',
+        :'image_compression_version' => :'ImageCompressionVersion'
       }
     end
 
@@ -109,53 +139,42 @@ module AsposePdfCloud
         self.unembed_fonts = attributes[:'UnembedFonts']
       end
 
+      if attributes.has_key?(:'ResizeImages')
+        self.resize_images = attributes[:'ResizeImages']
+      end
+
+      if attributes.has_key?(:'MaxResolution')
+        self.max_resolution = attributes[:'MaxResolution']
+      end
+
+      if attributes.has_key?(:'SubsetFonts')
+        self.subset_fonts = attributes[:'SubsetFonts']
+      end
+
+      if attributes.has_key?(:'RemovePrivateInfo')
+        self.remove_private_info = attributes[:'RemovePrivateInfo']
+      end
+
+      if attributes.has_key?(:'ImageEncoding')
+        self.image_encoding = attributes[:'ImageEncoding']
+      end
+
+      if attributes.has_key?(:'ImageCompressionVersion')
+        self.image_compression_version = attributes[:'ImageCompressionVersion']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @allow_reuse_page_content.nil?
-        invalid_properties.push("invalid value for 'allow_reuse_page_content', allow_reuse_page_content cannot be nil.")
-      end
-
-      if @compress_images.nil?
-        invalid_properties.push("invalid value for 'compress_images', compress_images cannot be nil.")
-      end
-
-      if @image_quality.nil?
-        invalid_properties.push("invalid value for 'image_quality', image_quality cannot be nil.")
-      end
-
-      if @link_duplcate_streams.nil?
-        invalid_properties.push("invalid value for 'link_duplcate_streams', link_duplcate_streams cannot be nil.")
-      end
-
-      if @remove_unused_objects.nil?
-        invalid_properties.push("invalid value for 'remove_unused_objects', remove_unused_objects cannot be nil.")
-      end
-
-      if @remove_unused_streams.nil?
-        invalid_properties.push("invalid value for 'remove_unused_streams', remove_unused_streams cannot be nil.")
-      end
-
-      if @unembed_fonts.nil?
-        invalid_properties.push("invalid value for 'unembed_fonts', unembed_fonts cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @allow_reuse_page_content.nil?
-      return false if @compress_images.nil?
-      return false if @image_quality.nil?
-      return false if @link_duplcate_streams.nil?
-      return false if @remove_unused_objects.nil?
-      return false if @remove_unused_streams.nil?
-      return false if @unembed_fonts.nil?
       return true
     end
 
@@ -170,7 +189,13 @@ module AsposePdfCloud
           link_duplcate_streams == o.link_duplcate_streams &&
           remove_unused_objects == o.remove_unused_objects &&
           remove_unused_streams == o.remove_unused_streams &&
-          unembed_fonts == o.unembed_fonts
+          unembed_fonts == o.unembed_fonts &&
+          resize_images == o.resize_images &&
+          max_resolution == o.max_resolution &&
+          subset_fonts == o.subset_fonts &&
+          remove_private_info == o.remove_private_info &&
+          image_encoding == o.image_encoding &&
+          image_compression_version == o.image_compression_version
     end
 
     # @see the `==` method
@@ -182,7 +207,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_reuse_page_content, compress_images, image_quality, link_duplcate_streams, remove_unused_objects, remove_unused_streams, unembed_fonts].hash
+      [allow_reuse_page_content, compress_images, image_quality, link_duplcate_streams, remove_unused_objects, remove_unused_streams, unembed_fonts, resize_images, max_resolution, subset_fonts, remove_private_info, image_encoding, image_compression_version].hash
     end
 
     # Builds the object from hash
