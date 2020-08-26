@@ -5875,6 +5875,8 @@ class PdfTests < Minitest::Test
   def test_put_add_text
     file_name = '4pages.pdf'
     upload_file(file_name)
+    font_name = 'Righteous-Regular.ttf'
+    upload_file(font_name)
 
     page_number = 1
 
@@ -5897,11 +5899,12 @@ class PdfTests < Minitest::Test
     background_color.b = 0x00
 
     text_state = TextState.new
-    text_state.font = 'Arial'
+    text_state.font = 'Righteous'
     text_state.font_size = 10
     text_state.foreground_color = foreground_color
     text_state.background_color = background_color
-    text_state.font_style = FontStyles::BOLD
+    text_state.font_style = FontStyles::REGULAR
+    text_state.font_file = @temp_folder + '/' + font_name
 
     segment = Segment.new
     segment.value = 'segment 1'
