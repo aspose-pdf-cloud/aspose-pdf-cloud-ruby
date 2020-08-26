@@ -31,7 +31,7 @@ module AsposePdfCloud
     # Word wrap mode.
     attr_accessor :wrap_mode
 
-    # Horizontal alignment for the text inside paragrph's rectangle.
+    # Horizontal alignment for the text inside paragraph's rectangle.
     attr_accessor :horizontal_alignment
 
     # Left margin.
@@ -55,7 +55,7 @@ module AsposePdfCloud
     # Subsequent lines indent value.
     attr_accessor :subsequent_lines_indent
 
-    # Vertical alignment for the text inside paragrph's rectangle
+    # Vertical alignment for the text inside paragraph's rectangle
     attr_accessor :vertical_alignment
 
     # An array of text lines.

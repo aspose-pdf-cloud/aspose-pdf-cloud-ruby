@@ -28,7 +28,7 @@ module AsposePdfCloud
     # Gets or sets font size of the text.
     attr_accessor :font_size
 
-    # Gets or sets font of the text.
+    # Gets or sets font name of the text.
     attr_accessor :font
 
     # Gets or sets foreground color of the text.
@@ -40,6 +40,9 @@ module AsposePdfCloud
     # Sets font style of the text.
     attr_accessor :font_style
 
+    # Sets path of font file in storage.
+    attr_accessor :font_file
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -48,7 +51,8 @@ module AsposePdfCloud
         :'font' => :'Font',
         :'foreground_color' => :'ForegroundColor',
         :'background_color' => :'BackgroundColor',
-        :'font_style' => :'FontStyle'
+        :'font_style' => :'FontStyle',
+        :'font_file' => :'FontFile'
       }
     end
 
@@ -59,7 +63,8 @@ module AsposePdfCloud
         :'font' => :'String',
         :'foreground_color' => :'Color',
         :'background_color' => :'Color',
-        :'font_style' => :'FontStyles'
+        :'font_style' => :'FontStyles',
+        :'font_file' => :'String'
       }
     end
 
@@ -89,6 +94,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'FontStyle')
         self.font_style = attributes[:'FontStyle']
+      end
+
+      if attributes.has_key?(:'FontFile')
+        self.font_file = attributes[:'FontFile']
       end
 
     end
@@ -125,7 +134,8 @@ module AsposePdfCloud
           font == o.font &&
           foreground_color == o.foreground_color &&
           background_color == o.background_color &&
-          font_style == o.font_style
+          font_style == o.font_style &&
+          font_file == o.font_file
     end
 
     # @see the `==` method
@@ -137,7 +147,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [font_size, font, foreground_color, background_color, font_style].hash
+      [font_size, font, foreground_color, background_color, font_style, font_file].hash
     end
 
     # Builds the object from hash
