@@ -17843,6 +17843,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [BOOLEAN] :apply Apply redaction immediately after adding. (default to false)
     # @return [AsposeResponse]
     def post_page_redaction_annotations(name, page_number, annotations, opts = {})
       @api_client.request_token_if_needed
@@ -17865,6 +17866,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [BOOLEAN] :apply Apply redaction immediately after adding.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_page_redaction_annotations_with_http_info(name, page_number, annotations, opts = {})
       if @api_client.config.debugging
@@ -17889,6 +17891,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'apply'] = opts[:'apply'] if !opts[:'apply'].nil?
 
       # header parameters
       header_params = {}
@@ -26951,6 +26954,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [BOOLEAN] :apply Apply redaction immediately after adding. (default to false)
     # @return [RedactionAnnotationResponse]
     def put_redaction_annotation(name, annotation_id, annotation, opts = {})
       @api_client.request_token_if_needed
@@ -26973,6 +26977,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [BOOLEAN] :apply Apply redaction immediately after adding.
     # @return [Array<(RedactionAnnotationResponse, Fixnum, Hash)>] RedactionAnnotationResponse data, response status code and response headers
     def put_redaction_annotation_with_http_info(name, annotation_id, annotation, opts = {})
       if @api_client.config.debugging
@@ -26997,6 +27002,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'apply'] = opts[:'apply'] if !opts[:'apply'].nil?
 
       # header parameters
       header_params = {}
