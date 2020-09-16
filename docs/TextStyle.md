@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **font** | **String** | Gets or sets font of the text. | [optional] 
 **foreground_color** | [**Color**](Color.md) | Gets or sets foreground color of the text. | [optional] 
 **background_color** | [**Color**](Color.md) | Sets background color of the text. | [optional] 
+**font_file** | **String** | Sets path of font file in storage. | [optional] 
 
 

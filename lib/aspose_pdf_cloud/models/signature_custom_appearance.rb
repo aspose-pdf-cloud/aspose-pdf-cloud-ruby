@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # An abstract class which represents signature custon appearance object.
+  # An abstract class which represents signature custom appearance object.
   class SignatureCustomAppearance
     # Gets/sets font family name. It should be existed in the document. Default value: Arial.
     attr_accessor :font_family_name

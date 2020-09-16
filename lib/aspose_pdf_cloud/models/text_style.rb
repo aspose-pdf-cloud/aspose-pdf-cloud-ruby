@@ -37,6 +37,9 @@ module AsposePdfCloud
     # Sets background color of the text.
     attr_accessor :background_color
 
+    # Sets path of font file in storage.
+    attr_accessor :font_file
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -44,7 +47,8 @@ module AsposePdfCloud
         :'font_size' => :'FontSize',
         :'font' => :'Font',
         :'foreground_color' => :'ForegroundColor',
-        :'background_color' => :'BackgroundColor'
+        :'background_color' => :'BackgroundColor',
+        :'font_file' => :'FontFile'
       }
     end
 
@@ -54,7 +58,8 @@ module AsposePdfCloud
         :'font_size' => :'Float',
         :'font' => :'String',
         :'foreground_color' => :'Color',
-        :'background_color' => :'Color'
+        :'background_color' => :'Color',
+        :'font_file' => :'String'
       }
     end
 
@@ -80,6 +85,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'BackgroundColor')
         self.background_color = attributes[:'BackgroundColor']
+      end
+
+      if attributes.has_key?(:'FontFile')
+        self.font_file = attributes[:'FontFile']
       end
 
     end
@@ -110,7 +119,8 @@ module AsposePdfCloud
           font_size == o.font_size &&
           font == o.font &&
           foreground_color == o.foreground_color &&
-          background_color == o.background_color
+          background_color == o.background_color &&
+          font_file == o.font_file
     end
 
     # @see the `==` method
@@ -122,7 +132,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [font_size, font, foreground_color, background_color].hash
+      [font_size, font, foreground_color, background_color, font_file].hash
     end
 
     # Builds the object from hash

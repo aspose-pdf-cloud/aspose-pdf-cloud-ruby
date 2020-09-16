@@ -6120,6 +6120,7 @@ Name | Type | Description  | Notes
  **annotations** | [**Array&lt;RedactionAnnotation&gt;**](RedactionAnnotation.md)| The array of annotation. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **apply** | **BOOLEAN**| Apply redaction immediately after adding. | [optional] [default to false]
 
 ### Return type
 
@@ -8978,6 +8979,7 @@ Name | Type | Description  | Notes
  **annotation** | [**RedactionAnnotation**](RedactionAnnotation.md)| Annotation. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **apply** | **BOOLEAN**| Apply redaction immediately after adding. | [optional] [default to false]
 
 ### Return type
 

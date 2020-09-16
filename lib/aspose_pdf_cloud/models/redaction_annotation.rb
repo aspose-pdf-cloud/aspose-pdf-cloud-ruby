@@ -73,7 +73,7 @@ module AsposePdfCloud
     # Text to print on redact annotation.
     attr_accessor :overlay_text
 
-    # If true overlay text will be repated on the annotation. 
+    # If true overlay text will be repeated on the annotation. 
     attr_accessor :repeat
 
     # Gets or sets. Alignment of Overlay Text.
