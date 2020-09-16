@@ -1,7 +1,7 @@
 ﻿# Aspose.PDF Cloud
 
 - API version: 3.0
-- Package version: 20.8.0
+- Package version: 20.9.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -24,15 +24,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-20.8.0.gem
+gem install ./aspose_pdf_cloud-20.9.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-20.8.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-20.9.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 20.8.0'
+    gem 'aspose_pdf_cloud', '~> 20.9.0'
 
 ### Install from Git
 
