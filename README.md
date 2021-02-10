@@ -74,34 +74,25 @@ Add the following in the Gemfile:
 
 
 
-## Usage
-APIs of this SDK can be called as follows:
+## Get PDF Page Annotations in Ruby
 
 ```ruby
-require 'aspose_pdf_cloud'
+    # Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 
-class AsposePDFUsage
+    AsposePdfCloud.configure do |config|
+            config.client_data['ClientId'] = 'MY_CLIENT_ID'
+            config.client_data['ClientSecret'] = 'MY_CLIENT_SECRET'
+            config.host = host
+    
+	file_name = 'PdfWithAnnotations.pdf'
+	page_number = 2
+	opts = {
+	  :folder => 'tempFolder'
+	}
 
-  include AsposePDFCloud
-
-  def initialize
-    #Get App key and App SID from https://cloud.aspose.com
-    @pdf_api = PdfApi.new("APP_KEY", "APP_SID")
-  end
-
-  def get_page_annotations
-      file_name = 'PdfWithAnnotations.pdf'
-
-      page_number = 2
-      opts = {
-          :folder => 'tempFolder'
-      }
-
-      response = @pdf_api.get_page_annotations(file_name, page_number, opts)
-    end
-
-end
+	response = @pdf_api.get_page_annotations(file_name, page_number, opts)
 ```
+
 ## Unit Tests
 Aspose PDF SDK includes a suite of unit tests within the "test" subdirectory. These Unit Tests also serves as examples of how to use the Aspose PDF SDK.
 
@@ -769,7 +760,7 @@ Class | Method | HTTP request | Description
 
  | .NET | Java | PHP | Python | Ruby | Node.js | Android | Swift|Go|
  |---|---|---|---|---|---|---|--|--|
- | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-dotnet) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-php) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby)  | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-node.js) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-swift)|[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-perl) |[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-go) |
- | [NuGet](https://www.nuget.org/packages/Aspose.pdf-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Composer](https://packagist.org/packages/aspose/pdf-sdk-php) | [PIP](https://pypi.org/project/asposepdfcloud/) | [GEM](https://rubygems.org/gems/aspose_pdf_cloud)  | [NPM](https://www.npmjs.com/package/asposepdfcloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposepdfCloud)|[Go.Dev](https://pkg.go.dev/github.com/aspose-pdf-cloud/aspose-pdf-cloud-go/) |
+ | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-dotnet) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-php) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby)  | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-node.js) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-swift)|[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-go) |
+ | [NuGet](https://www.nuget.org/packages/Aspose.pdf-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Composer](https://packagist.org/packages/aspose/pdf-sdk-php) | [PIP](https://pypi.org/project/asposepdfcloud/) | [GEM](https://rubygems.org/gems/aspose_pdf_cloud)  | [NPM](https://www.npmjs.com/package/asposepdfcloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposepdfCloud)|[Go.Dev](https://pkg.go.dev/github.com/aspose-pdf-cloud/aspose-pdf-cloud-go/v20#readme-aspose-pdf-cloud) |
 
  [Product Page](https://products.aspose.cloud/pdf/ruby) | [Documentation](https://docs.aspose.cloud/display/pdfcloud/Home) | [API Reference](https://apireference.aspose.cloud/pdf/) | [Code Samples](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby) | [Blog](https://blog.aspose.cloud/category/pdf/) | [Free Support](https://forum.aspose.cloud/c/pdf) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
