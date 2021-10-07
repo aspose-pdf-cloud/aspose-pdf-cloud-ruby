@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2020 Aspose.PDF Cloud
+Copyright (c) 2021 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -105,14 +105,6 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'old_value', the character length must be great than or equal to 1.")
       end
 
-      if @new_value.nil?
-        invalid_properties.push("invalid value for 'new_value', new_value cannot be nil.")
-      end
-
-      if @new_value.to_s.length < 1
-        invalid_properties.push("invalid value for 'new_value', the character length must be great than or equal to 1.")
-      end
-
       if @regex.nil?
         invalid_properties.push("invalid value for 'regex', regex cannot be nil.")
       end
@@ -125,8 +117,6 @@ module AsposePdfCloud
     def valid?
       return false if @old_value.nil?
       return false if @old_value.to_s.length < 1
-      return false if @new_value.nil?
-      return false if @new_value.to_s.length < 1
       return false if @regex.nil?
       return true
     end
@@ -143,20 +133,6 @@ module AsposePdfCloud
       end
 
       @old_value = old_value
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] new_value Value to be assigned
-    def new_value=(new_value)
-      if new_value.nil?
-        fail ArgumentError, "new_value cannot be nil"
-      end
-
-      if new_value.to_s.length < 1
-        fail ArgumentError, "invalid value for 'new_value', the character length must be great than or equal to 1."
-      end
-
-      @new_value = new_value
     end
 
     # Checks equality by comparing each attribute.

@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/api-v3.0-lightgrey) ![Gem](https://img.shields.io/gem/v/aspose_pdf_cloud) ![Gem](https://img.shields.io/gem/dt/aspose_pdf_cloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-ruby)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby/blob/master/LICENSE)
+﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![Gem](https://img.shields.io/gem/v/aspose_pdf_cloud) ![Gem](https://img.shields.io/gem/dt/aspose_pdf_cloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-ruby)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby/blob/master/LICENSE)
 # Ruby REST API to Process PDF in Cloud
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -29,6 +29,9 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
+## Enhancements in Version 21.9
+- A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
+
 ## Enhancements in Version 20.12
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
 
@@ -55,19 +58,19 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-20.12.0.gem
+gem install ./aspose_pdf_cloud-21.9.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-20.12.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-21.9.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 20.12.0'
+    gem 'aspose_pdf_cloud', '~> 21.9.0'
 
 ### Install from Git
 
-The Ruby gem is hosted at a git repository: https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby .
+The Ruby gem is hosted at a git repository: https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby . 
 Add the following in the Gemfile:
 
     gem 'aspose_pdf_cloud', :git => 'https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby.git'
@@ -130,7 +133,6 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**delete_stamp**](docs/PdfApi.md#delete_stamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
 *AsposePdfCloud::PdfApi* | [**delete_table**](docs/PdfApi.md#delete_table) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
 *AsposePdfCloud::PdfApi* | [**download_file**](docs/PdfApi.md#download_file) | **GET** /pdf/storage/file/\{path} | Download file
-*AsposePdfCloud::PdfApi* | [**get_api_info**](docs/PdfApi.md#get_api_info) | **GET** /pdf/info |
 *AsposePdfCloud::PdfApi* | [**get_bookmark**](docs/PdfApi.md#get_bookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
 *AsposePdfCloud::PdfApi* | [**get_bookmarks**](docs/PdfApi.md#get_bookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 *AsposePdfCloud::PdfApi* | [**get_caret_annotation**](docs/PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
@@ -176,7 +178,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_document_text_box_fields**](docs/PdfApi.md#get_document_text_box_fields) | **GET** /pdf/\{name}/fields/textbox | Read document text box fields.
 *AsposePdfCloud::PdfApi* | [**get_document_underline_annotations**](docs/PdfApi.md#get_document_underline_annotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
 *AsposePdfCloud::PdfApi* | [**get_download_document_attachment_by_index**](docs/PdfApi.md#get_download_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex}/download | Download document attachment content by its index.
-*AsposePdfCloud::PdfApi* | [**get_epub_in_storage_to_pdf**](docs/PdfApi.md#get_epub_in_storage_to_pdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_epub_in_storage_to_pdf**](docs/PdfApi.md#get_epub_in_storage_to_pdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_export_fields_from_pdf_to_fdf_in_storage**](docs/PdfApi.md#get_export_fields_from_pdf_to_fdf_in_storage) | **GET** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file.
 *AsposePdfCloud::PdfApi* | [**get_export_fields_from_pdf_to_xfdf_in_storage**](docs/PdfApi.md#get_export_fields_from_pdf_to_xfdf_in_storage) | **GET** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file.
 *AsposePdfCloud::PdfApi* | [**get_export_fields_from_pdf_to_xml_in_storage**](docs/PdfApi.md#get_export_fields_from_pdf_to_xml_in_storage) | **GET** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file.
@@ -188,7 +190,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_files_list**](docs/PdfApi.md#get_files_list) | **GET** /pdf/storage/folder/\{path} | Get all files and folders within a folder
 *AsposePdfCloud::PdfApi* | [**get_free_text_annotation**](docs/PdfApi.md#get_free_text_annotation) | **GET** /pdf/\{name}/annotations/freetext/\{annotationId} | Read document page free text annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_highlight_annotation**](docs/PdfApi.md#get_highlight_annotation) | **GET** /pdf/\{name}/annotations/highlight/\{annotationId} | Read document page highlight annotation by ID.
-*AsposePdfCloud::PdfApi* | [**get_html_in_storage_to_pdf**](docs/PdfApi.md#get_html_in_storage_to_pdf) | **GET** /pdf/create/html | Convert HTML file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_html_in_storage_to_pdf**](docs/PdfApi.md#get_html_in_storage_to_pdf) | **GET** /pdf/create/html | Convert HTML file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_image**](docs/PdfApi.md#get_image) | **GET** /pdf/\{name}/images/\{imageId} | Read document image by ID.
 *AsposePdfCloud::PdfApi* | [**get_image_extract_as_gif**](docs/PdfApi.md#get_image_extract_as_gif) | **GET** /pdf/\{name}/images/\{imageId}/extract/gif | Extract document image in GIF format
 *AsposePdfCloud::PdfApi* | [**get_image_extract_as_jpeg**](docs/PdfApi.md#get_image_extract_as_jpeg) | **GET** /pdf/\{name}/images/\{imageId}/extract/jpeg | Extract document image in JPEG format
@@ -197,14 +199,14 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_images**](docs/PdfApi.md#get_images) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
 *AsposePdfCloud::PdfApi* | [**get_import_fields_from_fdf_in_storage**](docs/PdfApi.md#get_import_fields_from_fdf_in_storage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
 *AsposePdfCloud::PdfApi* | [**get_import_fields_from_xfdf_in_storage**](docs/PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
-*AsposePdfCloud::PdfApi* | [**get_import_fields_from_xml_in_storage**](docs/PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_import_fields_from_xml_in_storage**](docs/PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_ink_annotation**](docs/PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-*AsposePdfCloud::PdfApi* | [**get_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert TeX file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_line_annotation**](docs/PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_link_annotation**](docs/PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_list_box_field**](docs/PdfApi.md#get_list_box_field) | **GET** /pdf/\{name}/fields/listbox/\{fieldName} | Read document listbox field by name.
-*AsposePdfCloud::PdfApi* | [**get_markdown_in_storage_to_pdf**](docs/PdfApi.md#get_markdown_in_storage_to_pdf) | **GET** /pdf/create/markdown | Convert MD file (located on storage) to PDF format and return resulting file in response.
-*AsposePdfCloud::PdfApi* | [**get_mht_in_storage_to_pdf**](docs/PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_markdown_in_storage_to_pdf**](docs/PdfApi.md#get_markdown_in_storage_to_pdf) | **GET** /pdf/create/markdown | Convert MD file (located on storage) to PDF format and return resulting file in response. 
+*AsposePdfCloud::PdfApi* | [**get_mht_in_storage_to_pdf**](docs/PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_movie_annotation**](docs/PdfApi.md#get_movie_annotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_page**](docs/PdfApi.md#get_page) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
 *AsposePdfCloud::PdfApi* | [**get_page_annotations**](docs/PdfApi.md#get_page_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations | Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
@@ -246,13 +248,12 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_page_text_box_fields**](docs/PdfApi.md#get_page_text_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/textbox | Read document page text box fields.
 *AsposePdfCloud::PdfApi* | [**get_page_underline_annotations**](docs/PdfApi.md#get_page_underline_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Read document page underline annotations.
 *AsposePdfCloud::PdfApi* | [**get_pages**](docs/PdfApi.md#get_pages) | **GET** /pdf/\{name}/pages | Read document pages info.
-*AsposePdfCloud::PdfApi* | [**get_pcl_in_storage_to_pdf**](docs/PdfApi.md#get_pcl_in_storage_to_pdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response.
-*AsposePdfCloud::PdfApi* | [**get_pdf_a_in_storage_to_pdf**](docs/PdfApi.md#get_pdf_a_in_storage_to_pdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_pcl_in_storage_to_pdf**](docs/PdfApi.md#get_pcl_in_storage_to_pdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
+*AsposePdfCloud::PdfApi* | [**get_pdf_a_in_storage_to_pdf**](docs/PdfApi.md#get_pdf_a_in_storage_to_pdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_doc**](docs/PdfApi.md#get_pdf_in_storage_to_doc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_epub**](docs/PdfApi.md#get_pdf_in_storage_to_epub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_html**](docs/PdfApi.md#get_pdf_in_storage_to_html) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
-*AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_la_te_x**](docs/PdfApi.md#get_pdf_in_storage_to_la_te_x) | **GET** /pdf/\{name}/convert/latex | Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-*AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_mobi_xml**](docs/PdfApi.md#get_pdf_in_storage_to_mobi_xml) | **GET** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+*AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_mobi_xml**](docs/PdfApi.md#get_pdf_in_storage_to_mobi_xml) | **GET** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_pdf_a**](docs/PdfApi.md#get_pdf_in_storage_to_pdf_a) | **GET** /pdf/\{name}/convert/pdfa | Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_pptx**](docs/PdfApi.md#get_pdf_in_storage_to_pptx) | **GET** /pdf/\{name}/convert/pptx | Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
 *AsposePdfCloud::PdfApi* | [**get_pdf_in_storage_to_svg**](docs/PdfApi.md#get_pdf_in_storage_to_svg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
@@ -265,7 +266,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_poly_line_annotation**](docs/PdfApi.md#get_poly_line_annotation) | **GET** /pdf/\{name}/annotations/polyline/\{annotationId} | Read document page polyline annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_polygon_annotation**](docs/PdfApi.md#get_polygon_annotation) | **GET** /pdf/\{name}/annotations/polygon/\{annotationId} | Read document page polygon annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_popup_annotation**](docs/PdfApi.md#get_popup_annotation) | **GET** /pdf/\{name}/annotations/popup/\{annotationId} | Read document page popup annotation by ID.
-*AsposePdfCloud::PdfApi* | [**get_ps_in_storage_to_pdf**](docs/PdfApi.md#get_ps_in_storage_to_pdf) | **GET** /pdf/create/ps | Convert PS file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_ps_in_storage_to_pdf**](docs/PdfApi.md#get_ps_in_storage_to_pdf) | **GET** /pdf/create/ps | Convert PS file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_radio_button_field**](docs/PdfApi.md#get_radio_button_field) | **GET** /pdf/\{name}/fields/radiobutton/\{fieldName} | Read document RadioButton field by name.
 *AsposePdfCloud::PdfApi* | [**get_redaction_annotation**](docs/PdfApi.md#get_redaction_annotation) | **GET** /pdf/\{name}/annotations/redaction/\{annotationId} | Read document page redaction annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_screen_annotation**](docs/PdfApi.md#get_screen_annotation) | **GET** /pdf/\{name}/annotations/screen/\{annotationId} | Read document page screen annotation by ID.
@@ -278,20 +279,20 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_stamp_annotation**](docs/PdfApi.md#get_stamp_annotation) | **GET** /pdf/\{name}/annotations/stamp/\{annotationId} | Read document page stamp annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_stamp_annotation_data**](docs/PdfApi.md#get_stamp_annotation_data) | **GET** /pdf/\{name}/annotations/stamp/\{annotationId}/data | Read document page stamp annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_strike_out_annotation**](docs/PdfApi.md#get_strike_out_annotation) | **GET** /pdf/\{name}/annotations/strikeout/\{annotationId} | Read document page StrikeOut annotation by ID.
-*AsposePdfCloud::PdfApi* | [**get_svg_in_storage_to_pdf**](docs/PdfApi.md#get_svg_in_storage_to_pdf) | **GET** /pdf/create/svg | Convert SVG file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_svg_in_storage_to_pdf**](docs/PdfApi.md#get_svg_in_storage_to_pdf) | **GET** /pdf/create/svg | Convert SVG file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_table**](docs/PdfApi.md#get_table) | **GET** /pdf/\{name}/tables/\{tableId} | Read document page table by ID.
-*AsposePdfCloud::PdfApi* | [**get_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_te_x_in_storage_to_pdf) | **GET** /pdf/create/tex | Convert TeX file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_te_x_in_storage_to_pdf) | **GET** /pdf/create/tex | Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_text**](docs/PdfApi.md#get_text) | **GET** /pdf/\{name}/text | Read document text.
 *AsposePdfCloud::PdfApi* | [**get_text_annotation**](docs/PdfApi.md#get_text_annotation) | **GET** /pdf/\{name}/annotations/text/\{annotationId} | Read document page text annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_text_box_field**](docs/PdfApi.md#get_text_box_field) | **GET** /pdf/\{name}/fields/textbox/\{fieldName} | Read document text box field by name.
 *AsposePdfCloud::PdfApi* | [**get_underline_annotation**](docs/PdfApi.md#get_underline_annotation) | **GET** /pdf/\{name}/annotations/underline/\{annotationId} | Read document page underline annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_verify_signature**](docs/PdfApi.md#get_verify_signature) | **GET** /pdf/\{name}/verifySignature | Verify signature document.
-*AsposePdfCloud::PdfApi* | [**get_web_in_storage_to_pdf**](docs/PdfApi.md#get_web_in_storage_to_pdf) | **GET** /pdf/create/web | Convert web page to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_web_in_storage_to_pdf**](docs/PdfApi.md#get_web_in_storage_to_pdf) | **GET** /pdf/create/web | Convert web page to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_words_per_page**](docs/PdfApi.md#get_words_per_page) | **GET** /pdf/\{name}/pages/wordCount | Get number of words per document page.
 *AsposePdfCloud::PdfApi* | [**get_xfa_pdf_in_storage_to_acro_form**](docs/PdfApi.md#get_xfa_pdf_in_storage_to_acro_form) | **GET** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
-*AsposePdfCloud::PdfApi* | [**get_xml_in_storage_to_pdf**](docs/PdfApi.md#get_xml_in_storage_to_pdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response.
-*AsposePdfCloud::PdfApi* | [**get_xps_in_storage_to_pdf**](docs/PdfApi.md#get_xps_in_storage_to_pdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response.
-*AsposePdfCloud::PdfApi* | [**get_xsl_fo_in_storage_to_pdf**](docs/PdfApi.md#get_xsl_fo_in_storage_to_pdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response.
+*AsposePdfCloud::PdfApi* | [**get_xml_in_storage_to_pdf**](docs/PdfApi.md#get_xml_in_storage_to_pdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
+*AsposePdfCloud::PdfApi* | [**get_xps_in_storage_to_pdf**](docs/PdfApi.md#get_xps_in_storage_to_pdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
+*AsposePdfCloud::PdfApi* | [**get_xsl_fo_in_storage_to_pdf**](docs/PdfApi.md#get_xsl_fo_in_storage_to_pdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**move_file**](docs/PdfApi.md#move_file) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
 *AsposePdfCloud::PdfApi* | [**move_folder**](docs/PdfApi.md#move_folder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
 *AsposePdfCloud::PdfApi* | [**object_exists**](docs/PdfApi.md#object_exists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
@@ -364,7 +365,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_decrypt_document**](docs/PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
 *AsposePdfCloud::PdfApi* | [**put_document_display_properties**](docs/PdfApi.md#put_document_display_properties) | **PUT** /pdf/\{name}/displayproperties | Update document display properties.
 *AsposePdfCloud::PdfApi* | [**put_encrypt_document**](docs/PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
-*AsposePdfCloud::PdfApi* | [**put_epub_in_storage_to_pdf**](docs/PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_epub_in_storage_to_pdf**](docs/PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_export_fields_from_pdf_to_fdf_in_storage**](docs/PdfApi.md#put_export_fields_from_pdf_to_fdf_in_storage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
 *AsposePdfCloud::PdfApi* | [**put_export_fields_from_pdf_to_xfdf_in_storage**](docs/PdfApi.md#put_export_fields_from_pdf_to_xfdf_in_storage) | **PUT** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file in storage.
 *AsposePdfCloud::PdfApi* | [**put_export_fields_from_pdf_to_xml_in_storage**](docs/PdfApi.md#put_export_fields_from_pdf_to_xml_in_storage) | **PUT** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file in storage.
@@ -373,12 +374,12 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_file_attachment_annotation_data_extract**](docs/PdfApi.md#put_file_attachment_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data/extract | Extract document FileAttachment annotation content to storage
 *AsposePdfCloud::PdfApi* | [**put_free_text_annotation**](docs/PdfApi.md#put_free_text_annotation) | **PUT** /pdf/\{name}/annotations/freetext/\{annotationId} | Replace document free text annotation
 *AsposePdfCloud::PdfApi* | [**put_highlight_annotation**](docs/PdfApi.md#put_highlight_annotation) | **PUT** /pdf/\{name}/annotations/highlight/\{annotationId} | Replace document highlight annotation
-*AsposePdfCloud::PdfApi* | [**put_html_in_storage_to_pdf**](docs/PdfApi.md#put_html_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/html | Convert HTML file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_html_in_storage_to_pdf**](docs/PdfApi.md#put_html_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/html | Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_image_extract_as_gif**](docs/PdfApi.md#put_image_extract_as_gif) | **PUT** /pdf/\{name}/images/\{imageId}/extract/gif | Extract document image in GIF format to folder
 *AsposePdfCloud::PdfApi* | [**put_image_extract_as_jpeg**](docs/PdfApi.md#put_image_extract_as_jpeg) | **PUT** /pdf/\{name}/images/\{imageId}/extract/jpeg | Extract document image in JPEG format to folder
 *AsposePdfCloud::PdfApi* | [**put_image_extract_as_png**](docs/PdfApi.md#put_image_extract_as_png) | **PUT** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format to folder
 *AsposePdfCloud::PdfApi* | [**put_image_extract_as_tiff**](docs/PdfApi.md#put_image_extract_as_tiff) | **PUT** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format to folder
-*AsposePdfCloud::PdfApi* | [**put_image_in_storage_to_pdf**](docs/PdfApi.md#put_image_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/images | Convert image file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_image_in_storage_to_pdf**](docs/PdfApi.md#put_image_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/images | Convert image file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_images_extract_as_gif**](docs/PdfApi.md#put_images_extract_as_gif) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/gif | Extract document images in GIF format to folder.
 *AsposePdfCloud::PdfApi* | [**put_images_extract_as_jpeg**](docs/PdfApi.md#put_images_extract_as_jpeg) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/jpeg | Extract document images in JPEG format to folder.
 *AsposePdfCloud::PdfApi* | [**put_images_extract_as_png**](docs/PdfApi.md#put_images_extract_as_png) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/png | Extract document images in PNG format to folder.
@@ -387,13 +388,13 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_import_fields_from_xfdf_in_storage**](docs/PdfApi.md#put_import_fields_from_xfdf_in_storage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 *AsposePdfCloud::PdfApi* | [**put_import_fields_from_xml_in_storage**](docs/PdfApi.md#put_import_fields_from_xml_in_storage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 *AsposePdfCloud::PdfApi* | [**put_ink_annotation**](docs/PdfApi.md#put_ink_annotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
-*AsposePdfCloud::PdfApi* | [**put_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_line_annotation**](docs/PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 *AsposePdfCloud::PdfApi* | [**put_link_annotation**](docs/PdfApi.md#put_link_annotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
 *AsposePdfCloud::PdfApi* | [**put_list_box_field**](docs/PdfApi.md#put_list_box_field) | **PUT** /pdf/\{name}/fields/listbox/\{fieldName} | Replace document listbox field
-*AsposePdfCloud::PdfApi* | [**put_markdown_in_storage_to_pdf**](docs/PdfApi.md#put_markdown_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/markdown | Convert MD file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_markdown_in_storage_to_pdf**](docs/PdfApi.md#put_markdown_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/markdown | Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_merge_documents**](docs/PdfApi.md#put_merge_documents) | **PUT** /pdf/\{name}/merge | Merge a list of documents.
-*AsposePdfCloud::PdfApi* | [**put_mht_in_storage_to_pdf**](docs/PdfApi.md#put_mht_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/mht | Convert MHT file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_mht_in_storage_to_pdf**](docs/PdfApi.md#put_mht_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/mht | Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_movie_annotation**](docs/PdfApi.md#put_movie_annotation) | **PUT** /pdf/\{name}/annotations/movie/\{annotationId} | Replace document movie annotation
 *AsposePdfCloud::PdfApi* | [**put_page_add_stamp**](docs/PdfApi.md#put_page_add_stamp) | **PUT** /pdf/\{name}/pages/\{pageNumber}/stamp | Add page stamp.
 *AsposePdfCloud::PdfApi* | [**put_page_convert_to_bmp**](docs/PdfApi.md#put_page_convert_to_bmp) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/bmp | Convert document page to bmp image and upload resulting file to storage.
@@ -402,13 +403,12 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_page_convert_to_jpeg**](docs/PdfApi.md#put_page_convert_to_jpeg) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/jpeg | Convert document page to Jpeg image and upload resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_page_convert_to_png**](docs/PdfApi.md#put_page_convert_to_png) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/png | Convert document page to png image and upload resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_page_convert_to_tiff**](docs/PdfApi.md#put_page_convert_to_tiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/convert/tiff | Convert document page to Tiff image and upload resulting file to storage.
-*AsposePdfCloud::PdfApi* | [**put_pcl_in_storage_to_pdf**](docs/PdfApi.md#put_pcl_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/pcl | Convert PCL file (located on storage) to PDF format and upload resulting file to storage.
-*AsposePdfCloud::PdfApi* | [**put_pdf_a_in_storage_to_pdf**](docs/PdfApi.md#put_pdf_a_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/pdfa | Convert PDFA file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_pcl_in_storage_to_pdf**](docs/PdfApi.md#put_pcl_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/pcl | Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
+*AsposePdfCloud::PdfApi* | [**put_pdf_a_in_storage_to_pdf**](docs/PdfApi.md#put_pdf_a_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/pdfa | Convert PDFA file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_doc**](docs/PdfApi.md#put_pdf_in_request_to_doc) | **PUT** /pdf/convert/doc | Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_epub**](docs/PdfApi.md#put_pdf_in_request_to_epub) | **PUT** /pdf/convert/epub | Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_html**](docs/PdfApi.md#put_pdf_in_request_to_html) | **PUT** /pdf/convert/html | Converts PDF document (in request content) to Html format and uploads resulting file to storage.
-*AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_la_te_x**](docs/PdfApi.md#put_pdf_in_request_to_la_te_x) | **PUT** /pdf/convert/latex | Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-*AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_mobi_xml**](docs/PdfApi.md#put_pdf_in_request_to_mobi_xml) | **PUT** /pdf/convert/mobixml | Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_mobi_xml**](docs/PdfApi.md#put_pdf_in_request_to_mobi_xml) | **PUT** /pdf/convert/mobixml | Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_pdf_a**](docs/PdfApi.md#put_pdf_in_request_to_pdf_a) | **PUT** /pdf/convert/pdfa | Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_pptx**](docs/PdfApi.md#put_pdf_in_request_to_pptx) | **PUT** /pdf/convert/pptx | Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_request_to_svg**](docs/PdfApi.md#put_pdf_in_request_to_svg) | **PUT** /pdf/convert/svg | Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
@@ -421,8 +421,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_doc**](docs/PdfApi.md#put_pdf_in_storage_to_doc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_epub**](docs/PdfApi.md#put_pdf_in_storage_to_epub) | **PUT** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_html**](docs/PdfApi.md#put_pdf_in_storage_to_html) | **PUT** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and uploads resulting file to storage
-*AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_la_te_x**](docs/PdfApi.md#put_pdf_in_storage_to_la_te_x) | **PUT** /pdf/\{name}/convert/latex | Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-*AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_mobi_xml**](docs/PdfApi.md#put_pdf_in_storage_to_mobi_xml) | **PUT** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+*AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_mobi_xml**](docs/PdfApi.md#put_pdf_in_storage_to_mobi_xml) | **PUT** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_pdf_a**](docs/PdfApi.md#put_pdf_in_storage_to_pdf_a) | **PUT** /pdf/\{name}/convert/pdfa | Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_pptx**](docs/PdfApi.md#put_pdf_in_storage_to_pptx) | **PUT** /pdf/\{name}/convert/pptx | Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
 *AsposePdfCloud::PdfApi* | [**put_pdf_in_storage_to_svg**](docs/PdfApi.md#put_pdf_in_storage_to_svg) | **PUT** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
@@ -436,7 +435,7 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_polygon_annotation**](docs/PdfApi.md#put_polygon_annotation) | **PUT** /pdf/\{name}/annotations/polygon/\{annotationId} | Replace document polygon annotation
 *AsposePdfCloud::PdfApi* | [**put_popup_annotation**](docs/PdfApi.md#put_popup_annotation) | **PUT** /pdf/\{name}/annotations/popup/\{annotationId} | Replace document popup annotation
 *AsposePdfCloud::PdfApi* | [**put_privileges**](docs/PdfApi.md#put_privileges) | **PUT** /pdf/\{name}/privileges | Update privilege document.
-*AsposePdfCloud::PdfApi* | [**put_ps_in_storage_to_pdf**](docs/PdfApi.md#put_ps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/ps | Convert PS file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_ps_in_storage_to_pdf**](docs/PdfApi.md#put_ps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/ps | Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_radio_button_field**](docs/PdfApi.md#put_radio_button_field) | **PUT** /pdf/\{name}/fields/radiobutton/\{fieldName} | Replace document RadioButton field
 *AsposePdfCloud::PdfApi* | [**put_redaction_annotation**](docs/PdfApi.md#put_redaction_annotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 *AsposePdfCloud::PdfApi* | [**put_replace_image**](docs/PdfApi.md#put_replace_image) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
@@ -452,20 +451,20 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_stamp_annotation**](docs/PdfApi.md#put_stamp_annotation) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId} | Replace document stamp annotation
 *AsposePdfCloud::PdfApi* | [**put_stamp_annotation_data_extract**](docs/PdfApi.md#put_stamp_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId}/data/extract | Extract document stamp annotation content to storage
 *AsposePdfCloud::PdfApi* | [**put_strike_out_annotation**](docs/PdfApi.md#put_strike_out_annotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
-*AsposePdfCloud::PdfApi* | [**put_svg_in_storage_to_pdf**](docs/PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_svg_in_storage_to_pdf**](docs/PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_table**](docs/PdfApi.md#put_table) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
-*AsposePdfCloud::PdfApi* | [**put_te_x_in_storage_to_pdf**](docs/PdfApi.md#put_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/tex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_te_x_in_storage_to_pdf**](docs/PdfApi.md#put_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/tex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_text_annotation**](docs/PdfApi.md#put_text_annotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
 *AsposePdfCloud::PdfApi* | [**put_text_box_field**](docs/PdfApi.md#put_text_box_field) | **PUT** /pdf/\{name}/fields/textbox/\{fieldName} | Replace document text box field
 *AsposePdfCloud::PdfApi* | [**put_underline_annotation**](docs/PdfApi.md#put_underline_annotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
 *AsposePdfCloud::PdfApi* | [**put_update_field**](docs/PdfApi.md#put_update_field) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
 *AsposePdfCloud::PdfApi* | [**put_update_fields**](docs/PdfApi.md#put_update_fields) | **PUT** /pdf/\{name}/fields | Update fields.
-*AsposePdfCloud::PdfApi* | [**put_web_in_storage_to_pdf**](docs/PdfApi.md#put_web_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/web | Convert web page to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_web_in_storage_to_pdf**](docs/PdfApi.md#put_web_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/web | Convert web page to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_xfa_pdf_in_request_to_acro_form**](docs/PdfApi.md#put_xfa_pdf_in_request_to_acro_form) | **PUT** /pdf/convert/xfatoacroform | Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
 *AsposePdfCloud::PdfApi* | [**put_xfa_pdf_in_storage_to_acro_form**](docs/PdfApi.md#put_xfa_pdf_in_storage_to_acro_form) | **PUT** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
-*AsposePdfCloud::PdfApi* | [**put_xml_in_storage_to_pdf**](docs/PdfApi.md#put_xml_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage.
-*AsposePdfCloud::PdfApi* | [**put_xps_in_storage_to_pdf**](docs/PdfApi.md#put_xps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage.
-*AsposePdfCloud::PdfApi* | [**put_xsl_fo_in_storage_to_pdf**](docs/PdfApi.md#put_xsl_fo_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage.
+*AsposePdfCloud::PdfApi* | [**put_xml_in_storage_to_pdf**](docs/PdfApi.md#put_xml_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
+*AsposePdfCloud::PdfApi* | [**put_xps_in_storage_to_pdf**](docs/PdfApi.md#put_xps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
+*AsposePdfCloud::PdfApi* | [**put_xsl_fo_in_storage_to_pdf**](docs/PdfApi.md#put_xsl_fo_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**storage_exists**](docs/PdfApi.md#storage_exists) | **GET** /pdf/storage/\{storageName}/exist | Check if storage exists
 *AsposePdfCloud::PdfApi* | [**upload_file**](docs/PdfApi.md#upload_file) | **PUT** /pdf/storage/file/\{path} | Upload file
 
@@ -476,7 +475,6 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::AnnotationState](docs/AnnotationState.md)
  - [AsposePdfCloud::AnnotationType](docs/AnnotationType.md)
  - [AsposePdfCloud::AntialiasingProcessingType](docs/AntialiasingProcessingType.md)
- - [AsposePdfCloud::ApiInfo](docs/ApiInfo.md)
  - [AsposePdfCloud::AsposeResponse](docs/AsposeResponse.md)
  - [AsposePdfCloud::Border](docs/Border.md)
  - [AsposePdfCloud::BorderCornerStyle](docs/BorderCornerStyle.md)
@@ -755,12 +753,11 @@ Class | Method | HTTP request | Description
  - [AsposePdfCloud::SquareAnnotation](docs/SquareAnnotation.md)
 
 
+## Aspose.PDF Cloud SDKs in Popular Languages
 
- ## Aspose.PDF Cloud SDKs in Popular Languages
+| .NET | Java | PHP | Python | Ruby | Node.js | Android | Swift|Go|
+|---|---|---|---|---|---|---|--|--|
+| [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-dotnet) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-php) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby)  | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-node.js) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-swift)|[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-go) |
+| [NuGet](https://www.nuget.org/packages/Aspose.pdf-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Composer](https://packagist.org/packages/aspose/pdf-sdk-php) | [PIP](https://pypi.org/project/asposepdfcloud/) | [GEM](https://rubygems.org/gems/aspose_pdf_cloud)  | [NPM](https://www.npmjs.com/package/asposepdfcloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposepdfCloud)|[Go.Dev](https://pkg.go.dev/github.com/aspose-pdf-cloud/aspose-pdf-cloud-go/v20#readme-aspose-pdf-cloud) |
 
- | .NET | Java | PHP | Python | Ruby | Node.js | Android | Swift|Go|
- |---|---|---|---|---|---|---|--|--|
- | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-dotnet) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-java) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-php) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby)  | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-node.js) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-android) | [GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-swift)|[GitHub](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-go) |
- | [NuGet](https://www.nuget.org/packages/Aspose.pdf-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Composer](https://packagist.org/packages/aspose/pdf-sdk-php) | [PIP](https://pypi.org/project/asposepdfcloud/) | [GEM](https://rubygems.org/gems/aspose_pdf_cloud)  | [NPM](https://www.npmjs.com/package/asposepdfcloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-pdf-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposepdfCloud)|[Go.Dev](https://pkg.go.dev/github.com/aspose-pdf-cloud/aspose-pdf-cloud-go/v20#readme-aspose-pdf-cloud) |
-
- [Product Page](https://products.aspose.cloud/pdf/ruby) | [Documentation](https://docs.aspose.cloud/display/pdfcloud/Home) | [API Reference](https://apireference.aspose.cloud/pdf/) | [Code Samples](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby) | [Blog](https://blog.aspose.cloud/category/pdf/) | [Free Support](https://forum.aspose.cloud/c/pdf) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
+[Product Page](https://products.aspose.cloud/pdf/ruby) | [Documentation](https://docs.aspose.cloud/display/pdfcloud/Home) | [API Reference](https://apireference.aspose.cloud/pdf/) | [Code Samples](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby) | [Blog](https://blog.aspose.cloud/category/pdf/) | [Free Support](https://forum.aspose.cloud/c/pdf) | [Free Trial](https://dashboard.aspose.cloud/#/apps)

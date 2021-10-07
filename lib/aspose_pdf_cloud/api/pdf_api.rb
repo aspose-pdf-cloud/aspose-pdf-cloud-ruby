@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2020 Aspose.PDF Cloud
+Copyright (c) 2021 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -1915,66 +1915,6 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#download_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # 
-    # 
-    # @param [Hash] opts the optional parameters
-    # @return [ApiInfo]
-    def get_api_info(opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_api_info_with_http_info(opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.request_token_if_needed
-          data, _status_code, _headers = get_api_info_with_http_info(opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # 
-    # 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ApiInfo, Fixnum, Hash)>] ApiInfo data, response status code and response headers
-    def get_api_info_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_api_info ..."
-      end
-      # resource path
-      local_var_path = "/pdf/info"
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ApiInfo')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_api_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -11278,79 +11218,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-    # 
-    # @param name The document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :folder The document folder.
-    # @option opts [String] :storage The document storage.
-    # @return [File]
-    def get_pdf_in_storage_to_la_te_x(name, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.request_token_if_needed
-          data, _status_code, _headers = get_pdf_in_storage_to_la_te_x_with_http_info(name, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-    # 
-    # @param name The document name.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :folder The document folder.
-    # @option opts [String] :storage The document storage.
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_pdf_in_storage_to_la_te_x_with_http_info(name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_la_te_x ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_la_te_x"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/convert/latex".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+    # Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -11370,7 +11238,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+    # Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -24195,81 +24063,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-    # 
-    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage The document storage.
-    # @option opts [File] :file A file to be converted.
-    # @return [AsposeResponse]
-    def put_pdf_in_request_to_la_te_x(out_path, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.request_token_if_needed
-          data, _status_code, _headers = put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-    # 
-    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage The document storage.
-    # @option opts [File] :file A file to be converted.
-    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
-    def put_pdf_in_request_to_la_te_x_with_http_info(out_path, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_request_to_la_te_x ..."
-      end
-      # verify the required parameter 'out_path' is set
-      if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_request_to_la_te_x"
-      end
-      # resource path
-      local_var_path = "/pdf/convert/latex"
-
-      # query parameters
-      query_params = {}
-      query_params[:'outPath'] = out_path
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-      post_body =  opts[:'file'] if !opts[:'file'].nil?
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'AsposeResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_request_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+    # Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
     # @param [Hash] opts the optional parameters
@@ -24289,7 +24083,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+    # Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
     # 
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
     # @param [Hash] opts the optional parameters
@@ -25494,86 +25288,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-    # 
-    # @param name The document name.
-    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :folder The document folder.
-    # @option opts [String] :storage The document storage.
-    # @return [AsposeResponse]
-    def put_pdf_in_storage_to_la_te_x(name, out_path, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.request_token_if_needed
-          data, _status_code, _headers = put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-    # 
-    # @param name The document name.
-    # @param out_path Full resulting filename (ex. /folder1/folder2/result.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :folder The document folder.
-    # @option opts [String] :storage The document storage.
-    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
-    def put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_pdf_in_storage_to_la_te_x ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_pdf_in_storage_to_la_te_x"
-      end
-      # verify the required parameter 'out_path' is set
-      if @api_client.config.client_side_validation && out_path.nil?
-        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_pdf_in_storage_to_la_te_x"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/convert/latex".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'outPath'] = out_path
-      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'AsposeResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_pdf_in_storage_to_la_te_x\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+    # Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
     # 
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)
@@ -25594,7 +25309,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+    # Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
     # 
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.mobixml)

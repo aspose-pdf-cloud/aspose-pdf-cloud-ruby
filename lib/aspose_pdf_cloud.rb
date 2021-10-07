@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-  Copyright (c) 2020 Aspose.PDF Cloud
+Copyright (c) 2021 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -30,7 +30,6 @@ require_relative 'aspose_pdf_cloud/models/annotation_flags'
 require_relative 'aspose_pdf_cloud/models/annotation_state'
 require_relative 'aspose_pdf_cloud/models/annotation_type'
 require_relative 'aspose_pdf_cloud/models/antialiasing_processing_type'
-require_relative 'aspose_pdf_cloud/models/api_info'
 require_relative 'aspose_pdf_cloud/models/aspose_response'
 require_relative 'aspose_pdf_cloud/models/border'
 require_relative 'aspose_pdf_cloud/models/border_corner_style'
