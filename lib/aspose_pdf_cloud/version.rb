@@ -20,5 +20,5 @@ SOFTWARE.
 =end
 
 module AsposePdfCloud
-  VERSION = "21.9.0"
+  VERSION = "21.10.0"
 end
