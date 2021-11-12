@@ -30,7 +30,7 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 MHT, PCL, PS, XSLFO, MD
 
 ## Enhancements in Version 21.10
-- A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
+- A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Enhancements in Version 20.9
 * Implemented custom fonts for Text API.
@@ -52,15 +52,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-21.10.0.gem
+gem install ./aspose_pdf_cloud-21.10.1.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-21.10.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-21.10.1.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 21.10.0'
+    gem 'aspose_pdf_cloud', '~> 21.10.1'
 
 ### Install from Git
 
