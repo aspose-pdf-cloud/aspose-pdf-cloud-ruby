@@ -9,7 +9,6 @@ These SDKs are now fully supported. If you have any questions, see any bugs or h
 Extract Text & Images of a PDF document online https://products.aspose.app/pdf/parser.
 
 ## PDF Processing Features
-
 - Add PDF document's header & footer in text or image format.
 - Add tables & stamps (text or image) to PDF documents.
 - Append multiple PDF documents to an existing file.
@@ -22,20 +21,15 @@ Extract Text & Images of a PDF document online https://products.aspose.app/pdf/p
 - Extract various elements of PDF files & make PDF documents optimized.
 
 ## Read & Write PDF Formats
-
 PDF, EPUB, HTML, TeX, SVG, XML, XPS, FDF, XFDF
+
 ## Save PDF As
 XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
+
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 21.9
-- A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
-
-## Enhancements in Version 20.12
-- A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
-
-## Enhancements in Version 20.10
+## Enhancements in Version 21.10
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
 
 ## Enhancements in Version 20.9
@@ -58,15 +52,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-21.9.0.gem
+gem install ./aspose_pdf_cloud-21.10.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-21.9.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-21.10.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 21.9.0'
+    gem 'aspose_pdf_cloud', '~> 21.10.0'
 
 ### Install from Git
 
@@ -74,8 +68,6 @@ The Ruby gem is hosted at a git repository: https://github.com/aspose-pdf-cloud/
 Add the following in the Gemfile:
 
     gem 'aspose_pdf_cloud', :git => 'https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-ruby.git'
-
-
 
 ## Get PDF Page Annotations in Ruby
 
