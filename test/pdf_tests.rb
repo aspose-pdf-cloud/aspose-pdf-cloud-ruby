@@ -31,8 +31,9 @@ class PdfTests < Minitest::Test
 
 
   def setup
-    # Get App key and App SID from https://aspose.cloud
-    @pdf_api = PdfApi.new('app_key', 'app_sid')
+    servercreds_json = File.read('../../../Settings/servercreds.json')
+    creds = JSON.parse(servercreds_json)
+    @pdf_api = PdfApi.new(creds["AppKey"], creds["AppSID"])
     @temp_folder = 'TempPdfCloud'
     @test_data_folder = '../test_data/'
 
