@@ -29,8 +29,12 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 22.1
+## Enhancements in Version 22.2
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed  in Version 22.2
+- PDF to XLSX: Google sheet does not recognize output excel sheet.
+- Text Replace API method throws Internal Error.
 
 ## Enhancements in Version 20.9
 * Implemented custom fonts for Text API.
@@ -52,15 +56,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-22.1.0.gem
+gem install ./aspose_pdf_cloud-22.2.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-22.1.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-22.2.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 22.1.0'
+    gem 'aspose_pdf_cloud', '~> 22.2.0'
 
 ### Install from Git
 
@@ -193,7 +197,6 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**get_import_fields_from_xfdf_in_storage**](docs/PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 *AsposePdfCloud::PdfApi* | [**get_import_fields_from_xml_in_storage**](docs/PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_ink_annotation**](docs/PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-*AsposePdfCloud::PdfApi* | [**get_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 *AsposePdfCloud::PdfApi* | [**get_line_annotation**](docs/PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_link_annotation**](docs/PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
 *AsposePdfCloud::PdfApi* | [**get_list_box_field**](docs/PdfApi.md#get_list_box_field) | **GET** /pdf/\{name}/fields/listbox/\{fieldName} | Read document listbox field by name.
@@ -380,7 +383,6 @@ Class | Method | HTTP request | Description
 *AsposePdfCloud::PdfApi* | [**put_import_fields_from_xfdf_in_storage**](docs/PdfApi.md#put_import_fields_from_xfdf_in_storage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 *AsposePdfCloud::PdfApi* | [**put_import_fields_from_xml_in_storage**](docs/PdfApi.md#put_import_fields_from_xml_in_storage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 *AsposePdfCloud::PdfApi* | [**put_ink_annotation**](docs/PdfApi.md#put_ink_annotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
-*AsposePdfCloud::PdfApi* | [**put_la_te_x_in_storage_to_pdf**](docs/PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 *AsposePdfCloud::PdfApi* | [**put_line_annotation**](docs/PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 *AsposePdfCloud::PdfApi* | [**put_link_annotation**](docs/PdfApi.md#put_link_annotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
 *AsposePdfCloud::PdfApi* | [**put_list_box_field**](docs/PdfApi.md#put_list_box_field) | **PUT** /pdf/\{name}/fields/listbox/\{fieldName} | Replace document listbox field

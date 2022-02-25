@@ -28,7 +28,7 @@ module AsposePdfCloud
     # Link to the document.
     attr_accessor :links
 
-    # Pame of the property.
+    # Name of the property.
     attr_accessor :name
 
     # Property value.
