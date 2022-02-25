@@ -6997,76 +6997,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert TeX file (located on storage) to PDF format and return resulting file in response. 
-    # 
-    # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage The document storage.
-    # @return [File]
-    def get_la_te_x_in_storage_to_pdf(src_path, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.request_token_if_needed
-          data, _status_code, _headers = get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Convert TeX file (located on storage) to PDF format and return resulting file in response. 
-    # 
-    # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage The document storage.
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_la_te_x_in_storage_to_pdf_with_http_info(src_path, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.get_la_te_x_in_storage_to_pdf ..."
-      end
-      # verify the required parameter 'src_path' is set
-      if @api_client.config.client_side_validation && src_path.nil?
-        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.get_la_te_x_in_storage_to_pdf"
-      end
-      # resource path
-      local_var_path = "/pdf/create/latex"
-
-      # query parameters
-      query_params = {}
-      query_params[:'srcPath'] = src_path
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#get_la_te_x_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Read document page line annotation by ID.
     # 
     # @param name The document name.
@@ -11730,7 +11660,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -11754,7 +11684,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -11814,7 +11744,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -11838,7 +11768,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -22252,85 +22182,6 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
-    # 
-    # @param name The document name.
-    # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :dst_folder The destination document folder.
-    # @option opts [String] :storage The document storage.
-    # @return [AsposeResponse]
-    def put_la_te_x_in_storage_to_pdf(name, src_path, opts = {})
-      @api_client.request_token_if_needed
-      data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
-      rescue ApiError => error
-        if error.code == 401
-          @api_client.request_token_if_needed
-          data, _status_code, _headers = put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts)
-        else
-          raise
-        end
-      return data
-    end
-
-    # Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
-    # 
-    # @param name The document name.
-    # @param src_path Full source filename (ex. /folder1/folder2/template.tex)
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :dst_folder The destination document folder.
-    # @option opts [String] :storage The document storage.
-    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
-    def put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: PdfApi.put_la_te_x_in_storage_to_pdf ..."
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_la_te_x_in_storage_to_pdf"
-      end
-      # verify the required parameter 'src_path' is set
-      if @api_client.config.client_side_validation && src_path.nil?
-        fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.put_la_te_x_in_storage_to_pdf"
-      end
-      # resource path
-      local_var_path = "/pdf/{name}/create/latex".sub('{' + 'name' + '}', name.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'srcPath'] = src_path
-      query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
-      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-      # Fix header in file
-      post_body = nil
-
-      # http body (model)
-      # Fix header in file
-      # post_body = nil
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'AsposeResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PdfApi#put_la_te_x_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Replace document line annotation
     # 
     # @param name The document name.
@@ -24584,7 +24435,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
@@ -24608,7 +24459,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
@@ -24670,7 +24521,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
@@ -24694,7 +24545,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
     # @option opts [File] :file A file to be converted.
@@ -25840,7 +25691,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -25865,7 +25716,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -25931,7 +25782,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
@@ -25956,7 +25807,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
     # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
-    # @option opts [Float] :scale_factor Scale factor
+    # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.

@@ -97,7 +97,6 @@ Method | HTTP request | Description
 [**get_import_fields_from_xfdf_in_storage**](PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 [**get_import_fields_from_xml_in_storage**](PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 [**get_ink_annotation**](PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-[**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_line_annotation**](PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**get_link_annotation**](PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
 [**get_list_box_field**](PdfApi.md#get_list_box_field) | **GET** /pdf/\{name}/fields/listbox/\{fieldName} | Read document listbox field by name.
@@ -284,7 +283,6 @@ Method | HTTP request | Description
 [**put_import_fields_from_xfdf_in_storage**](PdfApi.md#put_import_fields_from_xfdf_in_storage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 [**put_import_fields_from_xml_in_storage**](PdfApi.md#put_import_fields_from_xml_in_storage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 [**put_ink_annotation**](PdfApi.md#put_ink_annotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
-[**put_la_te_x_in_storage_to_pdf**](PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_line_annotation**](PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 [**put_link_annotation**](PdfApi.md#put_link_annotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
 [**put_list_box_field**](PdfApi.md#put_list_box_field) | **PUT** /pdf/\{name}/fields/listbox/\{fieldName} | Replace document listbox field
@@ -2647,29 +2645,6 @@ Name | Type | Description  | Notes
 
 
 
-# **get_la_te_x_in_storage_to_pdf**
-> File get_la_te_x_in_storage_to_pdf(src_path, opts)
-
-Convert TeX file (located on storage) to PDF format and return resulting file in response. 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.tex) | 
- **storage** | **String**| The document storage. | [optional] 
-
-### Return type
-
-**File**
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: multipart/form-data
-
-
-
 # **get_line_annotation**
 > LineAnnotationResponse get_line_annotation(name, annotation_id, opts)
 
@@ -4167,7 +4142,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **insert_blank_column_at_first** | **BOOLEAN**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **BOOLEAN**| Minimize the number of worksheets | [optional] 
- **scale_factor** | **Float**| Scale factor | [optional] 
+ **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
@@ -4195,7 +4170,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **insert_blank_column_at_first** | **BOOLEAN**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **BOOLEAN**| Minimize the number of worksheets | [optional] 
- **scale_factor** | **Float**| Scale factor | [optional] 
+ **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
@@ -7499,31 +7474,6 @@ Name | Type | Description  | Notes
 
 
 
-# **put_la_te_x_in_storage_to_pdf**
-> AsposeResponse put_la_te_x_in_storage_to_pdf(name, src_path, opts)
-
-Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The document name. | 
- **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.tex) | 
- **dst_folder** | **String**| The destination document folder. | [optional] 
- **storage** | **String**| The document storage. | [optional] 
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
 # **put_line_annotation**
 > LineAnnotationResponse put_line_annotation(name, annotation_id, annotation, opts)
 
@@ -8233,7 +8183,7 @@ Name | Type | Description  | Notes
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.xls) | 
  **insert_blank_column_at_first** | **BOOLEAN**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **BOOLEAN**| Minimize the number of worksheets | [optional] 
- **scale_factor** | **Float**| Scale factor | [optional] 
+ **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
@@ -8261,7 +8211,7 @@ Name | Type | Description  | Notes
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.xlsx) | 
  **insert_blank_column_at_first** | **BOOLEAN**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **BOOLEAN**| Minimize the number of worksheets | [optional] 
- **scale_factor** | **Float**| Scale factor | [optional] 
+ **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
@@ -8620,7 +8570,7 @@ Name | Type | Description  | Notes
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.xls) | 
  **insert_blank_column_at_first** | **BOOLEAN**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **BOOLEAN**| Minimize the number of worksheets | [optional] 
- **scale_factor** | **Float**| Scale factor | [optional] 
+ **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
@@ -8649,7 +8599,7 @@ Name | Type | Description  | Notes
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.xlsx) | 
  **insert_blank_column_at_first** | **BOOLEAN**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **BOOLEAN**| Minimize the number of worksheets | [optional] 
- **scale_factor** | **Float**| Scale factor | [optional] 
+ **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
