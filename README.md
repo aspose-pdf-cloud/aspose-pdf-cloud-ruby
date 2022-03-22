@@ -29,19 +29,14 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 22.2
+## Enhancements in Version 22.3
+- PDFCLOUD-2729: Add StrikeOut, Superscript, Subscript properties to TextState.
+- PDFCLOUD-2623: Underline property is missing in TextState.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
-## Bugs fixed  in Version 22.2
-- PDF to XLSX: Google sheet does not recognize output excel sheet.
-- Text Replace API method throws Internal Error.
-
-## Enhancements in Version 20.9
-* Implemented custom fonts for Text API.
-* Added custom fonts for Table API.
-* Added support for custom fonts for Stamps API.
-* Support for custom fonts for Header/Footer API.
-* Included custom fonts for Replace Text API.
+## Bugs fixed in Version 22.3
+- PDFCLOUD-2714: GetFields API method not extracting PDF form fields.
+- PDFCLOUD-2641: PostSplitDocument returns wrong path.
 
 ## Installation
 
@@ -56,15 +51,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-22.2.0.gem
+gem install ./aspose_pdf_cloud-22.3.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-22.2.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-22.3.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 22.2.0'
+    gem 'aspose_pdf_cloud', '~> 22.3.0'
 
 ### Install from Git
 
