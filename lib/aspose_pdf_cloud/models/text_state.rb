@@ -43,6 +43,18 @@ module AsposePdfCloud
     # Sets path of font file in storage.
     attr_accessor :font_file
 
+    # Gets or sets underline of the text.
+    attr_accessor :underline
+
+    # Gets or sets strikeout of the text.
+    attr_accessor :strike_out
+
+    # Gets or sets superscript mode of the text.
+    attr_accessor :superscript
+
+    # Gets or sets subscript mode of the text.
+    attr_accessor :subscript
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -52,7 +64,11 @@ module AsposePdfCloud
         :'foreground_color' => :'ForegroundColor',
         :'background_color' => :'BackgroundColor',
         :'font_style' => :'FontStyle',
-        :'font_file' => :'FontFile'
+        :'font_file' => :'FontFile',
+        :'underline' => :'Underline',
+        :'strike_out' => :'StrikeOut',
+        :'superscript' => :'Superscript',
+        :'subscript' => :'Subscript'
       }
     end
 
@@ -64,7 +80,11 @@ module AsposePdfCloud
         :'foreground_color' => :'Color',
         :'background_color' => :'Color',
         :'font_style' => :'FontStyles',
-        :'font_file' => :'String'
+        :'font_file' => :'String',
+        :'underline' => :'BOOLEAN',
+        :'strike_out' => :'BOOLEAN',
+        :'superscript' => :'BOOLEAN',
+        :'subscript' => :'BOOLEAN'
       }
     end
 
@@ -98,6 +118,22 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'FontFile')
         self.font_file = attributes[:'FontFile']
+      end
+
+      if attributes.has_key?(:'Underline')
+        self.underline = attributes[:'Underline']
+      end
+
+      if attributes.has_key?(:'StrikeOut')
+        self.strike_out = attributes[:'StrikeOut']
+      end
+
+      if attributes.has_key?(:'Superscript')
+        self.superscript = attributes[:'Superscript']
+      end
+
+      if attributes.has_key?(:'Subscript')
+        self.subscript = attributes[:'Subscript']
       end
 
     end
@@ -135,7 +171,11 @@ module AsposePdfCloud
           foreground_color == o.foreground_color &&
           background_color == o.background_color &&
           font_style == o.font_style &&
-          font_file == o.font_file
+          font_file == o.font_file &&
+          underline == o.underline &&
+          strike_out == o.strike_out &&
+          superscript == o.superscript &&
+          subscript == o.subscript
     end
 
     # @see the `==` method
@@ -147,7 +187,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [font_size, font, foreground_color, background_color, font_style, font_file].hash
+      [font_size, font, foreground_color, background_color, font_style, font_file, underline, strike_out, superscript, subscript].hash
     end
 
     # Builds the object from hash
