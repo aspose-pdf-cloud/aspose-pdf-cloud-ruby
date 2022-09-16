@@ -409,7 +409,6 @@ module AsposePdfCloud
       end
     end
 
-
     # Request access and refresh tokens if needed
     def request_token_if_needed
       # check token exists
@@ -419,7 +418,9 @@ module AsposePdfCloud
 
       # resource path
       local_var_path = "/connect/token"
-      url = build_request_url(local_var_path).gsub('/v3.0', '')
+      tokenUrl = build_request_url(local_var_path).gsub('/v3.0', '')
+      print("\nbase_url: " + config.base_url + "\n")
+      print("\ntokenUrl: " + tokenUrl + "\n")
 
       # header parameters
       header_params = {}
@@ -435,21 +436,18 @@ module AsposePdfCloud
 
       body =  {}
 
-
       req_opts = {
           :headers => header_params,
           :params => query_params,
           :body => body
       }
 
-
       req_body = build_request_body(header_params, form_params, body)
       req_opts.update :body => req_body
 
       req_opts[:params] = query_params
 
-
-      conn = Faraday.new url, {:params => query_params, :headers => header_params} do |f|
+      conn = Faraday.new tokenUrl, {:params => query_params, :headers => header_params} do |f|
         f.request :multipart
         f.request :url_encoded
         f.adapter Faraday.default_adapter
@@ -459,8 +457,7 @@ module AsposePdfCloud
         req_opts[:body] = nil
       end
 
-
-      response = conn.post url, form_params, req_opts[:body]
+      response = conn.post tokenUrl, form_params, req_opts[:body]
       data = JSON.parse("[#{response.body}]", :symbolize_names => true)[0]
 
       @config.access_token = data[:access_token]
@@ -470,7 +467,6 @@ module AsposePdfCloud
     def add_o_auth_token(req_opts)
       req_opts[:headers][:Authorization] = "Bearer " + @config.access_token
     end
-
-
+   
   end
 end
