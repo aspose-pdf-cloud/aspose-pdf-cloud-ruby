@@ -3697,16 +3697,33 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to optimize document.')
   end
 
-
   def test_post_split_document
     file_name = '4pages.pdf'
     upload_file(file_name)
-
     opts = {
         :folder => @temp_folder
     }
     response = @pdf_api.post_split_document(file_name, opts)
     assert(response, 'Failed to split document to parts.')
+  end
+
+  def test_post_split_range_pdf_document
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    pageRange1 = PageRange.new
+    pageRange1.to = 2
+    pageRange2 = PageRange.new
+    pageRange2.from = 3
+    pageRange3 = PageRange.new
+    pageRange3.from = 2
+    pageRange3.to = 3
+    range_options = SplitRangePdfOptions.new
+    range_options.page_ranges = [pageRange1, pageRange2, pageRange3]
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.post_split_range_pdf_document(file_name, range_options, opts)
+    assert(response, 'Failed to split document to ranges.')
   end
 
   def test_put_create_empty_document

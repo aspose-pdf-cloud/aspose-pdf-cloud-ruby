@@ -7926,6 +7926,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_page_convert_to_bmp(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -7949,6 +7950,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_bmp_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -7971,6 +7973,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -8010,6 +8013,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_page_convert_to_emf(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -8033,6 +8037,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_emf_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -8055,6 +8060,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -8094,6 +8100,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_page_convert_to_gif(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -8117,6 +8124,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_gif_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -8139,6 +8147,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -8178,6 +8187,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_page_convert_to_jpeg(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -8201,6 +8211,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_jpeg_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -8223,6 +8234,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -8262,6 +8274,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_page_convert_to_png(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -8285,6 +8298,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_png_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -8307,6 +8321,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -8346,6 +8361,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_page_convert_to_tiff(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -8369,6 +8385,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_page_convert_to_tiff_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -8391,6 +8408,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -10785,7 +10803,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+    # Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -10799,6 +10817,7 @@ module AsposePdfCloud
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_pdf_in_storage_to_doc(name, opts = {})
       @api_client.request_token_if_needed
@@ -10813,7 +10832,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+    # Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
     # 
     # @param name The document name.
     # @param [Hash] opts the optional parameters
@@ -10827,6 +10846,7 @@ module AsposePdfCloud
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_doc_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -10857,6 +10877,7 @@ module AsposePdfCloud
       query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -19110,6 +19131,83 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # 
+    # 
+    # @param name 
+    # @param options 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [SplitResultResponse]
+    def post_split_range_pdf_document(name, options, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_split_range_pdf_document_with_http_info(name, options, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_split_range_pdf_document_with_http_info(name, options, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # 
+    # 
+    # @param name 
+    # @param options 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage 
+    # @option opts [String] :folder 
+    # @return [Array<(SplitResultResponse, Fixnum, Hash)>] SplitResultResponse data, response status code and response headers
+    def post_split_range_pdf_document_with_http_info(name, options, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_split_range_pdf_document ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_split_range_pdf_document"
+      end
+      # verify the required parameter 'options' is set
+      if @api_client.config.client_side_validation && options.nil?
+        fail ArgumentError, "Missing the required parameter 'options' when calling PdfApi.post_split_range_pdf_document"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/splitrangepdf".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SplitResultResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_split_range_pdf_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document text box fields.
     # 
     # @param name The document name.
@@ -22842,6 +22940,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_page_convert_to_bmp(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -22866,6 +22965,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_bmp_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
@@ -22893,6 +22993,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -22933,6 +23034,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_page_convert_to_emf(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -22957,6 +23059,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_emf_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
@@ -22984,6 +23087,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -23024,6 +23128,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_page_convert_to_gif(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -23048,6 +23153,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_gif_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
@@ -23075,6 +23181,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -23115,6 +23222,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_page_convert_to_jpeg(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -23139,6 +23247,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_jpeg_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
@@ -23166,6 +23275,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -23206,6 +23316,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_page_convert_to_png(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -23230,6 +23341,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_png_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
@@ -23257,6 +23369,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -23297,6 +23410,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height. (default to 0)
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_page_convert_to_tiff(name, page_number, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -23321,6 +23435,7 @@ module AsposePdfCloud
     # @option opts [Integer] :height The converted image height.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_page_convert_to_tiff_with_http_info(name, page_number, out_path, opts = {})
       if @api_client.config.debugging
@@ -23348,6 +23463,7 @@ module AsposePdfCloud
       query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -23552,6 +23668,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_doc(out_path, opts = {})
@@ -23580,6 +23697,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :recognize_bullets Recognize bullets.
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_doc_with_http_info(out_path, opts = {})
@@ -23611,6 +23729,7 @@ module AsposePdfCloud
       query_params[:'recognizeBullets'] = opts[:'recognize_bullets'] if !opts[:'recognize_bullets'].nil?
       query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -24749,7 +24868,7 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
-    # Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+    # Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
     # 
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
@@ -24764,6 +24883,7 @@ module AsposePdfCloud
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_doc(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -24778,7 +24898,7 @@ module AsposePdfCloud
       return data
     end
 
-    # Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+    # Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
     # 
     # @param name The document name.
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.doc)
@@ -24793,6 +24913,7 @@ module AsposePdfCloud
     # @option opts [Float] :relative_horizontal_proximity Relative horizontal proximity.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_doc_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -24828,6 +24949,7 @@ module AsposePdfCloud
       query_params[:'relativeHorizontalProximity'] = opts[:'relative_horizontal_proximity'] if !opts[:'relative_horizontal_proximity'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
