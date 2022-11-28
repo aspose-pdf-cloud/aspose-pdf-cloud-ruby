@@ -19131,13 +19131,13 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Split document into ranges.
     # 
-    # 
-    # @param name 
-    # @param options 
+    # @param name The document name.
+    # @param options The splitting options.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
     # @return [SplitResultResponse]
     def post_split_range_pdf_document(name, options, opts = {})
       @api_client.request_token_if_needed
@@ -19152,13 +19152,13 @@ module AsposePdfCloud
       return data
     end
 
+    # Split document into ranges.
     # 
-    # 
-    # @param name 
-    # @param options 
+    # @param name The document name.
+    # @param options The splitting options.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
     # @return [Array<(SplitResultResponse, Fixnum, Hash)>] SplitResultResponse data, response status code and response headers
     def post_split_range_pdf_document_with_http_info(name, options, opts = {})
       if @api_client.config.debugging
