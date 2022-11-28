@@ -1,5 +1,5 @@
 ﻿# AsposePdfCloud::SplitRangePdfOptions
-
+Represents Pdf split into ranges options.
 
 ## Properties
 Name | Type | Description | Notes

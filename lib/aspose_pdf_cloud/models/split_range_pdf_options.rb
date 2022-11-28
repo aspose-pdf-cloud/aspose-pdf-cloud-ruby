@@ -23,7 +23,7 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
+  # Represents Pdf split into ranges options.
   class SplitRangePdfOptions
     attr_accessor :page_ranges
 
