@@ -40,6 +40,9 @@ module AsposePdfCloud
     # Rectangle area where searched original text.
     attr_accessor :rect
 
+    # The text after replacement is centered horizontally relative to the text being replaced.
+    attr_accessor :center_text_horizontally
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -48,7 +51,8 @@ module AsposePdfCloud
         :'new_value' => :'NewValue',
         :'regex' => :'Regex',
         :'text_state' => :'TextState',
-        :'rect' => :'Rect'
+        :'rect' => :'Rect',
+        :'center_text_horizontally' => :'CenterTextHorizontally'
       }
     end
 
@@ -59,7 +63,8 @@ module AsposePdfCloud
         :'new_value' => :'String',
         :'regex' => :'BOOLEAN',
         :'text_state' => :'TextState',
-        :'rect' => :'Rectangle'
+        :'rect' => :'Rectangle',
+        :'center_text_horizontally' => :'BOOLEAN'
       }
     end
 
@@ -89,6 +94,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'Rect')
         self.rect = attributes[:'Rect']
+      end
+
+      if attributes.has_key?(:'CenterTextHorizontally')
+        self.center_text_horizontally = attributes[:'CenterTextHorizontally']
       end
 
     end
@@ -144,7 +153,8 @@ module AsposePdfCloud
           new_value == o.new_value &&
           regex == o.regex &&
           text_state == o.text_state &&
-          rect == o.rect
+          rect == o.rect &&
+          center_text_horizontally == o.center_text_horizontally
     end
 
     # @see the `==` method
@@ -156,7 +166,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [old_value, new_value, regex, text_state, rect].hash
+      [old_value, new_value, regex, text_state, rect, center_text_horizontally].hash
     end
 
     # Builds the object from hash
