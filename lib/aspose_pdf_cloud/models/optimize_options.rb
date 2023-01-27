@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-Copyright (c) 2022 Aspose.PDF Cloud
+Copyright (c) 2023 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -25,6 +25,9 @@ require 'time'
 module AsposePdfCloud
   # Represents Pdf optimize options.
   class OptimizeOptions
+    # Specifies document password (if any) encoded with base-64.
+    attr_accessor :password
+
     # If true page contents will be reused when document is optimized for equal pages.
     attr_accessor :allow_reuse_page_content
 
@@ -68,6 +71,7 @@ module AsposePdfCloud
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'password' => :'Password',
         :'allow_reuse_page_content' => :'AllowReusePageContent',
         :'compress_images' => :'CompressImages',
         :'image_quality' => :'ImageQuality',
@@ -87,6 +91,7 @@ module AsposePdfCloud
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'password' => :'String',
         :'allow_reuse_page_content' => :'BOOLEAN',
         :'compress_images' => :'BOOLEAN',
         :'image_quality' => :'Integer',
@@ -110,6 +115,10 @@ module AsposePdfCloud
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'Password')
+        self.password = attributes[:'Password']
+      end
 
       if attributes.has_key?(:'AllowReusePageContent')
         self.allow_reuse_page_content = attributes[:'AllowReusePageContent']
@@ -183,6 +192,7 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          password == o.password &&
           allow_reuse_page_content == o.allow_reuse_page_content &&
           compress_images == o.compress_images &&
           image_quality == o.image_quality &&
@@ -207,7 +217,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_reuse_page_content, compress_images, image_quality, link_duplcate_streams, remove_unused_objects, remove_unused_streams, unembed_fonts, resize_images, max_resolution, subset_fonts, remove_private_info, image_encoding, image_compression_version].hash
+      [password, allow_reuse_page_content, compress_images, image_quality, link_duplcate_streams, remove_unused_objects, remove_unused_streams, unembed_fonts, resize_images, max_resolution, subset_fonts, remove_private_info, image_encoding, image_compression_version].hash
     end
 
     # Builds the object from hash
