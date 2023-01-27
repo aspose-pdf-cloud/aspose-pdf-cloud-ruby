@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-Copyright (c) 2022 Aspose.PDF Cloud
+Copyright (c) 2023 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -3675,7 +3675,6 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to read common document info.')
   end
 
-
   def test_post_optimize_document
     file_name = '4pages.pdf'
     upload_file(file_name)
@@ -3693,6 +3692,25 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
 
+    response = @pdf_api.post_optimize_document(file_name, optimize_options, opts)
+    assert(response, 'Failed to optimize document.')
+  end
+
+  def test_post_optimize_document_with_password
+    file_name = '4pagesEncrypted.pdf'
+    upload_file(file_name)
+    optimize_options = OptimizeOptions.new
+    optimize_options.password = Base64.encode64('user $^Password!&')
+    optimize_options.allow_reuse_page_content = false
+    optimize_options.compress_images = true
+    optimize_options.image_quality = 100
+    optimize_options.link_duplcate_streams = true
+    optimize_options.remove_unused_objects = true
+    optimize_options.remove_unused_streams = true
+    optimize_options.unembed_fonts = true
+    opts = {
+        :folder => @temp_folder
+    }
     response = @pdf_api.post_optimize_document(file_name, optimize_options, opts)
     assert(response, 'Failed to optimize document.')
   end
