@@ -29,7 +29,6 @@ class PdfTests < Minitest::Test
   include MiniTest::Assertions
   include AsposePdfCloud
 
-
   def setup
     servercreds_json = File.read('../../../Settings/servercreds.json')
     creds = JSON.parse(servercreds_json)
@@ -41,16 +40,13 @@ class PdfTests < Minitest::Test
     config.scheme = 'https'
   end
 
-
   def teardown
   end
-
 
   def upload_file(file_name)
     response = @pdf_api.upload_file(@temp_folder + '/' + file_name, ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) } )
     assert(response, "Failed to upload #{file_name} file.")
   end
-
 
   # Annotations Tests
 
@@ -3821,6 +3817,36 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to update document display properties.')
   end
 
+  def test_post_organize_document
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    opts = {
+        :folder => @temp_folder
+    }
+    response = @pdf_api.post_organize_document(file_name, '1,4-2', @temp_folder + '/' + file_name, opts)
+    assert(response, 'Failed to organize document.')
+  end
+
+  def test_post_organize_documents
+    file_name1 = '4pages.pdf'
+    upload_file(file_name1)
+    file_name2 = 'marketing.pdf'
+    upload_file(file_name2)
+    data1 = OrganizeDocumentData.new
+    data1.path = @temp_folder + '/' + file_name1
+    data1.pages = '4-2'
+    data2 = OrganizeDocumentData.new
+    data2.path = @temp_folder + '/' + file_name2
+    data2.pages = '2'
+    data3 = OrganizeDocumentData.new
+    data3.path = @temp_folder + '/' + file_name1
+    data3.pages = '3,1'
+    request = OrganizeDocumentRequest.new
+    request.list = [data1, data2, data3]
+    response = @pdf_api.post_organize_documents(request, @temp_folder + '/OrganizeMany.pdf')
+    assert(response, 'Failed to organize documents.')
+  end
+
   # Fields Tests
 
   def test_get_field
@@ -3836,7 +3862,6 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to get document field by name.')
   end
 
-
   def test_get_fields
     file_name = 'PdfWithAcroForm.pdf'
     upload_file(file_name)
@@ -3848,7 +3873,6 @@ class PdfTests < Minitest::Test
     response = @pdf_api.get_fields(file_name, opts)
     assert(response, 'Failed to get document fields.')
   end
-
 
   def test_post_create_field
     file_name = 'Hello_world.pdf'

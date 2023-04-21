@@ -23,26 +23,23 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-
-  class PageRange
-    attr_accessor :from
-
-    attr_accessor :to
+  # Documents data for organizing.
+  class OrganizeDocumentRequest
+    # List of document data for organizing.
+    attr_accessor :list
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'from' => :'From',
-        :'to' => :'To'
+        :'list' => :'List'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'from' => :'Integer',
-        :'to' => :'Integer'
+        :'list' => :'Array<OrganizeDocumentData>'
       }
     end
 
@@ -54,12 +51,10 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'From')
-        self.from = attributes[:'From']
-      end
-
-      if attributes.has_key?(:'To')
-        self.to = attributes[:'To']
+      if attributes.has_key?(:'List')
+        if (value = attributes[:'List']).is_a?(Array)
+          self.list = value
+        end
       end
 
     end
@@ -68,12 +63,17 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @list.nil?
+        invalid_properties.push("invalid value for 'list', list cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @list.nil?
       return true
     end
 
@@ -82,8 +82,7 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          from == o.from &&
-          to == o.to
+          list == o.list
     end
 
     # @see the `==` method
@@ -95,7 +94,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [from, to].hash
+      [list].hash
     end
 
     # Builds the object from hash

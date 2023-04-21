@@ -23,26 +23,28 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
+  # Data for document organizing.
+  class OrganizeDocumentData
+    # Full filename of the document for organizing.
+    attr_accessor :path
 
-  class PageRange
-    attr_accessor :from
-
-    attr_accessor :to
+    # 1-based page numbers of the document that make up the resulting document.
+    attr_accessor :pages
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'from' => :'From',
-        :'to' => :'To'
+        :'path' => :'Path',
+        :'pages' => :'Pages'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'from' => :'Integer',
-        :'to' => :'Integer'
+        :'path' => :'String',
+        :'pages' => :'String'
       }
     end
 
@@ -54,12 +56,12 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'From')
-        self.from = attributes[:'From']
+      if attributes.has_key?(:'Path')
+        self.path = attributes[:'Path']
       end
 
-      if attributes.has_key?(:'To')
-        self.to = attributes[:'To']
+      if attributes.has_key?(:'Pages')
+        self.pages = attributes[:'Pages']
       end
 
     end
@@ -68,13 +70,61 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @path.nil?
+        invalid_properties.push("invalid value for 'path', path cannot be nil.")
+      end
+
+      if @path.to_s.length < 1
+        invalid_properties.push("invalid value for 'path', the character length must be great than or equal to 1.")
+      end
+
+      if @pages.nil?
+        invalid_properties.push("invalid value for 'pages', pages cannot be nil.")
+      end
+
+      if @pages.to_s.length < 1
+        invalid_properties.push("invalid value for 'pages', the character length must be great than or equal to 1.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @path.nil?
+      return false if @path.to_s.length < 1
+      return false if @pages.nil?
+      return false if @pages.to_s.length < 1
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] path Value to be assigned
+    def path=(path)
+      if path.nil?
+        fail ArgumentError, "path cannot be nil"
+      end
+
+      if path.to_s.length < 1
+        fail ArgumentError, "invalid value for 'path', the character length must be great than or equal to 1."
+      end
+
+      @path = path
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] pages Value to be assigned
+    def pages=(pages)
+      if pages.nil?
+        fail ArgumentError, "pages cannot be nil"
+      end
+
+      if pages.to_s.length < 1
+        fail ArgumentError, "invalid value for 'pages', the character length must be great than or equal to 1."
+      end
+
+      @pages = pages
     end
 
     # Checks equality by comparing each attribute.
@@ -82,8 +132,8 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          from == o.from &&
-          to == o.to
+          path == o.path &&
+          pages == o.pages
     end
 
     # @see the `==` method
@@ -95,7 +145,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [from, to].hash
+      [path, pages].hash
     end
 
     # Builds the object from hash
