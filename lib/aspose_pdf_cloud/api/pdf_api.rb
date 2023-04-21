@@ -16481,6 +16481,179 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Merge selected pages of a document.
+    # 
+    # @param name The original document name.
+    # @param pages 1-based page numbers of the source document that make up the resulting document.
+    # @param out_path Full filename of the resulting document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The documents storage.
+    # @option opts [String] :folder The source document folder.
+    # @return [AsposeResponse]
+    def post_organize_document(name, pages, out_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_organize_document_with_http_info(name, pages, out_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_organize_document_with_http_info(name, pages, out_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Merge selected pages of a document.
+    # 
+    # @param name The original document name.
+    # @param pages 1-based page numbers of the source document that make up the resulting document.
+    # @param out_path Full filename of the resulting document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The documents storage.
+    # @option opts [String] :folder The source document folder.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_organize_document_with_http_info(name, pages, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_organize_document ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_organize_document"
+      end
+      # verify the required parameter 'pages' is set
+      if @api_client.config.client_side_validation && pages.nil?
+        fail ArgumentError, "Missing the required parameter 'pages' when calling PdfApi.post_organize_document"
+      end
+      if @api_client.config.client_side_validation && pages.to_s.length < 1
+        fail ArgumentError, 'invalid value for "pages" when calling PdfApi.post_organize_document, the character length must be great than or equal to 1.'
+      end
+
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.post_organize_document"
+      end
+      if @api_client.config.client_side_validation && out_path.to_s.length < 1
+        fail ArgumentError, 'invalid value for "out_path" when calling PdfApi.post_organize_document, the character length must be great than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = "/pdf/{name}/organize".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'pages'] = pages
+      query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_organize_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Merge selected pages of different documents.
+    # 
+    # @param organize_documents Array of OrganizeDocumentData to make up the resulting document.
+    # @param out_path Full filename of the resulting document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The documents storage.
+    # @return [AsposeResponse]
+    def post_organize_documents(organize_documents, out_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_organize_documents_with_http_info(organize_documents, out_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_organize_documents_with_http_info(organize_documents, out_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Merge selected pages of different documents.
+    # 
+    # @param organize_documents Array of OrganizeDocumentData to make up the resulting document.
+    # @param out_path Full filename of the resulting document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The documents storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_organize_documents_with_http_info(organize_documents, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_organize_documents ..."
+      end
+      # verify the required parameter 'organize_documents' is set
+      if @api_client.config.client_side_validation && organize_documents.nil?
+        fail ArgumentError, "Missing the required parameter 'organize_documents' when calling PdfApi.post_organize_documents"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.post_organize_documents"
+      end
+      if @api_client.config.client_side_validation && out_path.to_s.length < 1
+        fail ArgumentError, 'invalid value for "out_path" when calling PdfApi.post_organize_documents, the character length must be great than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = "/pdf/organize"
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(organize_documents)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_organize_documents\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document page caret annotations.
     # 
     # @param name The document name.
