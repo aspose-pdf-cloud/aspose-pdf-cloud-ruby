@@ -11332,6 +11332,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password Base64 encoded password.
     # @return [File]
     def get_pdf_in_storage_to_pptx(name, opts = {})
       @api_client.request_token_if_needed
@@ -11354,6 +11355,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_pptx_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -11372,6 +11374,7 @@ module AsposePdfCloud
       query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -24372,6 +24375,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password Base64 encoded password.
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_pptx(out_path, opts = {})
@@ -24394,6 +24398,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :separate_images Separate images.
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password Base64 encoded password.
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_pptx_with_http_info(out_path, opts = {})
@@ -24413,6 +24418,7 @@ module AsposePdfCloud
       query_params[:'separateImages'] = opts[:'separate_images'] if !opts[:'separate_images'].nil?
       query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -25612,6 +25618,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_pptx(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -25635,6 +25642,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :slides_as_images Slides as images.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_pptx_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -25658,6 +25666,7 @@ module AsposePdfCloud
       query_params[:'slidesAsImages'] = opts[:'slides_as_images'] if !opts[:'slides_as_images'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}

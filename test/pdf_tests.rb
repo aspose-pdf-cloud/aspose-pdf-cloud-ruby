@@ -2824,7 +2824,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_doc(file_name, opts)
-    assert(response, 'Filed to convert PDF to DOC.')
+    assert(response, 'Failed to convert PDF to DOC.')
   end
 
   def test_put_pdf_in_storage_to_doc
@@ -2836,7 +2836,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_doc(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to DOC.')
+    assert(response, 'Failed to convert PDF to DOC.')
   end
 
   def test_put_pdf_in_request_to_doc
@@ -2849,7 +2849,7 @@ class PdfTests < Minitest::Test
         # :file => @test_data_folder + file_name
     }
     response = @pdf_api.put_pdf_in_request_to_tiff(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to DOC.')
+    assert(response, 'Failed to convert PDF to DOC.')
   end
 
   def test_get_pdf_in_storage_to_pdf_a
@@ -2861,7 +2861,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_pdf_a(file_name, PdfAType::PDFA1_A, opts)
-    assert(response, 'Filed to convert PDF to PDFA.')
+    assert(response, 'Failed to convert PDF to PDFA.')
   end
 
   def test_put_pdf_in_storage_to_pdf_a
@@ -2873,7 +2873,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_pdf_a(file_name, @temp_folder + '/' + res_file, PdfAType::PDFA1_A, opts)
-    assert(response, 'Filed to convert PDF to PDFA.')
+    assert(response, 'Failed to convert PDF to PDFA.')
   end
 
   def test_put_pdf_in_request_to_pdf_a
@@ -2885,7 +2885,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_pdf_a(@temp_folder + '/' + res_file, PdfAType::PDFA1_A, opts)
-    assert(response, 'Filed to convert PDF to PDFA.')
+    assert(response, 'Failed to convert PDF to PDFA.')
   end
 
   def test_get_pdf_in_storage_to_tiff
@@ -2897,7 +2897,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_tiff(file_name, opts)
-    assert(response, 'Filed to convert PDF to Tiff.')
+    assert(response, 'Failed to convert PDF to Tiff.')
   end
 
   def test_put_pdf_in_storage_to_tiff
@@ -2909,7 +2909,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_tiff(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to Tiff.')
+    assert(response, 'Failed to convert PDF to Tiff.')
   end
 
   def test_put_pdf_in_request_to_tiff
@@ -2921,7 +2921,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_tiff(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to Tiff.')
+    assert(response, 'Failed to convert PDF to Tiff.')
   end
 
   def test_get_pdf_in_storage_to_svg
@@ -2933,7 +2933,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_svg(file_name, opts)
-    assert(response, 'Filed to convert PDF to SVG.')
+    assert(response, 'Failed to convert PDF to SVG.')
   end
 
   def test_put_pdf_in_storage_to_svg
@@ -2945,7 +2945,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_svg(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to SVG.')
+    assert(response, 'Failed to convert PDF to SVG.')
   end
 
   def test_put_pdf_in_request_to_svg
@@ -2957,7 +2957,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_svg(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to SVG.')
+    assert(response, 'Failed to convert PDF to SVG.')
   end
 
   def test_get_pdf_in_storage_to_xps
@@ -2969,7 +2969,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_xps(file_name, opts)
-    assert(response, 'Filed to convert PDF to XPS.')
+    assert(response, 'Failed to convert PDF to XPS.')
   end
 
   def test_put_pdf_in_storage_to_xps
@@ -2981,7 +2981,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_xps(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to XPS.')
+    assert(response, 'Failed to convert PDF to XPS.')
   end
 
   def test_put_pdf_in_request_to_xps
@@ -2993,7 +2993,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xps(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to XPS.')
+    assert(response, 'Failed to convert PDF to XPS.')
   end
 
   def test_get_pdf_in_storage_to_xls
@@ -3005,7 +3005,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_xls(file_name, opts)
-    assert(response, 'Filed to convert PDF to XLS.')
+    assert(response, 'Failed to convert PDF to XLS.')
   end
 
   def test_put_pdf_in_storage_to_xls
@@ -3017,7 +3017,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_xls(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to XLS.')
+    assert(response, 'Failed to convert PDF to XLS.')
   end
 
   def test_put_pdf_in_request_to_xls
@@ -3029,7 +3029,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xls(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to XLS.')
+    assert(response, 'Failed to convert PDF to XLS.')
   end
 
   def test_get_pdf_in_storage_to_html
@@ -3041,7 +3041,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_html(file_name, opts)
-    assert(response, 'Filed to convert PDF to HTML.')
+    assert(response, 'Failed to convert PDF to HTML.')
   end
 
   def test_put_pdf_in_storage_to_html
@@ -3054,7 +3054,7 @@ class PdfTests < Minitest::Test
         :output_format => OutputFormat::FOLDER
     }
     response = @pdf_api.put_pdf_in_storage_to_html(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to HTML.')
+    assert(response, 'Failed to convert PDF to HTML.')
   end
 
   def test_put_pdf_in_request_to_html
@@ -3066,7 +3066,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_html(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to HTML.')
+    assert(response, 'Failed to convert PDF to HTML.')
   end
 
   def test_get_pdf_in_storage_to_epub
@@ -3078,7 +3078,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_epub(file_name, opts)
-    assert(response, 'Filed to convert PDF to EPUB.')
+    assert(response, 'Failed to convert PDF to EPUB.')
   end
 
   def test_put_pdf_in_storage_to_epub
@@ -3090,7 +3090,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_epub(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to EPUB.')
+    assert(response, 'Failed to convert PDF to EPUB.')
   end
 
   def test_put_pdf_in_request_to_epub
@@ -3102,44 +3102,72 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_epub(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to EPUB.')
+    assert(response, 'Failed to convert PDF to EPUB.')
   end
 
   def test_get_pdf_in_storage_to_pptx
     file_name = '4pages.pdf'
     upload_file(file_name)
-
     opts = {
         :folder => @temp_folder
     }
-
     response = @pdf_api.get_pdf_in_storage_to_pptx(file_name, opts)
-    assert(response, 'Filed to convert PDF to PPTX.')
+    assert(response, 'Failed to convert PDF to PPTX.')
+  end
+
+  def test_get_pdf_in_storage_to_pptx_with_password
+    file_name = '4pagesEncrypted.pdf'
+    upload_file(file_name)
+    opts = {
+        :folder => @temp_folder,
+        :password => Base64.encode64('user $^Password!&')
+    }
+    response = @pdf_api.get_pdf_in_storage_to_pptx(file_name, opts)
+    assert(response, 'Failed to convert PDF to PPTX.')
   end
 
   def test_put_pdf_in_storage_to_pptx
     file_name = '4pages.pdf'
     upload_file(file_name)
     res_file = 'result.pptx'
-
     opts = {
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_pptx(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to PPTX.')
+    assert(response, 'Failed to convert PDF to PPTX.')
   end
 
+  def test_put_pdf_in_storage_to_pptx_with_password
+    file_name = '4pagesEncrypted.pdf'
+    upload_file(file_name)
+    res_file = 'result.pptx'
+    opts = {
+        :folder => @temp_folder,
+        :password => Base64.encode64('user $^Password!&')
+    }
+    response = @pdf_api.put_pdf_in_storage_to_pptx(file_name, @temp_folder + '/' + res_file, opts)
+    assert(response, 'Failed to convert PDF to PPTX.')
+  end
 
   def test_put_pdf_in_request_to_pptx
     file_name = '4pages.pdf'
-
     res_file = 'result.pptx'
-
     opts = {
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_pptx(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to PPTX.')
+    assert(response, 'Failed to convert PDF to PPTX.')
+  end
+
+  def test_put_pdf_in_request_to_pptx_with_password
+    file_name = '4pagesEncrypted.pdf'
+    res_file = 'result.pptx'
+    opts = {
+        :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) },
+        :password => Base64.encode64('user $^Password!&')
+    }
+    response = @pdf_api.put_pdf_in_request_to_pptx(@temp_folder + '/' + res_file, opts)
+    assert(response, 'Failed to convert PDF to PPTX.')
   end
 
   def test_get_pdf_in_storage_to_te_x
@@ -3151,7 +3179,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_te_x(file_name, opts)
-    assert(response, 'Filed to convert PDF to Tex.')
+    assert(response, 'Failed to convert PDF to Tex.')
   end
 
   def test_put_pdf_in_storage_to_te_x
@@ -3163,7 +3191,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_te_x(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to TeX.')
+    assert(response, 'Failed to convert PDF to TeX.')
   end
 
 
@@ -3176,7 +3204,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_te_x(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to TeX.')
+    assert(response, 'Failed to convert PDF to TeX.')
   end
 
   def test_get_pdf_in_storage_to_mobi_xml
@@ -3188,7 +3216,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_mobi_xml(file_name, opts)
-    assert(response, 'Filed to convert PDF to Moby Xml.')
+    assert(response, 'Failed to convert PDF to Moby Xml.')
   end
 
   def test_put_pdf_in_storage_to_mobi_xml
@@ -3200,7 +3228,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_mobi_xml(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to Moby Xml.')
+    assert(response, 'Failed to convert PDF to Moby Xml.')
   end
 
 
@@ -3213,7 +3241,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_mobi_xml(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to Moby Xml.')
+    assert(response, 'Failed to convert PDF to Moby Xml.')
   end
 
   def test_get_xfa_pdf_in_storage_to_acro_form
@@ -3225,7 +3253,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_xfa_pdf_in_storage_to_acro_form(file_name, opts)
-    assert(response, 'Filed to convert Xfa PDF to Acro form.')
+    assert(response, 'Failed to convert Xfa PDF to Acro form.')
   end
 
   def test_put_xfa_pdf_in_storage_to_acro_form
@@ -3237,7 +3265,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_xfa_pdf_in_storage_to_acro_form(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert Xfa PDF to Acro form.')
+    assert(response, 'Failed to convert Xfa PDF to Acro form.')
   end
 
 
@@ -3250,7 +3278,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_xfa_pdf_in_request_to_acro_form(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert Xfa PDF to Acro form.')
+    assert(response, 'Failed to convert Xfa PDF to Acro form.')
   end
 
 
@@ -3263,7 +3291,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_xml(file_name, opts)
-    assert(response, 'Filed to convert PDF to Xml.')
+    assert(response, 'Failed to convert PDF to Xml.')
   end
 
   def test_put_pdf_in_storage_to_xml
@@ -3275,7 +3303,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_xml(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to Xml.')
+    assert(response, 'Failed to convert PDF to Xml.')
   end
 
 
@@ -3288,7 +3316,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xml(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to Xml.')
+    assert(response, 'Failed to convert PDF to Xml.')
   end
 
   def test_get_pdf_in_storage_to_xlsx
@@ -3300,7 +3328,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_pdf_in_storage_to_xlsx(file_name, opts)
-    assert(response, 'Filed to convert PDF to XLS.')
+    assert(response, 'Failed to convert PDF to XLS.')
   end
 
   def test_put_pdf_in_storage_to_xlsx
@@ -3312,7 +3340,7 @@ class PdfTests < Minitest::Test
         :folder => @temp_folder
     }
     response = @pdf_api.put_pdf_in_storage_to_xlsx(file_name, @temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to XLS.')
+    assert(response, 'Failed to convert PDF to XLS.')
   end
 
   def test_put_pdf_in_request_to_xlsx
@@ -3324,7 +3352,7 @@ class PdfTests < Minitest::Test
         :file => ::File.open(@test_data_folder + file_name, 'r') { |io| io.read(io.size) }
     }
     response = @pdf_api.put_pdf_in_request_to_xlsx(@temp_folder + '/' + res_file, opts)
-    assert(response, 'Filed to convert PDF to XLS.')
+    assert(response, 'Failed to convert PDF to XLS.')
   end
 
 # Convert to PDF Tests
@@ -5276,7 +5304,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_searchable_document(file_name, opts)
-    assert(response, 'Filed to make document searchable')
+    assert(response, 'Failed to make document searchable')
   end
 
 
@@ -5289,7 +5317,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_searchable_document(file_name, opts)
-    assert(response, 'Filed to make document searchable.')
+    assert(response, 'Failed to make document searchable.')
   end
 
 
@@ -5860,7 +5888,7 @@ class PdfTests < Minitest::Test
     }
 
     response  = @pdf_api.post_document_text_replace(file_name, text_replace_list, opts)
-    assert(response, 'Filed to replace document text by rect.')
+    assert(response, 'Failed to replace document text by rect.')
   end
 
 
@@ -5891,7 +5919,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.post_page_text_replace(file_name, page_number, text_replace_list, opts)
-    assert(response, 'Filed to replace page text by rect.')
+    assert(response, 'Failed to replace page text by rect.')
   end
 
 
@@ -5910,7 +5938,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_text(file_name, llx, lly, urx, ury, opts)
-    assert(response, 'Filed to get document text.')
+    assert(response, 'Failed to get document text.')
   end
 
   def test_get_page_text_by_two_text_on_page
@@ -5929,7 +5957,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_page_text(file_name, page_number, llx, lly, urx, ury, opts)
-    assert(response, 'Filed to get document text.')
+    assert(response, 'Failed to get document text.')
   end
 
   def test_put_add_text
@@ -6113,7 +6141,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_document_bookmarks(file_name, opts)
-    assert(response, 'Filed to get all document bookmarks.')
+    assert(response, 'Failed to get all document bookmarks.')
   end
 
   def test_get_bookmarks
@@ -6127,7 +6155,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_bookmarks(file_name, path, opts)
-    assert(response, 'Filed to get all node bookmarks.')
+    assert(response, 'Failed to get all node bookmarks.')
   end
 
   def test_get_bookmark
@@ -6141,7 +6169,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_bookmark(file_name, path, opts)
-    assert(response, 'Filed to get bookmark by path.')
+    assert(response, 'Failed to get bookmark by path.')
   end
 
   def test_delete_document_bookmarks
@@ -6153,7 +6181,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.delete_document_bookmarks(file_name, opts)
-    assert(response, 'Filed to delete all document bookmarks.')
+    assert(response, 'Failed to delete all document bookmarks.')
   end
 
   def test_delete_bookmark
@@ -6167,7 +6195,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.delete_bookmark(file_name, path, opts)
-    assert(response, 'Filed to delete bookmark by path.')
+    assert(response, 'Failed to delete bookmark by path.')
   end
 
   def test_post_bookmarks
@@ -6201,7 +6229,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.post_bookmark(file_name, path, [bookmark], opts)
-    assert(response, 'Filed to post bookmark.')
+    assert(response, 'Failed to post bookmark.')
   end
 
   def test_put_bookmark
@@ -6235,7 +6263,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_bookmark(file_name, path, bookmark, opts)
-    assert(response, 'Filed to update bookmark.')
+    assert(response, 'Failed to update bookmark.')
   end
 
   # Import Export Tests
@@ -6249,7 +6277,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_export_fields_from_pdf_to_xml_in_storage(file_name, opts)
-    assert(response, 'Filed to export fields to xml.')
+    assert(response, 'Failed to export fields to xml.')
   end
 
   def test_get_export_fields_from_pdf_to_fdf_in_storage
@@ -6261,7 +6289,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_export_fields_from_pdf_to_fdf_in_storage(file_name, opts)
-    assert(response, 'Filed to export fields to fdf.')
+    assert(response, 'Failed to export fields to fdf.')
   end
 
   def test_get_export_fields_from_pdf_to_xfdf_in_storage
@@ -6273,7 +6301,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_export_fields_from_pdf_to_xfdf_in_storage(file_name, opts)
-    assert(response, 'Filed to export fields to xfdf.')
+    assert(response, 'Failed to export fields to xfdf.')
   end
 
   def test_put_export_fields_from_pdf_to_xml_in_storage
@@ -6287,7 +6315,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_export_fields_from_pdf_to_xml_in_storage(file_name, out_path, opts)
-    assert(response, 'Filed to export fields to xml.')
+    assert(response, 'Failed to export fields to xml.')
   end
 
   def test_put_export_fields_from_pdf_to_fdf_in_storage
@@ -6301,7 +6329,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_export_fields_from_pdf_to_fdf_in_storage(file_name, out_path, opts)
-    assert(response, 'Filed to export fields to fdf.')
+    assert(response, 'Failed to export fields to fdf.')
   end
 
   def test_put_export_fields_from_pdf_to_xfdf_in_storage
@@ -6315,7 +6343,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_export_fields_from_pdf_to_xfdf_in_storage(file_name, out_path, opts)
-    assert(response, 'Filed to export fields to xfdf.')
+    assert(response, 'Failed to export fields to xfdf.')
   end
 
 
@@ -6333,7 +6361,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_import_fields_from_fdf_in_storage(file_name, data_file_path, opts)
-    assert(response, 'Filed to import fields from fdf.')
+    assert(response, 'Failed to import fields from fdf.')
   end
 
   def test_get_import_fields_from_xfdf_in_storage
@@ -6350,7 +6378,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_import_fields_from_xfdf_in_storage(file_name, data_file_path, opts)
-    assert(response, 'Filed to import fields from xfdf.')
+    assert(response, 'Failed to import fields from xfdf.')
   end
 
   def test_get_import_fields_from_xml_in_storage
@@ -6367,7 +6395,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.get_import_fields_from_xml_in_storage(file_name, data_file_path, opts)
-    assert(response, 'Filed to import fields from xml.')
+    assert(response, 'Failed to import fields from xml.')
   end
 
   def test_put_import_fields_from_fdf_in_storage
@@ -6384,7 +6412,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_import_fields_from_fdf_in_storage(file_name, data_file_path, opts)
-    assert(response, 'Filed to import fields from fdf.')
+    assert(response, 'Failed to import fields from fdf.')
   end
 
   def test_put_import_fields_from_xfdf_in_storage
@@ -6401,7 +6429,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_import_fields_from_xfdf_in_storage(file_name, data_file_path, opts)
-    assert(response, 'Filed to import fields from xfdf.')
+    assert(response, 'Failed to import fields from xfdf.')
   end
 
   def test_put_import_fields_from_xml_in_storage
@@ -6418,7 +6446,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.put_import_fields_from_xml_in_storage(file_name, data_file_path, opts)
-    assert(response, 'Filed to import fields from xml.')
+    assert(response, 'Failed to import fields from xml.')
   end
 
   def test_post_import_fields_from_fdf
@@ -6433,7 +6461,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.post_import_fields_from_fdf(file_name, opts)
-    assert(response, 'Filed to import fields from fdf.')
+    assert(response, 'Failed to import fields from fdf.')
   end
 
   def test_post_import_fields_from_xfdf
@@ -6448,7 +6476,7 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.post_import_fields_from_xfdf(file_name, opts)
-    assert(response, 'Filed to import fields from xfdf.')
+    assert(response, 'Failed to import fields from xfdf.')
   end
 
   def test_post_import_fields_from_xml
@@ -6463,6 +6491,6 @@ class PdfTests < Minitest::Test
     }
 
     response = @pdf_api.post_import_fields_from_xml(file_name, opts)
-    assert(response, 'Filed to import fields from xml.')
+    assert(response, 'Failed to import fields from xml.')
   end
 end
