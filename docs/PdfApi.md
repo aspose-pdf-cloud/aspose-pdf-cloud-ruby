@@ -4040,6 +4040,7 @@ Name | Type | Description  | Notes
  **slides_as_images** | **BOOLEAN**| Slides as images. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -8163,6 +8164,7 @@ Name | Type | Description  | Notes
  **separate_images** | **BOOLEAN**| Separate images. | [optional] 
  **slides_as_images** | **BOOLEAN**| Slides as images. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8548,6 +8550,7 @@ Name | Type | Description  | Notes
  **slides_as_images** | **BOOLEAN**| Slides as images. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
