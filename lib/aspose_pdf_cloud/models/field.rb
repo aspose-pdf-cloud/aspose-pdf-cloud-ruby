@@ -31,6 +31,9 @@ module AsposePdfCloud
     # Field name.
     attr_accessor :name
 
+    # Mapping name.
+    attr_accessor :mapping_name
+
     # Selected items.
     attr_accessor :selected_items
 
@@ -49,6 +52,7 @@ module AsposePdfCloud
       {
         :'links' => :'Links',
         :'name' => :'Name',
+        :'mapping_name' => :'MappingName',
         :'selected_items' => :'SelectedItems',
         :'type' => :'Type',
         :'rect' => :'Rect',
@@ -61,6 +65,7 @@ module AsposePdfCloud
       {
         :'links' => :'Array<Link>',
         :'name' => :'String',
+        :'mapping_name' => :'String',
         :'selected_items' => :'Array<Integer>',
         :'type' => :'FieldType',
         :'rect' => :'Rectangle',
@@ -84,6 +89,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'Name')
         self.name = attributes[:'Name']
+      end
+
+      if attributes.has_key?(:'MappingName')
+        self.mapping_name = attributes[:'MappingName']
       end
 
       if attributes.has_key?(:'SelectedItems')
@@ -133,6 +142,7 @@ module AsposePdfCloud
       self.class == o.class &&
           links == o.links &&
           name == o.name &&
+          mapping_name == o.mapping_name &&
           selected_items == o.selected_items &&
           type == o.type &&
           rect == o.rect &&
@@ -148,7 +158,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, name, selected_items, type, rect, values].hash
+      [links, name, mapping_name, selected_items, type, rect, values].hash
     end
 
     # Builds the object from hash
