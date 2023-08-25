@@ -11688,6 +11688,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_pdf_in_storage_to_xls(name, opts = {})
       @api_client.request_token_if_needed
@@ -11712,6 +11713,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_xls_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -11732,6 +11734,7 @@ module AsposePdfCloud
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -11772,6 +11775,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_pdf_in_storage_to_xlsx(name, opts = {})
       @api_client.request_token_if_needed
@@ -11796,6 +11800,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_xlsx_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -11816,6 +11821,7 @@ module AsposePdfCloud
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -19235,6 +19241,7 @@ module AsposePdfCloud
     # @option opts [Integer] :to End page if defined.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [SplitResultResponse]
     def post_split_document(name, opts = {})
       @api_client.request_token_if_needed
@@ -19258,6 +19265,7 @@ module AsposePdfCloud
     # @option opts [Integer] :to End page if defined.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(SplitResultResponse, Fixnum, Hash)>] SplitResultResponse data, response status code and response headers
     def post_split_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -19277,6 +19285,7 @@ module AsposePdfCloud
       query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -19314,6 +19323,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [SplitResultResponse]
     def post_split_range_pdf_document(name, options, opts = {})
       @api_client.request_token_if_needed
@@ -19335,6 +19345,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(SplitResultResponse, Fixnum, Hash)>] SplitResultResponse data, response status code and response headers
     def post_split_range_pdf_document_with_http_info(name, options, opts = {})
       if @api_client.config.debugging
@@ -19355,6 +19366,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -24736,6 +24748,7 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_xls(out_path, opts = {})
@@ -24760,6 +24773,7 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_xls_with_http_info(out_path, opts = {})
@@ -24781,6 +24795,7 @@ module AsposePdfCloud
       query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -24822,6 +24837,7 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_xlsx(out_path, opts = {})
@@ -24846,6 +24862,7 @@ module AsposePdfCloud
     # @option opts [Float] :scale_factor Scale factor (Obsolete)
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_xlsx_with_http_info(out_path, opts = {})
@@ -24867,6 +24884,7 @@ module AsposePdfCloud
       query_params[:'scaleFactor'] = opts[:'scale_factor'] if !opts[:'scale_factor'].nil?
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -25999,6 +26017,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_xls(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -26024,6 +26043,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_xls_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -26049,6 +26069,7 @@ module AsposePdfCloud
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -26090,6 +26111,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_xlsx(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -26115,6 +26137,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_xlsx_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -26140,6 +26163,7 @@ module AsposePdfCloud
       query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -26983,6 +27007,92 @@ module AsposePdfCloud
         :return_type => 'ImageResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_replace_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace document multiple image.
+    # 
+    # @param name The document name.
+    # @param image_ids The image IDs.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :image_file_path Path to image file if specified. Request content is used otherwise.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
+    # @return [ImagesResponse]
+    def put_replace_multiple_image(name, image_ids, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_replace_multiple_image_with_http_info(name, image_ids, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_replace_multiple_image_with_http_info(name, image_ids, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Replace document multiple image.
+    # 
+    # @param name The document name.
+    # @param image_ids The image IDs.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :image_file_path Path to image file if specified. Request content is used otherwise.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [File] :image Image file.
+    # @return [Array<(ImagesResponse, Fixnum, Hash)>] ImagesResponse data, response status code and response headers
+    def put_replace_multiple_image_with_http_info(name, image_ids, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_replace_multiple_image ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_replace_multiple_image"
+      end
+      # verify the required parameter 'image_ids' is set
+      if @api_client.config.client_side_validation && image_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'image_ids' when calling PdfApi.put_replace_multiple_image"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/images/replace".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'imageIds'] = @api_client.build_collection_param(image_ids, :csv)
+      query_params[:'imageFilePath'] = opts[:'image_file_path'] if !opts[:'image_file_path'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'image'] if !opts[:'image'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ImagesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_replace_multiple_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

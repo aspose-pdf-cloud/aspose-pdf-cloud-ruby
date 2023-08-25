@@ -29,12 +29,16 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 23.7
-- Form Field MappingName property support.
+## Enhancements in Version 23.8
+- Support to split password protected PDF documents.
+- Support to convert password Protected PDF to Xlsx.
+- Support to convert password Protected PDF to Excel.
+- Replace a single image using multiple Image Ids.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
-## Bugs fixed in Version 23.7
-- Adding Radio Button throws Internal Error.
+## Bugs fixed in Version 23.8
+- The putMergeDocuments API method in Node.js Throws Gateway Error.
+- Text Replacement Changes the Background.
 
 ## Installation
 
@@ -49,15 +53,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-23.7.0.gem
+gem install ./aspose_pdf_cloud-23.8.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-23.7.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-23.8.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 23.7.0'
+    gem 'aspose_pdf_cloud', '~> 23.8.0'
 
 ### Install from Git
 

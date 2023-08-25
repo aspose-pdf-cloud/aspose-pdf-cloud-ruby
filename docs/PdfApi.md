@@ -336,6 +336,7 @@ Method | HTTP request | Description
 [**put_radio_button_field**](PdfApi.md#put_radio_button_field) | **PUT** /pdf/\{name}/fields/radiobutton/\{fieldName} | Replace document RadioButton field
 [**put_redaction_annotation**](PdfApi.md#put_redaction_annotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 [**put_replace_image**](PdfApi.md#put_replace_image) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
+[**put_replace_multiple_image**](PdfApi.md#put_replace_multiple_image) | **PUT** /pdf/\{name}/images/replace | Replace document multiple image.
 [**put_screen_annotation**](PdfApi.md#put_screen_annotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
 [**put_screen_annotation_data_extract**](PdfApi.md#put_screen_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId}/data/extract | Extract document screen annotation content to storage
 [**put_searchable_document**](PdfApi.md#put_searchable_document) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
@@ -4157,6 +4158,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -4185,6 +4187,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -6550,6 +6553,7 @@ Name | Type | Description  | Notes
  **to** | **Integer**| End page if defined. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -6575,6 +6579,7 @@ Name | Type | Description  | Notes
  **options** | [**SplitRangePdfOptions**](SplitRangePdfOptions.md)| The splitting options. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -8280,6 +8285,7 @@ Name | Type | Description  | Notes
  **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8308,6 +8314,7 @@ Name | Type | Description  | Notes
  **scale_factor** | **Float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8670,6 +8677,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -8699,6 +8707,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **BOOLEAN**| Uniform worksheets | [optional] 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -8961,6 +8970,33 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImageResponse**](ImageResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **put_replace_multiple_image**
+> ImagesResponse put_replace_multiple_image(name, image_ids, opts)
+
+Replace document multiple image.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **image_ids** | **Array&lt;String&gt;**| The image IDs. | 
+ **image_file_path** | **String**| Path to image file if specified. Request content is used otherwise. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **image** | **File**| Image file. | [optional] 
+
+### Return type
+
+[**ImagesResponse**](ImagesResponse.md)
 
 ### HTTP request headers
 
