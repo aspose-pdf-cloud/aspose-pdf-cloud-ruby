@@ -4882,22 +4882,32 @@ class PdfTests < Minitest::Test
   def test_put_replace_image
     file_name = 'PdfWithImages2.pdf'
     upload_file(file_name)
-
     image_file_name = 'Koala.jpg'
     upload_file(image_file_name)
-
     opts = {
         :image_file_path => @temp_folder + '/' + image_file_name,
         :folder => @temp_folder
     }
-
     page_number = 1
     responseImages = @pdf_api.get_images(file_name, page_number, opts)
     assert(responseImages, 'Failed to read document images.')
     image_id = responseImages[0].images.list[0].id
-
     response = @pdf_api.put_replace_image(file_name, image_id, opts)
     assert(response, 'Failed to replace document image.')
+  end
+
+  def test_put_replace_multiple_image
+    file_name = 'PdfWithImages.pdf'
+    upload_file(file_name)
+    image_file_name = 'butterfly.jpg'
+    upload_file(image_file_name)
+    image_ids = ['GE5TENJVGQZTWMJYGQWDINRUFQ2DCMRMGY4TC', 'GE5TIMJSGY3TWMJXG4WDIMBZFQ2DCOJMGQ3DK']
+    opts = {
+        :image_file_path => @temp_folder + '/' + image_file_name,
+        :folder => @temp_folder
+    }
+    response = @pdf_api.put_replace_multiple_image(file_name, image_ids, opts)
+    assert(response, 'Failed to replace document images.')
   end
 
   def test_post_insert_image
