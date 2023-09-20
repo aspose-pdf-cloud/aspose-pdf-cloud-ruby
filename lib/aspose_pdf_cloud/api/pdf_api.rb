@@ -11248,6 +11248,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_pdf_in_storage_to_pdf_a(name, type, opts = {})
       @api_client.request_token_if_needed
@@ -11269,6 +11270,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_pdf_a_with_http_info(name, type, opts = {})
       if @api_client.config.debugging
@@ -11294,6 +11296,7 @@ module AsposePdfCloud
       query_params[:'type'] = type
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -24301,6 +24304,7 @@ module AsposePdfCloud
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_pdf_a(out_path, type, opts = {})
@@ -24322,6 +24326,7 @@ module AsposePdfCloud
     # @param type Type of PdfA format.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_pdf_a_with_http_info(out_path, type, opts = {})
@@ -24348,6 +24353,7 @@ module AsposePdfCloud
       query_params[:'outPath'] = out_path
       query_params[:'type'] = type
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -25545,6 +25551,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_pdf_a(name, out_path, type, opts = {})
       @api_client.request_token_if_needed
@@ -25567,6 +25574,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_pdf_a_with_http_info(name, out_path, type, opts = {})
       if @api_client.config.debugging
@@ -25597,6 +25605,7 @@ module AsposePdfCloud
       query_params[:'type'] = type
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
