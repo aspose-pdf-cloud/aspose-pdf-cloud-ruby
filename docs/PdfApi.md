@@ -4015,6 +4015,7 @@ Name | Type | Description  | Notes
  **type** | **String**| Type of PdfA format. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -8143,6 +8144,7 @@ Name | Type | Description  | Notes
  **out_path** | **String**| Full resulting filename (ex. /folder1/folder2/result.pdf) | 
  **type** | **String**| Type of PdfA format. | 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
  **file** | **File**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8530,6 +8532,7 @@ Name | Type | Description  | Notes
  **type** | **String**| Type of PdfA format. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
