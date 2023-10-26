@@ -23,33 +23,38 @@ require 'date'
 require 'time'
 
 module AsposePdfCloud
-  # Provides link to page.
-  class Page
-    # Link to the document.
-    attr_accessor :links
+  # Attachment Info.
+  class AttachmentInfo
+    # Attachment file path.
+    attr_accessor :path
 
-    # Page's id.
-    attr_accessor :id
+    # Attachment file description.
+    attr_accessor :description
 
-    # Page's rectangle
-    attr_accessor :rectangle
+    # Attachment file name.
+    attr_accessor :name
+
+    # Attachment file MIME type.
+    attr_accessor :mime_type
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'links' => :'Links',
-        :'id' => :'Id',
-        :'rectangle' => :'Rectangle'
+        :'path' => :'Path',
+        :'description' => :'Description',
+        :'name' => :'Name',
+        :'mime_type' => :'MimeType'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'links' => :'Array<Link>',
-        :'id' => :'Integer',
-        :'rectangle' => :'Rectangle'
+        :'path' => :'String',
+        :'description' => :'String',
+        :'name' => :'String',
+        :'mime_type' => :'String'
       }
     end
 
@@ -61,18 +66,20 @@ module AsposePdfCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Links')
-        if (value = attributes[:'Links']).is_a?(Array)
-          self.links = value
-        end
+      if attributes.has_key?(:'Path')
+        self.path = attributes[:'Path']
       end
 
-      if attributes.has_key?(:'Id')
-        self.id = attributes[:'Id']
+      if attributes.has_key?(:'Description')
+        self.description = attributes[:'Description']
       end
 
-      if attributes.has_key?(:'Rectangle')
-        self.rectangle = attributes[:'Rectangle']
+      if attributes.has_key?(:'Name')
+        self.name = attributes[:'Name']
+      end
+
+      if attributes.has_key?(:'MimeType')
+        self.mime_type = attributes[:'MimeType']
       end
 
     end
@@ -81,8 +88,12 @@ module AsposePdfCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push("invalid value for 'id', id cannot be nil.")
+      if @path.nil?
+        invalid_properties.push("invalid value for 'path', path cannot be nil.")
+      end
+
+      if @path.to_s.length < 1
+        invalid_properties.push("invalid value for 'path', the character length must be great than or equal to 1.")
       end
 
       return invalid_properties
@@ -91,8 +102,23 @@ module AsposePdfCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
+      return false if @path.nil?
+      return false if @path.to_s.length < 1
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] path Value to be assigned
+    def path=(path)
+      if path.nil?
+        fail ArgumentError, "path cannot be nil"
+      end
+
+      if path.to_s.length < 1
+        fail ArgumentError, "invalid value for 'path', the character length must be great than or equal to 1."
+      end
+
+      @path = path
     end
 
     # Checks equality by comparing each attribute.
@@ -100,9 +126,10 @@ module AsposePdfCloud
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          links == o.links &&
-          id == o.id &&
-          rectangle == o.rectangle
+          path == o.path &&
+          description == o.description &&
+          name == o.name &&
+          mime_type == o.mime_type
     end
 
     # @see the `==` method
@@ -114,7 +141,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [links, id, rectangle].hash
+      [path, description, name, mime_type].hash
     end
 
     # Builds the object from hash

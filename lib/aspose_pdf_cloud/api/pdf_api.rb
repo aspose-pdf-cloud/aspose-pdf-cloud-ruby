@@ -637,6 +637,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def delete_document_stamps(name, opts = {})
       @api_client.request_token_if_needed
@@ -657,6 +658,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_document_stamps_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -673,6 +675,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -1392,6 +1395,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def delete_page_stamps(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -1413,6 +1417,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_page_stamps_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -1433,6 +1438,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -1698,6 +1704,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def delete_stamp(name, stamp_id, opts = {})
       @api_client.request_token_if_needed
@@ -1719,6 +1726,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_stamp_with_http_info(name, stamp_id, opts = {})
       if @api_client.config.debugging
@@ -1739,6 +1747,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -2456,6 +2465,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [DocumentResponse]
     def get_document(name, opts = {})
       @api_client.request_token_if_needed
@@ -2476,6 +2486,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(DocumentResponse, Fixnum, Hash)>] DocumentResponse data, response status code and response headers
     def get_document_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -2492,6 +2503,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -10012,6 +10024,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [StampsInfoResponse]
     def get_page_stamps(name, page_number, opts = {})
       @api_client.request_token_if_needed
@@ -10033,6 +10046,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(StampsInfoResponse, Fixnum, Hash)>] StampsInfoResponse data, response status code and response headers
     def get_page_stamps_with_http_info(name, page_number, opts = {})
       if @api_client.config.debugging
@@ -10053,6 +10067,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -14582,6 +14597,83 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Adds a file attachment to the PDF document.
+    # 
+    # @param name The document name.
+    # @param attachment_info AttachmentInfoAttachmentInfo instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [AttachmentsResponse]
+    def post_add_document_attachment(name, attachment_info, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_add_document_attachment_with_http_info(name, attachment_info, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_add_document_attachment_with_http_info(name, attachment_info, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Adds a file attachment to the PDF document.
+    # 
+    # @param name The document name.
+    # @param attachment_info AttachmentInfoAttachmentInfo instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @return [Array<(AttachmentsResponse, Fixnum, Hash)>] AttachmentsResponse data, response status code and response headers
+    def post_add_document_attachment_with_http_info(name, attachment_info, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_add_document_attachment ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_add_document_attachment"
+      end
+      # verify the required parameter 'attachment_info' is set
+      if @api_client.config.client_side_validation && attachment_info.nil?
+        fail ArgumentError, "Missing the required parameter 'attachment_info' when calling PdfApi.post_add_document_attachment"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/attachments".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(attachment_info)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AttachmentsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_add_document_attachment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Append document to existing one.
     # 
     # @param name The original document name.
@@ -15412,6 +15504,7 @@ module AsposePdfCloud
     # @option opts [Integer] :end_page_number The end page number.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def post_document_page_number_stamps(name, stamp, opts = {})
       @api_client.request_token_if_needed
@@ -15435,6 +15528,7 @@ module AsposePdfCloud
     # @option opts [Integer] :end_page_number The end page number.
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_document_page_number_stamps_with_http_info(name, stamp, opts = {})
       if @api_client.config.debugging
@@ -15457,6 +15551,7 @@ module AsposePdfCloud
       query_params[:'endPageNumber'] = opts[:'end_page_number'] if !opts[:'end_page_number'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -17183,6 +17278,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def post_page_image_stamps(name, page_number, stamps, opts = {})
       @api_client.request_token_if_needed
@@ -17205,6 +17301,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_page_image_stamps_with_http_info(name, page_number, stamps, opts = {})
       if @api_client.config.debugging
@@ -17229,6 +17326,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -17598,6 +17696,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def post_page_pdf_page_stamps(name, page_number, stamps, opts = {})
       @api_client.request_token_if_needed
@@ -17620,6 +17719,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, opts = {})
       if @api_client.config.debugging
@@ -17644,6 +17744,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -18680,6 +18781,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [AsposeResponse]
     def post_page_text_stamps(name, page_number, stamps, opts = {})
       @api_client.request_token_if_needed
@@ -18702,6 +18804,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
     # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def post_page_text_stamps_with_http_info(name, page_number, stamps, opts = {})
       if @api_client.config.debugging
@@ -18726,6 +18829,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}

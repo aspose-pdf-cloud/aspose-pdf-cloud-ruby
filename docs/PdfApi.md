@@ -191,6 +191,7 @@ Method | HTTP request | Description
 [**move_file**](PdfApi.md#move_file) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
 [**move_folder**](PdfApi.md#move_folder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
 [**object_exists**](PdfApi.md#object_exists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
+[**post_add_document_attachment**](PdfApi.md#post_add_document_attachment) | **POST** /pdf/\{name}/attachments | Adds a file attachment to the PDF document.
 [**post_append_document**](PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 [**post_bookmark**](PdfApi.md#post_bookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 [**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
@@ -575,6 +576,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -822,6 +824,7 @@ Name | Type | Description  | Notes
  **page_number** | **Integer**| The page number. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -921,6 +924,7 @@ Name | Type | Description  | Notes
  **stamp_id** | **String**| The stamp ID. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -1166,6 +1170,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -3627,6 +3632,7 @@ Name | Type | Description  | Notes
  **page_number** | **Integer**| The page number. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -5080,6 +5086,31 @@ Name | Type | Description  | Notes
 
 
 
+# **post_add_document_attachment**
+> AttachmentsResponse post_add_document_attachment(name, attachment_info, opts)
+
+Adds a file attachment to the PDF document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **attachment_info** | [**AttachmentInfo**](AttachmentInfo.md)| AttachmentInfoAttachmentInfo instance. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AttachmentsResponse**](AttachmentsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **post_append_document**
 > DocumentResponse post_append_document(name, append_file, opts)
 
@@ -5355,6 +5386,7 @@ Name | Type | Description  | Notes
  **end_page_number** | **Integer**| The end page number. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -5905,6 +5937,7 @@ Name | Type | Description  | Notes
  **stamps** | [**Array&lt;ImageStamp&gt;**](ImageStamp.md)| The array of stamp. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -6035,6 +6068,7 @@ Name | Type | Description  | Notes
  **stamps** | [**Array&lt;PdfPageStamp&gt;**](PdfPageStamp.md)| The array of stamp. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -6374,6 +6408,7 @@ Name | Type | Description  | Notes
  **stamps** | [**Array&lt;TextStamp&gt;**](TextStamp.md)| The array of stamp. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
 
 ### Return type
 
