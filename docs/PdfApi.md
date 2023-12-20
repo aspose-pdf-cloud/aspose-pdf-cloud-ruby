@@ -480,6 +480,7 @@ Name | Type | Description  | Notes
  **bookmark_path** | **String**| The bookmark path. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -528,6 +529,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -871,9 +873,10 @@ Delete custom document properties.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  | 
- **storage** | **String**|  | [optional] 
- **folder** | **String**|  | [optional] 
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -895,10 +898,11 @@ Delete document property.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  | 
- **property_name** | **String**|  | 
- **storage** | **String**|  | [optional] 
- **folder** | **String**|  | [optional] 
+ **name** | **String**| The document name. | 
+ **property_name** | **String**| Property name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -999,6 +1003,7 @@ Name | Type | Description  | Notes
  **bookmark_path** | **String**| The bookmark path. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1024,6 +1029,7 @@ Name | Type | Description  | Notes
  **bookmark_path** | **String**| The bookmark path. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1268,6 +1274,7 @@ Name | Type | Description  | Notes
  **name** | **String**| The document name. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1674,9 +1681,10 @@ Read document properties.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  | 
- **storage** | **String**|  | [optional] 
- **folder** | **String**|  | [optional] 
+ **name** | **String**| The document name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1698,10 +1706,11 @@ Read document property by name.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  | 
- **property_name** | **String**|  | 
- **storage** | **String**|  | [optional] 
- **folder** | **String**|  | [optional] 
+ **name** | **String**| The document name. | 
+ **property_name** | **String**| Property name. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -5152,6 +5161,7 @@ Name | Type | Description  | Notes
  **bookmarks** | [**Array&lt;Bookmark&gt;**](Bookmark.md)| The array of bookmark. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -6744,6 +6754,7 @@ Name | Type | Description  | Notes
  **bookmark** | [**Bookmark**](Bookmark.md)| The bookmark. | 
  **folder** | **String**| The document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -9129,11 +9140,12 @@ Add/update document property.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  | 
- **property_name** | **String**|  | 
- **value** | **String**|  | 
- **storage** | **String**|  | [optional] 
- **folder** | **String**|  | [optional] 
+ **name** | **String**| The document name. | 
+ **property_name** | **String**| Property name. | 
+ **value** | **String**| Property value. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
