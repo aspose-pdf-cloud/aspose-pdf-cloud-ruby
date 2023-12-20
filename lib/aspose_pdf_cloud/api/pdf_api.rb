@@ -344,6 +344,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def delete_bookmark(name, bookmark_path, opts = {})
       @api_client.request_token_if_needed
@@ -365,6 +366,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_bookmark_with_http_info(name, bookmark_path, opts = {})
       if @api_client.config.debugging
@@ -385,6 +387,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -493,6 +496,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def delete_document_bookmarks(name, opts = {})
       @api_client.request_token_if_needed
@@ -513,6 +517,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_document_bookmarks_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -529,6 +534,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -1549,10 +1555,11 @@ module AsposePdfCloud
 
     # Delete custom document properties.
     # 
-    # @param name 
+    # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def delete_properties(name, opts = {})
       @api_client.request_token_if_needed
@@ -1569,10 +1576,11 @@ module AsposePdfCloud
 
     # Delete custom document properties.
     # 
-    # @param name 
+    # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_properties_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -1589,6 +1597,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -1621,11 +1630,12 @@ module AsposePdfCloud
 
     # Delete document property.
     # 
-    # @param name 
-    # @param property_name 
+    # @param name The document name.
+    # @param property_name Property name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def delete_property(name, property_name, opts = {})
       @api_client.request_token_if_needed
@@ -1642,11 +1652,12 @@ module AsposePdfCloud
 
     # Delete document property.
     # 
-    # @param name 
-    # @param property_name 
+    # @param name The document name.
+    # @param property_name Property name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def delete_property_with_http_info(name, property_name, opts = {})
       if @api_client.config.debugging
@@ -1667,6 +1678,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -1935,6 +1947,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [BookmarkResponse]
     def get_bookmark(name, bookmark_path, opts = {})
       @api_client.request_token_if_needed
@@ -1956,6 +1969,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(BookmarkResponse, Fixnum, Hash)>] BookmarkResponse data, response status code and response headers
     def get_bookmark_with_http_info(name, bookmark_path, opts = {})
       if @api_client.config.debugging
@@ -1976,6 +1990,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -2013,6 +2028,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [BookmarksResponse]
     def get_bookmarks(name, bookmark_path, opts = {})
       @api_client.request_token_if_needed
@@ -2034,6 +2050,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(BookmarksResponse, Fixnum, Hash)>] BookmarksResponse data, response status code and response headers
     def get_bookmarks_with_http_info(name, bookmark_path, opts = {})
       if @api_client.config.debugging
@@ -2054,6 +2071,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -2762,6 +2780,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [BookmarksResponse]
     def get_document_bookmarks(name, opts = {})
       @api_client.request_token_if_needed
@@ -2782,6 +2801,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(BookmarksResponse, Fixnum, Hash)>] BookmarksResponse data, response status code and response headers
     def get_document_bookmarks_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -2798,6 +2818,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -3988,10 +4009,11 @@ module AsposePdfCloud
 
     # Read document properties.
     # 
-    # @param name 
+    # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [DocumentPropertiesResponse]
     def get_document_properties(name, opts = {})
       @api_client.request_token_if_needed
@@ -4008,10 +4030,11 @@ module AsposePdfCloud
 
     # Read document properties.
     # 
-    # @param name 
+    # @param name The document name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(DocumentPropertiesResponse, Fixnum, Hash)>] DocumentPropertiesResponse data, response status code and response headers
     def get_document_properties_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -4028,6 +4051,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -4060,11 +4084,12 @@ module AsposePdfCloud
 
     # Read document property by name.
     # 
-    # @param name 
-    # @param property_name 
+    # @param name The document name.
+    # @param property_name Property name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [DocumentPropertyResponse]
     def get_document_property(name, property_name, opts = {})
       @api_client.request_token_if_needed
@@ -4081,11 +4106,12 @@ module AsposePdfCloud
 
     # Read document property by name.
     # 
-    # @param name 
-    # @param property_name 
+    # @param name The document name.
+    # @param property_name Property name.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(DocumentPropertyResponse, Fixnum, Hash)>] DocumentPropertyResponse data, response status code and response headers
     def get_document_property_with_http_info(name, property_name, opts = {})
       if @api_client.config.debugging
@@ -4106,6 +4132,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -14767,6 +14794,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [BookmarksResponse]
     def post_bookmark(name, bookmark_path, bookmarks, opts = {})
       @api_client.request_token_if_needed
@@ -14789,6 +14817,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(BookmarksResponse, Fixnum, Hash)>] BookmarksResponse data, response status code and response headers
     def post_bookmark_with_http_info(name, bookmark_path, bookmarks, opts = {})
       if @api_client.config.debugging
@@ -14813,6 +14842,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -19824,6 +19854,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [BookmarkResponse]
     def put_bookmark(name, bookmark_path, bookmark, opts = {})
       @api_client.request_token_if_needed
@@ -19846,6 +19877,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(BookmarkResponse, Fixnum, Hash)>] BookmarkResponse data, response status code and response headers
     def put_bookmark_with_http_info(name, bookmark_path, bookmark, opts = {})
       if @api_client.config.debugging
@@ -19870,6 +19902,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -27455,12 +27488,13 @@ module AsposePdfCloud
 
     # Add/update document property.
     # 
-    # @param name 
-    # @param property_name 
-    # @param value 
+    # @param name The document name.
+    # @param property_name Property name.
+    # @param value Property value.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [DocumentPropertyResponse]
     def put_set_property(name, property_name, value, opts = {})
       @api_client.request_token_if_needed
@@ -27477,12 +27511,13 @@ module AsposePdfCloud
 
     # Add/update document property.
     # 
-    # @param name 
-    # @param property_name 
-    # @param value 
+    # @param name The document name.
+    # @param property_name Property name.
+    # @param value Property value.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :storage 
-    # @option opts [String] :folder 
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(DocumentPropertyResponse, Fixnum, Hash)>] DocumentPropertyResponse data, response status code and response headers
     def put_set_property_with_http_info(name, property_name, value, opts = {})
       if @api_client.config.debugging
@@ -27508,6 +27543,7 @@ module AsposePdfCloud
       query_params[:'value'] = value
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
