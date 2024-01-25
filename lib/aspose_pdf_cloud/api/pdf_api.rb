@@ -1,6 +1,6 @@
 =begin
 --------------------------------------------------------------------------------------------------------------------
-Copyright (c) 2023 Aspose.PDF Cloud
+Copyright (c) 2024 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -11457,6 +11457,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [File]
     def get_pdf_in_storage_to_svg(name, opts = {})
       @api_client.request_token_if_needed
@@ -11478,6 +11479,7 @@ module AsposePdfCloud
     # @option opts [BOOLEAN] :compress_output_to_zip_archive Specifies whether output will be created as one zip-archive.
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_pdf_in_storage_to_svg_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -11495,6 +11497,7 @@ module AsposePdfCloud
       query_params[:'compressOutputToZipArchive'] = opts[:'compress_output_to_zip_archive'] if !opts[:'compress_output_to_zip_archive'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -24611,6 +24614,7 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [AsposeResponse]
     def put_pdf_in_request_to_svg(out_path, opts = {})
@@ -24631,6 +24635,7 @@ module AsposePdfCloud
     # @param out_path Full resulting filename (ex. /folder1/folder2/result.svg)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @option opts [File] :file A file to be converted.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_request_to_svg_with_http_info(out_path, opts = {})
@@ -24648,6 +24653,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'outPath'] = out_path
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
@@ -25868,6 +25874,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [AsposeResponse]
     def put_pdf_in_storage_to_svg(name, out_path, opts = {})
       @api_client.request_token_if_needed
@@ -25889,6 +25896,7 @@ module AsposePdfCloud
     # @param [Hash] opts the optional parameters
     # @option opts [String] :folder The document folder.
     # @option opts [String] :storage The document storage.
+    # @option opts [String] :password The password (Base64).
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
     def put_pdf_in_storage_to_svg_with_http_info(name, out_path, opts = {})
       if @api_client.config.debugging
@@ -25910,6 +25918,7 @@ module AsposePdfCloud
       query_params[:'outPath'] = out_path
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
 
       # header parameters
       header_params = {}
