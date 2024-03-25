@@ -25,10 +25,18 @@ module AsposePdfCloud
   class PdfApi
     attr_accessor :api_client
 
-    def initialize(app_key, app_sid, api_client = ApiClient.default)
+    def initialize(app_key, app_sid, host = "", self_host = false, api_client = ApiClient.default)
       @api_client = api_client
+      @api_client.config.self_host = self_host
       @api_client.config.app_key = app_key
       @api_client.config.app_sid = app_sid
+      if host != ""
+        if @api_client.config.self_host
+          @api_client.config.self_host_url = host
+        else
+          @api_client.config.host = host
+        end
+      end
     end
 
 

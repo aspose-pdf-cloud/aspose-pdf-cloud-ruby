@@ -24,6 +24,12 @@ require 'uri'
 module AsposePdfCloud
   class Configuration
 
+    # SelfHost
+    attr_accessor :self_host
+
+    # SelfHost URL
+    attr_accessor :self_host_url
+
     # App Key
     attr_accessor :app_key
 
@@ -152,7 +158,11 @@ module AsposePdfCloud
     end
 
     def base_url
-      url = "#{scheme}://#{[host, '/v3.0'].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
+      if @self_host
+        url = self_host_url
+      else
+        url = "#{scheme}://#{[host, '/v3.0'].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
+      end
       URI.encode(url)
     end
 

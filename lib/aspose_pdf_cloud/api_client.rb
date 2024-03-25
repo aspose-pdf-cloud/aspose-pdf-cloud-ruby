@@ -107,7 +107,9 @@ module AsposePdfCloud
       form_params = opts[:form_params] || {}
       body = opts[:body] || {}
 
-      update_params_for_auth! header_params, query_params, opts[:auth_names]
+      if !@config.self_host
+        update_params_for_auth! header_params, query_params, opts[:auth_names]
+      end
 
       req_opts = {
         :method => http_method,
@@ -124,11 +126,12 @@ module AsposePdfCloud
         end
       end
 
-      # OAuth 2.0
       req_opts[:params] = opts[:query_params]
 
-      add_o_auth_token(req_opts)
-
+      if !@config.self_host
+        # OAuth 2.0
+        add_o_auth_token(req_opts)
+      end
 
       conn = Faraday.new url, {:params => query_params, :headers => header_params} do |f|
       f.request :multipart
@@ -411,6 +414,9 @@ module AsposePdfCloud
 
     # Request access and refresh tokens if needed
     def request_token_if_needed
+      if @config.self_host
+        return
+      end
       # check token exists
       if @config.access_token
         return
