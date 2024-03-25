@@ -29,8 +29,7 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.2
-- Memory leak when converting PDF to DOCX.
+## Enhancements in Version 24.3
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Installation
@@ -46,15 +45,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-24.2.0.gem
+gem install ./aspose_pdf_cloud-24.3.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-24.2.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-24.3.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 24.2.0'
+    gem 'aspose_pdf_cloud', '~> 24.3.0'
 
 ### Install from Git
 
@@ -67,19 +66,19 @@ Add the following in the Gemfile:
 
 ```ruby
     # Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+    @pdf_api = PdfApi.new('MY_CLIENT_ID', 'MY_CLIENT_SECRET')    
+    file_name = 'PdfWithAnnotations.pdf'
+    page_number = 2
+    opts = {
+      :folder => 'tempFolder'
+    }
+    response = @pdf_api.get_page_annotations(file_name, page_number, opts)
+```
 
-    AsposePdfCloud.configure do |config|
-            config.client_data['ClientId'] = 'MY_CLIENT_ID'
-            config.client_data['ClientSecret'] = 'MY_CLIENT_SECRET'
-            config.host = host
-    
-	file_name = 'PdfWithAnnotations.pdf'
-	page_number = 2
-	opts = {
-	  :folder => 'tempFolder'
-	}
-
-	response = @pdf_api.get_page_annotations(file_name, page_number, opts)
+## SelfHost Aspose.PDF Cloud
+Create **PdfApi** object without **app_key** and **app_sid** parameters, but with **host** parameter set to *url of SelfHost Aspose.PDF Cloud* and **self_host** parameter set to *true*:
+```ruby
+    @pdf_api = PdfApi.new('', '', 'MY_SELFHOST_URL', true)
 ```
 
 ## Unit Tests

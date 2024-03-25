@@ -32,10 +32,13 @@ class PdfTests < Minitest::Test
   def setup
     servercreds_json = File.read('../../../Settings/servercreds.json')
     creds = JSON.parse(servercreds_json)
-    @pdf_api = PdfApi.new(creds["AppKey"], creds["AppSID"])
+    self_host = creds.has_key?("SelfHost") ? creds["SelfHost"] : false
+    app_key = creds.has_key?("AppKey") ? creds["AppKey"] : ""
+    app_sid = creds.has_key?("AppSID") ? creds["AppSID"] : ""
+    product_uri = creds.has_key?("ProductUri") ? creds["ProductUri"] : ""
+    @pdf_api = PdfApi.new(app_key, app_sid, product_uri, self_host)
     @temp_folder = 'TempPdfCloud'
     @test_data_folder = '../test_data/'
-
     config = @pdf_api.api_client.config
     config.scheme = 'https'
   end
