@@ -11608,6 +11608,78 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Converts PDF document (located on storage) to Text format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @return [File]
+    def get_pdf_in_storage_to_text(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_pdf_in_storage_to_text_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_pdf_in_storage_to_text_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Converts PDF document (located on storage) to Text format and returns resulting file in response content
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_pdf_in_storage_to_text_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_pdf_in_storage_to_text ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_pdf_in_storage_to_text"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/convert/text".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_pdf_in_storage_to_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
     # 
     # @param name The document name.
@@ -18979,6 +19051,82 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_page_underline_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :password The password (Base64).
+    # @option opts [File] :file A file to be converted.
+    # @return [File]
+    def post_pdf_to_xlsx(opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_pdf_to_xlsx_with_http_info(opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_pdf_to_xlsx_with_http_info(opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :insert_blank_column_at_first Insert blank column at first
+    # @option opts [BOOLEAN] :minimize_the_number_of_worksheets Minimize the number of worksheets
+    # @option opts [BOOLEAN] :uniform_worksheets Uniform worksheets
+    # @option opts [String] :password The password (Base64).
+    # @option opts [File] :file A file to be converted.
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def post_pdf_to_xlsx_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_pdf_to_xlsx ..."
+      end
+      # resource path
+      local_var_path = "/pdf/convert/xlsx"
+
+      # query parameters
+      query_params = {}
+      query_params[:'insertBlankColumnAtFirst'] = opts[:'insert_blank_column_at_first'] if !opts[:'insert_blank_column_at_first'].nil?
+      query_params[:'minimizeTheNumberOfWorksheets'] = opts[:'minimize_the_number_of_worksheets'] if !opts[:'minimize_the_number_of_worksheets'].nil?
+      query_params[:'uniformWorksheets'] = opts[:'uniform_worksheets'] if !opts[:'uniform_worksheets'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+      post_body =  opts[:'file'] if !opts[:'file'].nil?
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream'])
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_pdf_to_xlsx\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
