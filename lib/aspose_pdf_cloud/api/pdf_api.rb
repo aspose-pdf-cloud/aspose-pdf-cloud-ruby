@@ -16121,6 +16121,90 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :html_file_name Name of HTML file in ZIP.
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [BOOLEAN] :is_landscape Is page landscaped
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
+    # @return [File]
+    def post_html_to_pdf(opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_html_to_pdf_with_http_info(opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_html_to_pdf_with_http_info(opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :html_file_name Name of HTML file in ZIP.
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [BOOLEAN] :is_landscape Is page landscaped
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def post_html_to_pdf_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_html_to_pdf ..."
+      end
+      # resource path
+      local_var_path = "/pdf/create/html"
+
+      # query parameters
+      query_params = {}
+      query_params[:'htmlFileName'] = opts[:'html_file_name'] if !opts[:'html_file_name'].nil?
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'isLandscape'] = opts[:'is_landscape'] if !opts[:'is_landscape'].nil?
+      query_params[:'marginLeft'] = opts[:'margin_left'] if !opts[:'margin_left'].nil?
+      query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
+      query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
+      query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_html_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update fields from FDF file in request.
     # 
     # @param name The document name.
