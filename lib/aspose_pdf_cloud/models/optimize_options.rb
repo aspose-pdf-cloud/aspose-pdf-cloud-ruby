@@ -28,7 +28,7 @@ module AsposePdfCloud
     # Specifies document password (if any) encoded with base-64.
     attr_accessor :password
 
-    # If true page contents will be reused when document is optimized for equal pages.
+    # If true page contents will be reused when document is optimized for equal pages. LinkDuplcateStreams option must be set to true.
     attr_accessor :allow_reuse_page_content
 
     # If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property.
@@ -46,7 +46,7 @@ module AsposePdfCloud
     # If this flag set to true, every resource is checked on it's usage. If resource is never used, then resources is removed. This may decrease document size for example when pages were extracted from document. 
     attr_accessor :remove_unused_streams
 
-    # Make fonts not embedded if set to true. 
+    # Make fonts not embedded if set to true. Unembedding a font means removing the embedded byte stream data of the font included in a PDF document.
     attr_accessor :unembed_fonts
 
     # If this flag set to true and CompressImages is true images will be resized if image resolution is greater then specified MaxResolution parameter.
@@ -55,7 +55,7 @@ module AsposePdfCloud
     # Specifies maximum resolution of images. If image has higher resolution it will be scaled.
     attr_accessor :max_resolution
 
-    # Fonts will be converted into subsets if set to true.
+    # Fonts will be converted into subsets if set to true. Only those characters that are actually used in the layout are stored in the PDF. 
     attr_accessor :subset_fonts
 
     # Remove private information (page piece info).
