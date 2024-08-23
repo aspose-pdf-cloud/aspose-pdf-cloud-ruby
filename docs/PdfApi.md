@@ -203,10 +203,12 @@ Method | HTTP request | Description
 [**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
 [**post_document_image_footer**](PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
 [**post_document_image_header**](PdfApi.md#post_document_image_header) | **POST** /pdf/\{name}/header/image | Add document image header.
+[**post_document_image_stamps**](PdfApi.md#post_document_image_stamps) | **POST** /pdf/\{name}/stamps/image | Add document pages image stamps.
 [**post_document_page_number_stamps**](PdfApi.md#post_document_page_number_stamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
 [**post_document_text_footer**](PdfApi.md#post_document_text_footer) | **POST** /pdf/\{name}/footer/text | Add document text footer.
 [**post_document_text_header**](PdfApi.md#post_document_text_header) | **POST** /pdf/\{name}/header/text | Add document text header.
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+[**post_document_text_stamps**](PdfApi.md#post_document_text_stamps) | **POST** /pdf/\{name}/stamps/text | Add document pages text stamps.
 [**post_encrypt_document_in_storage**](PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
 [**post_html_to_pdf**](PdfApi.md#post_html_to_pdf) | **POST** /pdf/create/html | Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
@@ -5409,6 +5411,32 @@ Name | Type | Description  | Notes
 
 
 
+# **post_document_image_stamps**
+> AsposeResponse post_document_image_stamps(name, stamps, opts)
+
+Add document pages image stamps.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **stamps** | [**Array&lt;ImageStamp&gt;**](ImageStamp.md)| The array of stamp. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **post_document_page_number_stamps**
 > AsposeResponse post_document_page_number_stamps(name, stamp, opts)
 
@@ -5508,6 +5536,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TextReplaceResponse**](TextReplaceResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **post_document_text_stamps**
+> AsposeResponse post_document_text_stamps(name, stamps, opts)
+
+Add document pages text stamps.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **stamps** | [**Array&lt;TextStamp&gt;**](TextStamp.md)| The array of stamp. | 
+ **storage** | **String**| The document storage. | [optional] 
+ **folder** | **String**| The document folder. | [optional] 
+ **password** | **String**| Base64 encoded password. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 

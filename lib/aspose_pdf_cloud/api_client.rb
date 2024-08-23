@@ -464,8 +464,16 @@ module AsposePdfCloud
       end
 
       response = conn.post tokenUrl, form_params, req_opts[:body]
-      data = JSON.parse("[#{response.body}]", :symbolize_names => true)[0]
+      
+      begin
+        data = JSON.parse("[#{response.body}]", :symbolize_names => true)[0]
+      rescue Exception => exception
+        raise ApiError.new(response.body)
+      end
 
+      if data.nil? || data[:access_token].nil? || data[:access_token] == ""
+        raise("empty token (#{response.body})")
+      end
       @config.access_token = data[:access_token]
     end
 
