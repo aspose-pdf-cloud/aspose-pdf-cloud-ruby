@@ -6556,4 +6556,46 @@ class PdfTests < Minitest::Test
     response = @pdf_api.post_import_fields_from_xml(file_name, opts)
     assert(response, 'Failed to import fields from xml.')
   end
+
+  # Layers Tests
+
+  def test_get_document_layers
+    file_name = 'PdfWithLayers.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_document_layers(file_name, opts)
+    assert_equal(2, response[0].layers.count(), 'Failed to read document layers.')
+  end
+
+  def test_delete_document_layer
+    file_name = 'PdfWithLayers.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.delete_document_layer(file_name, 1, "oc1", opts)
+    assert(response, 'Failed to delete document layer.')
+
+    response = @pdf_api.get_document_layers(file_name, opts)
+    assert_equal(1, response[0].layers.count(), 'Failed to read document layers.')
+  end
+
+  def test_put_create_pdf_from_layer
+    file_name = 'PdfWithLayers.pdf'
+    upload_file(file_name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    response = @pdf_api.put_create_pdf_from_layer(file_name, 1, "output.pdf", "oc1", opts)
+    assert(response, 'Failed to create a separate PDF from a PDF Layer.')
+  end
+
 end
