@@ -573,6 +573,95 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Remove document layer.
+    # 
+    # @param name The document name.
+    # @param page_number Layer page.
+    # @param layer_id Layer Id.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [AsposeResponse]
+    def delete_document_layer(name, page_number, layer_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = delete_document_layer_with_http_info(name, page_number, layer_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = delete_document_layer_with_http_info(name, page_number, layer_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Remove document layer.
+    # 
+    # @param name The document name.
+    # @param page_number Layer page.
+    # @param layer_id Layer Id.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def delete_document_layer_with_http_info(name, page_number, layer_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.delete_document_layer ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.delete_document_layer"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.delete_document_layer"
+      end
+      # verify the required parameter 'layer_id' is set
+      if @api_client.config.client_side_validation && layer_id.nil?
+        fail ArgumentError, "Missing the required parameter 'layer_id' when calling PdfApi.delete_document_layer"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/layers".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'pageNumber'] = page_number
+      query_params[:'layerId'] = layer_id
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#delete_document_layer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete all link annotations from the document
     # 
     # @param name The document name.
@@ -3501,6 +3590,81 @@ module AsposePdfCloud
         :return_type => 'InkAnnotationsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_document_ink_annotations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets document layers.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [DocumentLayers]
+    def get_document_layers(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_document_layers_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_document_layers_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Gets document layers.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(DocumentLayers, Fixnum, Hash)>] DocumentLayers data, response status code and response headers
+    def get_document_layers_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_document_layers ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_document_layers"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/layers".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DocumentLayers')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_document_layers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -20830,6 +20994,102 @@ module AsposePdfCloud
         :return_type => 'DocumentResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#put_create_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a separate PDF from a PDF Layer and upload resulting file to storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param layer_id Layer Id.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [AsposeResponse]
+    def put_create_pdf_from_layer(name, page_number, out_path, layer_id, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = put_create_pdf_from_layer_with_http_info(name, page_number, out_path, layer_id, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = put_create_pdf_from_layer_with_http_info(name, page_number, out_path, layer_id, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Create a separate PDF from a PDF Layer and upload resulting file to storage.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param out_path The out path of result image.
+    # @param layer_id Layer Id.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def put_create_pdf_from_layer_with_http_info(name, page_number, out_path, layer_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.put_create_pdf_from_layer ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.put_create_pdf_from_layer"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.put_create_pdf_from_layer"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.put_create_pdf_from_layer"
+      end
+      # verify the required parameter 'layer_id' is set
+      if @api_client.config.client_side_validation && layer_id.nil?
+        fail ArgumentError, "Missing the required parameter 'layer_id' when calling PdfApi.put_create_pdf_from_layer"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/layers".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'pageNumber'] = page_number
+      query_params[:'outPath'] = out_path
+      query_params[:'layerId'] = layer_id
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#put_create_pdf_from_layer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
