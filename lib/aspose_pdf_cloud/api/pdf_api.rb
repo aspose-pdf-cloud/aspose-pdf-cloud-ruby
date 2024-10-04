@@ -10533,7 +10533,7 @@ module AsposePdfCloud
       query_params[:'LLY'] = lly
       query_params[:'URX'] = urx
       query_params[:'URY'] = ury
-      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :csv) if !opts[:'format'].nil?
+      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -11336,7 +11336,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -13844,7 +13844,7 @@ module AsposePdfCloud
       query_params[:'LLY'] = lly
       query_params[:'URX'] = urx
       query_params[:'URY'] = ury
-      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :csv) if !opts[:'format'].nil?
+      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -16330,7 +16330,7 @@ module AsposePdfCloud
       query_params[:'userPassword'] = user_password
       query_params[:'ownerPassword'] = owner_password
       query_params[:'cryptoAlgorithm'] = crypto_algorithm
-      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :csv) if !opts[:'permissions_flags'].nil?
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
       query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -20380,7 +20380,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'startPage'] = opts[:'start_page'] if !opts[:'start_page'].nil?
       query_params[:'endPage'] = opts[:'end_page'] if !opts[:'end_page'].nil?
-      query_params[:'annotationTypes'] = @api_client.build_collection_param(opts[:'annotation_types'], :csv) if !opts[:'annotation_types'].nil?
+      query_params[:'annotationTypes'] = @api_client.build_collection_param(opts[:'annotation_types'], :multi) if !opts[:'annotation_types'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -21322,7 +21322,7 @@ module AsposePdfCloud
       query_params[:'userPassword'] = user_password
       query_params[:'ownerPassword'] = owner_password
       query_params[:'cryptoAlgorithm'] = crypto_algorithm
-      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :csv) if !opts[:'permissions_flags'].nil?
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
       query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
@@ -24975,7 +24975,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -26219,7 +26219,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -27876,7 +27876,7 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'imageIds'] = @api_client.build_collection_param(image_ids, :csv)
+      query_params[:'imageIds'] = @api_client.build_collection_param(image_ids, :multi)
       query_params[:'imageFilePath'] = opts[:'image_file_path'] if !opts[:'image_file_path'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
