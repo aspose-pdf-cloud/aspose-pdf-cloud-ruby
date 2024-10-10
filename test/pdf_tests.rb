@@ -6598,4 +6598,85 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to create a separate PDF from a PDF Layer.')
   end
 
+  # XMP Metadata Tests
+
+  def test_get_xmp_metadata_json
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+      :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_xmp_metadata_json(file_name, opts)
+    assert(response, 'Failed to get xmp metadata in json format')
+    assert_equal(9, response[0].properties.count(), 'Failed to read document xmp metadata.')
+  end
+
+  def test_get_xmp_metadata_xml
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+      :folder => @temp_folder
+    }
+
+    response = @pdf_api.get_xmp_metadata_xml(file_name, opts)
+    assert(response, 'Failed to get xmp metadata in xml format')
+  end
+
+  def test_post_xmp_metadata
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+
+    opts = {
+      :folder => @temp_folder
+    }
+
+    date = "2024-10-27T09:59:52+02:00";
+    metadata = XmpMetadata.new({
+      :Properties => [
+        XmpMetadataProperty.new({
+          :Key => "ModifyDate",
+          :Value => date
+        }),
+        # Modify Default property with prefix
+        XmpMetadataProperty.new({
+          :Key => "xmp:CreateDate",
+          :Value => date
+        }),
+        # Remove Default property
+        XmpMetadataProperty.new({
+          :Key => "CreatorTool",
+        }),
+        # Add Default property
+        XmpMetadataProperty.new({
+          :Key => "BaseURL",
+          :Value => "http://www.somename.com/path"
+        }),
+        # Remove User defined property
+        XmpMetadataProperty.new({
+          :Key => "dc:title",
+        }),
+        # Update user defined property
+        XmpMetadataProperty.new({
+          :Key => "pdf:Producer",
+          :Value => "Aspose.PDF Cloud",
+          :NamespaceUri => "http://ns.adobe.com/pdf/1.3/"
+        }),  
+        # Add user defined property
+        XmpMetadataProperty.new({
+          :Key => "pdf:Prop",
+          :Value => "PropValue",
+          :NamespaceUri => "http://ns.adobe.com/pdf/1.3/"
+        })
+      ]
+    })
+    response = @pdf_api.post_xmp_metadata(file_name, metadata, opts)
+    assert(response, 'Failed to post xmp metadata')
+
+    response = @pdf_api.get_xmp_metadata_json(file_name, opts)
+    assert(response, 'Failed to get xmp metadata in json format')
+    assert_equal(9, response[0].properties.count(), 'Failed to read document xmp metadata.')
+  end
 end

@@ -14500,6 +14500,156 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Gets document XMP Metadata as JSON.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [XmpMetadata]
+    def get_xmp_metadata_json(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_xmp_metadata_json_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_xmp_metadata_json_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Gets document XMP Metadata as JSON.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(XmpMetadata, Fixnum, Hash)>] XmpMetadata data, response status code and response headers
+    def get_xmp_metadata_json_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_xmp_metadata_json ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_xmp_metadata_json"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/xmpmetadata/json".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'XmpMetadata')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_xmp_metadata_json\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets document XMP Metadata as XML file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [File]
+    def get_xmp_metadata_xml(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_xmp_metadata_xml_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_xmp_metadata_xml_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Gets document XMP Metadata as XML file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_xmp_metadata_xml_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_xmp_metadata_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_xmp_metadata_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/xmpmetadata/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_xmp_metadata_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Convert XPS file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.xps)
@@ -20173,6 +20323,86 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_text_box_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add or remove XMP Metadata properties.
+    # 
+    # @param name The document name.
+    # @param metadata XmpMetadata instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [AsposeResponse]
+    def post_xmp_metadata(name, metadata, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_xmp_metadata_with_http_info(name, metadata, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_xmp_metadata_with_http_info(name, metadata, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add or remove XMP Metadata properties.
+    # 
+    # @param name The document name.
+    # @param metadata XmpMetadata instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_xmp_metadata_with_http_info(name, metadata, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_xmp_metadata ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_xmp_metadata"
+      end
+      # verify the required parameter 'metadata' is set
+      if @api_client.config.client_side_validation && metadata.nil?
+        fail ArgumentError, "Missing the required parameter 'metadata' when calling PdfApi.post_xmp_metadata"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/xmpmetadata".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(metadata)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_xmp_metadata\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

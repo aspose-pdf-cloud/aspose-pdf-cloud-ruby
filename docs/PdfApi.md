@@ -1,4 +1,4 @@
-﻿# AsposePdfCloud::PdfApi
+# AsposePdfCloud::PdfApi
 
 All URIs are relative to *https://api.aspose.cloud/v3.0*
 
@@ -189,6 +189,8 @@ Method | HTTP request | Description
 [**get_words_per_page**](PdfApi.md#get_words_per_page) | **GET** /pdf/\{name}/pages/wordCount | Get number of words per document page.
 [**get_xfa_pdf_in_storage_to_acro_form**](PdfApi.md#get_xfa_pdf_in_storage_to_acro_form) | **GET** /pdf/\{name}/convert/xfatoacroform | Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
 [**get_xml_in_storage_to_pdf**](PdfApi.md#get_xml_in_storage_to_pdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
+[**get_xmp_metadata_json**](PdfApi.md#get_xmp_metadata_json) | **GET** /pdf/\{name}/xmpmetadata/json | Gets document XMP Metadata as JSON.
+[**get_xmp_metadata_xml**](PdfApi.md#get_xmp_metadata_xml) | **GET** /pdf/\{name}/xmpmetadata/xml | Gets document XMP Metadata as XML file.
 [**get_xps_in_storage_to_pdf**](PdfApi.md#get_xps_in_storage_to_pdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 [**get_xsl_fo_in_storage_to_pdf**](PdfApi.md#get_xsl_fo_in_storage_to_pdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 [**move_file**](PdfApi.md#move_file) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
@@ -258,6 +260,7 @@ Method | HTTP request | Description
 [**post_split_document**](PdfApi.md#post_split_document) | **POST** /pdf/\{name}/split | Split document to parts.
 [**post_split_range_pdf_document**](PdfApi.md#post_split_range_pdf_document) | **POST** /pdf/\{name}/splitrangepdf | Split document into ranges.
 [**post_text_box_fields**](PdfApi.md#post_text_box_fields) | **POST** /pdf/\{name}/fields/textbox | Add document text box fields.
+[**post_xmp_metadata**](PdfApi.md#post_xmp_metadata) | **POST** /pdf/\{name}/xmpmetadata | Add or remove XMP Metadata properties.
 [**put_add_new_page**](PdfApi.md#put_add_new_page) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 [**put_add_text**](PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 [**put_annotations_flatten**](PdfApi.md#put_annotations_flatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
@@ -5059,6 +5062,56 @@ Name | Type | Description  | Notes
 
 
 
+# **get_xmp_metadata_json**
+> XmpMetadata get_xmp_metadata_json(name, opts)
+
+Gets document XMP Metadata as JSON.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **folder** | **String**| The document folder. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+ **pass_base64** | **String**| The password (Base64). | [optional] 
+
+### Return type
+
+[**XmpMetadata**](XmpMetadata.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_xmp_metadata_xml**
+> File get_xmp_metadata_xml(name, opts)
+
+Gets document XMP Metadata as XML file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **folder** | **String**| The document folder. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+ **pass_base64** | **String**| The password (Base64). | [optional] 
+
+### Return type
+
+**File**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+
+
 # **get_xps_in_storage_to_pdf**
 > File get_xps_in_storage_to_pdf(src_path, opts)
 
@@ -6843,6 +6896,32 @@ Name | Type | Description  | Notes
  **fields** | [**Array&lt;TextBoxField&gt;**](TextBoxField.md)| The array of field. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **post_xmp_metadata**
+> AsposeResponse post_xmp_metadata(name, metadata, opts)
+
+Add or remove XMP Metadata properties.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The document name. | 
+ **metadata** | [**XmpMetadata**](XmpMetadata.md)| XmpMetadata instance. | 
+ **folder** | **String**| The document folder. | [optional] 
+ **storage** | **String**| The document storage. | [optional] 
+ **pass_base64** | **String**| The password (Base64). | [optional] 
 
 ### Return type
 
