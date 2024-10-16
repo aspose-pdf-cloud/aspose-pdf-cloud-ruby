@@ -10533,7 +10533,7 @@ module AsposePdfCloud
       query_params[:'LLY'] = lly
       query_params[:'URX'] = urx
       query_params[:'URY'] = ury
-      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :csv) if !opts[:'format'].nil?
+      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -11336,7 +11336,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -13844,7 +13844,7 @@ module AsposePdfCloud
       query_params[:'LLY'] = lly
       query_params[:'URX'] = urx
       query_params[:'URY'] = ury
-      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :csv) if !opts[:'format'].nil?
+      query_params[:'format'] = @api_client.build_collection_param(opts[:'format'], :multi) if !opts[:'format'].nil?
       query_params[:'regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       query_params[:'splitRects'] = opts[:'split_rects'] if !opts[:'split_rects'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -14496,6 +14496,156 @@ module AsposePdfCloud
         :return_type => 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#get_xml_in_storage_to_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets document XMP Metadata as JSON.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [XmpMetadata]
+    def get_xmp_metadata_json(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_xmp_metadata_json_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_xmp_metadata_json_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Gets document XMP Metadata as JSON.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(XmpMetadata, Fixnum, Hash)>] XmpMetadata data, response status code and response headers
+    def get_xmp_metadata_json_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_xmp_metadata_json ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_xmp_metadata_json"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/xmpmetadata/json".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'XmpMetadata')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_xmp_metadata_json\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets document XMP Metadata as XML file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [File]
+    def get_xmp_metadata_xml(name, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_xmp_metadata_xml_with_http_info(name, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_xmp_metadata_xml_with_http_info(name, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Gets document XMP Metadata as XML file.
+    # 
+    # @param name The document name.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_xmp_metadata_xml_with_http_info(name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_xmp_metadata_xml ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_xmp_metadata_xml"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/xmpmetadata/xml".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_xmp_metadata_xml\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -16330,7 +16480,7 @@ module AsposePdfCloud
       query_params[:'userPassword'] = user_password
       query_params[:'ownerPassword'] = owner_password
       query_params[:'cryptoAlgorithm'] = crypto_algorithm
-      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :csv) if !opts[:'permissions_flags'].nil?
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
       query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
@@ -20177,6 +20327,86 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Add or remove XMP Metadata properties.
+    # 
+    # @param name The document name.
+    # @param metadata XmpMetadata instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [AsposeResponse]
+    def post_xmp_metadata(name, metadata, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_xmp_metadata_with_http_info(name, metadata, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_xmp_metadata_with_http_info(name, metadata, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Add or remove XMP Metadata properties.
+    # 
+    # @param name The document name.
+    # @param metadata XmpMetadata instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_xmp_metadata_with_http_info(name, metadata, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_xmp_metadata ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_xmp_metadata"
+      end
+      # verify the required parameter 'metadata' is set
+      if @api_client.config.client_side_validation && metadata.nil?
+        fail ArgumentError, "Missing the required parameter 'metadata' when calling PdfApi.post_xmp_metadata"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/xmpmetadata".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(metadata)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_xmp_metadata\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add new page to end of the document.
     # 
     # @param name The document name.
@@ -20380,7 +20610,7 @@ module AsposePdfCloud
       query_params = {}
       query_params[:'startPage'] = opts[:'start_page'] if !opts[:'start_page'].nil?
       query_params[:'endPage'] = opts[:'end_page'] if !opts[:'end_page'].nil?
-      query_params[:'annotationTypes'] = @api_client.build_collection_param(opts[:'annotation_types'], :csv) if !opts[:'annotation_types'].nil?
+      query_params[:'annotationTypes'] = @api_client.build_collection_param(opts[:'annotation_types'], :multi) if !opts[:'annotation_types'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
 
@@ -21322,7 +21552,7 @@ module AsposePdfCloud
       query_params[:'userPassword'] = user_password
       query_params[:'ownerPassword'] = owner_password
       query_params[:'cryptoAlgorithm'] = crypto_algorithm
-      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :csv) if !opts[:'permissions_flags'].nil?
+      query_params[:'permissionsFlags'] = @api_client.build_collection_param(opts[:'permissions_flags'], :multi) if !opts[:'permissions_flags'].nil?
       query_params[:'usePdf20'] = opts[:'use_pdf20'] if !opts[:'use_pdf20'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
@@ -24975,7 +25205,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -26219,7 +26449,7 @@ module AsposePdfCloud
       query_params[:'useZOrder'] = opts[:'use_z_order'] if !opts[:'use_z_order'].nil?
       query_params[:'antialiasingProcessing'] = opts[:'antialiasing_processing'] if !opts[:'antialiasing_processing'].nil?
       query_params[:'cssClassNamesPrefix'] = opts[:'css_class_names_prefix'] if !opts[:'css_class_names_prefix'].nil?
-      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :csv) if !opts[:'explicit_list_of_saved_pages'].nil?
+      query_params[:'explicitListOfSavedPages'] = @api_client.build_collection_param(opts[:'explicit_list_of_saved_pages'], :multi) if !opts[:'explicit_list_of_saved_pages'].nil?
       query_params[:'fontEncodingStrategy'] = opts[:'font_encoding_strategy'] if !opts[:'font_encoding_strategy'].nil?
       query_params[:'fontSavingMode'] = opts[:'font_saving_mode'] if !opts[:'font_saving_mode'].nil?
       query_params[:'htmlMarkupGenerationMode'] = opts[:'html_markup_generation_mode'] if !opts[:'html_markup_generation_mode'].nil?
@@ -27876,7 +28106,7 @@ module AsposePdfCloud
 
       # query parameters
       query_params = {}
-      query_params[:'imageIds'] = @api_client.build_collection_param(image_ids, :csv)
+      query_params[:'imageIds'] = @api_client.build_collection_param(image_ids, :multi)
       query_params[:'imageFilePath'] = opts[:'image_file_path'] if !opts[:'image_file_path'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
       query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?

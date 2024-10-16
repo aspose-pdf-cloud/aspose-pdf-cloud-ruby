@@ -134,6 +134,7 @@ module AsposePdfCloud
       end
 
       conn = Faraday.new url, {:params => query_params, :headers => header_params} do |f|
+      f.options.params_encoder = Faraday::FlatParamsEncoder
       f.request :multipart
       f.request :url_encoded
       f.adapter Faraday.default_adapter
