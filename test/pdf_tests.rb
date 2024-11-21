@@ -30,7 +30,7 @@ class PdfTests < Minitest::Test
   include AsposePdfCloud
 
   def setup
-    servercreds_json = File.read('../../../Settings/servercreds.json')
+    servercreds_json = File.read('../../Settings/servercreds.json')
     creds = JSON.parse(servercreds_json)
     self_host = creds.has_key?("SelfHost") ? creds["SelfHost"] : false
     app_key = creds.has_key?("AppKey") ? creds["AppKey"] : ""
@@ -38,7 +38,7 @@ class PdfTests < Minitest::Test
     product_uri = creds.has_key?("ProductUri") ? creds["ProductUri"] : ""
     @pdf_api = PdfApi.new(app_key, app_sid, product_uri, self_host)
     @temp_folder = 'TempPdfCloud'
-    @test_data_folder = '../test_data/'
+    @test_data_folder = 'test_data/'
     config = @pdf_api.api_client.config
     config.scheme = 'https'
   end
@@ -5188,6 +5188,19 @@ class PdfTests < Minitest::Test
     assert(response, 'Failed to extract images as png.')
   end
 
+  def test_get_images_extract_svg
+    name = "alfa.pdf"
+    upload_file(name)
+
+    opts = {
+        :folder => @temp_folder
+    }
+
+    page_number = 1
+    response = @pdf_api.get_images_extract_svg(name, page_number, opts)
+    assert(response, 'Failed to extract images as svg.')
+  end
+
 
   # Link Annotations Tests
 
@@ -6014,7 +6027,7 @@ class PdfTests < Minitest::Test
     urx = 0
     ury = 0
     opts = {
-        :format => ['First Page', 'Second Page'],
+        :format => ['First Page', 'Second&Page'],
         # :format => 'First Page',
         :folder => @temp_folder
     }
