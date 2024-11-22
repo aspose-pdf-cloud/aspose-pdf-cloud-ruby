@@ -27,6 +27,7 @@ module AsposePdfCloud
     
     TEXTBOX = "Textbox".freeze
     FLOW = "Flow".freeze
+    ENHANCED_FLOW = "EnhancedFlow".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string

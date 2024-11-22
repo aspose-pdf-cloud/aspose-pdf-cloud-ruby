@@ -6893,6 +6893,87 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Extract SVG images from document page.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [SvgImages]
+    def get_images_extract_svg(name, page_number, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = get_images_extract_svg_with_http_info(name, page_number, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = get_images_extract_svg_with_http_info(name, page_number, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Extract SVG images from document page.
+    # 
+    # @param name The document name.
+    # @param page_number The page number.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :pass_base64 The password (Base64).
+    # @return [Array<(SvgImages, Fixnum, Hash)>] SvgImages data, response status code and response headers
+    def get_images_extract_svg_with_http_info(name, page_number, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.get_images_extract_svg ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.get_images_extract_svg"
+      end
+      # verify the required parameter 'page_number' is set
+      if @api_client.config.client_side_validation && page_number.nil?
+        fail ArgumentError, "Missing the required parameter 'page_number' when calling PdfApi.get_images_extract_svg"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/pages/{pageNumber}/images/extract/svg".sub('{' + 'name' + '}', name.to_s).sub('{' + 'pageNumber' + '}', page_number.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'passBase64'] = opts[:'pass_base64'] if !opts[:'pass_base64'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SvgImages')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#get_images_extract_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update fields from FDF file in storage.
     # 
     # @param name The document name.
@@ -11073,8 +11154,8 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && opts[:'format'] && !['Doc', 'DocX'].include?(opts[:'format'])
         fail ArgumentError, 'invalid value for "format", must be one of Doc, DocX'
       end
-      if @api_client.config.client_side_validation && opts[:'mode'] && !['Textbox', 'Flow'].include?(opts[:'mode'])
-        fail ArgumentError, 'invalid value for "mode", must be one of Textbox, Flow'
+      if @api_client.config.client_side_validation && opts[:'mode'] && !['Textbox', 'Flow', 'EnhancedFlow'].include?(opts[:'mode'])
+        fail ArgumentError, 'invalid value for "mode", must be one of Textbox, Flow, EnhancedFlow'
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/doc".sub('{' + 'name' + '}', name.to_s)
@@ -24932,8 +25013,8 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && opts[:'format'] && !['Doc', 'DocX'].include?(opts[:'format'])
         fail ArgumentError, 'invalid value for "format", must be one of Doc, DocX'
       end
-      if @api_client.config.client_side_validation && opts[:'mode'] && !['Textbox', 'Flow'].include?(opts[:'mode'])
-        fail ArgumentError, 'invalid value for "mode", must be one of Textbox, Flow'
+      if @api_client.config.client_side_validation && opts[:'mode'] && !['Textbox', 'Flow', 'EnhancedFlow'].include?(opts[:'mode'])
+        fail ArgumentError, 'invalid value for "mode", must be one of Textbox, Flow, EnhancedFlow'
       end
       # resource path
       local_var_path = "/pdf/convert/doc"
@@ -26166,8 +26247,8 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && opts[:'format'] && !['Doc', 'DocX'].include?(opts[:'format'])
         fail ArgumentError, 'invalid value for "format", must be one of Doc, DocX'
       end
-      if @api_client.config.client_side_validation && opts[:'mode'] && !['Textbox', 'Flow'].include?(opts[:'mode'])
-        fail ArgumentError, 'invalid value for "mode", must be one of Textbox, Flow'
+      if @api_client.config.client_side_validation && opts[:'mode'] && !['Textbox', 'Flow', 'EnhancedFlow'].include?(opts[:'mode'])
+        fail ArgumentError, 'invalid value for "mode", must be one of Textbox, Flow, EnhancedFlow'
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/doc".sub('{' + 'name' + '}', name.to_s)
