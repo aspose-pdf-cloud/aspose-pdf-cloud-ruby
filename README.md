@@ -29,8 +29,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.11
-- Add DocRecognitionMode EnhancedFlow mode.
+## Enhancements in Version 24.12
+- Add support for PDF to PDF 3B conversion.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Installation
@@ -46,15 +46,15 @@ gem build aspose_pdf_cloud.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./aspose_pdf_cloud-24.11.0.gem
+gem install ./aspose_pdf_cloud-24.12.0.gem
 ```
-(for development, run `gem install --dev ./aspose_pdf_cloud-24.11.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./aspose_pdf_cloud-24.12.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'aspose_pdf_cloud', '~> 24.11.0'
+    gem 'aspose_pdf_cloud', '~> 24.12.0'
 
 ### Install from Git
 
