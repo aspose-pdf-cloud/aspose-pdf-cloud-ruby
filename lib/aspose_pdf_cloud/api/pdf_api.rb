@@ -11580,8 +11580,8 @@ module AsposePdfCloud
         fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.get_pdf_in_storage_to_pdf_a"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A'].include?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A"
+      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A', 'PDFA3B'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A, PDFA3B"
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/pdfa".sub('{' + 'name' + '}', name.to_s)
@@ -25453,8 +25453,8 @@ module AsposePdfCloud
         fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.put_pdf_in_request_to_pdf_a"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A'].include?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A"
+      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A', 'PDFA3B'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A, PDFA3B"
       end
       # resource path
       local_var_path = "/pdf/convert/pdfa"
@@ -26707,8 +26707,8 @@ module AsposePdfCloud
         fail ArgumentError, "Missing the required parameter 'type' when calling PdfApi.put_pdf_in_storage_to_pdf_a"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A'].include?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A"
+      if @api_client.config.client_side_validation && !['PDFA1A', 'PDFA1B', 'PDFA3A', 'PDFA3B'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of PDFA1A, PDFA1B, PDFA3A, PDFA3B"
       end
       # resource path
       local_var_path = "/pdf/{name}/convert/pdfa".sub('{' + 'name' + '}', name.to_s)

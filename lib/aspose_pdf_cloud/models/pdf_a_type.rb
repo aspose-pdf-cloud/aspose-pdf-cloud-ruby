@@ -28,6 +28,7 @@ module AsposePdfCloud
     PDFA1_A = "PDFA1A".freeze
     PDFA1_B = "PDFA1B".freeze
     PDFA3_A = "PDFA3A".freeze
+    PDFA3_B = "PDFA3B".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
