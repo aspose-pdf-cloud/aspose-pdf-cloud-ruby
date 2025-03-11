@@ -21,7 +21,7 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
-$:.push File.expand_path("../lib", __FILE__)
+$:.push File.expand_path("./lib", __FILE__)
 require "aspose_pdf_cloud/version"
 
 files = `git ls-files`.split("\n")
@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'faraday', '~> 0.14.0'
   
   s.add_development_dependency 'minitest', '~> 5.8'
+  s.add_development_dependency 'minitest-reporters', '~> 1.5'
 
   s.files         = files
   s.test_files    = `git ls-files -- test/*`.split("\n")
