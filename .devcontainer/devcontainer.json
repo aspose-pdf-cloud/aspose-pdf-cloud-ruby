@@ -1,0 +1,23 @@
+{
+	"name": "Ruby",
+	"image": "mcr.microsoft.com/devcontainers/ruby:3.3",
+	"containerEnv": {
+		"RUBYLIB": "./lib"
+	},
+	"postCreateCommand": "bundle install",
+	"workspaceFolder": "/SDKs/Ruby",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/SDKs/Ruby,type=bind,consistency=cached",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"rubyLsp.formatter": "rubocop",
+				"rubyLsp.rubyVersionManager": {
+					"identifier": "rbenv"
+				}
+			}
+		}
+	},
+	"mounts": [
+		"source=${localWorkspaceFolder}/../../Settings,target=/Settings,type=bind,consistency=cached"
+	]
+}
