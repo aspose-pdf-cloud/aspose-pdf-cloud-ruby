@@ -25,6 +25,7 @@ require 'logger'
 require 'tempfile'
 require 'uri'
 require 'faraday'
+require 'faraday/multipart'
 require_relative 'version'
 require_relative 'api_error'
 
@@ -289,7 +290,7 @@ module AsposePdfCloud
     def build_request_url(path)
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
-      URI.encode(@config.base_url + path)
+      URI::Parser.new.escape(@config.base_url + path).to_s
     end
 
     # Builds the HTTP request body

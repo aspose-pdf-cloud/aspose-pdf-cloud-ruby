@@ -163,7 +163,7 @@ module AsposePdfCloud
       else
         url = "#{scheme}://#{[host, '/v3.0'].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
       end
-      URI.encode(url)
+      URI::Parser.new.escape(url)
     end
 
     # Returns Auth Settings hash for api client.
