@@ -4722,6 +4722,59 @@ class PdfTest < Minitest::Test
     assert(response, 'Failed to add Text Stamp into document.')
   end
 
+  def test_post_document_text_stamps_page_specified
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    opts = {
+      folder: @temp_folder
+    }
+
+    text_state = TextState.new
+    text_state.font_size = 14
+
+    stamp1 = TextStampPageSpecified.new
+    stamp1.page_number = 2
+    stamp1.background = true
+    stamp1.left_margin = 1
+    stamp1.right_margin = 2
+    stamp1.top_margin = 3
+    stamp1.bottom_margin = 4
+    stamp1.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp1.vertical_alignment = VerticalAlignment::CENTER
+    stamp1.opacity = 1
+    stamp1.rotate = Rotation::NONE
+    stamp1.rotate_angle = 0
+    stamp1.x_indent = 0
+    stamp1.y_indent = 0
+    stamp1.zoom = 1
+    stamp1.text_alignment = HorizontalAlignment::CENTER
+    stamp1.value = 'Text Stamp 1'
+    stamp1.text_state = text_state
+
+    stamp2 = TextStampPageSpecified.new
+    stamp2.page_number = 2
+    stamp2.background = true
+    stamp2.left_margin = 1
+    stamp2.right_margin = 2
+    stamp2.top_margin = 3
+    stamp2.bottom_margin = 4
+    stamp2.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp2.vertical_alignment = VerticalAlignment::CENTER
+    stamp2.opacity = 1
+    stamp2.rotate = Rotation::NONE
+    stamp2.rotate_angle = 0
+    stamp2.x_indent = 0
+    stamp2.y_indent = 0
+    stamp2.zoom = 1
+    stamp2.text_alignment = HorizontalAlignment::CENTER
+    stamp2.value = 'Text Stamp 2'
+    stamp2.text_state = text_state
+
+    response = @pdf_api.post_document_text_stamps_page_specified(file_name, [stamp1, stamp2], opts)
+    assert(response, 'Failed to add Text Stamp into document.')
+  end
+
   def test_post_page_image_stamps
     file_name = 'PageNumberStamp.pdf'
     upload_file(file_name)
@@ -4783,6 +4836,55 @@ class PdfTest < Minitest::Test
     stamp.file_name = @temp_folder + '/' + image_name
 
     response = @pdf_api.post_document_image_stamps(file_name, [stamp], opts)
+    assert(response, 'Failed to add Image Stamp into document.')
+  end
+
+  def test_post_document_image_stamps_page_specified
+    file_name = 'PageNumberStamp.pdf'
+    upload_file(file_name)
+
+    image_name = 'Koala.jpg'
+    upload_file(image_name)
+
+    opts = {
+      folder: @temp_folder
+    }
+
+    stamp1 = ImageStampPageSpecified.new
+    stamp1.page_number = 2
+    stamp1.background = true
+    stamp1.left_margin = 1
+    stamp1.right_margin = 2
+    stamp1.top_margin = 3
+    stamp1.bottom_margin = 4
+    stamp1.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp1.vertical_alignment = VerticalAlignment::CENTER
+    stamp1.opacity = 1
+    stamp1.rotate = Rotation::NONE
+    stamp1.rotate_angle = 0
+    stamp1.x_indent = 0
+    stamp1.y_indent = 0
+    stamp1.zoom = 1
+    stamp1.file_name = @temp_folder + '/' + image_name
+
+    stamp2 = ImageStampPageSpecified.new
+    stamp2.page_number = 4
+    stamp2.background = true
+    stamp2.left_margin = 1
+    stamp2.right_margin = 2
+    stamp2.top_margin = 3
+    stamp2.bottom_margin = 4
+    stamp2.horizontal_alignment = HorizontalAlignment::CENTER
+    stamp2.vertical_alignment = VerticalAlignment::CENTER
+    stamp2.opacity = 1
+    stamp2.rotate = Rotation::NONE
+    stamp2.rotate_angle = 0
+    stamp2.x_indent = 0
+    stamp2.y_indent = 0
+    stamp2.zoom = 1
+    stamp2.file_name = @temp_folder + '/' + image_name
+
+    response = @pdf_api.post_document_image_stamps(file_name, [stamp1, stamp2], opts)
     assert(response, 'Failed to add Image Stamp into document.')
   end
 
