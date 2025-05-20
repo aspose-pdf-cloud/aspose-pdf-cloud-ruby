@@ -203,6 +203,7 @@ Method | HTTP request | Description
 [**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**post_check_box_fields**](PdfApi.md#post_check_box_fields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
 [**post_combo_box_fields**](PdfApi.md#post_combo_box_fields) | **POST** /pdf/\{name}/fields/combobox | Add document combobox fields.
+[**post_compare_pdf**](PdfApi.md#post_compare_pdf) | **POST** /pdf/compare | Compare two PDF documents.
 [**post_create_document**](PdfApi.md#post_create_document) | **POST** /pdf/\{name} | Create empty document.
 [**post_create_field**](PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 [**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
@@ -2854,7 +2855,7 @@ Name | Type | Description  | Notes
 
 
 # **get_mht_in_storage_to_pdf**
-> File get_mht_in_storage_to_pdf(src_path, opts)
+> File get_mht_in_storage_to_pdf(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
 
 Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 
@@ -2863,6 +2864,12 @@ Convert MHT file (located on storage) to PDF format and return resulting file in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.mht) | 
+ **height** | **Float**| Page height | 
+ **width** | **Float**| Page width | 
+ **margin_left** | **Float**| Page margin left | 
+ **margin_bottom** | **Float**| Page margin bottom | 
+ **margin_right** | **Float**| Page margin right | 
+ **margin_top** | **Float**| Page margin top | 
  **storage** | **String**| The document storage. | [optional] 
 
 ### Return type
@@ -5406,6 +5413,31 @@ Name | Type | Description  | Notes
  **fields** | [**Array&lt;ComboBoxField&gt;**](ComboBoxField.md)| The array of field. | 
  **storage** | **String**| The document storage. | [optional] 
  **folder** | **String**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **post_compare_pdf**
+> AsposeResponse post_compare_pdf(path1, path2, out_path, opts)
+
+Compare two PDF documents.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path1** | **String**| Path to first PDF document. | 
+ **path2** | **String**| Path to second PDF document. | 
+ **out_path** | **String**| Full filename of the resulting document. | 
+ **storage** | **String**| The documents storage. | [optional] 
 
 ### Return type
 
@@ -8121,7 +8153,7 @@ Name | Type | Description  | Notes
 
 
 # **put_mht_in_storage_to_pdf**
-> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, opts)
+> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
 
 Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 
@@ -8131,6 +8163,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
  **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.mht) | 
+ **height** | **Float**| Page height | 
+ **width** | **Float**| Page width | 
+ **margin_left** | **Float**| Page margin left | 
+ **margin_bottom** | **Float**| Page margin bottom | 
+ **margin_right** | **Float**| Page margin right | 
+ **margin_top** | **Float**| Page margin top | 
  **dst_folder** | **String**| The destination document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
