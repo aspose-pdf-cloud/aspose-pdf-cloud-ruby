@@ -2855,7 +2855,7 @@ Name | Type | Description  | Notes
 
 
 # **get_mht_in_storage_to_pdf**
-> File get_mht_in_storage_to_pdf(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
+> File get_mht_in_storage_to_pdf(src_path, opts)
 
 Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 
@@ -2864,12 +2864,12 @@ Convert MHT file (located on storage) to PDF format and return resulting file in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.mht) | 
- **height** | **Float**| Page height | 
- **width** | **Float**| Page width | 
- **margin_left** | **Float**| Page margin left | 
- **margin_bottom** | **Float**| Page margin bottom | 
- **margin_right** | **Float**| Page margin right | 
- **margin_top** | **Float**| Page margin top | 
+ **height** | **Float**| Page height | [optional] 
+ **width** | **Float**| Page width | [optional] 
+ **margin_left** | **Float**| Page margin left | [optional] 
+ **margin_bottom** | **Float**| Page margin bottom | [optional] 
+ **margin_right** | **Float**| Page margin right | [optional] 
+ **margin_top** | **Float**| Page margin top | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 
 ### Return type
@@ -8153,7 +8153,7 @@ Name | Type | Description  | Notes
 
 
 # **put_mht_in_storage_to_pdf**
-> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
+> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, opts)
 
 Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 
@@ -8163,12 +8163,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| The document name. | 
  **src_path** | **String**| Full source filename (ex. /folder1/folder2/template.mht) | 
- **height** | **Float**| Page height | 
- **width** | **Float**| Page width | 
- **margin_left** | **Float**| Page margin left | 
- **margin_bottom** | **Float**| Page margin bottom | 
- **margin_right** | **Float**| Page margin right | 
- **margin_top** | **Float**| Page margin top | 
+ **height** | **Float**| Page height | [optional] 
+ **width** | **Float**| Page width | [optional] 
+ **margin_left** | **Float**| Page margin left | [optional] 
+ **margin_bottom** | **Float**| Page margin bottom | [optional] 
+ **margin_right** | **Float**| Page margin right | [optional] 
+ **margin_top** | **Float**| Page margin top | [optional] 
  **dst_folder** | **String**| The destination document folder. | [optional] 
  **storage** | **String**| The document storage. | [optional] 
 

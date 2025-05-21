@@ -7596,22 +7596,22 @@ module AsposePdfCloud
     # Convert MHT file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
-    # @param height Page height
-    # @param width Page width
-    # @param margin_left Page margin left
-    # @param margin_bottom Page margin bottom
-    # @param margin_right Page margin right
-    # @param margin_top Page margin top
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :storage The document storage.
     # @return [File]
-    def get_mht_in_storage_to_pdf(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts = {})
+    def get_mht_in_storage_to_pdf(src_path, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
+      data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
       rescue ApiError => error
         if error.code == 401
           @api_client.request_token_if_needed
-          data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
+          data, _status_code, _headers = get_mht_in_storage_to_pdf_with_http_info(src_path, opts)
         else
           raise
         end
@@ -7621,16 +7621,16 @@ module AsposePdfCloud
     # Convert MHT file (located on storage) to PDF format and return resulting file in response. 
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
-    # @param height Page height
-    # @param width Page width
-    # @param margin_left Page margin left
-    # @param margin_bottom Page margin bottom
-    # @param margin_right Page margin right
-    # @param margin_top Page margin top
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
-    def get_mht_in_storage_to_pdf_with_http_info(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts = {})
+    def get_mht_in_storage_to_pdf_with_http_info(src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.get_mht_in_storage_to_pdf ..."
       end
@@ -7638,42 +7638,18 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && src_path.nil?
         fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.get_mht_in_storage_to_pdf"
       end
-      # verify the required parameter 'height' is set
-      if @api_client.config.client_side_validation && height.nil?
-        fail ArgumentError, "Missing the required parameter 'height' when calling PdfApi.get_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'width' is set
-      if @api_client.config.client_side_validation && width.nil?
-        fail ArgumentError, "Missing the required parameter 'width' when calling PdfApi.get_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_left' is set
-      if @api_client.config.client_side_validation && margin_left.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_left' when calling PdfApi.get_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_bottom' is set
-      if @api_client.config.client_side_validation && margin_bottom.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_bottom' when calling PdfApi.get_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_right' is set
-      if @api_client.config.client_side_validation && margin_right.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_right' when calling PdfApi.get_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_top' is set
-      if @api_client.config.client_side_validation && margin_top.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_top' when calling PdfApi.get_mht_in_storage_to_pdf"
-      end
       # resource path
       local_var_path = "/pdf/create/mht"
 
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
-      query_params[:'height'] = height
-      query_params[:'width'] = width
-      query_params[:'marginLeft'] = margin_left
-      query_params[:'marginBottom'] = margin_bottom
-      query_params[:'marginRight'] = margin_right
-      query_params[:'marginTop'] = margin_top
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'marginLeft'] = opts[:'margin_left'] if !opts[:'margin_left'].nil?
+      query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
+      query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
+      query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
@@ -24277,23 +24253,23 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
-    # @param height Page height
-    # @param width Page width
-    # @param margin_left Page margin left
-    # @param margin_bottom Page margin bottom
-    # @param margin_right Page margin right
-    # @param margin_top Page margin top
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
     # @option opts [String] :storage The document storage.
     # @return [AsposeResponse]
-    def put_mht_in_storage_to_pdf(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts = {})
+    def put_mht_in_storage_to_pdf(name, src_path, opts = {})
       @api_client.request_token_if_needed
-      data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
+      data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
       rescue ApiError => error
         if error.code == 401
           @api_client.request_token_if_needed
-          data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts)
+          data, _status_code, _headers = put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts)
         else
           raise
         end
@@ -24304,17 +24280,17 @@ module AsposePdfCloud
     # 
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
-    # @param height Page height
-    # @param width Page width
-    # @param margin_left Page margin left
-    # @param margin_bottom Page margin bottom
-    # @param margin_right Page margin right
-    # @param margin_top Page margin top
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
-    def put_mht_in_storage_to_pdf_with_http_info(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, opts = {})
+    def put_mht_in_storage_to_pdf_with_http_info(name, src_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: PdfApi.put_mht_in_storage_to_pdf ..."
       end
@@ -24326,42 +24302,18 @@ module AsposePdfCloud
       if @api_client.config.client_side_validation && src_path.nil?
         fail ArgumentError, "Missing the required parameter 'src_path' when calling PdfApi.put_mht_in_storage_to_pdf"
       end
-      # verify the required parameter 'height' is set
-      if @api_client.config.client_side_validation && height.nil?
-        fail ArgumentError, "Missing the required parameter 'height' when calling PdfApi.put_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'width' is set
-      if @api_client.config.client_side_validation && width.nil?
-        fail ArgumentError, "Missing the required parameter 'width' when calling PdfApi.put_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_left' is set
-      if @api_client.config.client_side_validation && margin_left.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_left' when calling PdfApi.put_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_bottom' is set
-      if @api_client.config.client_side_validation && margin_bottom.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_bottom' when calling PdfApi.put_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_right' is set
-      if @api_client.config.client_side_validation && margin_right.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_right' when calling PdfApi.put_mht_in_storage_to_pdf"
-      end
-      # verify the required parameter 'margin_top' is set
-      if @api_client.config.client_side_validation && margin_top.nil?
-        fail ArgumentError, "Missing the required parameter 'margin_top' when calling PdfApi.put_mht_in_storage_to_pdf"
-      end
       # resource path
       local_var_path = "/pdf/{name}/create/mht".sub('{' + 'name' + '}', name.to_s)
 
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
-      query_params[:'height'] = height
-      query_params[:'width'] = width
-      query_params[:'marginLeft'] = margin_left
-      query_params[:'marginBottom'] = margin_bottom
-      query_params[:'marginRight'] = margin_right
-      query_params[:'marginTop'] = margin_top
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'marginLeft'] = opts[:'margin_left'] if !opts[:'margin_left'].nil?
+      query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
+      query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
+      query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 

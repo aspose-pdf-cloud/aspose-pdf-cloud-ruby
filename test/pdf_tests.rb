@@ -40,7 +40,7 @@ class PdfTest < Minitest::Test
     @temp_folder = 'TempPdfCloud'
     @test_data_folder = 'test_data/'
     config = @pdf_api.api_client.config
-    config.scheme = 'https'
+    config.scheme = 'http'
   end
 
   def teardown
@@ -6754,5 +6754,20 @@ class PdfTest < Minitest::Test
     response = @pdf_api.get_xmp_metadata_json(file_name, opts)
     assert(response, 'Failed to get xmp metadata in json format')
     assert_equal(9, response[0].properties.count, 'Failed to read document xmp metadata.')
+  end
+
+  def test_post_compare_pdf
+    file_name_1 = '4pages.pdf'
+    upload_file(file_name_1)
+
+    file_name_2 = '4pagesPdfA.pdf'
+    upload_file(file_name_2)
+
+    opts = {
+      folder: @temp_folder
+    }
+
+    response = @pdf_api.post_compare_pdf(@temp_folder + '/' + file_name_1, @temp_folder + '/' + file_name_2, @temp_folder + '/' + 'output.pdf', opts)
+    assert(response, 'Failed to compare a PDF files.')
   end
 end
