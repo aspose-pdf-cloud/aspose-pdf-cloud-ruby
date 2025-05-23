@@ -7597,6 +7597,12 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :storage The document storage.
     # @return [File]
     def get_mht_in_storage_to_pdf(src_path, opts = {})
@@ -7616,6 +7622,12 @@ module AsposePdfCloud
     # 
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :storage The document storage.
     # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
     def get_mht_in_storage_to_pdf_with_http_info(src_path, opts = {})
@@ -7632,6 +7644,12 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'marginLeft'] = opts[:'margin_left'] if !opts[:'margin_left'].nil?
+      query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
+      query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
+      query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
       # header parameters
@@ -15593,6 +15611,90 @@ module AsposePdfCloud
         :return_type => 'AsposeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PdfApi#post_combo_box_fields\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Compare two PDF documents.
+    # 
+    # @param path1 Path to first PDF document.
+    # @param path2 Path to second PDF document.
+    # @param out_path Full filename of the resulting document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The documents storage.
+    # @return [AsposeResponse]
+    def post_compare_pdf(path1, path2, out_path, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_compare_pdf_with_http_info(path1, path2, out_path, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_compare_pdf_with_http_info(path1, path2, out_path, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Compare two PDF documents.
+    # 
+    # @param path1 Path to first PDF document.
+    # @param path2 Path to second PDF document.
+    # @param out_path Full filename of the resulting document.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The documents storage.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_compare_pdf_with_http_info(path1, path2, out_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_compare_pdf ..."
+      end
+      # verify the required parameter 'path1' is set
+      if @api_client.config.client_side_validation && path1.nil?
+        fail ArgumentError, "Missing the required parameter 'path1' when calling PdfApi.post_compare_pdf"
+      end
+      # verify the required parameter 'path2' is set
+      if @api_client.config.client_side_validation && path2.nil?
+        fail ArgumentError, "Missing the required parameter 'path2' when calling PdfApi.post_compare_pdf"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling PdfApi.post_compare_pdf"
+      end
+      # resource path
+      local_var_path = "/pdf/compare"
+
+      # query parameters
+      query_params = {}
+      query_params[:'path1'] = path1
+      query_params[:'path2'] = path2
+      query_params[:'outPath'] = out_path
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_compare_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -24152,6 +24254,12 @@ module AsposePdfCloud
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
     # @option opts [String] :storage The document storage.
     # @return [AsposeResponse]
@@ -24173,6 +24281,12 @@ module AsposePdfCloud
     # @param name The document name.
     # @param src_path Full source filename (ex. /folder1/folder2/template.mht)
     # @param [Hash] opts the optional parameters
+    # @option opts [Float] :height Page height
+    # @option opts [Float] :width Page width
+    # @option opts [Float] :margin_left Page margin left
+    # @option opts [Float] :margin_bottom Page margin bottom
+    # @option opts [Float] :margin_right Page margin right
+    # @option opts [Float] :margin_top Page margin top
     # @option opts [String] :dst_folder The destination document folder.
     # @option opts [String] :storage The document storage.
     # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
@@ -24194,6 +24308,12 @@ module AsposePdfCloud
       # query parameters
       query_params = {}
       query_params[:'srcPath'] = src_path
+      query_params[:'height'] = opts[:'height'] if !opts[:'height'].nil?
+      query_params[:'width'] = opts[:'width'] if !opts[:'width'].nil?
+      query_params[:'marginLeft'] = opts[:'margin_left'] if !opts[:'margin_left'].nil?
+      query_params[:'marginBottom'] = opts[:'margin_bottom'] if !opts[:'margin_bottom'].nil?
+      query_params[:'marginRight'] = opts[:'margin_right'] if !opts[:'margin_right'].nil?
+      query_params[:'marginTop'] = opts[:'margin_top'] if !opts[:'margin_top'].nil?
       query_params[:'dstFolder'] = opts[:'dst_folder'] if !opts[:'dst_folder'].nil?
       query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
 
