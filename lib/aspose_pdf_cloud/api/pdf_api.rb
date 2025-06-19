@@ -16351,6 +16351,99 @@ module AsposePdfCloud
       return data, status_code, headers
     end
 
+    # Rotate PDF document.
+    # 
+    # @param name The document name.
+    # @param rotation_angle Rotation Angle (CKW). Can be 90, 180, 270.
+    # @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
+    # @return [AsposeResponse]
+    def post_document_pages_rotate(name, rotation_angle, pages, opts = {})
+      @api_client.request_token_if_needed
+      data, _status_code, _headers = post_document_pages_rotate_with_http_info(name, rotation_angle, pages, opts)
+      rescue ApiError => error
+        if error.code == 401
+          @api_client.request_token_if_needed
+          data, _status_code, _headers = post_document_pages_rotate_with_http_info(name, rotation_angle, pages, opts)
+        else
+          raise
+        end
+      return data
+    end
+
+    # Rotate PDF document.
+    # 
+    # @param name The document name.
+    # @param rotation_angle Rotation Angle (CKW). Can be 90, 180, 270.
+    # @param pages Comma separated list of pages and page ranges. (Example: 1,3-5,8)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :storage The document storage.
+    # @option opts [String] :folder The document folder.
+    # @option opts [String] :password Base64 encoded password.
+    # @return [Array<(AsposeResponse, Fixnum, Hash)>] AsposeResponse data, response status code and response headers
+    def post_document_pages_rotate_with_http_info(name, rotation_angle, pages, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: PdfApi.post_document_pages_rotate ..."
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling PdfApi.post_document_pages_rotate"
+      end
+      # verify the required parameter 'rotation_angle' is set
+      if @api_client.config.client_side_validation && rotation_angle.nil?
+        fail ArgumentError, "Missing the required parameter 'rotation_angle' when calling PdfApi.post_document_pages_rotate"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['None', 'on90', 'on180', 'on270'].include?(rotation_angle)
+        fail ArgumentError, "invalid value for 'rotation_angle', must be one of None, on90, on180, on270"
+      end
+      # verify the required parameter 'pages' is set
+      if @api_client.config.client_side_validation && pages.nil?
+        fail ArgumentError, "Missing the required parameter 'pages' when calling PdfApi.post_document_pages_rotate"
+      end
+      # resource path
+      local_var_path = "/pdf/{name}/rotate".sub('{' + 'name' + '}', name.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'rotationAngle'] = rotation_angle
+      query_params[:'pages'] = pages
+      query_params[:'storage'] = opts[:'storage'] if !opts[:'storage'].nil?
+      query_params[:'folder'] = opts[:'folder'] if !opts[:'folder'].nil?
+      query_params[:'password'] = opts[:'password'] if !opts[:'password'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+      # Fix header in file
+      post_body = nil
+
+      # http body (model)
+      # Fix header in file
+      # post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AsposeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PdfApi#post_document_pages_rotate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add document text footer.
     # 
     # @param name The document name.
