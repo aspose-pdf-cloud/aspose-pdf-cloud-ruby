@@ -5040,11 +5040,17 @@ class PdfTest < Minitest::Test
     upload_file(file_name)
     image_file_name = 'butterfly.jpg'
     upload_file(image_file_name)
-    image_ids = %w[GE5TENJVGQZTWMJYGQWDINRUFQ2DCMRMGY4TC GE5TIMJSGY3TWMJXG4WDIMBZFQ2DCOJMGQ3DK]
     opts = {
       image_file_path: @temp_folder + '/' + image_file_name,
       folder: @temp_folder
     }
+    responseImages1 = @pdf_api.get_images(file_name, 1, opts)
+    assert(responseImages1, 'Failed to read document images.')
+    image_id1 = responseImages1[0].images.list[0].id
+    responseImages2 = @pdf_api.get_images(file_name, 16, opts)
+    assert(responseImages2, 'Failed to read document images.')
+    image_id2 = responseImages2[0].images.list[0].id
+    image_ids = [image_id1, image_id2]
     response = @pdf_api.put_replace_multiple_image(file_name, image_ids, opts)
     assert(response, 'Failed to replace document images.')
   end
@@ -6769,5 +6775,15 @@ class PdfTest < Minitest::Test
 
     response = @pdf_api.post_compare_pdf(@temp_folder + '/' + file_name_1, @temp_folder + '/' + file_name_2, @temp_folder + '/' + 'output.pdf', opts)
     assert(response, 'Failed to compare a PDF files.')
+  end
+
+  def test_post_document_pages_rotate
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    opts = {
+      folder: @temp_folder
+    }
+    response = @pdf_api.post_document_pages_rotate(file_name, Rotation::ON90, '2-3', opts)
+    assert(response, 'Failed to organize document.')
   end
 end
