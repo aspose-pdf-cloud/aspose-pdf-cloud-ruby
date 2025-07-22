@@ -19,6 +19,31 @@ SOFTWARE.
 --------------------------------------------------------------------------------------------------------------------
 =end
 
+require 'date'
+require 'time'
+
 module AsposePdfCloud
-  VERSION = "25.7.0"
+  class SignatureSubjectNameElements
+    
+    CN = "CN".freeze
+    O = "O".freeze
+    L = "L".freeze
+    OU = "OU".freeze
+    S = "S".freeze
+    C = "C".freeze
+    E = "E".freeze
+
+    # Builds the enum from string
+    # @param [String] The enum value in the form of the string
+    # @return [String] The enum value
+    def build_from_hash(value)
+      # resolve issue with Concstant Name modification (ex: "FooName" to :FOO_NAME)
+      # consantValues = SignatureSubjectNameElements.constants.select{|c| c.to_s == value}
+      constantValues = SignatureSubjectNameElements.constants.select{ |const_name| SignatureSubjectNameElements.const_get(const_name) == value}
+      
+      raise "Invalid ENUM value #{value} for class #SignatureSubjectNameElements" if constantValues.empty?
+      value
+    end
+  end
+
 end

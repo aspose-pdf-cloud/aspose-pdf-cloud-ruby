@@ -5,7 +5,8 @@ An abstract class which represents signature custom appearance object.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **font_family_name** | **String** | Gets/sets font family name. It should be existed in the document. Default value: Arial. | [optional] 
-**font_size** | **Float** | Gets/sets font size. Default value: 10. | 
+**font_size** | **Float** | Gets/sets font size. Default value: 10. | [optional] 
+**rotation** | [**Rotation**](Rotation.md) | Gets or sets signature rotation. | 
 **show_contact_info** | **BOOLEAN** | Gets/sets contact info visibility. Default value: true. | 
 **show_reason** | **BOOLEAN** | Gets/sets reason visibility. Default value: true. | 
 **show_location** | **BOOLEAN** | Gets/sets location visibility. Default value: true. | 
@@ -16,5 +17,9 @@ Name | Type | Description | Notes
 **date_signed_at_label** | **String** | Gets/sets date signed label. Default value: &quot;Date&quot;. | [optional] 
 **date_time_local_format** | **String** | Gets/sets datetime local format. Default value: &quot;yyyy.MM.dd HH:mm:ss zzz&quot;. | [optional] 
 **date_time_format** | **String** | Gets/sets datetime format. Default value: &quot;yyyy.MM.dd HH:mm:ss&quot;. | [optional] 
+**background_color** | [**Color**](Color.md) | Gets/sets background color. | [optional] 
+**foreground_color** | [**Color**](Color.md) | Gets/sets foreground color. | [optional] 
+**use_digital_subject_format** | **BOOLEAN** | Gets/sets subject format usage. | 
+**digital_subject_format** | [**Array&lt;SignatureSubjectNameElements&gt;**](SignatureSubjectNameElements.md) | Gets/sets subject format. | [optional] 
 
 
