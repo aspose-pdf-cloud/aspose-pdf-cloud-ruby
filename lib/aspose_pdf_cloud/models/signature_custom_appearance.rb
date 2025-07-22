@@ -31,6 +31,9 @@ module AsposePdfCloud
     # Gets/sets font size. Default value: 10.
     attr_accessor :font_size
 
+    # Gets or sets signature rotation.
+    attr_accessor :rotation
+
     # Gets/sets contact info visibility. Default value: true.
     attr_accessor :show_contact_info
 
@@ -61,12 +64,25 @@ module AsposePdfCloud
     # Gets/sets datetime format. Default value: \"yyyy.MM.dd HH:mm:ss\".
     attr_accessor :date_time_format
 
+    # Gets/sets background color.
+    attr_accessor :background_color
+
+    # Gets/sets foreground color.
+    attr_accessor :foreground_color
+
+    # Gets/sets subject format usage.
+    attr_accessor :use_digital_subject_format
+
+    # Gets/sets subject format.
+    attr_accessor :digital_subject_format
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'font_family_name' => :'FontFamilyName',
         :'font_size' => :'FontSize',
+        :'rotation' => :'Rotation',
         :'show_contact_info' => :'ShowContactInfo',
         :'show_reason' => :'ShowReason',
         :'show_location' => :'ShowLocation',
@@ -76,7 +92,11 @@ module AsposePdfCloud
         :'digital_signed_label' => :'DigitalSignedLabel',
         :'date_signed_at_label' => :'DateSignedAtLabel',
         :'date_time_local_format' => :'DateTimeLocalFormat',
-        :'date_time_format' => :'DateTimeFormat'
+        :'date_time_format' => :'DateTimeFormat',
+        :'background_color' => :'BackgroundColor',
+        :'foreground_color' => :'ForegroundColor',
+        :'use_digital_subject_format' => :'UseDigitalSubjectFormat',
+        :'digital_subject_format' => :'DigitalSubjectFormat'
       }
     end
 
@@ -85,6 +105,7 @@ module AsposePdfCloud
       {
         :'font_family_name' => :'String',
         :'font_size' => :'Float',
+        :'rotation' => :'Rotation',
         :'show_contact_info' => :'BOOLEAN',
         :'show_reason' => :'BOOLEAN',
         :'show_location' => :'BOOLEAN',
@@ -94,7 +115,11 @@ module AsposePdfCloud
         :'digital_signed_label' => :'String',
         :'date_signed_at_label' => :'String',
         :'date_time_local_format' => :'String',
-        :'date_time_format' => :'String'
+        :'date_time_format' => :'String',
+        :'background_color' => :'Color',
+        :'foreground_color' => :'Color',
+        :'use_digital_subject_format' => :'BOOLEAN',
+        :'digital_subject_format' => :'Array<SignatureSubjectNameElements>'
       }
     end
 
@@ -112,6 +137,10 @@ module AsposePdfCloud
 
       if attributes.has_key?(:'FontSize')
         self.font_size = attributes[:'FontSize']
+      end
+
+      if attributes.has_key?(:'Rotation')
+        self.rotation = attributes[:'Rotation']
       end
 
       if attributes.has_key?(:'ShowContactInfo')
@@ -154,14 +183,32 @@ module AsposePdfCloud
         self.date_time_format = attributes[:'DateTimeFormat']
       end
 
+      if attributes.has_key?(:'BackgroundColor')
+        self.background_color = attributes[:'BackgroundColor']
+      end
+
+      if attributes.has_key?(:'ForegroundColor')
+        self.foreground_color = attributes[:'ForegroundColor']
+      end
+
+      if attributes.has_key?(:'UseDigitalSubjectFormat')
+        self.use_digital_subject_format = attributes[:'UseDigitalSubjectFormat']
+      end
+
+      if attributes.has_key?(:'DigitalSubjectFormat')
+        if (value = attributes[:'DigitalSubjectFormat']).is_a?(Array)
+          self.digital_subject_format = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @font_size.nil?
-        invalid_properties.push("invalid value for 'font_size', font_size cannot be nil.")
+      if @rotation.nil?
+        invalid_properties.push("invalid value for 'rotation', rotation cannot be nil.")
       end
 
       if @show_contact_info.nil?
@@ -176,16 +223,21 @@ module AsposePdfCloud
         invalid_properties.push("invalid value for 'show_location', show_location cannot be nil.")
       end
 
+      if @use_digital_subject_format.nil?
+        invalid_properties.push("invalid value for 'use_digital_subject_format', use_digital_subject_format cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @font_size.nil?
+      return false if @rotation.nil?
       return false if @show_contact_info.nil?
       return false if @show_reason.nil?
       return false if @show_location.nil?
+      return false if @use_digital_subject_format.nil?
       return true
     end
 
@@ -196,6 +248,7 @@ module AsposePdfCloud
       self.class == o.class &&
           font_family_name == o.font_family_name &&
           font_size == o.font_size &&
+          rotation == o.rotation &&
           show_contact_info == o.show_contact_info &&
           show_reason == o.show_reason &&
           show_location == o.show_location &&
@@ -205,7 +258,11 @@ module AsposePdfCloud
           digital_signed_label == o.digital_signed_label &&
           date_signed_at_label == o.date_signed_at_label &&
           date_time_local_format == o.date_time_local_format &&
-          date_time_format == o.date_time_format
+          date_time_format == o.date_time_format &&
+          background_color == o.background_color &&
+          foreground_color == o.foreground_color &&
+          use_digital_subject_format == o.use_digital_subject_format &&
+          digital_subject_format == o.digital_subject_format
     end
 
     # @see the `==` method
@@ -217,7 +274,7 @@ module AsposePdfCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [font_family_name, font_size, show_contact_info, show_reason, show_location, contact_info_label, reason_label, location_label, digital_signed_label, date_signed_at_label, date_time_local_format, date_time_format].hash
+      [font_family_name, font_size, rotation, show_contact_info, show_reason, show_location, contact_info_label, reason_label, location_label, digital_signed_label, date_signed_at_label, date_time_local_format, date_time_format, background_color, foreground_color, use_digital_subject_format, digital_subject_format].hash
     end
 
     # Builds the object from hash
