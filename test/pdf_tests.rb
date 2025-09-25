@@ -6784,7 +6784,7 @@ class PdfTest < Minitest::Test
       folder: @temp_folder
     }
     response = @pdf_api.post_document_pages_rotate(file_name, Rotation::ON90, '2-3', opts)
-    assert(response, 'Failed to organize document.')
+    assert(response, 'Failed to rotate document.')
   end
 
   def test_post_document_pages_resize
@@ -6794,6 +6794,18 @@ class PdfTest < Minitest::Test
       folder: @temp_folder
     }
     response = @pdf_api.post_document_pages_resize(file_name, 100, 200, '2-3', opts)
-    assert(response, 'Failed to organize document.')
+    assert(response, 'Failed to resize document.')
+  end
+
+  def test_post_document_pages_crop
+    file_name = '4pages.pdf'
+    upload_file(file_name)
+    opts = {
+      folder: @temp_folder
+    }
+
+    rectangle = Rectangle.new({ LLX: 0, LLY: 0, URX: 800, URY: 400 })
+    response = @pdf_api.post_document_pages_crop(file_name, '2-3', rectangle, opts)
+    assert(response, 'Failed to crop document.')
   end
 end
