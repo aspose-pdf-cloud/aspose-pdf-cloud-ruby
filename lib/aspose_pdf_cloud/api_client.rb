@@ -439,8 +439,8 @@ module AsposePdfCloud
       # form parameters
       form_params = {}
       form_params["grant_type"] = 'client_credentials'
-      form_params["client_id"] = @config.app_sid
-      form_params["client_secret"] = @config.app_key
+      form_params["client_id"] = @config.client_id
+      form_params["client_secret"] = @config.client_secret
 
       body =  {}
 

@@ -77,7 +77,7 @@ Add the following in the Gemfile:
 ```
 
 ## SelfHost Aspose.PDF Cloud
-Create **PdfApi** object without **app_key** and **app_sid** parameters, but with **host** parameter set to *url of SelfHost Aspose.PDF Cloud* and **self_host** parameter set to *true*:
+Create **PdfApi** object without **client_secret** and **client_id** parameters, but with **host** parameter set to *url of SelfHost Aspose.PDF Cloud* and **self_host** parameter set to *true*:
 ```ruby
     @pdf_api = PdfApi.new('', '', 'MY_SELFHOST_URL', true)
 ```

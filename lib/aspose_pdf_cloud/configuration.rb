@@ -31,10 +31,10 @@ module AsposePdfCloud
     attr_accessor :self_host_url
 
     # App Key
-    attr_accessor :app_key
+    attr_accessor :client_secret
 
     # App SID
-    attr_accessor :app_sid
+    attr_accessor :client_id
 
     # Defines url scheme
     attr_accessor :scheme

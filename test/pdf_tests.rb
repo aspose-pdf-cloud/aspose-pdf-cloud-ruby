@@ -30,13 +30,13 @@ class PdfTest < Minitest::Test
   include AsposePdfCloud
 
   def setup
-    servercreds_json = File.read('../../Settings/servercreds.json')
+    servercreds_json = File.read('settings/credentials.json')
     creds = JSON.parse(servercreds_json)
-    self_host = creds.has_key?('SelfHost') ? creds['SelfHost'] : false
-    app_key = creds.has_key?('AppKey') ? creds['AppKey'] : ''
-    app_sid = creds.has_key?('AppSID') ? creds['AppSID'] : ''
-    product_uri = creds.has_key?('ProductUri') ? creds['ProductUri'] : ''
-    @pdf_api = PdfApi.new(app_key, app_sid, product_uri, self_host)
+    self_host = creds.has_key?('self_host') ? creds['self_host'] : false
+    client_secret = creds.has_key?('client_secret') ? creds['client_secret'] : ''
+    client_id = creds.has_key?('client_id') ? creds['client_id'] : ''
+    product_uri = creds.has_key?('api_url') ? creds['api_url'] : ''
+    @pdf_api = PdfApi.new(client_secret, client_id, product_uri, self_host)
     @temp_folder = 'TempPdfCloud'
     @test_data_folder = 'test_data/'
     config = @pdf_api.api_client.config
