@@ -1,9 +1,9 @@
 require 'aspose_pdf_cloud'
 include AsposePdfCloud
 
-app_key = 'XXXXX'
-app_sid = 'XXXXX'
-@pdf_api = PdfApi.new(app_key, app_sid)
+client_secret = 'XXXXX'
+client_id = 'XXXXX'
+@pdf_api = PdfApi.new(client_secret, client_id)
 file_name = 'PdfWithAnnotations.pdf'
 
 # Upload the File

@@ -1,9 +1,9 @@
 require 'aspose_pdf_cloud'
 include AsposePdfCloud
 
-app_key = 'XXXXX'
-app_sid = 'XXXXX'
-@pdf_api = PdfApi.new(app_key, app_sid)
+client_secret = 'XXXXX'
+client_id = 'XXXXX'
+@pdf_api = PdfApi.new(client_secret, client_id)
 file_name = 'PdfWithScreenAnnotations.pdf'
 # Upload the File
 @pdf_api.put_create(file_name, :: File.open('example_data/' + file_name, 'r') { |io| io.read(io.size) })
